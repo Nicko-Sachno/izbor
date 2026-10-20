@@ -5,6 +5,7 @@ import { IZBOR_PLUGIN } from "../../../../domain/prompt.js";
 import { isObject, readJson, upperDrive } from "../../../../domain/text.js";
 import { CLAUDE_COMMAND } from "../agentsList.js";
 import { mergeAnswerHook, removeAnswerHook } from "./answerHook.js";
+import { settingsOf, settingsText } from "./hookSettings.js";
 import { readSettingsFile } from "./projectFiles.js";
 import { editProjectSettings, locateProject } from "./projectSettings.js";
 
@@ -51,7 +52,7 @@ export async function changeActing({
     }
 
     const edit = (text: string | null) =>
-        change === "add" ? mergeAnswerHook(text, port, runner) : removeAnswerHook(text, port);
+        change === "add" ? mergeAnswerHook(text, port, runner) : removeActing(text, port);
     const preview = editProjectSettings(platform, located, edit, { preview: true });
     if ("refused" in preview) {
         return preview;
@@ -70,6 +71,35 @@ export async function changeActing({
         return edited;
     }
     return includePluginChange(change, before.enabled, edited);
+}
+
+// Claude Code's CLI answers "not found" for a plugin or marketplace it no longer knows, yet leaves its keys in the file.
+function removeActing(text: string | null, port: number): ReturnType<typeof removeAnswerHook> {
+    const hookRemoved = removeAnswerHook(text, port);
+    if ("refused" in hookRemoved) {
+        return hookRemoved;
+    }
+
+    const parsed = settingsOf("text" in hookRemoved ? hookRemoved.text : text);
+    if ("refused" in parsed) {
+        return parsed;
+    }
+
+    const { settings } = parsed;
+    const droppedPlugin = dropKey(settings.enabledPlugins, IZBOR_PLUGIN_ID);
+    const droppedMarketplace = dropKey(settings.extraKnownMarketplaces, IZBOR_MARKETPLACE);
+    if (!droppedPlugin && !droppedMarketplace) {
+        return hookRemoved;
+    }
+    return { text: settingsText(settings), done: "removed" };
+}
+
+function dropKey(container: unknown, key: string): boolean {
+    if (!isObject(container) || !(key in container)) {
+        return false;
+    }
+    delete container[key];
+    return true;
 }
 
 function exitedPluginResult(result: Extract<Ran, { outcome: "exited" }>): PluginCommandResult {
@@ -152,13 +182,17 @@ async function installPlugin(
 }
 
 async function uninstallPlugin(run: RunPluginCommand, checkout: string): Promise<string | undefined> {
-    const steps: [string[], string][] = [
-        [["uninstall", IZBOR_PLUGIN_ID, "--scope", "local"], "not_installed"],
-        [["marketplace", "remove", IZBOR_MARKETPLACE, "--scope", "local"], "not_configured"],
+    // Claude Code 2.1.304 reports a missing local plugin as not_installed_at_scope.
+    const steps: [string[], string[]][] = [
+        [
+            ["uninstall", IZBOR_PLUGIN_ID, "--scope", "local"],
+            ["not_installed", "not_installed_at_scope"],
+        ],
+        [["marketplace", "remove", IZBOR_MARKETPLACE, "--scope", "local"], ["not_configured"]],
     ];
-    for (const [args, absentCode] of steps) {
+    for (const [args, absentCodes] of steps) {
         const result = await run(args, checkout);
-        if (result.outcome === "failed" && result.failureCode !== absentCode) {
+        if (result.outcome === "failed" && !absentCodes.includes(result.failureCode ?? "")) {
             return result.message;
         }
     }

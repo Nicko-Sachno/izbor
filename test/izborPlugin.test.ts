@@ -135,6 +135,43 @@ test("a hook write failure after installation preserves the plugin and a retry o
     assert.equal(answerEntries(await readFile(file, "utf8")).length, 1);
 });
 
+test("--remove drops Izbor's plugin and marketplace from the file when Claude Code no longer knows them, and keeps the others", async (t) => {
+    const { home, repo, file } = await tempProject(t);
+    const other = { source: { source: "github", repo: "someone/tools" } };
+    await mkdir(join(repo, ".claude"), { recursive: true });
+    await writeFile(
+        file,
+        JSON.stringify({
+            enabledPlugins: { "izbor@izbor": true, "lint@tools": true },
+            extraKnownMarketplaces: { ...DECLARED.extraKnownMarketplaces, tools: other },
+            hooks: { PermissionRequest: [{ hooks: [answerHookEntry(HOOK_RUNNER, 4319)] }] },
+        }),
+    );
+    const run: RunPluginCommand = async (args) => ({
+        outcome: "failed",
+        message: "not found",
+        failureCode: args[0] === "uninstall" ? "not_installed_at_scope" : "not_configured",
+    });
+
+    assert.deepEqual(
+        await changeActing({
+            change: "remove",
+            folder: repo,
+            port: 4319,
+            home,
+            platform: hostPlatform(),
+            pluginDir: PLUGIN_DIR,
+            run,
+            runner: HOOK_RUNNER,
+        }),
+        { done: "removed", checkout: repo, file },
+    );
+    assert.deepEqual(JSON.parse(await readFile(file, "utf8")), {
+        enabledPlugins: { "lint@tools": true },
+        extraKnownMarketplaces: { tools: other },
+    });
+});
+
 const DECLARED = {
     enabledPlugins: { "izbor@izbor": true },
     extraKnownMarketplaces: { izbor: { source: { source: "directory", path: PLUGIN_DIR } } },
@@ -333,14 +370,17 @@ test("izbor plugin with a Claude Code CLI that fails refuses in its words, and n
     });
     assert.equal(existsSync(file), false);
 
-    const notThere = await fakeClaude(
-        `const code = process.argv.slice(2).join(" ").includes("uninstall") ? "not_installed" : "not_configured";\nprocess.stdout.write(\`{"outcome":"failed","message":"not found","failureCode":"\${code}"}\\n\`);\nprocess.exitCode = 1;`,
-    );
-    assert.deepEqual(await izbor(t, home, port, ["plugin", "--remove", repo], notThere.dir), {
-        code: 0,
-        stdout: `${file} has no Izbor plugin or answer hook for port ${port}.\n`,
-        stderr: "",
-    });
+    // Claude Code 2.1.304 says not_installed_at_scope where earlier versions said not_installed.
+    for (const uninstallCode of ["not_installed", "not_installed_at_scope"]) {
+        const notThere = await fakeClaude(
+            `const code = process.argv.slice(2).join(" ").includes("uninstall") ? "${uninstallCode}" : "not_configured";\nprocess.stdout.write(\`{"outcome":"failed","message":"not found","failureCode":"\${code}"}\\n\`);\nprocess.exitCode = 1;`,
+        );
+        assert.deepEqual(await izbor(t, home, port, ["plugin", "--remove", repo], notThere.dir), {
+            code: 0,
+            stdout: `${file} has no Izbor plugin or answer hook for port ${port}.\n`,
+            stderr: "",
+        });
+    }
 });
 
 test(
