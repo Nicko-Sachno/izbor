@@ -1,0 +1,63 @@
+name: Bug report
+description: Something in Izbor does not work as expected.
+labels: [bug]
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Issues are public. Remove private project names, paths, prompts and other sensitive content before posting.
+              Do not paste or attach anything from `.izbor/` (session records, hook payloads, the service log), Claude Code transcripts or prompts, local Claude settings, or Izbor's send-key files in `~/.config/izbor` or `%LOCALAPPDATA%\izbor`.
+              To report a security vulnerability, do not open an issue. Use https://github.com/Nicko-Sachno/izbor/security/advisories/new instead.
+    - type: textarea
+      id: what-happened
+      attributes:
+          label: What happened
+          description: What you expected, and what happened instead.
+      validations:
+          required: true
+    - type: textarea
+      id: steps
+      attributes:
+          label: Steps to reproduce
+          description: The smallest steps that reproduce the problem. Use a small test project when possible.
+          placeholder: |
+              1.
+              2.
+              3.
+      validations:
+          required: true
+    - type: input
+      id: os
+      attributes:
+          label: Operating system and terminal app
+          placeholder: macOS 15.6, Terminal
+      validations:
+          required: true
+    - type: input
+      id: node-version
+      attributes:
+          label: Node version (`node --version`)
+      validations:
+          required: true
+    - type: input
+      id: claude-version
+      attributes:
+          label: Claude Code version (`claude --version`)
+    - type: input
+      id: izbor-build
+      attributes:
+          label: Izbor build (`node bin/izbor.js --version`)
+          description: Prints when `npm run build` last built this checkout.
+    - type: input
+      id: commit
+      attributes:
+          label: Izbor commit (`git rev-parse --short HEAD`)
+          description: Run it in your Izbor checkout.
+      validations:
+          required: true
+    - type: textarea
+      id: logs
+      attributes:
+          label: Error output or log excerpt
+          description: A short excerpt of the error, with private content removed. Do not paste whole session records or logs.
+          render: text

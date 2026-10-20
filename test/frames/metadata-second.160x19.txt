@@ -1,0 +1,61 @@
+metadata-second.160x19
+the second session opened, then m: its Metadata open
+160x19 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                                                                                                                                                    Izbor ● up
+  Back · Esc  Add CSV export for invoices, including invoice number, date, customer, and total.
+
+  Task source
+  From transcript · 2026-10-09T11:57:00.000Z · 3m ago
+
+  Explanation requested
+  2026-10-09T11:59:48.000Z · 12s ago
+
+  Latest activity at
+  2026-10-09T11:59:45.000Z · 15s ago
+
+  Last observed
+  2026-10-09T11:59:45.000Z · 15s ago · From hook
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ › yes, no, or no and your words                                                                                                                   Send → │
+  └──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+
+styles
+                                                                                                                                                    mmmmmmmmmm
+  gggggggggg  ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+
+  mmmmmmmmmmm
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+  mmmmmmmmmmmmmmmmmmmmm
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+  mmmmmmmmmmmmmmmmmm
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+  mmmmmmmmmmmmm
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+  oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+  ooffmmmmmmmmmmmmmmmmmmmmmmmmmmmmm                                                                                                                   ggggggoo
+  oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+                                                                                                                                                 ggggggggggggg
+
+legend
+  f  focus
+  g  focus underline
+  m  muted
+  o  border
+  t  text
+
+layout  scroll 12 · maxScroll 12 · pageSize 12 · viewport 2,2 156x12
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     145,18 13x1
+  send     150,16 6x1
+  field    2,15 156x3  origin 6  indices 0*144

@@ -1,0 +1,72 @@
+metadata-second.80x24
+the second session opened, then m: its Metadata open
+80x24 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                                                                    Izbor ● up
+  Back · Esc  Add CSV export for invoices, including invoice number, date,
+              customer, and total.
+  s · Stop observing
+
+  Session ID
+  a7312ce4-782a-45a0-a84c-e834c934b2a7
+
+  Task source
+  From transcript · 2026-10-09T11:57:00.000Z · 3m ago
+
+  Explanation requested
+  2026-10-09T11:59:48.000Z · 12s ago
+
+  Latest activity at
+  2026-10-09T11:59:45.000Z · 15s ago
+
+  Last observed
+  2026-10-09T11:59:45.000Z · 15s ago · From hook
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › yes, no, or no and your words                                   Send → │
+  └──────────────────────────────────────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+
+styles
+                                                                    mmmmmmmmmm
+  gggggggggg  tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+              tttttttttttttttttttt
+  gggggggggggggggggg
+
+  mmmmmmmmmm
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+  mmmmmmmmmmm
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+  mmmmmmmmmmmmmmmmmmmmm
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+  mmmmmmmmmmmmmmmmmm
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+  mmmmmmmmmmmmm
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+  oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+  ooffmmmmmmmmmmmmmmmmmmmmmmmmmmmmm                                   ggggggoo
+  oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+                                                                 ggggggggggggg
+
+legend
+  f  focus
+  g  focus underline
+  m  muted
+  o  border
+  t  text
+
+layout  scroll 9 · maxScroll 9 · pageSize 16 · viewport 2,3 76x16
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     65,23 13x1
+  send     70,21 6x1
+  field    2,20 76x3  origin 6  indices 0*64
+  stop     2,3 18x1  a7312ce4-782a-45a0-a84c-e834c934b2a7

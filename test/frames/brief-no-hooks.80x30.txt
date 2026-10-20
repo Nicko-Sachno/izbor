@@ -1,0 +1,82 @@
+brief-no-hooks.80x30
+X7: the idle session's Brief page in a project without Izbor's hooks: no field, the row above the last line empty
+80x30 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                                                                    Izbor ● up
+  Back · Esc  Explain how request retries work and where the retry limit is
+              configured.
+  Briefs update late: this project has no hooks
+
+  Now
+  Traced the retry logic in request.ts and explained where its limit is
+  configured, which errors trigger another attempt, and when failed requests
+  stop retrying automatically.
+  Last change 30s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                 Help · Ctrl-G
+
+styles
+                                                                    mmmmmmmmmm
+  gggggggggg  ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+              ttttttttttt
+  iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+
+  mmm
+  ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+  cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+  cccccccccccccccccccccccccccc
+  mmmmmmmmmmmmmmmmmmm
+
+  gggggggggggggggggg
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                 ggggggggggggg
+
+legend
+  c  reply
+  g  focus underline
+  i  notice
+  m  muted
+  t  text
+
+layout  scroll 0 · maxScroll 0 · pageSize 25 · viewport 2,3 76x25
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     65,29 13x1
+  stop     2,11 18x1  c8219b07-e082-4ac4-9bdf-4abfe6fcfc8e

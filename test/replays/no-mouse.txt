@@ -1,0 +1,83 @@
+no-mouse
+With --no-mouse the app turns no mouse reporting on, drops mouse reports a terminal sends anyway, and keys still work
+izbor --no-color --no-mouse · 100x30 · now 2026-10-09T12:00:00.000Z · 200 ms a step
+
+> start · t=0.0s
+screen
+                                                                                        Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+   * Selected · Fix the token refresh bug and add a regression test for expired access      Open ›
+     tokens.
+     Working
+     Running authentication tests.
+
+   ! Add CSV export for invoices, including invoice number, date, customer, and total.
+     Waiting
+     The CSV export is implemented. Waiting for permission to run the invoice tests.
+      ! Needs you
+      Bash: npm test invoices
+
+   ✓ Explain how request retries work and where the retry limit is configured.
+     Idle
+     Traced the retry logic in request.ts and explained where its limit is configured, which
+     errors trigger another attempt, and when failed requests stop retrying automatically.
+
+
+
+
+
+
+
+
+
+
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse none · paste on · title "Izbor · needs you" · bell 0
+
+> click "Add CSV export" · t=0.2s
+= same as step 0
+
+> wheel-down 10 4 · t=0.4s
+= same as step 0
+
+> type "ab" + click 10 4 · t=0.6s
+= same as step 0
+
+> key tab · t=0.8s
+= same as step 0
+
+> key enter · t=1.0s
+screen
+                                                                                        Izbor ● up
+  Back · Esc  Fix the token refresh bug and add a regression test for expired access tokens.
+
+  Now
+  Running authentication tests.
+  Latest: Bash: npm test auth
+  Last change 9s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Reply to this session ──────────────────────────────────────────────────────────────────────┐
+  │ › your next prompt; it runs when this turn ends                                       Send → │
+  └──────────────────────────────────────────────────────────────────────────────────────────────┘
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse none · paste on · title "Izbor · needs you" · bell 0

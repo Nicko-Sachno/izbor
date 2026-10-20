@@ -1,0 +1,72 @@
+{
+  "name": "izbor",
+  "version": "0.1.0",
+  "description": "Terminal app that watches your Claude Code sessions and keeps a short brief of each",
+  "keywords": [
+    "claude-code",
+    "claude",
+    "tui",
+    "terminal",
+    "ink",
+    "cli",
+    "monitoring",
+    "agents"
+  ],
+  "homepage": "https://github.com/Nicko-Sachno/izbor#readme",
+  "bugs": {
+    "url": "https://github.com/Nicko-Sachno/izbor/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nicko-Sachno/izbor.git"
+  },
+  "author": "Nicko-Sachno",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "files": [
+    "bin/",
+    "dist/",
+    "plugin/",
+    "LICENSE",
+    "README.md"
+  ],
+  "bin": {
+    "izbor": "bin/izbor.js"
+  },
+  "engines": {
+    "node": ">=24.3.0"
+  },
+  "scripts": {
+    "dev": "node --import tsx src/main.ts",
+    "terminal": "node --import tsx src/cli/main.ts",
+    "summarize": "node --import tsx scripts/summarize.ts",
+    "build": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\" && tsc -p tsconfig.build.json",
+    "start": "node dist/main.js",
+    "check": "tsc --noEmit",
+    "test": "node --import tsx --test --test-timeout=30000 test/*.test.ts",
+    "frames:check": "node --import tsx --test --test-timeout=30000 test/frames.test.ts test/replays.test.ts",
+    "frames:update": "node --import tsx --test --test-timeout=30000 --test-update-snapshots test/frames.test.ts test/replays.test.ts",
+    "format": "prettier --write src test scripts",
+    "format:check": "prettier --check src test scripts",
+    "verify": "node --import tsx scripts/verify-flow.ts"
+  },
+  "devDependencies": {
+    "@types/cross-spawn": "6.0.6",
+    "@types/node": "24.19.0",
+    "@types/react": "19.3.0",
+    "@xterm/headless": "6.0.0",
+    "prettier": "3.9.9",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.3.286",
+    "chalk": "6.0.1",
+    "cross-spawn": "7.0.6",
+    "ink": "8.0.0",
+    "react": "19.3.0",
+    "string-width": "8.3.0",
+    "wrap-ansi": "10.0.2"
+  }
+}

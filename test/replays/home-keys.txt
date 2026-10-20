@@ -1,0 +1,874 @@
+home-keys
+On Home, Tab, Shift-Tab, Up and Down reach each project's line, then its sessions; Enter on a project line adds its plugin or its hooks at once, says so on the row above the last line, and the line's cue moves on (hooks added: the plugin cue), and does nothing on a line with both; Enter on a session line observes it and opens its Brief, the news under the field, and on one that ends Open › opens its Brief again; a narrow window shortens the long plugin cue to ›; Esc on Home leaves nothing focused
+izbor --no-color · sample empty · 100x30 · now 2026-10-09T12:00:00.000Z · 200 ms a step
+
+> start · t=0.0s
+screen
+                                                                                        Izbor ● up
+  Home  [ Sessions · 0 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working
+   !   izbor-e8 ·  ! Needs you  permission prompt · worktree invoices
+       izbor-6f · Idle
+
+     example-api · Briefs update late                                                  Add hooks ›
+       Orders API review · Idle
+       example-api-3a · Working
+
+     invoice-api                                                  Add plugin · answer from Izbor ›
+       invoice-api-2b · Idle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> key tab · t=0.2s
+= same as step 0
+
+> key tab · t=0.4s
+screen
+                                                                                        Izbor ● up
+  Home  [ Sessions · 0 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working · Observe ›
+   !   izbor-e8 ·  ! Needs you  permission prompt · worktree invoices
+       izbor-6f · Idle
+
+     example-api · Briefs update late                                                  Add hooks ›
+       Orders API review · Idle
+       example-api-3a · Working
+
+     invoice-api                                                  Add plugin · answer from Izbor ›
+       invoice-api-2b · Idle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> key shift-tab · t=0.6s
+screen
+                                                                                        Izbor ● up
+  Home  [ Sessions · 0 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working
+   !   izbor-e8 ·  ! Needs you  permission prompt · worktree invoices
+       izbor-6f · Idle
+
+     example-api · Briefs update late                                                  Add hooks ›
+       Orders API review · Idle
+       example-api-3a · Working
+
+     invoice-api                                                  Add plugin · answer from Izbor ›
+       invoice-api-2b · Idle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> key down · t=0.8s
+screen
+                                                                                        Izbor ● up
+  Home  [ Sessions · 0 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working · Observe ›
+   !   izbor-e8 ·  ! Needs you  permission prompt · worktree invoices
+       izbor-6f · Idle
+
+     example-api · Briefs update late                                                  Add hooks ›
+       Orders API review · Idle
+       example-api-3a · Working
+
+     invoice-api                                                  Add plugin · answer from Izbor ›
+       invoice-api-2b · Idle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> key down · t=1.0s
+screen
+                                                                                        Izbor ● up
+  Home  [ Sessions · 0 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working
+   !   izbor-e8 ·  ! Needs you  permission prompt · worktree invoices · Observe ›
+       izbor-6f · Idle
+
+     example-api · Briefs update late                                                  Add hooks ›
+       Orders API review · Idle
+       example-api-3a · Working
+
+     invoice-api                                                  Add plugin · answer from Izbor ›
+       invoice-api-2b · Idle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> key up · t=1.2s
+screen
+                                                                                        Izbor ● up
+  Home  [ Sessions · 0 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working · Observe ›
+   !   izbor-e8 ·  ! Needs you  permission prompt · worktree invoices
+       izbor-6f · Idle
+
+     example-api · Briefs update late                                                  Add hooks ›
+       Orders API review · Idle
+       example-api-3a · Working
+
+     invoice-api                                                  Add plugin · answer from Izbor ›
+       invoice-api-2b · Idle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> key up · t=1.4s
+screen
+                                                                                        Izbor ● up
+  Home  [ Sessions · 0 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working
+   !   izbor-e8 ·  ! Needs you  permission prompt · worktree invoices
+       izbor-6f · Idle
+
+     example-api · Briefs update late                                                  Add hooks ›
+       Orders API review · Idle
+       example-api-3a · Working
+
+     invoice-api                                                  Add plugin · answer from Izbor ›
+       invoice-api-2b · Idle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> key enter · t=1.6s
+= same as step 7
+
+> key down · t=1.8s
+screen
+                                                                                        Izbor ● up
+  Home  [ Sessions · 0 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working · Observe ›
+   !   izbor-e8 ·  ! Needs you  permission prompt · worktree invoices
+       izbor-6f · Idle
+
+     example-api · Briefs update late                                                  Add hooks ›
+       Orders API review · Idle
+       example-api-3a · Working
+
+     invoice-api                                                  Add plugin · answer from Izbor ›
+       invoice-api-2b · Idle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> key enter · t=2.0s
+screen
+                                                                                        Izbor ● up
+  Back · Esc  Fix the token refresh bug and add a regression test for expired access tokens.
+
+  Now
+  Running authentication tests.
+  Latest: Bash: npm test auth
+  Last change 10s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Observing izbor-4c.
+  ┌─ Reply to this session ──────────────────────────────────────────────────────────────────────┐
+  │ › your next prompt; it runs when this turn ends                                       Send → │
+  └──────────────────────────────────────────────────────────────────────────────────────────────┘
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> key esc · t=2.2s
+screen
+                                                                                        Izbor ● up
+  [ Home ]  Sessions · 1  Ctrl-O
+
+   * Selected · Fix the token refresh bug and add a regression test for expired access      Open ›
+     tokens.
+     Working
+     Running authentication tests.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Observing izbor-4c.
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> key esc · t=2.4s
+screen
+                                                                                        Izbor ● up
+  Home  [ Sessions · 1 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working · Open ›
+   !   izbor-e8 ·  ! Needs you  permission prompt · worktree invoices
+       izbor-6f · Idle
+
+     example-api · Briefs update late                                                  Add hooks ›
+       Orders API review · Idle
+       example-api-3a · Working
+
+     invoice-api                                                  Add plugin · answer from Izbor ›
+       invoice-api-2b · Idle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Observing izbor-4c.
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> key ctrl-o · t=2.6s
+screen
+                                                                                        Izbor ● up
+  [ Home ]  Sessions · 1  Ctrl-O
+
+   * Selected · Fix the token refresh bug and add a regression test for expired access      Open ›
+     tokens.
+     Working
+     Running authentication tests.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Observing izbor-4c.
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> key ctrl-o · t=2.8s
+screen
+                                                                                        Izbor ● up
+  Home  [ Sessions · 1 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working · Open ›
+   !   izbor-e8 ·  ! Needs you  permission prompt · worktree invoices
+       izbor-6f · Idle
+
+     example-api · Briefs update late                                                  Add hooks ›
+       Orders API review · Idle
+       example-api-3a · Working
+
+     invoice-api                                                  Add plugin · answer from Izbor ›
+       invoice-api-2b · Idle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Observing izbor-4c.
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> key tab · t=3.0s
+= same as step 14
+
+> key tab · t=3.2s
+= same as step 14
+
+> key enter · t=3.4s
+screen
+                                                                                        Izbor ● up
+  Back · Esc  Fix the token refresh bug and add a regression test for expired access tokens.
+
+  Now
+  Running authentication tests.
+  Latest: Bash: npm test auth
+  Last change 11s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Observing izbor-4c.
+  ┌─ Reply to this session ──────────────────────────────────────────────────────────────────────┐
+  │ › your next prompt; it runs when this turn ends                                       Send → │
+  └──────────────────────────────────────────────────────────────────────────────────────────────┘
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> key ctrl-o · t=3.6s
+screen
+                                                                                        Izbor ● up
+  Home  [ Sessions · 1 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working · Open ›
+   !   izbor-e8 ·  ! Needs you  permission prompt · worktree invoices
+       izbor-6f · Idle
+
+     example-api · Briefs update late                                                  Add hooks ›
+       Orders API review · Idle
+       example-api-3a · Working
+
+     invoice-api                                                  Add plugin · answer from Izbor ›
+       invoice-api-2b · Idle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Observing izbor-4c.
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> key tab · t=3.8s
+= same as step 18
+
+> key tab · t=4.0s
+= same as step 18
+
+> key tab · t=4.2s
+screen
+                                                                                        Izbor ● up
+  Home  [ Sessions · 1 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working · Open ›
+   !   izbor-e8 ·  ! Needs you  permission prompt · worktree invoices · Observe ›
+       izbor-6f · Idle
+
+     example-api · Briefs update late                                                  Add hooks ›
+       Orders API review · Idle
+       example-api-3a · Working
+
+     invoice-api                                                  Add plugin · answer from Izbor ›
+       invoice-api-2b · Idle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Observing izbor-4c.
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> key tab · t=4.4s
+screen
+                                                                                        Izbor ● up
+  Home  [ Sessions · 1 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working · Open ›
+   !   izbor-e8 ·  ! Needs you  permission prompt · worktree invoices
+       izbor-6f · Idle · Observe ›
+
+     example-api · Briefs update late                                                  Add hooks ›
+       Orders API review · Idle
+       example-api-3a · Working
+
+     invoice-api                                                  Add plugin · answer from Izbor ›
+       invoice-api-2b · Idle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Observing izbor-4c.
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> key tab · t=4.6s
+screen
+                                                                                        Izbor ● up
+  Home  [ Sessions · 1 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working · Open ›
+   !   izbor-e8 ·  ! Needs you  permission prompt · worktree invoices
+       izbor-6f · Idle
+
+     example-api · Briefs update late                                                  Add hooks ›
+       Orders API review · Idle
+       example-api-3a · Working
+
+     invoice-api                                                  Add plugin · answer from Izbor ›
+       invoice-api-2b · Idle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Observing izbor-4c.
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> key enter · t=4.8s
+screen
+                                                                                        Izbor ● up
+  Home  [ Sessions · 1 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working · Open ›
+   !   izbor-e8 ·  ! Needs you  permission prompt · worktree invoices
+       izbor-6f · Idle
+
+     example-api                                                  Add plugin · answer from Izbor ›
+       Orders API review · Idle
+       example-api-3a · Working
+
+     invoice-api                                                  Add plugin · answer from Izbor ›
+       invoice-api-2b · Idle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Added Izbor's hooks to example-api.
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> key tab · t=5.0s
+screen
+                                                                                        Izbor ● up
+  Home  [ Sessions · 1 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working · Open ›
+   !   izbor-e8 ·  ! Needs you  permission prompt · worktree invoices
+       izbor-6f · Idle
+
+     example-api                                                  Add plugin · answer from Izbor ›
+       Orders API review · Idle · Observe ›
+       example-api-3a · Working
+
+     invoice-api                                                  Add plugin · answer from Izbor ›
+       invoice-api-2b · Idle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Added Izbor's hooks to example-api.
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> key tab · t=5.2s
+screen
+                                                                                        Izbor ● up
+  Home  [ Sessions · 1 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working · Open ›
+   !   izbor-e8 ·  ! Needs you  permission prompt · worktree invoices
+       izbor-6f · Idle
+
+     example-api                                                  Add plugin · answer from Izbor ›
+       Orders API review · Idle
+       example-api-3a · Working · Observe ›
+
+     invoice-api                                                  Add plugin · answer from Izbor ›
+       invoice-api-2b · Idle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Added Izbor's hooks to example-api.
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> key tab · t=5.4s
+screen
+                                                                                        Izbor ● up
+  Home  [ Sessions · 1 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working · Open ›
+   !   izbor-e8 ·  ! Needs you  permission prompt · worktree invoices
+       izbor-6f · Idle
+
+     example-api                                                  Add plugin · answer from Izbor ›
+       Orders API review · Idle
+       example-api-3a · Working
+
+     invoice-api                                                  Add plugin · answer from Izbor ›
+       invoice-api-2b · Idle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Added Izbor's hooks to example-api.
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> key enter · t=5.6s
+screen
+                                                                                        Izbor ● up
+  Home  [ Sessions · 1 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working · Open ›
+   !   izbor-e8 ·  ! Needs you  permission prompt · worktree invoices
+       izbor-6f · Idle
+
+     example-api                                                  Add plugin · answer from Izbor ›
+       Orders API review · Idle
+       example-api-3a · Working
+
+     invoice-api
+       invoice-api-2b · Idle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Added Izbor's plugin to invoice-api.
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> resize 44 30 · t=5.8s
+screen
+                                Izbor ● up
+  Home  [ Sessions · 1 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working · Open ›
+   !   izbor-e8 ·  ! Needs you
+       izbor-6f · Idle
+
+     example-api                         ›
+       Orders API review · Idle
+       example-api-3a · Working
+
+     invoice-api
+       invoice-api-2b · Idle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Added Izbor's plugin to invoice-api.
+                             Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> resize 43 30 · t=6.0s
+screen
+                               Izbor ● up
+  Home  [ Sessions · 1 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working · Open ›
+   !   izbor-e8 ·  ! Needs you
+       izbor-6f · Idle
+
+     example-api                        ›
+       Orders API review · Idle
+       example-api-3a · Working
+
+     invoice-api
+       invoice-api-2b · Idle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Added Izbor's plugin to invoice-api.
+                            Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
+
+> key esc · t=6.2s
+= same as step 30

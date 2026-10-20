@@ -1,0 +1,82 @@
+field-yes.80x30.no-color
+C1: yes typed in the Waiting session's field, without color
+80x30 · no color · now 2026-10-09T12:00:00.000Z
+
+screen
+                                                                    Izbor ● up
+  Back · Esc  Add CSV export for invoices, including invoice number, date,
+              customer, and total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 15s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › yes                                                             Send → │
+  └──────────────────────────────────────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+
+styles
+
+  __________
+
+
+
+
+
+
+  VVVVVVVVVVVVV
+  =======================
+
+
+  __________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                      ______
+
+                                                                 _____________
+
+legend
+  =  bold
+  V  inverse bold
+  _  underline
+
+layout  scroll 0 · maxScroll 0 · pageSize 22 · viewport 2,3 76x22
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     65,29 13x1
+  send     70,27 6x1
+  field    2,26 76x3  origin 6  indices 0,1,2,3*61
+  stop     2,12 18x1  a7312ce4-782a-45a0-a84c-e834c934b2a7

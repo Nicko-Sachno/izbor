@@ -1,0 +1,70 @@
+live-stopping.list-loading.80x24
+izbor with Izbor stopping, before the first list
+80x24 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                                                            ▲ Izbor ○ stopping
+  Home  [ Sessions · 0 ]  Ctrl-O
+
+  Looking for running Claude Code sessions…
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                 Help · Ctrl-G
+
+styles
+                                                            iiiiiiiiiiiiiiiiii
+  TTTT  nnnnnnnnnnnnnnnn  mmmmmm
+
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                 ggggggggggggg
+
+legend
+  T  text bold
+  g  focus underline
+  i  notice
+  m  muted
+  n  muted underline
+
+layout  scroll 0 · maxScroll 0 · pageSize 19 · viewport 2,3 76x19
+detail  none
+
+targets, in hit-test order
+  tab      2,1 4x1  home
+  tab      8,1 16x1  sessions
+  help     65,23 13x1

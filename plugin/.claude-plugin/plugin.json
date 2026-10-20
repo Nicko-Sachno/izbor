@@ -1,0 +1,10 @@
+{
+    "name": "izbor",
+    "version": "0.1.0",
+    "description": "Izbor's plugin: collects the prompts you send from Izbor and submits them to this session as your own words.",
+    "author": {
+        "name": "Nicko-Sachno"
+    },
+    "homepage": "https://github.com/Nicko-Sachno/izbor#readme",
+    "repository": "https://github.com/Nicko-Sachno/izbor"
+}

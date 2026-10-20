@@ -1,0 +1,69 @@
+sessions-empty.80x24
+the sample sessions, none observed, then Ctrl-O: Sessions with no row
+80x24 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                                                                    Izbor ● up
+  [ Home ]  Sessions · 0  Ctrl-O
+
+  No session observed. Ctrl-O opens Home.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                 Help · Ctrl-G
+
+styles
+                                                                    mmmmmmmmmm
+  nnnnnnnn  TTTTTTTTTTTT  mmmmmm
+
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                 ggggggggggggg
+
+legend
+  T  text bold
+  g  focus underline
+  m  muted
+  n  muted underline
+
+layout  scroll 0 · maxScroll 0 · pageSize 19 · viewport 2,3 76x19
+detail  none
+
+targets, in hit-test order
+  tab      2,1 8x1  home
+  tab      12,1 12x1  sessions
+  help     65,23 13x1

@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="442" viewBox="0 0 700 442">
+<rect width="700" height="442" rx="8" fill="#1E211D"/>
+<g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" xml:space="preserve">
+<text x="585.2" y="27" fill="#969F96" textLength="42" lengthAdjust="spacingAndGlyphs">Izbor</text>
+<text x="635.6" y="27" fill="#969F96" textLength="8.4" lengthAdjust="spacingAndGlyphs">●</text>
+<text x="652.4000000000001" y="27" fill="#969F96" textLength="16.8" lengthAdjust="spacingAndGlyphs">up</text>
+<text x="30.8" y="45" fill="#969F96" textLength="8.4" lengthAdjust="spacingAndGlyphs">[</text>
+<text x="47.6" y="45" fill="#969F96" textLength="33.6" lengthAdjust="spacingAndGlyphs">Home</text>
+<text x="89.60000000000001" y="45" fill="#969F96" textLength="8.4" lengthAdjust="spacingAndGlyphs">]</text>
+<rect x="30.8" y="47" width="67.2" height="1" fill="#969F96"/>
+<text x="114.80000000000001" y="45" fill="#E6E6DB" font-weight="700" textLength="67.2" lengthAdjust="spacingAndGlyphs">Sessions</text>
+<text x="190.40000000000003" y="45" fill="#E6E6DB" font-weight="700" textLength="8.4" lengthAdjust="spacingAndGlyphs">·</text>
+<text x="207.20000000000002" y="45" fill="#E6E6DB" font-weight="700" textLength="8.4" lengthAdjust="spacingAndGlyphs">3</text>
+<text x="232.4" y="45" fill="#969F96" textLength="50.400000000000006" lengthAdjust="spacingAndGlyphs">Ctrl-O</text>
+<text x="39.2" y="81" fill="#D97757" textLength="8.4" lengthAdjust="spacingAndGlyphs">*</text>
+<text x="56" y="81" fill="#B2C4AB" font-weight="700" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">Fix</text>
+<text x="89.6" y="81" fill="#B2C4AB" font-weight="700" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">the</text>
+<text x="123.2" y="81" fill="#B2C4AB" font-weight="700" textLength="42" lengthAdjust="spacingAndGlyphs">token</text>
+<text x="173.60000000000002" y="81" fill="#B2C4AB" font-weight="700" textLength="58.800000000000004" lengthAdjust="spacingAndGlyphs">refresh</text>
+<text x="240.8" y="81" fill="#B2C4AB" font-weight="700" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">bug</text>
+<text x="274.4" y="81" fill="#B2C4AB" font-weight="700" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">and</text>
+<text x="308" y="81" fill="#B2C4AB" font-weight="700" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">add</text>
+<text x="341.6" y="81" fill="#B2C4AB" font-weight="700" textLength="8.4" lengthAdjust="spacingAndGlyphs">a</text>
+<text x="358.40000000000003" y="81" fill="#B2C4AB" font-weight="700" textLength="84" lengthAdjust="spacingAndGlyphs">regression</text>
+<text x="450.8" y="81" fill="#B2C4AB" font-weight="700" textLength="33.6" lengthAdjust="spacingAndGlyphs">test</text>
+<text x="492.8" y="81" fill="#B2C4AB" font-weight="700" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">for</text>
+<text x="526.4000000000001" y="81" fill="#B2C4AB" font-weight="700" textLength="58.800000000000004" lengthAdjust="spacingAndGlyphs">expired</text>
+<text x="618.8000000000001" y="81" fill="#B2C4AB" textLength="33.6" lengthAdjust="spacingAndGlyphs">Open</text>
+<text x="660.8000000000001" y="81" fill="#B2C4AB" textLength="8.4" lengthAdjust="spacingAndGlyphs">›</text>
+<rect x="618.8000000000001" y="83" width="50.400000000000006" height="1" fill="#B2C4AB"/>
+<text x="56" y="99" fill="#B2C4AB" font-weight="700" textLength="50.400000000000006" lengthAdjust="spacingAndGlyphs">access</text>
+<text x="114.80000000000001" y="99" fill="#B2C4AB" font-weight="700" textLength="58.800000000000004" lengthAdjust="spacingAndGlyphs">tokens.</text>
+<text x="56" y="117" fill="#969F96" textLength="58.800000000000004" lengthAdjust="spacingAndGlyphs">Working</text>
+<text x="56" y="135" fill="#AEB8C4" textLength="58.800000000000004" lengthAdjust="spacingAndGlyphs">Running</text>
+<text x="123.2" y="135" fill="#AEB8C4" textLength="117.60000000000001" lengthAdjust="spacingAndGlyphs">authentication</text>
+<text x="249.20000000000002" y="135" fill="#AEB8C4" textLength="50.400000000000006" lengthAdjust="spacingAndGlyphs">tests.</text>
+<text x="39.2" y="171" fill="#E7BC70" font-weight="700" textLength="8.4" lengthAdjust="spacingAndGlyphs">!</text>
+<text x="56" y="171" fill="#E6E6DB" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">Add</text>
+<text x="89.6" y="171" fill="#E6E6DB" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">CSV</text>
+<text x="123.2" y="171" fill="#E6E6DB" textLength="50.400000000000006" lengthAdjust="spacingAndGlyphs">export</text>
+<text x="182" y="171" fill="#E6E6DB" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">for</text>
+<text x="215.6" y="171" fill="#E6E6DB" textLength="75.60000000000001" lengthAdjust="spacingAndGlyphs">invoices,</text>
+<text x="299.6" y="171" fill="#E6E6DB" textLength="75.60000000000001" lengthAdjust="spacingAndGlyphs">including</text>
+<text x="383.6" y="171" fill="#E6E6DB" textLength="58.800000000000004" lengthAdjust="spacingAndGlyphs">invoice</text>
+<text x="450.8" y="171" fill="#E6E6DB" textLength="58.800000000000004" lengthAdjust="spacingAndGlyphs">number,</text>
+<text x="518" y="171" fill="#E6E6DB" textLength="42" lengthAdjust="spacingAndGlyphs">date,</text>
+<text x="568.4" y="171" fill="#E6E6DB" textLength="75.60000000000001" lengthAdjust="spacingAndGlyphs">customer,</text>
+<text x="56" y="189" fill="#E6E6DB" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">and</text>
+<text x="89.6" y="189" fill="#E6E6DB" textLength="50.400000000000006" lengthAdjust="spacingAndGlyphs">total.</text>
+<text x="56" y="207" fill="#969F96" textLength="58.800000000000004" lengthAdjust="spacingAndGlyphs">Waiting</text>
+<text x="56" y="225" fill="#AEB8C4" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">The</text>
+<text x="89.6" y="225" fill="#AEB8C4" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">CSV</text>
+<text x="123.2" y="225" fill="#AEB8C4" textLength="50.400000000000006" lengthAdjust="spacingAndGlyphs">export</text>
+<text x="182" y="225" fill="#AEB8C4" textLength="16.8" lengthAdjust="spacingAndGlyphs">is</text>
+<text x="207.20000000000002" y="225" fill="#AEB8C4" textLength="100.80000000000001" lengthAdjust="spacingAndGlyphs">implemented.</text>
+<text x="316.40000000000003" y="225" fill="#AEB8C4" textLength="58.800000000000004" lengthAdjust="spacingAndGlyphs">Waiting</text>
+<text x="383.6" y="225" fill="#AEB8C4" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">for</text>
+<text x="417.2" y="225" fill="#AEB8C4" textLength="84" lengthAdjust="spacingAndGlyphs">permission</text>
+<text x="509.6" y="225" fill="#AEB8C4" textLength="16.8" lengthAdjust="spacingAndGlyphs">to</text>
+<text x="534.8" y="225" fill="#AEB8C4" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">run</text>
+<text x="568.4" y="225" fill="#AEB8C4" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">the</text>
+<text x="602" y="225" fill="#AEB8C4" textLength="58.800000000000004" lengthAdjust="spacingAndGlyphs">invoice</text>
+<text x="56" y="243" fill="#AEB8C4" textLength="50.400000000000006" lengthAdjust="spacingAndGlyphs">tests.</text>
+<rect x="56" y="249" width="109.2" height="16" fill="#E7BC70"/>
+<text x="64.4" y="261" fill="#1F1600" font-weight="700" textLength="8.4" lengthAdjust="spacingAndGlyphs">!</text>
+<text x="81.2" y="261" fill="#1F1600" font-weight="700" textLength="42" lengthAdjust="spacingAndGlyphs">Needs</text>
+<text x="131.60000000000002" y="261" fill="#1F1600" font-weight="700" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">you</text>
+<text x="64.4" y="279" fill="#E7BC70" font-weight="700" textLength="42" lengthAdjust="spacingAndGlyphs">Bash:</text>
+<text x="114.80000000000001" y="279" fill="#E7BC70" font-weight="700" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">npm</text>
+<text x="148.4" y="279" fill="#E7BC70" font-weight="700" textLength="33.6" lengthAdjust="spacingAndGlyphs">test</text>
+<text x="190.4" y="279" fill="#E7BC70" font-weight="700" textLength="67.2" lengthAdjust="spacingAndGlyphs">invoices</text>
+<text x="39.2" y="315" fill="#7FCBA4" textLength="8.4" lengthAdjust="spacingAndGlyphs">✓</text>
+<text x="56" y="315" fill="#E6E6DB" textLength="58.800000000000004" lengthAdjust="spacingAndGlyphs">Explain</text>
+<text x="123.2" y="315" fill="#E6E6DB" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">how</text>
+<text x="156.8" y="315" fill="#E6E6DB" textLength="58.800000000000004" lengthAdjust="spacingAndGlyphs">request</text>
+<text x="224" y="315" fill="#E6E6DB" textLength="58.800000000000004" lengthAdjust="spacingAndGlyphs">retries</text>
+<text x="291.20000000000005" y="315" fill="#E6E6DB" textLength="33.6" lengthAdjust="spacingAndGlyphs">work</text>
+<text x="333.2" y="315" fill="#E6E6DB" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">and</text>
+<text x="366.8" y="315" fill="#E6E6DB" textLength="42" lengthAdjust="spacingAndGlyphs">where</text>
+<text x="417.2" y="315" fill="#E6E6DB" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">the</text>
+<text x="450.8" y="315" fill="#E6E6DB" textLength="42" lengthAdjust="spacingAndGlyphs">retry</text>
+<text x="501.20000000000005" y="315" fill="#E6E6DB" textLength="42" lengthAdjust="spacingAndGlyphs">limit</text>
+<text x="551.6" y="315" fill="#E6E6DB" textLength="16.8" lengthAdjust="spacingAndGlyphs">is</text>
+<text x="576.8000000000001" y="315" fill="#E6E6DB" textLength="92.4" lengthAdjust="spacingAndGlyphs">configured.</text>
+<text x="56" y="333" fill="#969F96" textLength="33.6" lengthAdjust="spacingAndGlyphs">Idle</text>
+<text x="56" y="351" fill="#AEB8C4" textLength="50.400000000000006" lengthAdjust="spacingAndGlyphs">Traced</text>
+<text x="114.80000000000001" y="351" fill="#AEB8C4" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">the</text>
+<text x="148.4" y="351" fill="#AEB8C4" textLength="42" lengthAdjust="spacingAndGlyphs">retry</text>
+<text x="198.8" y="351" fill="#AEB8C4" textLength="42" lengthAdjust="spacingAndGlyphs">logic</text>
+<text x="249.20000000000002" y="351" fill="#AEB8C4" textLength="16.8" lengthAdjust="spacingAndGlyphs">in</text>
+<text x="274.4" y="351" fill="#AEB8C4" textLength="84" lengthAdjust="spacingAndGlyphs">request.ts</text>
+<text x="366.8" y="351" fill="#AEB8C4" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">and</text>
+<text x="400.40000000000003" y="351" fill="#AEB8C4" textLength="75.60000000000001" lengthAdjust="spacingAndGlyphs">explained</text>
+<text x="484.40000000000003" y="351" fill="#AEB8C4" textLength="42" lengthAdjust="spacingAndGlyphs">where</text>
+<text x="534.8" y="351" fill="#AEB8C4" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">its</text>
+<text x="568.4" y="351" fill="#AEB8C4" textLength="42" lengthAdjust="spacingAndGlyphs">limit</text>
+<text x="618.8000000000001" y="351" fill="#AEB8C4" textLength="16.8" lengthAdjust="spacingAndGlyphs">is</text>
+<text x="56" y="369" fill="#AEB8C4" textLength="92.4" lengthAdjust="spacingAndGlyphs">configured,</text>
+<text x="156.8" y="369" fill="#AEB8C4" textLength="42" lengthAdjust="spacingAndGlyphs">which</text>
+<text x="207.20000000000002" y="369" fill="#AEB8C4" textLength="50.400000000000006" lengthAdjust="spacingAndGlyphs">errors</text>
+<text x="266" y="369" fill="#AEB8C4" textLength="58.800000000000004" lengthAdjust="spacingAndGlyphs">trigger</text>
+<text x="333.2" y="369" fill="#AEB8C4" textLength="58.800000000000004" lengthAdjust="spacingAndGlyphs">another</text>
+<text x="400.40000000000003" y="369" fill="#AEB8C4" textLength="67.2" lengthAdjust="spacingAndGlyphs">attempt,</text>
+<text x="476" y="369" fill="#AEB8C4" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">and</text>
+<text x="509.6" y="369" fill="#AEB8C4" textLength="33.6" lengthAdjust="spacingAndGlyphs">when</text>
+<text x="551.6" y="369" fill="#AEB8C4" textLength="50.400000000000006" lengthAdjust="spacingAndGlyphs">failed</text>
+<text x="56" y="387" fill="#AEB8C4" textLength="67.2" lengthAdjust="spacingAndGlyphs">requests</text>
+<text x="131.60000000000002" y="387" fill="#AEB8C4" textLength="33.6" lengthAdjust="spacingAndGlyphs">stop</text>
+<text x="173.60000000000002" y="387" fill="#AEB8C4" textLength="67.2" lengthAdjust="spacingAndGlyphs">retrying</text>
+<text x="249.20000000000002" y="387" fill="#AEB8C4" textLength="117.60000000000001" lengthAdjust="spacingAndGlyphs">automatically.</text>
+<text x="560" y="423" fill="#B2C4AB" textLength="33.6" lengthAdjust="spacingAndGlyphs">Help</text>
+<text x="602" y="423" fill="#B2C4AB" textLength="8.4" lengthAdjust="spacingAndGlyphs">·</text>
+<text x="618.8" y="423" fill="#B2C4AB" textLength="50.400000000000006" lengthAdjust="spacingAndGlyphs">Ctrl-G</text>
+<rect x="560" y="425" width="109.2" height="1" fill="#B2C4AB"/>
+</g>
+</svg>

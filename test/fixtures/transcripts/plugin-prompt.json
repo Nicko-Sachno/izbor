@@ -1,0 +1,148 @@
+{
+    "source": "A throwaway plugin (fixture-probe, installed at local scope) submitted \"Reply with exactly these words and nothing else: plugin prompt one\" with $.prompt.submit({text, asUser: true}) to an idle session. Its user message carries origin {kind: plugin, name: fixture-probe, asUser: true}. Derived from a recording made 2026-10-09 on a throwaway project, Claude Code 2.1.294 in a terminal, claude-haiku-5-5, permission mode default; `messages` is what the Agent SDK's getSessionMessages returns, as the service reads a transcript; `rows` are Claude Code's own transcript rows for the same turn (user, assistant and hook_permission_decision rows only), trimmed to the fields the tests read: type, origin, promptSource and toolDenialKind. API metadata the service does not read (the API message id, container, stop_sequence, stop_details, input_transformations, diagnostics, context_management) has been dropped from `messages`, and thinking signatures are stubbed. Session e08af0f9-d634-489f-9ccc-7da7ec33b5e1. Product labels, plugin identifiers and example paths have been normalized for Izbor. Recording dates, versions, message uuids and timestamps are unchanged; this fixture is a derived example, not a verbatim transcript.",
+    "messages": [
+        {
+            "type": "user",
+            "uuid": "36ca445d-ae24-4558-a88d-925541011d72",
+            "session_id": "e08af0f9-d634-489f-9ccc-7da7ec33b5e1",
+            "message": {
+                "role": "user",
+                "content": "Reply with exactly these words and nothing else: plugin prompt one"
+            },
+            "parent_tool_use_id": null,
+            "parent_agent_id": null,
+            "timestamp": "2026-10-09T11:09:17.400Z",
+            "origin": {
+                "kind": "plugin",
+                "name": "fixture-probe",
+                "asUser": true
+            }
+        },
+        {
+            "type": "assistant",
+            "uuid": "7b8085e2-cb18-4ee9-a890-75b41319f1ca",
+            "session_id": "e08af0f9-d634-489f-9ccc-7da7ec33b5e1",
+            "message": {
+                "model": "claude-haiku-5-5",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                    {
+                        "type": "thinking",
+                        "thinking": "",
+                        "signature": "stubbed"
+                    }
+                ],
+                "stop_reason": "end_turn",
+                "usage": {
+                    "input_tokens": 2,
+                    "cache_creation_input_tokens": 3037,
+                    "cache_read_input_tokens": 16670,
+                    "output_tokens": 149,
+                    "output_tokens_details": {
+                        "thinking_tokens": 140
+                    },
+                    "server_tool_use": {
+                        "web_search_requests": 0,
+                        "web_fetch_requests": 0
+                    },
+                    "service_tier": "standard",
+                    "cache_creation": {
+                        "ephemeral_1h_input_tokens": 3037,
+                        "ephemeral_5m_input_tokens": 0
+                    },
+                    "inference_geo": "global",
+                    "iterations": [
+                        {
+                            "input_tokens": 2,
+                            "output_tokens": 149,
+                            "cache_read_input_tokens": 16670,
+                            "cache_creation_input_tokens": 3037,
+                            "cache_creation": {
+                                "ephemeral_5m_input_tokens": 0,
+                                "ephemeral_1h_input_tokens": 3037
+                            },
+                            "type": "message"
+                        }
+                    ],
+                    "speed": "standard",
+                    "fallback_credit": null
+                }
+            },
+            "parent_tool_use_id": null,
+            "parent_agent_id": null,
+            "timestamp": "2026-10-09T11:09:19.100Z"
+        },
+        {
+            "type": "assistant",
+            "uuid": "123a6282-9eea-4e49-9b32-c1a567c26a2f",
+            "session_id": "e08af0f9-d634-489f-9ccc-7da7ec33b5e1",
+            "message": {
+                "model": "claude-haiku-5-5",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": "plugin prompt one"
+                    }
+                ],
+                "stop_reason": "end_turn",
+                "usage": {
+                    "input_tokens": 2,
+                    "cache_creation_input_tokens": 3037,
+                    "cache_read_input_tokens": 16670,
+                    "output_tokens": 149,
+                    "output_tokens_details": {
+                        "thinking_tokens": 140
+                    },
+                    "server_tool_use": {
+                        "web_search_requests": 0,
+                        "web_fetch_requests": 0
+                    },
+                    "service_tier": "standard",
+                    "cache_creation": {
+                        "ephemeral_1h_input_tokens": 3037,
+                        "ephemeral_5m_input_tokens": 0
+                    },
+                    "inference_geo": "global",
+                    "iterations": [
+                        {
+                            "input_tokens": 2,
+                            "output_tokens": 149,
+                            "cache_read_input_tokens": 16670,
+                            "cache_creation_input_tokens": 3037,
+                            "cache_creation": {
+                                "ephemeral_5m_input_tokens": 0,
+                                "ephemeral_1h_input_tokens": 3037
+                            },
+                            "type": "message"
+                        }
+                    ],
+                    "speed": "standard",
+                    "fallback_credit": null
+                }
+            },
+            "parent_tool_use_id": null,
+            "parent_agent_id": null,
+            "timestamp": "2026-10-09T11:09:19.206Z"
+        }
+    ],
+    "rows": [
+        {
+            "type": "user",
+            "origin": {
+                "kind": "plugin",
+                "name": "fixture-probe",
+                "asUser": true
+            },
+            "promptSource": "system"
+        },
+        {
+            "type": "assistant"
+        },
+        {
+            "type": "assistant"
+        }
+    ]
+}

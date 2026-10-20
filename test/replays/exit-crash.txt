@@ -1,0 +1,34 @@
+exit-crash
+An exception nobody caught ends the app with 1 once it has given the terminal back, and stderr says why
+izbor --no-color · 80x24 · now 2026-10-09T12:00:00.000Z · 200 ms a step
+
+> start · t=0.0s
+screen
+                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+   * Selected · Fix the token refresh bug and add a regression test for Open ›
+     expired access tokens.
+     Working
+     Running authentication tests.
+
+   ! Add CSV export for invoices, including invoice number, date, customer,
+     and total.
+     Waiting
+     The CSV export is implemented. Waiting for permission to run the invoice
+     tests.
+      ! Needs you
+      Bash: npm test invoices
+
+   ✓ Explain how request retries work and where the retry limit is configured.
+     Idle
+     Traced the retry logic in request.ts and explained where its limit is
+     configured, which errors trigger another attempt, and when failed
+     requests stop retrying automatically.
+
+
+                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> crash "x" · t=0.2s
+exit 1 · screen normal · mouse none · paste off · cursor shown · title "izbor" · bell 0 · stderr "The terminal app stopped: x\n"

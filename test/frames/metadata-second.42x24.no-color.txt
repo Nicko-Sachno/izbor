@@ -1,0 +1,66 @@
+metadata-second.42x24.no-color
+the second session opened, then m: its Metadata open
+42x24 · no color · now 2026-10-09T12:00:00.000Z
+
+screen
+                              Izbor ● up
+  Back · Esc  Add CSV export for
+              invoices, including
+              invoice number, date,…
+  total.
+
+  Task source
+  From transcript ·
+  2026-10-09T11:57:00.000Z · 3m ago
+
+  Explanation requested
+  2026-10-09T11:59:48.000Z · 12s ago
+
+  Latest activity at
+  2026-10-09T11:59:45.000Z · 15s ago
+
+  Last observed
+  2026-10-09T11:59:45.000Z · 15s ago ·
+  From hook
+
+  ┌─ Answer ───────────────────────────┐
+  │ › yes, no, or no and your words    │
+  └────────────────────────────────────┘
+                           Help · Ctrl-G
+
+styles
+
+  __________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                           _____________
+
+legend
+  _  underline
+
+layout  scroll 18 · maxScroll 18 · pageSize 15 · viewport 2,4 38x15
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     27,23 13x1
+  field    2,20 38x3  origin 6  indices 0*33

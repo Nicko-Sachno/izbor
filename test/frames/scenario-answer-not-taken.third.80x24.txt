@@ -1,0 +1,76 @@
+scenario-answer-not-taken.third.80x24
+the sample case answer-not-taken: the third session opened
+80x24 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                                                                    Izbor ● up
+  Back · Esc  Explain how request retries work and where the retry limit is
+              configured.
+
+  Now
+  Traced the retry logic in request.ts. Waiting for permission to run the
+  retry tests.
+
+   ! Needs you
+  Bash: npm test retries
+  Sent from Izbor: yes · 8s ago
+  × That request still waits: answer it in the session.
+  Last change 15s ago
+
+  s · Stop observing
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ ›                                                                 Send → │
+  └──────────────────────────────────────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+
+styles
+                                                                    mmmmmmmmmm
+  gggggggggg  ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+              ttttttttttt
+
+  mmm
+  ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+  cccccccccccc
+
+  YYYYYYYYYYYYY
+  AAAAAAAAAAAAAAAAAAAAAA
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+  mmmmmmmmmmmmmmmmmmm
+
+  gggggggggggggggggg
+
+
+
+
+
+  oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+  ooff                                                                ggggggoo
+  oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+                                                                 ggggggggggggg
+
+legend
+  A  needsYou bold
+  R  error bold
+  Y  fill bold
+  c  reply
+  f  focus
+  g  focus underline
+  m  muted
+  o  border
+  t  text
+
+layout  scroll 0 · maxScroll 0 · pageSize 16 · viewport 2,3 76x16
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     65,23 13x1
+  send     70,21 6x1
+  field    2,20 76x3  origin 6  indices 0*64
+  stop     2,14 18x1  c8219b07-e082-4ac4-9bdf-4abfe6fcfc8e

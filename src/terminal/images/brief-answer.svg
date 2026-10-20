@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="460" viewBox="0 0 700 460">
+<rect width="700" height="460" rx="8" fill="#1E211D"/>
+<g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" xml:space="preserve">
+<text x="585.2" y="27" fill="#969F96" textLength="42" lengthAdjust="spacingAndGlyphs">Izbor</text>
+<text x="635.6" y="27" fill="#969F96" textLength="8.4" lengthAdjust="spacingAndGlyphs">●</text>
+<text x="652.4000000000001" y="27" fill="#969F96" textLength="16.8" lengthAdjust="spacingAndGlyphs">up</text>
+<text x="30.8" y="45" fill="#B2C4AB" textLength="33.6" lengthAdjust="spacingAndGlyphs">Back</text>
+<text x="72.8" y="45" fill="#B2C4AB" textLength="8.4" lengthAdjust="spacingAndGlyphs">·</text>
+<text x="89.60000000000001" y="45" fill="#B2C4AB" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">Esc</text>
+<rect x="30.8" y="47" width="84" height="1" fill="#B2C4AB"/>
+<text x="131.60000000000002" y="45" fill="#E6E6DB" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">Add</text>
+<text x="165.20000000000002" y="45" fill="#E6E6DB" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">CSV</text>
+<text x="198.8" y="45" fill="#E6E6DB" textLength="50.400000000000006" lengthAdjust="spacingAndGlyphs">export</text>
+<text x="257.6" y="45" fill="#E6E6DB" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">for</text>
+<text x="291.20000000000005" y="45" fill="#E6E6DB" textLength="75.60000000000001" lengthAdjust="spacingAndGlyphs">invoices,</text>
+<text x="375.20000000000005" y="45" fill="#E6E6DB" textLength="75.60000000000001" lengthAdjust="spacingAndGlyphs">including</text>
+<text x="459.20000000000005" y="45" fill="#E6E6DB" textLength="58.800000000000004" lengthAdjust="spacingAndGlyphs">invoice</text>
+<text x="526.4000000000001" y="45" fill="#E6E6DB" textLength="58.800000000000004" lengthAdjust="spacingAndGlyphs">number,</text>
+<text x="593.6" y="45" fill="#E6E6DB" textLength="42" lengthAdjust="spacingAndGlyphs">date,</text>
+<text x="131.60000000000002" y="63" fill="#E6E6DB" textLength="75.60000000000001" lengthAdjust="spacingAndGlyphs">customer,</text>
+<text x="215.60000000000002" y="63" fill="#E6E6DB" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">and</text>
+<text x="249.20000000000005" y="63" fill="#E6E6DB" textLength="50.400000000000006" lengthAdjust="spacingAndGlyphs">total.</text>
+<text x="30.8" y="99" fill="#969F96" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">Now</text>
+<text x="30.8" y="117" fill="#AEB8C4" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">The</text>
+<text x="64.4" y="117" fill="#AEB8C4" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">CSV</text>
+<text x="98" y="117" fill="#AEB8C4" textLength="50.400000000000006" lengthAdjust="spacingAndGlyphs">export</text>
+<text x="156.8" y="117" fill="#AEB8C4" textLength="16.8" lengthAdjust="spacingAndGlyphs">is</text>
+<text x="182.00000000000003" y="117" fill="#AEB8C4" textLength="100.80000000000001" lengthAdjust="spacingAndGlyphs">implemented.</text>
+<text x="291.20000000000005" y="117" fill="#AEB8C4" textLength="58.800000000000004" lengthAdjust="spacingAndGlyphs">Waiting</text>
+<text x="358.40000000000003" y="117" fill="#AEB8C4" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">for</text>
+<text x="392" y="117" fill="#AEB8C4" textLength="84" lengthAdjust="spacingAndGlyphs">permission</text>
+<text x="484.40000000000003" y="117" fill="#AEB8C4" textLength="16.8" lengthAdjust="spacingAndGlyphs">to</text>
+<text x="509.6" y="117" fill="#AEB8C4" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">run</text>
+<text x="543.1999999999999" y="117" fill="#AEB8C4" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">the</text>
+<text x="576.8" y="117" fill="#AEB8C4" textLength="58.800000000000004" lengthAdjust="spacingAndGlyphs">invoice</text>
+<text x="30.8" y="135" fill="#AEB8C4" textLength="50.400000000000006" lengthAdjust="spacingAndGlyphs">tests.</text>
+<rect x="30.8" y="159" width="109.2" height="16" fill="#E7BC70"/>
+<text x="39.2" y="171" fill="#1F1600" font-weight="700" textLength="8.4" lengthAdjust="spacingAndGlyphs">!</text>
+<text x="56" y="171" fill="#1F1600" font-weight="700" textLength="42" lengthAdjust="spacingAndGlyphs">Needs</text>
+<text x="106.4" y="171" fill="#1F1600" font-weight="700" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">you</text>
+<text x="30.8" y="189" fill="#E7BC70" font-weight="700" textLength="42" lengthAdjust="spacingAndGlyphs">Bash:</text>
+<text x="81.2" y="189" fill="#E7BC70" font-weight="700" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">npm</text>
+<text x="114.8" y="189" fill="#E7BC70" font-weight="700" textLength="33.6" lengthAdjust="spacingAndGlyphs">test</text>
+<text x="156.8" y="189" fill="#E7BC70" font-weight="700" textLength="67.2" lengthAdjust="spacingAndGlyphs">invoices</text>
+<text x="30.8" y="207" fill="#969F96" textLength="33.6" lengthAdjust="spacingAndGlyphs">Last</text>
+<text x="72.8" y="207" fill="#969F96" textLength="50.400000000000006" lengthAdjust="spacingAndGlyphs">change</text>
+<text x="131.60000000000002" y="207" fill="#969F96" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">15s</text>
+<text x="165.20000000000002" y="207" fill="#969F96" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">ago</text>
+<text x="30.8" y="243" fill="#B2C4AB" textLength="8.4" lengthAdjust="spacingAndGlyphs">s</text>
+<text x="47.6" y="243" fill="#B2C4AB" textLength="8.4" lengthAdjust="spacingAndGlyphs">·</text>
+<text x="64.4" y="243" fill="#B2C4AB" textLength="33.6" lengthAdjust="spacingAndGlyphs">Stop</text>
+<text x="106.4" y="243" fill="#B2C4AB" textLength="75.60000000000001" lengthAdjust="spacingAndGlyphs">observing</text>
+<rect x="30.8" y="245" width="151.20000000000002" height="1" fill="#B2C4AB"/>
+<text x="30.8" y="387" fill="#7A837A" textLength="16.8" lengthAdjust="spacingAndGlyphs">┌─</text>
+<text x="56" y="387" fill="#7A837A" textLength="50.400000000000006" lengthAdjust="spacingAndGlyphs">Answer</text>
+<text x="114.8" y="387" fill="#7A837A" textLength="554.4" lengthAdjust="spacingAndGlyphs">─────────────────────────────────────────────────────────────────┐</text>
+<text x="30.8" y="405" fill="#7A837A" textLength="8.4" lengthAdjust="spacingAndGlyphs">│</text>
+<text x="47.6" y="405" fill="#B2C4AB" textLength="8.4" lengthAdjust="spacingAndGlyphs">›</text>
+<text x="64.4" y="405" fill="#969F96" textLength="33.6" lengthAdjust="spacingAndGlyphs">yes,</text>
+<text x="106.4" y="405" fill="#969F96" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">no,</text>
+<text x="140" y="405" fill="#969F96" textLength="16.8" lengthAdjust="spacingAndGlyphs">or</text>
+<text x="165.20000000000002" y="405" fill="#969F96" textLength="16.8" lengthAdjust="spacingAndGlyphs">no</text>
+<text x="190.4" y="405" fill="#969F96" textLength="25.200000000000003" lengthAdjust="spacingAndGlyphs">and</text>
+<text x="224" y="405" fill="#969F96" textLength="33.6" lengthAdjust="spacingAndGlyphs">your</text>
+<text x="266" y="405" fill="#969F96" textLength="42" lengthAdjust="spacingAndGlyphs">words</text>
+<text x="602" y="405" fill="#B2C4AB" textLength="33.6" lengthAdjust="spacingAndGlyphs">Send</text>
+<text x="644" y="405" fill="#B2C4AB" textLength="8.4" lengthAdjust="spacingAndGlyphs">→</text>
+<rect x="602" y="407" width="50.400000000000006" height="1" fill="#B2C4AB"/>
+<text x="660.8" y="405" fill="#7A837A" textLength="8.4" lengthAdjust="spacingAndGlyphs">│</text>
+<text x="30.8" y="423" fill="#7A837A" textLength="638.4" lengthAdjust="spacingAndGlyphs">└──────────────────────────────────────────────────────────────────────────┘</text>
+<text x="560" y="441" fill="#B2C4AB" textLength="33.6" lengthAdjust="spacingAndGlyphs">Help</text>
+<text x="602" y="441" fill="#B2C4AB" textLength="8.4" lengthAdjust="spacingAndGlyphs">·</text>
+<text x="618.8" y="441" fill="#B2C4AB" textLength="50.400000000000006" lengthAdjust="spacingAndGlyphs">Ctrl-G</text>
+<rect x="560" y="443" width="109.2" height="1" fill="#B2C4AB"/>
+</g>
+</svg>

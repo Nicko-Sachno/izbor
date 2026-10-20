@@ -1,0 +1,71 @@
+focused-second-row.80x24.no-color
+Tab, Tab on Sessions: the second row has focus, the first is selected
+80x24 · no color · now 2026-10-09T12:00:00.000Z
+
+screen
+                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+   * Selected · Fix the token refresh bug and add a regression test for
+     expired access tokens.
+     Working
+     Running authentication tests.
+
+   ! Add CSV export for invoices, including invoice number, date,       Open ›
+     customer, and total.
+     Waiting
+     The CSV export is implemented. Waiting for permission to run the invoice
+     tests.
+      ! Needs you
+      Bash: npm test invoices
+
+   ✓ Explain how request retries work and where the retry limit is configured.
+     Idle
+     Traced the retry logic in request.ts and explained where its limit is
+     configured, which errors trigger another attempt, and when failed
+     requests stop retrying automatically.
+
+
+                                                                 Help · Ctrl-G
+
+styles
+
+  ________  ============
+
+
+
+
+
+
+   = ============================================================       ______
+     ====================
+
+
+
+     VVVVVVVVVVVVV
+      =======================
+
+
+
+
+
+
+
+
+                                                                 _____________
+
+legend
+  =  bold
+  V  inverse bold
+  _  underline
+
+layout  scroll 0 · maxScroll 0 · pageSize 19 · viewport 2,3 76x19
+detail  none
+
+targets, in hit-test order
+  session  2,3 76x4  0926995f-4c57-4733-89cf-d0c7226a5cbc
+  session  2,8 76x7  a7312ce4-782a-45a0-a84c-e834c934b2a7
+  session  2,16 76x5  c8219b07-e082-4ac4-9bdf-4abfe6fcfc8e
+  tab      2,1 8x1  home
+  tab      12,1 12x1  sessions
+  help     65,23 13x1

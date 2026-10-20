@@ -1,0 +1,70 @@
+live-not-running.list-retrying.80x24
+izbor with Izbor not running: no list; it runs again at the next tick, and no line counts down
+80x24 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                                ▲ Izbor ○ not running on port 4319 · run izbor
+  Home  [ Sessions · 0 ]  Ctrl-O
+
+  ▲ No list: Izbor is not running
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                 Help · Ctrl-G
+
+styles
+                                iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+  TTTT  nnnnnnnnnnnnnnnn  mmmmmm
+
+  iiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                 ggggggggggggg
+
+legend
+  T  text bold
+  g  focus underline
+  i  notice
+  m  muted
+  n  muted underline
+
+layout  scroll 0 · maxScroll 0 · pageSize 19 · viewport 2,3 76x19
+detail  none
+
+targets, in hit-test order
+  tab      2,1 4x1  home
+  tab      8,1 16x1  sessions
+  help     65,23 13x1

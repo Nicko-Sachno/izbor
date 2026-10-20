@@ -1,0 +1,27 @@
+name: Feature request
+description: Suggest a change or a new feature for Izbor.
+labels: [enhancement]
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Issues are public. Leave out private project names, paths, prompts and other sensitive content.
+    - type: textarea
+      id: problem
+      attributes:
+          label: Problem
+          description: What you are trying to do, and what gets in the way today.
+      validations:
+          required: true
+    - type: textarea
+      id: proposal
+      attributes:
+          label: Proposed behavior
+          description: What Izbor should do instead.
+      validations:
+          required: true
+    - type: textarea
+      id: alternatives
+      attributes:
+          label: Alternatives considered
+          description: Other ways to solve the problem, or how you work around it now.

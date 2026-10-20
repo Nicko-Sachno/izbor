@@ -1,0 +1,14 @@
+{
+    "name": "izbor",
+    "owner": {
+        "name": "izbor"
+    },
+    "plugins": [
+        {
+            "name": "izbor",
+            "source": "./",
+            "description": "Izbor's plugin: collects the prompts you send from Izbor and submits them to this session as your own words."
+        }
+    ],
+    "description": "Izbor's own marketplace: one plugin, izbor."
+}

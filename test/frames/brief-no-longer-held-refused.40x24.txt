@@ -1,0 +1,74 @@
+brief-no-longer-held-refused.40x24
+S4, N2: S3 after Enter on yes: the refusal wraps over two rows above the field, at 160 and at 40 columns
+40x24 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                            Izbor ● up
+  Back · Esc  Add CSV export for
+              invoices, including
+              invoice number, date,…
+
+  Now
+  The CSV export is implemented.
+  Waiting for permission to run the
+  invoice tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Answer in Claude Code: Izbor is no
+  longer holding this request.
+  Last change 15s ago
+
+  s · Stop observing
+
+  × Answer it in the session: Izbor is
+  no longer holding this request.
+  ┌─ Answer ─────────────────────────┐
+  │ › yes                            │
+  └──────────────────────────────────┘
+                         Help · Ctrl-G
+
+styles
+                            mmmmmmmmmm
+  gggggggggg  tttttttttttttttttt
+              ttttttttttttttttttt
+              tttttttttttttttttttttt
+
+  mmm
+  cccccccccccccccccccccccccccccc
+  ccccccccccccccccccccccccccccccccc
+  cccccccccccccc
+
+  YYYYYYYYYYYYY
+  AAAAAAAAAAAAAAAAAAAAAAA
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmm
+  mmmmmmmmmmmmmmmmmmm
+
+  gggggggggggggggggg
+
+  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+  ffffffffffffffffffffffffffffffffffff
+  ffffttt                           ff
+  ffffffffffffffffffffffffffffffffffff
+                         ggggggggggggg
+
+legend
+  A  needsYou bold
+  R  error bold
+  Y  fill bold
+  c  reply
+  f  focus
+  g  focus underline
+  m  muted
+  t  text
+
+layout  scroll 0 · maxScroll 0 · pageSize 14 · viewport 2,4 36x14
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     25,23 13x1
+  field    2,20 36x3  origin 6  indices 0,1,2,3*28
+  stop     2,16 18x1  a7312ce4-782a-45a0-a84c-e834c934b2a7

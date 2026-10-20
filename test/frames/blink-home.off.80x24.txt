@@ -1,0 +1,81 @@
+blink-home.off.80x24
+Home 1 s after the list first showed izbor-e8 waiting: its ! hidden in the blink's second second
+80x24 · color · now 2026-10-09T12:00:01.000Z
+
+screen
+                                                                    Izbor ● up
+  Home  [ Sessions · 0 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working
+       izbor-e8 ·  ! Needs you  permission prompt · worktree invoices
+       izbor-6f · Idle
+
+     example-api · Briefs update late                              Add hooks ›
+       Orders API review · Idle
+       example-api-3a · Working
+
+     invoice-api                              Add plugin · answer from Izbor ›
+       invoice-api-2b · Idle
+
+
+
+
+
+
+
+
+
+                                                                 Help · Ctrl-G
+
+styles
+                                                                    mmmmmmmmmm
+  TTTT  nnnnnnnnnnnnnnnn  mmmmmm
+
+     TTTTT
+    tttttttttttmmmmmmmmmm
+    tttttttttttmmmYYYYYYYYYYYYYttttttttttttttttttmmmmmmmmmmmmmmmmmmmm
+    tttttttttttmmmmmmm
+
+     TTTTTTTTTTTmmmiiiiiiiiiiiiiiiiii                              ggggggggggg
+    ttttttttttttttttttttmmmmmmm
+    tttttttttttttttttmmmmmmmmmm
+
+     TTTTTTTTTTT                              gggggggggggggggggggggggggggggggg
+    tttttttttttttttttmmmmmmm
+
+
+
+
+
+
+
+
+
+                                                                 ggggggggggggg
+
+legend
+  T  text bold
+  Y  fill bold
+  g  focus underline
+  i  notice
+  m  muted
+  n  muted underline
+  t  text
+
+layout  scroll 0 · maxScroll 0 · pageSize 19 · viewport 2,3 76x19
+detail  none
+
+targets, in hit-test order
+  session  2,4 76x1  0926995f-4c57-4733-89cf-d0c7226a5cbc
+  session  2,5 76x1  a7312ce4-782a-45a0-a84c-e834c934b2a7
+  session  2,6 76x1  c8219b07-e082-4ac4-9bdf-4abfe6fcfc8e
+  session  2,9 76x1  5b0e7c1d-2f4a-4c8e-9d36-7a1f0b2c3d4e
+  session  2,10 76x1  e3d9a6f2-81b4-4f07-b5c2-6d8e9f0a1b2c
+  session  2,13 76x1  2b6f8d0c-9a47-4e15-b3c8-5d7e1f9a0b2c
+  project  2,3 76x1  ~/izbor
+  project  67,8 11x1  ~/example-api
+  project  46,12 32x1  ~/invoice-api
+  tab      2,1 4x1  home
+  tab      8,1 16x1  sessions
+  help     65,23 13x1
