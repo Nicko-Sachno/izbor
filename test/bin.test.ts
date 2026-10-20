@@ -94,7 +94,13 @@ test("the actual compiled entry runs from another cwd without tsx or IZBOR_CLI: 
     );
     const options = {
         cwd: tmpdir(),
-        env: { ...process.env, IZBOR_CLI: undefined, NODE_OPTIONS: undefined, IZBOR_PORT: "invalid" },
+        env: {
+            ...process.env,
+            IZBOR_CLI: undefined,
+            NODE_OPTIONS: undefined,
+            FORCE_COLOR: undefined,
+            IZBOR_PORT: "invalid",
+        },
         timeout: 5_000,
     };
     const help = await run(process.execPath, [copy.bin, "--help"], options);

@@ -6,7 +6,7 @@ import { LOOPBACK } from "../../src/domain/wire.js";
 
 export async function fullBacklog(t: TestContext) {
     const listen = `const s = require("node:net").createServer().listen({ port: 0, host: ${JSON.stringify(LOOPBACK)}, backlog: 1 }, () => {
-        console.log(s.address().port);
+        console.log(String(s.address().port));
         Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0);
     });`;
     const listener = spawn(process.execPath, ["-e", listen], { stdio: ["ignore", "pipe", "ignore"] });
