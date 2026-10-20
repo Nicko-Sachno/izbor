@@ -380,19 +380,20 @@ test("the side Brief's heading is the Task alone, Hide · h on the right; no lin
     );
 });
 
-test("a narrow Brief's top line is Back · Esc and the Task alone; Help's top line is the word Help alone", (t) => {
+test("a narrow Brief's top line is Back · Esc alone and the Task stands under it; Help's top line is the word Help alone", (t) => {
     const { app } = sampleApp(SAMPLE_IDS, 100, 30);
     t.after(() => app.dispose());
     const frame = () => renderTerminal(app.view, { columns: 100, rows: 30 }).lines;
     app.keypress(undefined, { name: "tab" });
     app.keypress(undefined, { name: "return" });
     const open = frame();
+    assert.equal(open[1]!.trim(), "Back · Esc");
     assert.equal(
-        open[1]!.trim(),
-        "Back · Esc  Fix the token refresh bug and add a regression test for expired access tokens.",
+        open[2]!.trim(),
+        "Fix the token refresh bug and add a regression test for expired access tokens.",
         "the Task alone fits one line, with no Status after it",
     );
-    assert.equal(open[2]!.trim(), "", "no Status line under the heading");
+    assert.equal(open[3]!.trim(), "", "no Status line under the heading");
     assert.doesNotMatch(open.join("\n"), /Full Brief/);
     assert.doesNotMatch(open.join("\n"), /Session |0926995f/, "the ID is in Metadata only");
     app.keypress(undefined, { name: "g", ctrl: true });
@@ -411,7 +412,7 @@ test("before the first brief, the heading is the short ID alone, with no Status,
     app.resize(100, 30);
     app.openSession(SAMPLE_IDS[2]);
     const narrow = renderTerminal(app.view, { columns: 100, rows: 30 }).lines;
-    assert.equal(narrow[1]!.trim(), "Back · Esc  c8219b07");
+    assert.deepEqual([narrow[1]!.trim(), narrow[2]!.trim()], ["Back · Esc", "c8219b07"]);
 });
 
 test("h from the list hides the side Brief, with no Show Brief: with nothing focused, and from a focused row that is not the selected one; the selected row then has the focus, h again does nothing, Enter on it brings the Brief back, and so does a click on another row", (t) => {
@@ -531,16 +532,17 @@ test("wrapCut keeps a text of three lines or fewer whole, and ends a longer one'
     assert.equal(wrapCut("one two three", 9, 3, 9), "one two\nthree\n");
 });
 
-test("the heading cuts a Task at three lines with … and no Status after it, and Metadata then holds it whole", (t) => {
+test("the page heading cuts a Task at ten lines with … and no Status after it, and Metadata then holds it whole", (t) => {
     const { app } = sampleApp(SAMPLE_IDS, 80, 60);
     t.after(() => app.dispose());
     app.openSession(SAMPLE_IDS[1]);
-    app.view.sessions[1]!.brief!.task!.text = `First ${"word ".repeat(60)}last.`;
+    app.view.sessions[1]!.brief!.task!.text = `First ${"word ".repeat(200)}last.`;
     const text = () => renderTerminal(app.view, { columns: 80, rows: 60 }).lines.join("\n");
     const lines = text().split("\n");
-    assert.match(lines[1]!, /^ {2}Back · Esc {2}First word/);
-    assert.match(lines[3]!, /^ {14}(word )+\S*… *$/, "the third line ends with …, no Status after it");
-    assert.doesNotMatch(lines[4]!, /word/, "nothing of the Task follows it");
+    assert.match(lines[1]!, /^ {2}Back · Esc *$/);
+    assert.match(lines[2]!, /^ {2}First word/);
+    assert.match(lines[11]!, /^ {2}(word )+\S*… *$/, "the tenth line ends with …, no Status after it");
+    assert.doesNotMatch(lines[12]!, /word/, "nothing of the Task follows it");
     assert.doesNotMatch(text(), /last\.|^ {2}Task *$/m);
     app.toggleMetadata();
     assert.match(text().replace(/\s+/g, " "), /Session ID .* Task First (word )+last\. Task source/);
@@ -707,7 +709,7 @@ test("an expanded Brief retains full text through scrolling and strips hostile c
     app.openSession(SAMPLE_IDS[1]);
     app.toggleMetadata();
     const session = app.view.sessions[1]!;
-    session.brief!.task!.text = `Beginning ${"a long prompt ".repeat(35)} Ending\x1b[2J\x1b]0;injected-title\x07`;
+    session.brief!.task!.text = `Beginning ${"a long prompt ".repeat(100)} Ending\x1b[2J\x1b]0;injected-title\x07`;
     const first = renderTerminal(app.view, { columns: 80, rows: 40 }, false);
     assert.ok(first.maxScroll > 0);
     let all = "";
@@ -1383,7 +1385,8 @@ test("on Home, Tab goes through every project line and session line, then Help; 
     tabTo(app, IDLE.id);
     app.keypress(undefined, { name: "return" });
     assert.deepEqual([app.view.screen, app.view.expanded], ["sessions", IDLE.id], "narrow: the Brief's own page");
-    assert.equal(renderTerminal(app.view, { columns: 100, rows: 30 }).lines[1]!.trim(), "Back · Esc  9e1f0b2a");
+    const lines = renderTerminal(app.view, { columns: 100, rows: 30 }).lines;
+    assert.deepEqual([lines[1]!.trim(), lines[2]!.trim()], ["Back · Esc", "9e1f0b2a"]);
 });
 
 test("an observe while a narrow Brief or Help is open shows Sessions; one that answers already stays put", (t) => {

@@ -23,6 +23,9 @@ import {
     clip,
     commandWindow,
     fullTime,
+    headingTitle,
+    openTitle,
+    pageHeadingRows,
     relativeTime,
     STATUS,
     topLine,
@@ -248,29 +251,22 @@ function SessionHeading({
     session: { id, brief },
     focused = false,
     width,
+    rows = 3,
     color,
 }: {
     session: Observation;
     focused?: boolean;
     width: number;
+    rows?: number;
     color: boolean;
 }) {
-    const title = headingTitle({ id, brief }, width);
+    const title = headingTitle({ id, brief }, width, rows);
     return (
         <Spans
             color={color}
             spans={[{ text: title, tone: brief && !brief.task ? "muted" : "text", underline: focused }]}
         />
     );
-}
-
-function headingTitle({ id, brief }: Pick<Observation, "id" | "brief">, width: number): string {
-    if (!brief) return shortId(id);
-    return wrapCut(brief.task?.text ?? "Task unknown", width, 3).replace(/ …$/, "…");
-}
-
-function openTitle(page: Observation | undefined, side: Observation | undefined, width: number, detailWidth: number) {
-    return page ? headingTitle(page, width - 12) : side ? headingTitle(side, detailWidth - 10) : "";
 }
 
 const rowsOf = (text: string) => text.split("\n").length;
@@ -283,7 +279,7 @@ function ClosingLines({ lines, color, width }: { lines: readonly BriefLine[]; co
     ));
 }
 
-const LATE_BRIEF = "Briefs update late: this project has no hooks";
+const LATE_BRIEF = "Briefs update late: add hooks for live updates";
 
 type FullBriefProps = {
     session: Observation;
@@ -592,7 +588,8 @@ export function TerminalScreen({ view, size, color, now = new Date(), onLayout }
     const expanded = view.wide ? undefined : view.sessions.find(({ id }) => id === view.expanded);
     const showDetail = !home && wide && !view.help && Boolean(selectedSession);
     const markedId = !showDetail && view.sessions.some(({ id }) => id === view.focused) ? view.focused : view.selected;
-    const title = openTitle(expanded, showDetail ? selectedSession : undefined, width, detailWidth);
+    const headingRows = pageHeadingRows(geometry.bodyRows);
+    const title = openTitle(expanded, showDetail ? selectedSession : undefined, width, detailWidth, headingRows);
     const fieldSession = view.help ? undefined : showDetail ? selectedSession : expanded;
     const mode =
         fieldSession && hooked(fieldSession.id, view.list) ? shownMode(view.field, fieldSession.brief) : undefined;
@@ -606,7 +603,7 @@ export function TerminalScreen({ view, size, color, now = new Date(), onLayout }
     const shownWidth = showDetail ? detailWidth : width;
     const shownRows = shown ? feedbackText(shown, shownWidth).split("\n").length : 0;
     const extraRows = showDetail ? 0 : Math.max(0, shownRows - 1);
-    const pageRows = (expanded && !view.help ? rowsOf(title) - 1 : 0) + (pageField ? 3 : 0);
+    const pageRows = (expanded && !view.help ? rowsOf(title) : 0) + (pageField ? 3 : 0);
     const bodyRows = Math.max(0, geometry.bodyRows - topGap - pageRows - extraRows);
     const paneRows = geometry.bodyRows + 2;
     const detailRows = Math.max(0, paneRows - rowsOf(title) - (mode ? 3 + Math.max(1, shownRows) : shownRows));
@@ -787,15 +784,13 @@ export function TerminalScreen({ view, size, color, now = new Date(), onLayout }
                                     Help
                                 </Copy>
                             ) : expanded ? (
-                                <Box>
+                                <Box flexDirection="column">
                                     <Box ref={backControl} width={10} height={1} flexShrink={0}>
                                         <Copy color={color} tone="focus" underline>
                                             Back · Esc
                                         </Copy>
                                     </Box>
-                                    <Box marginLeft={2}>
-                                        <SessionHeading session={expanded} width={width - 12} color={color} />
-                                    </Box>
+                                    <SessionHeading session={expanded} width={width} rows={headingRows} color={color} />
                                 </Box>
                             ) : (
                                 <Box>

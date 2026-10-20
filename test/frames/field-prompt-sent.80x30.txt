@@ -4,8 +4,8 @@ X1: a prompt sent to the idle session: the field empty with its placeholder back
 
 screen
                                                                     Izbor ● up
-  Back · Esc  Explain how request retries work and where the retry limit is
-              configured.
+  Back · Esc
+  Explain how request retries work and where the retry limit is configured.
 
   Now
   Traced the retry logic in request.ts and explained where its limit is
@@ -36,8 +36,8 @@ screen
 
 styles
                                                                     mmmmmmmmmm
-  gggggggggg  ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-              ttttttttttt
+  gggggggggg
+  ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
 
   mmm
   ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc

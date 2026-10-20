@@ -4,9 +4,10 @@ N5: the busy session's Brief page at 40 columns: the busy placeholder cut with �
 
 screen
                             Izbor ● up
-  Back · Esc  Fix the token refresh
-              bug and add a regression
-              test for expired access…
+  Back · Esc
+  Fix the token refresh bug and add a
+  regression test for expired access
+  tokens.
 
   Now
   Running authentication tests.
@@ -22,7 +23,6 @@ screen
 
 
 
-
   ┌─ Reply to this session ──────────┐
   │ › your next prompt; it runs whe… │
   └──────────────────────────────────┘
@@ -30,9 +30,10 @@ screen
 
 styles
                             mmmmmmmmmm
-  gggggggggg  ttttttttttttttttttttt
-              tttttttttttttttttttttttt
-              tttttttttttttttttttttttt
+  gggggggggg
+  ttttttttttttttttttttttttttttttttttt
+  tttttttttttttttttttttttttttttttttt
+  ttttttt
 
   mmm
   ccccccccccccccccccccccccccccc
@@ -40,7 +41,6 @@ styles
   mmmmmmmmmmmmmmmmmm
 
   gggggggggggggggggg
-
 
 
 
@@ -62,11 +62,11 @@ legend
   o  border
   t  text
 
-layout  scroll 0 · maxScroll 0 · pageSize 15 · viewport 2,4 36x15
+layout  scroll 0 · maxScroll 0 · pageSize 14 · viewport 2,5 36x14
 detail  none
 
 targets, in hit-test order
   back     2,1 10x1
   help     25,23 13x1
   field    2,20 36x3  origin 6  indices 0*31
-  stop     2,10 18x1  0926995f-4c57-4733-89cf-d0c7226a5cbc
+  stop     2,11 18x1  0926995f-4c57-4733-89cf-d0c7226a5cbc

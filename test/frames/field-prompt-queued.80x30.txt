@@ -4,8 +4,9 @@ E7: a prompt sent while Claude is busy: Sent. It runs when this turn ends. on th
 
 screen
                                                                     Izbor ● up
-  Back · Esc  Fix the token refresh bug and add a regression test for expired
-              access tokens.
+  Back · Esc
+  Fix the token refresh bug and add a regression test for expired access
+  tokens.
 
   Now
   Running authentication tests.
@@ -13,7 +14,6 @@ screen
   Last change 8s ago
 
   s · Stop observing
-
 
 
 
@@ -36,8 +36,9 @@ screen
 
 styles
                                                                     mmmmmmmmmm
-  gggggggggg  ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-              tttttttttttttt
+  gggggggggg
+  tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+  ttttttt
 
   mmm
   ccccccccccccccccccccccccccccc
@@ -45,7 +46,6 @@ styles
   mmmmmmmmmmmmmmmmmm
 
   gggggggggggggggggg
-
 
 
 
@@ -73,7 +73,7 @@ legend
   m  muted
   t  text
 
-layout  scroll 0 · maxScroll 0 · pageSize 22 · viewport 2,3 76x22
+layout  scroll 0 · maxScroll 0 · pageSize 21 · viewport 2,4 76x21
 detail  none
 
 targets, in hit-test order
@@ -81,4 +81,4 @@ targets, in hit-test order
   help     65,29 13x1
   send     70,27 6x1
   field    2,26 76x3  origin 6  indices 0*64
-  stop     2,9 18x1  0926995f-4c57-4733-89cf-d0c7226a5cbc
+  stop     2,10 18x1  0926995f-4c57-4733-89cf-d0c7226a5cbc

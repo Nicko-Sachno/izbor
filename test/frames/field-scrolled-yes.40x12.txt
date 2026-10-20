@@ -4,12 +4,12 @@ N4: the same, then Enter and yes: the field has the cursor
 
 screen
                             Izbor ● up
-  Back · Esc  Add CSV export for
-              invoices, including
-              invoice number, date,…
+  Back · Esc
+  Add CSV export for invoices,
+  including invoice number, date,
+  customer, and total.
    ! Needs you
   Bash: npm test invoices
-  Last change 15s ago
 
   ┌─ Answer ─────────────────────────┐
   │ › yes                            │
@@ -18,12 +18,12 @@ screen
 
 styles
                             mmmmmmmmmm
-  gggggggggg  tttttttttttttttttt
-              ttttttttttttttttttt
-              tttttttttttttttttttttt
+  gggggggggg
+  tttttttttttttttttttttttttttt
+  ttttttttttttttttttttttttttttttt
+  tttttttttttttttttttt
   YYYYYYYYYYYYY
   AAAAAAAAAAAAAAAAAAAAAAA
-  mmmmmmmmmmmmmmmmmmm
 
   ffffffffffffffffffffffffffffffffffff
   ffffttt                           ff
@@ -38,7 +38,7 @@ legend
   m  muted
   t  text
 
-layout  scroll 6 · maxScroll 8 · pageSize 3 · viewport 2,4 36x3
+layout  scroll 6 · maxScroll 9 · pageSize 2 · viewport 2,5 36x2
 detail  none
 
 targets, in hit-test order

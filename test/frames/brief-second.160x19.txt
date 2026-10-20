@@ -4,7 +4,8 @@ the second session opened: its Brief page, or the side Brief from 140x20 up
 
 screen
                                                                                                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date, customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice tests.
@@ -17,7 +18,6 @@ screen
 
 
 
-
   ┌─ Answer ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
   │ › yes, no, or no and your words                                                                                                                   Send → │
   └──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
@@ -25,7 +25,8 @@ screen
 
 styles
                                                                                                                                                     mmmmmmmmmm
-  gggggggggg  ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+  gggggggggg
+  ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
 
   mmm
   ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
@@ -35,7 +36,6 @@ styles
   mmmmmmmmmmmmmmmmmmm
 
   gggggggggggggggggg
-
 
 
 
@@ -54,7 +54,7 @@ legend
   o  border
   t  text
 
-layout  scroll 0 · maxScroll 0 · pageSize 12 · viewport 2,2 156x12
+layout  scroll 0 · maxScroll 0 · pageSize 11 · viewport 2,3 156x11
 detail  none
 
 targets, in hit-test order
@@ -62,4 +62,4 @@ targets, in hit-test order
   help     145,18 13x1
   send     150,16 6x1
   field    2,15 156x3  origin 6  indices 0*144
-  stop     2,10 18x1  a7312ce4-782a-45a0-a84c-e834c934b2a7
+  stop     2,11 18x1  a7312ce4-782a-45a0-a84c-e834c934b2a7

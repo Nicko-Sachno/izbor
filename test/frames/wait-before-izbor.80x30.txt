@@ -4,8 +4,9 @@ a request from before Izbor started: Unknown and the wait's name under the badge
 
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -28,7 +29,6 @@ screen
 
 
 
-
   ┌─ Answer ─────────────────────────────────────────────────────────────────┐
   │ › answer this one in Claude Code                                  Send → │
   └──────────────────────────────────────────────────────────────────────────┘
@@ -36,8 +36,9 @@ screen
 
 styles
                                                                     mmmmmmmmmm
-  gggggggggg  tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-              tttttttttttttttttttt
+  gggggggggg
+  tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+  tttttt
 
   mmm
   cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
@@ -49,7 +50,6 @@ styles
   mmmmmmmmmmmmmmmmmmm
 
   gggggggggggggggggg
-
 
 
 
@@ -76,7 +76,7 @@ legend
   o  border
   t  text
 
-layout  scroll 0 · maxScroll 0 · pageSize 22 · viewport 2,3 76x22
+layout  scroll 0 · maxScroll 0 · pageSize 21 · viewport 2,4 76x21
 detail  none
 
 targets, in hit-test order
@@ -84,4 +84,4 @@ targets, in hit-test order
   help     65,29 13x1
   send     70,27 6x1
   field    2,26 76x3  origin 6  indices 0*64
-  stop     2,13 18x1  a7312ce4-782a-45a0-a84c-e834c934b2a7
+  stop     2,14 18x1  a7312ce4-782a-45a0-a84c-e834c934b2a7

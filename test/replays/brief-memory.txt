@@ -21,12 +21,12 @@ cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · be
 > click "Fix the token" · t=0.2s
 screen
                                                                                         Izbor ● up
-  Back · Esc  Fix the token refresh bug and add a regression test for expired access tokens.
+  Back · Esc
+  Fix the token refresh bug and add a regression test for expired access tokens.
 
   Now
   Running authentication tests.
   Latest: Bash: npm test auth
-  Last change 8s ago
 
   ┌─ Reply to this session ──────────────────────────────────────────────────────────────────────┐
   │ › your next prompt; it runs when this turn ends                                       Send → │
@@ -37,8 +37,8 @@ cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · be
 > key pagedown · t=0.4s
 screen
                                                                                         Izbor ● up
-  Back · Esc  Fix the token refresh bug and add a regression test for expired access tokens.
-  Running authentication tests.
+  Back · Esc
+  Fix the token refresh bug and add a regression test for expired access tokens.
   Latest: Bash: npm test auth
   Last change 8s ago
 
@@ -53,8 +53,8 @@ cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · be
 > type "m" · t=0.6s
 screen
                                                                                         Izbor ● up
-  Back · Esc  Fix the token refresh bug and add a regression test for expired access tokens.
-  Latest activity at
+  Back · Esc
+  Fix the token refresh bug and add a regression test for expired access tokens.
   2026-10-09T11:59:52.000Z · 8s ago
 
   Last observed
@@ -85,8 +85,8 @@ cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · be
 > click "Fix the token" · t=1.0s
 screen
                                                                                         Izbor ● up
-  Back · Esc  Fix the token refresh bug and add a regression test for expired access tokens.
-  Latest activity at
+  Back · Esc
+  Fix the token refresh bug and add a regression test for expired access tokens.
   2026-10-09T11:59:52.000Z · 9s ago
 
   Last observed
@@ -117,12 +117,12 @@ cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · be
 > click "Add CSV export" · t=1.4s
 screen
                                                                                         Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date, customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice tests.
 
-   ! Needs you
 
   ┌─ Answer ─────────────────────────────────────────────────────────────────────────────────────┐
   │ › yes, no, or no and your words                                                       Send → │

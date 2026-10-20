@@ -39,7 +39,8 @@ cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · be
 > click "Fix the token" · t=0.2s
 screen
                                                                                         Izbor ● up
-  Back · Esc  Fix the token refresh bug and add a regression test for expired access tokens.
+  Back · Esc
+  Fix the token refresh bug and add a regression test for expired access tokens.
 
   Now
   Running authentication tests.
@@ -47,7 +48,6 @@ screen
   Last change 8s ago
 
   s · Stop observing
-
 
 
 
@@ -107,7 +107,8 @@ cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · be
 > click "Open ›" · t=0.6s
 screen
                                                                                         Izbor ● up
-  Back · Esc  Fix the token refresh bug and add a regression test for expired access tokens.
+  Back · Esc
+  Fix the token refresh bug and add a regression test for expired access tokens.
 
   Now
   Running authentication tests.
@@ -115,7 +116,6 @@ screen
   Last change 8s ago
 
   s · Stop observing
-
 
 
 
@@ -175,7 +175,8 @@ cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · be
 > click "Add CSV export" · t=1.0s
 screen
                                                                                         Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date, customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice tests.
@@ -185,7 +186,6 @@ screen
   Last change 16s ago
 
   s · Stop observing
-
 
 
 
@@ -243,7 +243,8 @@ cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
 > click "Explain how request" · t=1.4s
 screen
                                                                                         Izbor ● up
-  Back · Esc  Explain how request retries work and where the retry limit is configured.
+  Back · Esc
+  Explain how request retries work and where the retry limit is configured.
 
   Now
   Traced the retry logic in request.ts and explained where its limit is configured,
@@ -252,7 +253,6 @@ screen
   Last change 31s ago
 
   s · Stop observing
-
 
 
 

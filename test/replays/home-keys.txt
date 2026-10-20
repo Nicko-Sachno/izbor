@@ -283,7 +283,8 @@ cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
 > key enter · t=2.0s
 screen
                                                                                         Izbor ● up
-  Back · Esc  Fix the token refresh bug and add a regression test for expired access tokens.
+  Back · Esc
+  Fix the token refresh bug and add a regression test for expired access tokens.
 
   Now
   Running authentication tests.
@@ -291,7 +292,6 @@ screen
   Last change 10s ago
 
   s · Stop observing
-
 
 
 
@@ -459,7 +459,8 @@ cursor hidden · mouse vt200 sgr · paste on · title "izbor" · bell 0
 > key enter · t=3.4s
 screen
                                                                                         Izbor ● up
-  Back · Esc  Fix the token refresh bug and add a regression test for expired access tokens.
+  Back · Esc
+  Fix the token refresh bug and add a regression test for expired access tokens.
 
   Now
   Running authentication tests.
@@ -467,7 +468,6 @@ screen
   Last change 11s ago
 
   s · Stop observing
-
 
 
 

@@ -131,7 +131,8 @@ test("growing the window past the split moves an open Brief to the side, and no 
     const window = await sampleApp(t, 100, 30);
     window.type("\t");
     window.type("\r");
-    await window.shows("Back · Esc  Fix the token");
+    await window.shows("Back · Esc");
+    await window.shows("Fix the token");
 
     const frames = await framesOfResize(
         window,
@@ -238,7 +239,8 @@ test("Ctrl-C quits with 0: every stream ends, and every process handler and stdo
     type(KEYS.tab);
     type(KEYS.tab);
     type("\r");
-    await shows("Back · Esc  Task unknown");
+    await shows("Back · Esc");
+    await shows("Task unknown");
     await shows("Last change");
 
     type(CTRL_C);

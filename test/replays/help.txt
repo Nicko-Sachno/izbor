@@ -128,7 +128,8 @@ cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · be
 > key enter · t=1.4s
 screen
                                                                                         Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date, customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice tests.
@@ -137,7 +138,6 @@ screen
   Bash: npm test invoices
   Last change 16s ago
 
-  s · Stop observing
 
   ┌─ Answer ─────────────────────────────────────────────────────────────────────────────────────┐
   │ › yes, no, or no and your words                                                       Send → │
@@ -168,7 +168,8 @@ cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · be
 > key esc · t=1.8s
 screen
                                                                                         Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date, customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice tests.
@@ -177,7 +178,6 @@ screen
   Bash: npm test invoices
   Last change 16s ago
 
-  s · Stop observing
 
   ┌─ Answer ─────────────────────────────────────────────────────────────────────────────────────┐
   │ › yes, no, or no and your words                                                       Send → │
@@ -214,7 +214,8 @@ cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · be
 > key enter · t=2.6s
 screen
                                                                                         Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date, customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice tests.
@@ -223,7 +224,6 @@ screen
   Bash: npm test invoices
   Last change 17s ago
 
-  s · Stop observing
 
   ┌─ Answer ─────────────────────────────────────────────────────────────────────────────────────┐
   │ › yes, no, or no and your words                                                       Send → │

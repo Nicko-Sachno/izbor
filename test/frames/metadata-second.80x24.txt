@@ -4,9 +4,9 @@ the second session opened, then m: its Metadata open
 
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
-  s · Stop observing
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Session ID
   a7312ce4-782a-45a0-a84c-e834c934b2a7
@@ -30,9 +30,9 @@ screen
 
 styles
                                                                     mmmmmmmmmm
-  gggggggggg  tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-              tttttttttttttttttttt
-  gggggggggggggggggg
+  gggggggggg
+  tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+  tttttt
 
   mmmmmmmmmm
   mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
@@ -61,7 +61,7 @@ legend
   o  border
   t  text
 
-layout  scroll 9 · maxScroll 9 · pageSize 16 · viewport 2,3 76x16
+layout  scroll 10 · maxScroll 10 · pageSize 15 · viewport 2,4 76x15
 detail  none
 
 targets, in hit-test order
@@ -69,4 +69,3 @@ targets, in hit-test order
   help     65,23 13x1
   send     70,21 6x1
   field    2,20 76x3  origin 6  indices 0*64
-  stop     2,3 18x1  a7312ce4-782a-45a0-a84c-e834c934b2a7

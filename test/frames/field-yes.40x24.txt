@@ -4,9 +4,10 @@ M5, N1: yes typed in the Waiting session's field; no Send → at 40 columns
 
 screen
                             Izbor ● up
-  Back · Esc  Add CSV export for
-              invoices, including
-              invoice number, date,…
+  Back · Esc
+  Add CSV export for invoices,
+  including invoice number, date,
+  customer, and total.
 
   Now
   The CSV export is implemented.
@@ -22,7 +23,6 @@ screen
 
 
 
-
   ┌─ Answer ─────────────────────────┐
   │ › yes                            │
   └──────────────────────────────────┘
@@ -30,9 +30,10 @@ screen
 
 styles
                             mmmmmmmmmm
-  gggggggggg  tttttttttttttttttt
-              ttttttttttttttttttt
-              tttttttttttttttttttttt
+  gggggggggg
+  tttttttttttttttttttttttttttt
+  ttttttttttttttttttttttttttttttt
+  tttttttttttttttttttt
 
   mmm
   cccccccccccccccccccccccccccccc
@@ -44,7 +45,6 @@ styles
   mmmmmmmmmmmmmmmmmmm
 
   gggggggggggggggggg
-
 
 
 
@@ -63,11 +63,11 @@ legend
   m  muted
   t  text
 
-layout  scroll 0 · maxScroll 0 · pageSize 15 · viewport 2,4 36x15
+layout  scroll 0 · maxScroll 0 · pageSize 14 · viewport 2,5 36x14
 detail  none
 
 targets, in hit-test order
   back     2,1 10x1
   help     25,23 13x1
   field    2,20 36x3  origin 6  indices 0,1,2,3*28
-  stop     2,14 18x1  a7312ce4-782a-45a0-a84c-e834c934b2a7
+  stop     2,15 18x1  a7312ce4-782a-45a0-a84c-e834c934b2a7

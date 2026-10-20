@@ -88,12 +88,12 @@ cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · be
 > key enter · t=1.2s
 screen
                                                                                         Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date, customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice tests.
 
-   ! Needs you
 
   ┌─ Answer ─────────────────────────────────────────────────────────────────────────────────────┐
   │ › yes, no, or no and your words                                                       Send → │

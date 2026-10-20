@@ -4,8 +4,8 @@ the sample case answer-sent: the third session opened
 
 screen
                                                                     Izbor ● up
-  Back · Esc  Explain how request retries work and where the retry limit is
-              configured.
+  Back · Esc
+  Explain how request retries work and where the retry limit is configured.
 
   Now
   Traced the retry logic in request.ts. Waiting for permission to run the
@@ -30,8 +30,8 @@ screen
 
 styles
                                                                     mmmmmmmmmm
-  gggggggggg  ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-              ttttttttttt
+  gggggggggg
+  ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
 
   mmm
   ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc

@@ -77,13 +77,13 @@ In a window of 140 × 20 or more, the selected session's Brief sits next to the 
 
 ## Common messages
 
-| Message                                         | What to do                                                                                                                         |
-| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `This project has no plugin…`                   | On Home, use `Add plugin · answer from Izbor ›` on that project.                                                                   |
-| `Type /reload-plugins in this session once…`    | The session started before the plugin was added. Run `/reload-plugins` in that session, or restart it with `claude --resume <id>`. |
-| `Briefs update late: this project has no hooks` | On Home, use `Add hooks ›` on that project.                                                                                        |
-| `Answer in Claude Code: …`                      | Izbor can't answer this request; answer it in the session itself.                                                                  |
-| `That request still waits…`                     | Your answer didn't reach the session; answer it there.                                                                             |
+| Message                                          | What to do                                                                                                                         |
+| ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `This project has no plugin…`                    | On Home, use `Add plugin · answer from Izbor ›` on that project.                                                                   |
+| `Type /reload-plugins in this session once…`     | The session started before the plugin was added. Run `/reload-plugins` in that session, or restart it with `claude --resume <id>`. |
+| `Briefs update late: add hooks for live updates` | On Home, use `Add hooks ›` on that project.                                                                                        |
+| `Answer in Claude Code: …`                       | Izbor can't answer this request; answer it in the session itself.                                                                  |
+| `That request still waits…`                      | Your answer didn't reach the session; answer it there.                                                                             |
 
 ## Keys
 

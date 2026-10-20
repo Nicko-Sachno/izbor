@@ -90,7 +90,7 @@ A Brief is its own page in a smaller window. At **140 columns × 20 rows or larg
 - Widening restores the same selected Brief, unless you explicitly hid it.
 - A hidden Brief stays hidden across resizing.
 
-**Heading.** A Brief heads with its Task, wrapped the same way as on a row, and its Status after the Task's last word: `* Working`, `✓ Idle`, or the muted word. The heading takes one to three rows.
+**Heading.** A Brief heads with its Task, wrapped the same way as on a row, and its Status after the Task's last word: `* Working`, `✓ Idle`, or the muted word. On the Brief page the heading stands on its own rows under `Back · Esc`, at most ten and at most half the body, and is cut with `…` only past that; the side Brief keeps one to three rows.
 
 **Body.** Under the heading, in order:
 
@@ -118,7 +118,7 @@ A Brief's text wraps without silently truncating explanations or requests.
 - Escape focuses Sessions in a split layout, or returns from a single-pane Brief.
 - s in a focused Brief, or a click on Stop observing, stops observing that session. It keeps running, and the news line says how to bring it back.
 
-**No hooks.** A Brief of a project without Izbor's hooks has no field. `Briefs update late: this project has no hooks` stands under its heading in dusty blue, and its messages stand on the row above the last line.
+**No hooks.** A Brief of a project without Izbor's hooks has no field. `Briefs update late: add hooks for live updates` stands under its heading in dusty blue, and its messages stand on the row above the last line.
 
 ## Top line
 
@@ -417,7 +417,7 @@ All sizes are terminal character cells, not pixels. The application follows the 
 | Brief page with a field    | H−7       |
 
 - The application header uses one row.
-- A Brief's heading takes one to three rows; its rows past the first are taken from the body.
+- A Brief page's heading takes the rows under `Back · Esc`, at most ten and at most half the body; the side Brief's heading takes one to three rows, its rows past the first taken from the body.
 - The row above the last line holds the refusal or news line (see [Messages row](#messages-row)).
 - The last line holds Help. It spans the usable width on every screen, with the Help control at its right end, and Help remains clickable there.
 - On a Brief with a field, the box stands right above the last line, under its own line.

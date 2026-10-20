@@ -598,7 +598,7 @@ test(
             15_000,
         );
         await window.openFirstBrief(100);
-        await window.until("the Brief is live", () => window.screen().includes("Back · Esc  Task unknown"), 8000);
+        await window.until("the Brief is live", () => /Back · Esc\s+Task unknown/.test(window.screen()), 8000);
 
         const question = "Izbor has 1 listener on 1 session. Stop Izbor for every window? [y/N]";
         for (const no of [`n${KEYS.enter}`, KEYS["ctrl-c"]]) {

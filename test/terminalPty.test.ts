@@ -75,7 +75,7 @@ test(
         input("\r");
         await until("Enter opens the first Brief's page, its field at the bottom", () => {
             const visible = frame().join("\n");
-            return visible.includes("Back · Esc  Fix the") && fieldShows("your next prompt");
+            return /Back · Esc\s+Fix the/.test(visible) && fieldShows("your next prompt");
         });
         const emptyField = frame()[fieldPoint().y]!;
         const fieldIsEmpty = () => frame()[fieldPoint().y] === emptyField;
@@ -112,7 +112,7 @@ test(
         input("\x1b[200~yes,\nno and\nmore\x1b[201~");
         await until("a bracketed paste lands in the field, its newlines as spaces", () => fieldShows(pasted));
         assertFieldCursor();
-        assert.match(frame().join("\n"), /Back · Esc {2}Fix the/, "pasted newlines send nothing");
+        assert.match(frame().join("\n"), /Back · Esc\s+Fix the/, "pasted newlines send nothing");
         await resize(80, 30);
         await until("the pasted text remains editable after growth", () => fieldShows(pasted));
         assertFieldCursor(pasted);
@@ -143,7 +143,7 @@ test(
         input(clickReport(openPoint));
         await until("the Open Brief cue opens its session, whose page shows the Brief's field", () => {
             const visible = frame().join("\n");
-            return visible.includes("Back · Esc  Fix the") && fieldShows("your next prompt");
+            return /Back · Esc\s+Fix the/.test(visible) && fieldShows("your next prompt");
         });
         input(`${clickReport(fieldPoint(3))}Z`);
         await until("a click before typing in the same chunk moves focus first: Z lands in the field", () =>
@@ -165,7 +165,7 @@ test(
 
         click(point("Add CSV export"));
         await until("clicking a Brief opens the correct session", () =>
-            frame().join("\n").includes("Back · Esc  Add CSV"),
+            /Back · Esc\s+Add CSV/.test(frame().join("\n")),
         );
         await resize(80, 30);
         const emptyAnswer = frame()[fieldPoint().y]!;
@@ -192,7 +192,7 @@ test(
         await until("bracketed paste reaches the field without performing its embedded click", () =>
             frame().some((line) => line.includes("mouse ") && line.includes("literal")),
         );
-        assert.match(frame().join("\n"), /Back · Esc {2}Add CSV/, "pasted mouse reports never navigate");
+        assert.match(frame().join("\n"), /Back · Esc\s+Add CSV/, "pasted mouse reports never navigate");
         input("\x05\x15");
         await until("pasted content clears", answerIsEmpty);
 

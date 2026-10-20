@@ -4,8 +4,8 @@ the sample case stopped: the third session opened
 
 screen
                                                                     Izbor ● up
-  Back · Esc  Explain how request retries work and where the retry limit is
-              configured.
+  Back · Esc
+  Explain how request retries work and where the retry limit is configured.
   ▲ Stopped · a client stopped Izbor's watch of this session · last known
   Brief
 
@@ -30,8 +30,8 @@ screen
 
 styles
                                                                     mmmmmmmmmm
-  gggggggggg  ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-              ttttttttttt
+  gggggggggg
+  ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
   iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
   iiiii
 

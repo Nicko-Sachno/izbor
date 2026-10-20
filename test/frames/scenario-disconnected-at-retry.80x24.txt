@@ -4,8 +4,8 @@ the sample case disconnected at its retry time: no countdown, never in 0 s
 
 screen
                                                                     Izbor ● up
-  Back · Esc  Explain how request retries work and where the retry limit is
-              configured.
+  Back · Esc
+  Explain how request retries work and where the retry limit is configured.
   ▲ Disconnected · last known Brief
 
   Now
@@ -30,8 +30,8 @@ screen
 
 styles
                                                                     mmmmmmmmmm
-  gggggggggg  ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-              ttttttttttt
+  gggggggggg
+  ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
   iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
 
   mmm

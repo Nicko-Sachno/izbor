@@ -4,9 +4,9 @@ X7: the idle session's Brief page in a project without Izbor's hooks: no field, 
 
 screen
                                                                     Izbor ● up
-  Back · Esc  Explain how request retries work and where the retry limit is
-              configured.
-  Briefs update late: this project has no hooks
+  Back · Esc
+  Explain how request retries work and where the retry limit is configured.
+  Briefs update late: add hooks for live updates
 
   Now
   Traced the retry logic in request.ts and explained where its limit is
@@ -36,9 +36,9 @@ screen
 
 styles
                                                                     mmmmmmmmmm
-  gggggggggg  ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-              ttttttttttt
-  iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+  gggggggggg
+  ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+  iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
 
   mmm
   ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc

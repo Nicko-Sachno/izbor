@@ -4,9 +4,10 @@ R3, N6: a Question: the question under the badge, its options numbered, the fiel
 
 screen
                             Izbor ● up
-  Back · Esc  Add CSV export for
-              invoices, including
-              invoice number, date,…
+  Back · Esc
+  Add CSV export for invoices,
+  including invoice number, date,
+  customer, and total.
 
   Now
   The CSV export is implemented.
@@ -21,7 +22,6 @@ screen
   3. Month first (10/09/2026)
   Last change 15s ago
 
-  s · Stop observing
 
   ┌─ Answer ─────────────────────────┐
   │ › an option's number, or no      │
@@ -30,9 +30,10 @@ screen
 
 styles
                             mmmmmmmmmm
-  gggggggggg  tttttttttttttttttt
-              ttttttttttttttttttt
-              tttttttttttttttttttttt
+  gggggggggg
+  tttttttttttttttttttttttttttt
+  ttttttttttttttttttttttttttttttt
+  tttttttttttttttttttt
 
   mmm
   cccccccccccccccccccccccccccccc
@@ -47,7 +48,6 @@ styles
   ttttttttttttttttttttttttttt
   mmmmmmmmmmmmmmmmmmm
 
-  gggggggggggggggggg
 
   oooooooooooooooooooooooooooooooooooo
   ooffmmmmmmmmmmmmmmmmmmmmmmmmm     oo
@@ -64,11 +64,10 @@ legend
   o  border
   t  text
 
-layout  scroll 0 · maxScroll 0 · pageSize 15 · viewport 2,4 36x15
+layout  scroll 0 · maxScroll 1 · pageSize 14 · viewport 2,5 36x14
 detail  none
 
 targets, in hit-test order
   back     2,1 10x1
   help     25,23 13x1
   field    2,20 36x3  origin 6  indices 0*31
-  stop     2,18 18x1  a7312ce4-782a-45a0-a84c-e834c934b2a7

@@ -4,9 +4,10 @@ a refusal fits on the field's own line above the box at 42 columns and wraps to 
 
 screen
                             Izbor ● up
-  Back · Esc  Add CSV export for
-              invoices, including
-              invoice number, date,…
+  Back · Esc
+  Add CSV export for invoices,
+  including invoice number, date,
+  customer, and total.
 
   Now
   The CSV export is implemented.
@@ -20,7 +21,6 @@ screen
   s · Stop observing
 
 
-
   × Type yes, no, or no and your
   words.
   ┌─ Answer ─────────────────────────┐
@@ -30,9 +30,10 @@ screen
 
 styles
                             mmmmmmmmmm
-  gggggggggg  tttttttttttttttttt
-              ttttttttttttttttttt
-              tttttttttttttttttttttt
+  gggggggggg
+  tttttttttttttttttttttttttttt
+  ttttttttttttttttttttttttttttttt
+  tttttttttttttttttttt
 
   mmm
   cccccccccccccccccccccccccccccc
@@ -44,7 +45,6 @@ styles
   mmmmmmmmmmmmmmmmmmm
 
   gggggggggggggggggg
-
 
 
   RRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
@@ -64,11 +64,11 @@ legend
   m  muted
   t  text
 
-layout  scroll 0 · maxScroll 0 · pageSize 14 · viewport 2,4 36x14
+layout  scroll 0 · maxScroll 0 · pageSize 13 · viewport 2,5 36x13
 detail  none
 
 targets, in hit-test order
   back     2,1 10x1
   help     25,23 13x1
   field    2,20 36x3  origin 6  indices 0,1,2,3*28
-  stop     2,14 18x1  a7312ce4-782a-45a0-a84c-e834c934b2a7
+  stop     2,15 18x1  a7312ce4-782a-45a0-a84c-e834c934b2a7

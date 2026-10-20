@@ -51,7 +51,8 @@ cursor hidden · mouse none · paste on · title "Izbor · needs you" · bell 0
 > key enter · t=1.0s
 screen
                                                                                         Izbor ● up
-  Back · Esc  Fix the token refresh bug and add a regression test for expired access tokens.
+  Back · Esc
+  Fix the token refresh bug and add a regression test for expired access tokens.
 
   Now
   Running authentication tests.
@@ -59,7 +60,6 @@ screen
   Last change 9s ago
 
   s · Stop observing
-
 
 
 

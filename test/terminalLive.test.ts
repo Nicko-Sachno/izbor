@@ -71,7 +71,7 @@ test(
 
         await shows("the list shows the running session", () => screen().includes("izbor-b8 · Idle"));
         await openFirstBrief();
-        await shows("the observed session's Brief shows", () => screen().includes("Back · Esc  Task unknown"));
+        await shows("the observed session's Brief shows", () => /Back · Esc\s+Task unknown/.test(screen()));
 
         izbor.server.closeAllConnections();
         izbor.server.close();
@@ -111,7 +111,7 @@ test(
             () => screen().includes("izbor-b8 · Idle") && screen().includes(other),
         );
         await openFirstBrief();
-        await shows("the observe shows Sessions, on the Brief", () => screen().includes("Back · Esc  Task unknown"));
+        await shows("the observe shows Sessions, on the Brief", () => /Back · Esc\s+Task unknown/.test(screen()));
         assert.equal(
             frame().filter((line) => line.includes("Task unknown")).length,
             1,
@@ -264,7 +264,7 @@ test(
         await shows("the list shows the running session's line", () => screen().includes("izbor-b8 · Idle"));
 
         await openFirstBrief();
-        await shows("the observed session's Brief opens", () => /Back · Esc {2}\S/.test(screen()));
+        await shows("the observed session's Brief opens", () => /Back · Esc\s+\S/.test(screen()));
         input(KEYS.esc);
         await shows(
             "the observed row shows the Brief",

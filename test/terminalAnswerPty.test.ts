@@ -52,7 +52,7 @@ async function fieldOnHeldRequest(t: TestContext, asked: Asked = PERMISSION) {
     await window.openFirstBrief(100);
     await window.until(
         "the Brief is live",
-        () => window.screen().includes("Back · Esc  Task unknown") && window.screen().includes("Needs you"),
+        () => /Back · Esc\s+Task unknown/.test(window.screen()) && window.screen().includes("Needs you"),
         8000,
     );
 

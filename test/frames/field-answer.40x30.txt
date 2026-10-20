@@ -4,9 +4,10 @@ M1, N7: the Waiting session's Brief page, Brief focused: its field in answer mod
 
 screen
                             Izbor ● up
-  Back · Esc  Add CSV export for
-              invoices, including
-              invoice number, date,…
+  Back · Esc
+  Add CSV export for invoices,
+  including invoice number, date,
+  customer, and total.
 
   Now
   The CSV export is implemented.
@@ -28,7 +29,6 @@ screen
 
 
 
-
   ┌─ Answer ─────────────────────────┐
   │ › yes, no, or no and your words  │
   └──────────────────────────────────┘
@@ -36,9 +36,10 @@ screen
 
 styles
                             mmmmmmmmmm
-  gggggggggg  tttttttttttttttttt
-              ttttttttttttttttttt
-              tttttttttttttttttttttt
+  gggggggggg
+  tttttttttttttttttttttttttttt
+  ttttttttttttttttttttttttttttttt
+  tttttttttttttttttttt
 
   mmm
   cccccccccccccccccccccccccccccc
@@ -50,7 +51,6 @@ styles
   mmmmmmmmmmmmmmmmmmm
 
   gggggggggggggggggg
-
 
 
 
@@ -76,11 +76,11 @@ legend
   o  border
   t  text
 
-layout  scroll 0 · maxScroll 0 · pageSize 21 · viewport 2,4 36x21
+layout  scroll 0 · maxScroll 0 · pageSize 20 · viewport 2,5 36x20
 detail  none
 
 targets, in hit-test order
   back     2,1 10x1
   help     25,29 13x1
   field    2,26 36x3  origin 6  indices 0*31
-  stop     2,14 18x1  a7312ce4-782a-45a0-a84c-e834c934b2a7
+  stop     2,15 18x1  a7312ce4-782a-45a0-a84c-e834c934b2a7

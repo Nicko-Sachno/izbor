@@ -31,9 +31,9 @@ async function fieldOnIdleSession(t: TestContext, submit: (text: string) => Prom
         8000,
     );
     await window.openFirstBrief(100);
-    await window.until("the Brief is live", () => window.screen().includes("Back · Esc  Task unknown"), 8000);
+    await window.until("the Brief is live", () => /Back · Esc\s+Task unknown/.test(window.screen()), 8000);
     await postHook(izbor.base, "UserPromptSubmit", { cwd: acting, prompt: "hello" });
-    await window.until("the Brief shows the hook", () => window.screen().includes("Back · Esc  hello"));
+    await window.until("the Brief shows the hook", () => /Back · Esc\s+hello/.test(window.screen()));
 
     await window.until("the Brief page offers a reply", () => window.screen().includes("┌─ Reply to this session"));
     window.input(KEYS.enter);
@@ -62,7 +62,7 @@ test(
         assert.match(window.screen(), PLAIN, "the field is empty and its placeholder is back");
         assert.match(
             window.screen(),
-            /Back · Esc {2}hello/,
+            /Back · Esc\s+hello/,
             "the heading keeps the old Task until Izbor sees the new turn",
         );
         assert.equal(posts(), 1);

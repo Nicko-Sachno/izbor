@@ -143,7 +143,7 @@ test("a Brief of a project without Izbor's hooks has no field: Enter on it opens
     assert.doesNotMatch(lines(app, NARROW).join("\n"), /┌|Send →/, "no box on the page");
     assert.match(
         lines(app, NARROW).join("\n"),
-        /^ {2}Briefs update late: this project has no hooks *$/m,
+        /^ {2}Briefs update late: add hooks for live updates *$/m,
         "the page says why, under its heading",
     );
     key(app, "tab", true);
@@ -155,7 +155,7 @@ test("a Brief of a project without Izbor's hooks has no field: Enter on it opens
     assert.doesNotMatch(lines(app, WIDE).join("\n"), /Reply to this session|Send →/);
     assert.match(
         lines(app, WIDE).join("\n"),
-        /│ {2}Briefs update late: this project has no hooks *$/m,
+        /│ {2}Briefs update late: add hooks for live updates *$/m,
         "the side Brief says it too",
     );
     app.showError("x");

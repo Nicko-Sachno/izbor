@@ -4,8 +4,8 @@ the second session opened, then m: its Metadata open
 
 screen
                                                                                                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date, customer, and total.
-
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and total.
   Task source
   From transcript · 2026-10-09T11:57:00.000Z · 3m ago
 
@@ -25,8 +25,8 @@ screen
 
 styles
                                                                                                                                                     mmmmmmmmmm
-  gggggggggg  ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-
+  gggggggggg
+  ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
   mmmmmmmmmmm
   mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
@@ -51,7 +51,7 @@ legend
   o  border
   t  text
 
-layout  scroll 12 · maxScroll 12 · pageSize 12 · viewport 2,2 156x12
+layout  scroll 13 · maxScroll 13 · pageSize 11 · viewport 2,3 156x11
 detail  none
 
 targets, in hit-test order

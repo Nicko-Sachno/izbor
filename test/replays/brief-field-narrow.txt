@@ -76,8 +76,9 @@ cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · be
 > key enter · t=0.6s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -88,7 +89,6 @@ screen
   Last change 15s ago
 
   s · Stop observing
-
 
 
 
@@ -110,8 +110,9 @@ cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · be
 > key enter · t=0.8s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -134,7 +135,6 @@ screen
 
 
 
-
   ┌─ Answer ─────────────────────────────────────────────────────────────────┐
   │ › yes, no, or no and your words                                   Send → │
   └──────────────────────────────────────────────────────────────────────────┘
@@ -144,8 +144,9 @@ cursor 6,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell
 > type "m" · t=1.0s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -156,7 +157,6 @@ screen
   Last change 16s ago
 
   s · Stop observing
-
 
 
 
@@ -178,8 +178,9 @@ cursor 7,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell
 > type "h" · t=1.2s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -190,7 +191,6 @@ screen
   Last change 16s ago
 
   s · Stop observing
-
 
 
 
@@ -212,8 +212,9 @@ cursor 8,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell
 > type "s" · t=1.4s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -224,7 +225,6 @@ screen
   Last change 16s ago
 
   s · Stop observing
-
 
 
 
@@ -246,8 +246,9 @@ cursor 9,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell
 > key backspace · t=1.6s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -258,7 +259,6 @@ screen
   Last change 16s ago
 
   s · Stop observing
-
 
 
 
@@ -280,8 +280,9 @@ cursor 8,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell
 > key backspace · t=1.8s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -304,7 +305,6 @@ screen
 
 
 
-
   ┌─ Answer ─────────────────────────────────────────────────────────────────┐
   │ › m                                                               Send → │
   └──────────────────────────────────────────────────────────────────────────┘
@@ -314,8 +314,9 @@ cursor 7,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell
 > key backspace · t=2.0s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -326,7 +327,6 @@ screen
   Last change 17s ago
 
   s · Stop observing
-
 
 
 
@@ -348,8 +348,9 @@ cursor 6,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell
 > type "yes" · t=2.2s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -360,7 +361,6 @@ screen
   Last change 17s ago
 
   s · Stop observing
-
 
 
 
@@ -382,8 +382,9 @@ cursor 9,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell
 > key esc · t=2.4s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -394,7 +395,6 @@ screen
   Last change 17s ago
 
   s · Stop observing
-
 
 
 
@@ -416,8 +416,9 @@ cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · be
 > key tab · t=2.6s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -428,7 +429,6 @@ screen
   Last change 17s ago
 
   s · Stop observing
-
 
 
 
@@ -450,8 +450,9 @@ cursor 9,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell
 > key tab · t=2.8s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -474,7 +475,6 @@ screen
 
 
 
-
   ┌─ Answer ─────────────────────────────────────────────────────────────────┐
   │ › yes                                                             Send → │
   └──────────────────────────────────────────────────────────────────────────┘
@@ -484,8 +484,9 @@ cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · be
 > key tab · t=3.0s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -496,7 +497,6 @@ screen
   Last change 18s ago
 
   s · Stop observing
-
 
 
 
@@ -521,8 +521,9 @@ cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · be
 > key shift-tab · t=3.4s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -533,7 +534,6 @@ screen
   Last change 18s ago
 
   s · Stop observing
-
 
 
 
@@ -555,8 +555,9 @@ cursor 9,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell
 > key enter · t=3.6s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -567,7 +568,6 @@ screen
   Last change 18s ago
 
   s · Stop observing
-
 
 
 
@@ -589,8 +589,9 @@ cursor 9,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell
 > type "!" · t=3.8s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -613,7 +614,6 @@ screen
 
 
 
-
   ┌─ Answer ─────────────────────────────────────────────────────────────────┐
   │ › yes!                                                            Send → │
   └──────────────────────────────────────────────────────────────────────────┘
@@ -623,8 +623,9 @@ cursor 10,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bel
 > key esc · t=4.0s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -635,7 +636,6 @@ screen
   Last change 19s ago
 
   s · Stop observing
-
 
 
 
@@ -657,8 +657,9 @@ cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · be
 > click "┐" · t=4.2s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -669,7 +670,6 @@ screen
   Last change 19s ago
 
   s · Stop observing
-
 
 
 
@@ -691,8 +691,9 @@ cursor 10,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bel
 > key ctrl-u · t=4.4s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -703,7 +704,6 @@ screen
   Last change 19s ago
 
   s · Stop observing
-
 
 
 
@@ -725,8 +725,9 @@ cursor 6,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell
 > type "no, run only the export tests" · t=4.6s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -737,7 +738,6 @@ screen
   Last change 19s ago
 
   s · Stop observing
-
 
 
 
@@ -759,8 +759,9 @@ cursor 35,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bel
 > click "run only" · t=4.8s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -783,7 +784,6 @@ screen
 
 
 
-
   ┌─ Answer ─────────────────────────────────────────────────────────────────┐
   │ › no, run only the export tests                                   Send → │
   └──────────────────────────────────────────────────────────────────────────┘
@@ -793,8 +793,9 @@ cursor 10,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bel
 > type "X" · t=5.0s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -805,7 +806,6 @@ screen
   Last change 20s ago
 
   s · Stop observing
-
 
 
 
@@ -827,8 +827,9 @@ cursor 11,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bel
 > key end · t=5.2s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -839,7 +840,6 @@ screen
   Last change 20s ago
 
   s · Stop observing
-
 
 
 
@@ -861,8 +861,9 @@ cursor 36,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bel
 > paste " now\n" · t=5.4s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -873,7 +874,6 @@ screen
   Last change 20s ago
 
   s · Stop observing
-
 
 
 
@@ -895,8 +895,9 @@ cursor 41,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bel
 > key enter · t=5.6s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -907,7 +908,6 @@ screen
   Last change 20s ago
 
   s · Stop observing
-
 
 
 
@@ -932,8 +932,9 @@ cursor 41,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bel
 > key esc · t=6.0s
 screen
                                                                     Izbor ● up
-  Back · Esc  Add CSV export for invoices, including invoice number, date,
-              customer, and total.
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
 
   Now
   The CSV export is implemented. Waiting for permission to run the invoice
@@ -944,7 +945,6 @@ screen
   Last change 21s ago
 
   s · Stop observing
-
 
 
 

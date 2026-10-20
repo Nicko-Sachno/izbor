@@ -4,14 +4,14 @@ the sample case unknown: the third session opened
 
 screen
                                                                     Izbor ● up
-  Back · Esc  Task unknown
+  Back · Esc
+  Task unknown
 
   Now
   Explanation unknown · No sample Brief has arrived yet.
   Last change unknown
 
   s · Stop observing
-
 
 
 
@@ -30,14 +30,14 @@ screen
 
 styles
                                                                     mmmmmmmmmm
-  gggggggggg  mmmmmmmmmmmm
+  gggggggggg
+  mmmmmmmmmmmm
 
   mmm
   mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
   mmmmmmmmmmmmmmmmmmm
 
   gggggggggggggggggg
-
 
 
 
@@ -60,7 +60,7 @@ legend
   m  muted
   o  border
 
-layout  scroll 0 · maxScroll 0 · pageSize 17 · viewport 2,2 76x17
+layout  scroll 0 · maxScroll 0 · pageSize 16 · viewport 2,3 76x16
 detail  none
 
 targets, in hit-test order
@@ -68,4 +68,4 @@ targets, in hit-test order
   help     65,23 13x1
   send     70,21 6x1
   field    2,20 76x3  origin 6  indices 0*64
-  stop     2,7 18x1  c8219b07-e082-4ac4-9bdf-4abfe6fcfc8e
+  stop     2,8 18x1  c8219b07-e082-4ac4-9bdf-4abfe6fcfc8e
