@@ -18,3 +18,4 @@ __pycache__/
 test-internal/
 .claude/settings.local.json
 .claude/worktrees/
+test/
