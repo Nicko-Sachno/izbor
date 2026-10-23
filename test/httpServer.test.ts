@@ -549,7 +549,8 @@ test("a route whose promise rejects hands the error to `onBug` once and answers 
 test("POST /izbor/stop without the send key, or with another key, gets 401 `unauthorized`, and no stop is requested", async (t) => {
     const { stopRequests, base } = await startServer(t);
 
-    for (const headers of [{}, { authorization: `Bearer ${"1".repeat(64)}` }]) {
+    const refused: Record<string, string>[] = [{}, { authorization: `Bearer ${"1".repeat(64)}` }];
+    for (const headers of refused) {
         const response = await fetch(`${base}/izbor/stop`, { method: "POST", headers });
         await assertJson(response, 401, UNAUTHORIZED, JSON.stringify(headers));
     }

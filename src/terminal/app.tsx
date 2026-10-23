@@ -42,7 +42,7 @@ function controllerKey(input: string, key: Key) {
 
 const CONTROL_NAMES: Record<string, string> = { "\x01": "a", "\x05": "e", "\x15": "u" };
 
-function act(controller: TerminalController, target: HitTarget | undefined, x: number): void {
+function act(controller: TerminalController, target: HitTarget | undefined, { x, y }: { x: number; y: number }): void {
     switch (target?.type) {
         case undefined:
             return;
@@ -66,8 +66,9 @@ function act(controller: TerminalController, target: HitTarget | undefined, x: n
             controller.focusField();
             return controller.keypress(undefined, { name: "return" });
         case "field": {
-            const column = Math.max(0, Math.min(target.indices.length - 1, x - target.origin));
-            return controller.focusField(target.indices[column] ?? controller.view.field.text.length);
+            const row = target.indices[Math.max(0, Math.min(target.indices.length - 1, y - target.origin.y))] ?? [];
+            const column = Math.max(0, Math.min(row.length - 1, x - target.origin.x));
+            return controller.focusField(row[column] ?? controller.view.field.text.length);
         }
         default: {
             const unreached: never = target;
@@ -110,7 +111,7 @@ export function TerminalApp({
             return;
         }
         const target = current.targets?.find(({ rect }) => contains(rect, event.x, event.y));
-        act(controller, target, event.x);
+        act(controller, target, event);
     }, mouseEnabled);
 
     useEffect(() => {
@@ -132,15 +133,15 @@ export function TerminalApp({
             for (const control of input) controller.keypress(undefined, { name: CONTROL_NAMES[control], ctrl: true });
             return;
         }
-        const pane = controller.pane();
-        controller.keypress(input, controllerKey(input, key), pane.maxScroll, pane.pageSize);
+        const { maxScroll, step } = controller.pane();
+        controller.keypress(input, controllerKey(input, key), maxScroll, step, controller.layout().fieldColumns);
     });
 
     usePaste((text) => {
         if (controller.view.small) return;
         if (controller.view.focused === FIELD_FOCUS) {
-            const { maxScroll, pageSize } = controller.layout();
-            controller.keypress(text, {}, maxScroll, pageSize);
+            const { maxScroll, step } = controller.layout();
+            controller.keypress(text, { paste: true }, maxScroll, step);
         }
     });
 

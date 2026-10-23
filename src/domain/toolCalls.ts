@@ -33,10 +33,15 @@ export function shorten(text: string): string {
     return `${firstLine.slice(0, MAX_TITLE - 1)}…`;
 }
 
+/** A call's whole main argument, as its tool's entry reads it from the input; undefined when it has none. */
+export function mainArgument(name: string, rawInput: unknown): string | undefined {
+    const argument = toolOf(name)?.title((rawInput ?? {}) as ToolInput);
+    return typeof argument === "string" && argument ? argument : undefined;
+}
+
 export function describeTool(name: string, rawInput: unknown): { kind: ToolKind; title: string } {
-    const tool = toolOf(name);
-    const title = tool?.title((rawInput ?? {}) as ToolInput);
-    return { kind: tool?.kind ?? "other", title: typeof title === "string" && title ? shorten(title) : name };
+    const argument = mainArgument(name, rawInput);
+    return { kind: toolOf(name)?.kind ?? "other", title: argument === undefined ? name : shorten(argument) };
 }
 
 export function toolLabel(name: string, title: string): string {

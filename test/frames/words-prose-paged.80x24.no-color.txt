@@ -1,0 +1,69 @@
+words-prose-paged.80x24.no-color
+the agent's prose without colour one Page Down on: `> ` on every quote row, italic, and `---` as written
+80x24 · no color · now 2026-10-09T12:00:00.000Z
+
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Make the retry limit configurable per client and cover it with tests.
+  账单客户端现在最多重试五次，因为它的服务商会突发限流
+  🙂🚀，同步客户端仍然只重试三次。
+
+  > A client that sets no limit behaves as before: three tries, then `send()`
+  > gives up.
+
+  ---
+
+  The ~~old~~ constant is gone, and a full run takes about ~5 min (3~8 min on
+  a slow link).
+  To stop a run, press <kbd>Ctrl</kbd> C; &amp;, &#8212;, &lt;br&gt; and a
+  bare & stay as written.
+
+  The bench printed done in 4.2 s, then rang once.
+
+  Reply finished · 30s ago
+
+  ┌─ Reply to this session ──────────────────────────────────────────────────┐
+  │ › your next prompt                                                Send → │
+  └──────────────────────────────────────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+
+styles
+
+  __________
+
+
+
+
+  /////////////////////////////////////////////////+++++/////////////////////
+  ///////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                      ______
+
+                                                                 _____________
+
+legend
+  +  bold italic
+  /  italic
+  _  underline
+
+layout  scroll 19 · maxScroll 19 · pageSize 16 · viewport 2,3 76x16
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     65,23 13x1
+  send     70,21 6x1
+  field    2,20 76x3  origin 6  indices 0*64

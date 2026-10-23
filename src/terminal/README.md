@@ -57,6 +57,8 @@ Press **Enter** or click a session to open its Brief.
 
 While a send is pending, you can edit the field or open another Brief. Its eventual success clears only the draft you sent; new text stays, even if you typed the same words again. Quitting cancels pending key reads and send requests.
 
+**Under `s · Stop observing`** stands the agent's full response, in the same scrolling page. While the agent works, it starts with its latest message so far; once the turn is over, with its last message, then the turn from its start, down to a line that says how the reply ended: `Reply finished` in green, or how it was interrupted, rejected or failed. When Izbor cannot show everything, a line says so. Nothing stands beside the agent's words, so a copy picks up only the words: hold **Shift** while you drag (**Option** in iTerm2), or start `izbor --no-mouse`. The Brief beside the list shows it the same way. Each tool call is one row, with its result under it in the words Claude Code's own rows use; its dot is green once done, amber while it waits for you, and rose when it failed or was rejected or interrupted. A run of reads and searches folds into one row, such as `Searched for 2 patterns, read 4 files`. The agent's markdown is drawn: headings in bold, inline code in a colour of its own, quotes muted and italic, `---` as a rule, lists with their wrapped rows hung under the text, code blocks 2 columns in at the pane's full width, in syntax colours when their fence names a language such as `ts` or `bash`, and tables as a grid with a bold header, or as `Header: value` records in a narrow pane; with `--no-color` the `#`, the backticks, the fence lines and the `> ` come back.
+
 Press **s** to stop observing (the session keeps running), **m** for details such as exact times, and **Esc** to go back.
 
 ### Wide window: list and Brief side by side
@@ -67,7 +69,7 @@ In a window of 140 × 20 or more, the selected session's Brief sits next to the 
 
 ### Help
 
-**Ctrl-G** or a click on `Help` at the bottom right lists every key. Close it the same way.
+**Ctrl-G** or a click on `Help` at the bottom right lists the keys outside a Brief's field; the field's bottom edge shows Ctrl-J and Enter, and the Keys table below lists the rest. Close it the same way.
 
 ## The top line
 
@@ -87,19 +89,24 @@ In a window of 140 × 20 or more, the selected session's Brief sits next to the 
 
 ## Keys
 
-| Key                        | Does                                       |
-| -------------------------- | ------------------------------------------ |
-| Up / Down                  | Move between lines                         |
-| Enter / click              | Open, observe, or send                     |
-| Esc                        | Step back                                  |
-| Ctrl-O                     | Switch Home and Sessions                   |
-| Tab                        | Move focus between list, Brief and its box |
-| m                          | Show or hide a Brief's details             |
-| h                          | Hide the Brief                             |
-| s                          | Stop observing the session                 |
-| Page Up / Page Down, wheel | Scroll                                     |
-| Ctrl-G                     | Help                                       |
-| Ctrl-C                     | Quit                                       |
+| Key                        | Does                                                                        |
+| -------------------------- | --------------------------------------------------------------------------- |
+| Up / Down                  | Move between lines; in a Brief's field, between its rows                    |
+| Enter / click              | Open, observe, or send                                                      |
+| Ctrl-J / Shift-Enter       | In a Brief's field, start a new line                                        |
+| Esc                        | Step back                                                                   |
+| Ctrl-O                     | Switch Home and Sessions                                                    |
+| Tab                        | Move focus between list, Brief and its box                                  |
+| m                          | Show or hide a Brief's details                                              |
+| h                          | Hide the Brief                                                              |
+| s                          | Stop observing the session                                                  |
+| Page Up / Page Down, wheel | Scroll; in a Brief's full response, a page keeps one row of the page before |
+| Ctrl-G                     | Help                                                                        |
+| Ctrl-C                     | Quit                                                                        |
+
+In a Brief's full response the row you read stays put while the response grows, the Brief above it changes or the window resizes. Only these keys and the wheel move the view.
+
+Shift-Enter starts a new line in kitty, Ghostty, foot and iTerm2, and in WezTerm with `enable_kitty_keyboard = true` in its config: Izbor asks these terminals to report it. In Terminal.app, inside tmux and in other terminals it sends, as Enter does; Ctrl-J works everywhere. Option-Enter sends.
 
 ## Options
 
@@ -110,6 +117,8 @@ izbor --no-bell        # no sound when a session starts needing you
 izbor --no-color       # no colours
 izbor --version        # when this checkout was last built
 ```
+
+To copy text from the window, such as the agent's words, drag with **Shift** held (**Option** in iTerm2), or start `izbor --no-mouse`.
 
 ## Signals outside the window
 
@@ -157,7 +166,7 @@ Stopping Izbor does not stop your Claude Code sessions. The service listens on `
 - The service listens only on `127.0.0.1`, and refuses requests addressed to any host but `127.0.0.1` or `localhost`.
 - Izbor saves observed session records, hook payloads and its log, `izbor.log`, in `.izbor/` inside the checkout. These can contain prompts, replies, file paths, and tool inputs and outputs. Set `IZBOR_DATA_DIR` to an absolute path to use a different folder; `izbor status` shows the folder in use.
 - A port file and private send keys live in `~/.config/izbor` on macOS, or `%LOCALAPPDATA%\izbor` on Windows. They let the plugin find the service and authorize your answers.
-- Izbor sends no telemetry and checks for no updates. Currently, the explanation under `Now` comes only from Claude Haiku: to write it, Izbor sends session-derived text through the Claude Agent SDK and your own `claude` login. These requests use your Claude subscription's usage and fall under Anthropic's usage and data policies.
+- Izbor sends no telemetry and checks for no updates. Currently, the explanation under `Now` comes only from Claude Haiku: to write it, Izbor sends session-derived text through the Claude Agent SDK and your own `claude` login. These requests use your Claude subscription's usage and fall under Anthropic's usage and data policies. The agent's full response is never sent: it stays on this machine.
 
 Session records, `izbor.log` and the per-user files can contain private data; do not post them in public bug reports.
 

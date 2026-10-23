@@ -12,7 +12,7 @@ function read(raw: string) {
         color: true,
         now: new Date(NOW),
         raw,
-        layout: { maxScroll: 0, pageSize: 0, scroll: 0 },
+        layout: { maxScroll: 0, pageSize: 0, step: 0, scroll: 0 },
     }).split("\n");
     const legend = lines.indexOf("legend");
     const layout = lines.findIndex((line) => line.startsWith("layout  "));

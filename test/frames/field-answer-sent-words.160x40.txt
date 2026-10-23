@@ -37,17 +37,17 @@ screen
                                                                                               │
                                                                                               │
                                                                                               │
-                                                                                              │  Sent no, run only the export tests. Needs you clears when
-                                                                                              │  Claude goes on.
+                                                                                              │  Sent no, run only the export tests. Needs you clears when the
+                                                                                              │  agent goes on.
                                                                                               │  ┌─ Answer ──────────────────────────────────────────────────┐
                                                                                               │  │ ›                                                  Send → │
-                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                              │  └─ Ctrl-J new line · Enter sends ───────────────────────────┘
                                                                                                                                                  Help · Ctrl-G
 
 styles
                                                                                                                                                     mmmmmmmmmm
-  nnnnnnnn  TTTTTTTTTTTT  mmmmmm                                                              o  tttttttttttttttttttttttttttttttttttttttttttttt       gggggggg
-                                                                                              o  tttttttttttttttttttttttttttttttttt
+  nnnnnnnn  TTTTTTTTTTTT  mmmmmm                                                              o ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©© gggggggg
+                                                                                              o ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
    k tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt           o
      mmmmmmm                                                                                  o  mmm
      ccccccccccccccccccccccccccccc                                                            o  cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
@@ -79,11 +79,11 @@ styles
                                                                                               o
                                                                                               o
                                                                                               o
-                                                                                              o  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
-                                                                                              o  mmmmmmmmmmmmmmm
+                                                                                              o  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+                                                                                              o  mmmmmmmmmmmmmm
                                                                                               o  fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
                                                                                               o  ffff                                                 ggggggff
-                                                                                              o  fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+                                                                                              o  fffmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffffffffffffffffffffffffffff
                                                                                                                                                  ggggggggggggg
 
 legend
@@ -100,6 +100,7 @@ legend
   n  muted underline
   o  border
   t  text
+  ©  taskFill
 
 layout  scroll 0 · maxScroll 0 · pageSize 35 · viewport 2,3 90x35
 detail  scroll 0 · maxScroll 0 · pageSize 31 · viewport 97,3 61x31

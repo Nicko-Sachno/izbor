@@ -43,7 +43,9 @@ test("deny with the interrupt flag: Claude Code drops the message and writes its
                 "The user doesn't want to proceed with this tool use. The tool use was rejected (eg. if it was a file edit, the new_string was NOT written to the file). STOP what you are doing and wait for the user to tell you how to proceed.",
         },
     );
-    assert.deepEqual(records.at(-1)!.blocks, [{ type: "text", text: "[Request interrupted by user for tool use]" }]);
+    assert.deepEqual(records.at(-1)!.blocks, [
+        { type: "text", text: "[Request interrupted by user for tool use]", interrupt: "tool use" },
+    ]);
     assert.doesNotMatch(JSON.stringify(records), /Izbor/);
     assert.deepEqual(denialKinds(rows), ["user-rejected"]);
 });

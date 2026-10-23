@@ -97,8 +97,9 @@ async function openTerminal(args: OpenArgs): Promise<number> {
         project: { changeHooks: hooks, changeActing: plugin },
         run,
     } = await loadCliProvider(platform);
+    const screen = { ...args.screen, ...(await readAbilities(args.screen.color)) };
     return runTerminal({
-        ...forConsole(args.screen, izbor.feedback, platform.dropsMouseClicks(process.env), process.env),
+        ...forConsole(screen, izbor.feedback, platform.dropsMouseClicks(process.env), process.env),
         source: createLiveStore({
             client,
             izbor: izbor.info,
@@ -111,6 +112,16 @@ async function openTerminal(args: OpenArgs): Promise<number> {
         setup: { port: args.port, hooks, plugin },
         notes: izbor.notes,
     });
+}
+
+/** Whether this terminal opens OSC 8 links, shows strikethrough and reports keys, read once for the terminal app's
+ *  screen flags. */
+async function readAbilities(color: boolean) {
+    const [{ createSupportsHyperlinks }, { terminalAbilities }] = await Promise.all([
+        import("supports-hyperlinks"),
+        import("./abilities.js"),
+    ]);
+    return terminalAbilities(process.env, { color, hyperlinks: createSupportsHyperlinks(process.stdout) });
 }
 
 const wait: Wait = (ms, signal) => sleep(ms, undefined, { signal }).then(undefined, () => undefined);

@@ -14,6 +14,22 @@ import {
     type Snapshot,
     type TerminalBrief,
 } from "../../src/terminal/model.js";
+import {
+    afterTaskTurn,
+    cutTurn,
+    failedTurn,
+    finishedTurn,
+    INSTALL,
+    interruptedTurn,
+    lastMessageTurn,
+    noTextTurn,
+    nothingYetTurn,
+    rejectedTurn,
+    toolsTurn,
+    waitingTurn,
+    writingTurn,
+    writtenOn,
+} from "./sampleResponses.js";
 
 export const SAMPLE_IDS = [
     "0926995f-4c57-4733-89cf-d0c7226a5cbc",
@@ -40,6 +56,18 @@ export const SAMPLE_SCENARIOS = [
     "cannot-answer",
     "question",
     "fresh-wait",
+    "response-writing",
+    "response-finished",
+    "response-waiting",
+    "response-tools",
+    "response-no-text",
+    "response-nothing-yet",
+    "response-interrupted",
+    "response-rejected",
+    "response-failed",
+    "response-no-transcript",
+    "response-cut",
+    "response-after-task",
 ] as const;
 
 export type SampleScenario = (typeof SAMPLE_SCENARIOS)[number];
@@ -290,6 +318,172 @@ const FIELD_CASES: Record<
     question: (sample, at) => askingQuestion(sample, at(-15), RETRY_LOG_EXPORT),
 };
 
+const RETRY_TASK = "Make the retry limit configurable per client and cover it with tests.";
+const COMMIT_REQUEST = 'Bash: git add -A && git commit -m "Make the retry limit per client"';
+const INVOICES_TASK = "Export paid invoices as CSV, with each invoice's number, date, customer and total.";
+const INVOICE_TESTS = "Bash: npm test invoices";
+
+/** The third session waiting on the main thread's permission request `text`, asked at `at`. */
+function waitsOn(text: string, explanation: string, at: string): Partial<TerminalBrief> {
+    return {
+        status: "waiting",
+        explanation: { text: explanation, at },
+        latestActivity: { text: `Permission requested for ${text}`, at },
+        needsYou: { state: "request", text, detail: text, at },
+        answerable: true,
+        lastObserved: { at, from: "hook" },
+    };
+}
+
+const WRITING_SHORT = "Running the request tests.";
+const WRITING_LONG =
+    "Running the request tests after making the limit per client, then type-checking the project and making the " +
+    "sync client read its own limit too.";
+
+type Idle = { task: string; asked: string; explanation: string; latest: string; ended: string };
+
+/** The third session idle on `task`, asked at `asked`, since its reply ended at `ended` with `latest`. */
+function idleOn({ task, asked, explanation, latest, ended }: Idle): Partial<TerminalBrief> {
+    return {
+        task: { text: task, at: asked, from: "hook" },
+        status: "idle",
+        explanation: { text: explanation, at: ended },
+        latestActivity: { text: latest, at: ended },
+        lastObserved: { at: ended, from: "hook" },
+    };
+}
+
+// The third session on the PRD's sample Task: busy at W3, idle at L4, then waiting at W3 on a permission, each with its
+// full response; on another Task, a turn that holds every tool row; on the invoices Task, waiting with no text yet (C);
+// on a new Task the agent has not started on; then idle on a Task of its own after each other way a reply ends, or
+// cannot be shown whole.
+const RESPONSE_CASES: Record<
+    | "response-writing"
+    | "response-finished"
+    | "response-waiting"
+    | "response-tools"
+    | "response-no-text"
+    | "response-nothing-yet"
+    | "response-interrupted"
+    | "response-rejected"
+    | "response-failed"
+    | "response-no-transcript"
+    | "response-cut"
+    | "response-after-task",
+    (at: (seconds: number) => string) => Partial<TerminalBrief>
+> = {
+    "response-writing": (at) => ({
+        task: { text: RETRY_TASK, at: at(-140), from: "hook" },
+        status: "busy",
+        explanation: { text: "Running the request tests after making the limit per client.", at: at(-10) },
+        latestActivity: { text: "Bash: npm test -- request", at: at(-38) },
+        lastObserved: { at: at(-4), from: "hook" },
+        response: writingTurn(at),
+    }),
+    "response-finished": (at) => ({
+        task: { text: RETRY_TASK, at: at(-330), from: "hook" },
+        status: "idle",
+        explanation: {
+            text: "Made the retry limit configurable per client, updated the three callers and added tests; all 42 request tests pass.",
+            at: at(-115),
+        },
+        latestActivity: { text: "Reply finished", at: at(-120) },
+        lastObserved: { at: at(-120), from: "hook" },
+        response: finishedTurn(at),
+    }),
+    "response-waiting": (at) => ({
+        task: { text: RETRY_TASK, at: at(-172), from: "hook" },
+        ...waitsOn(COMMIT_REQUEST, "All 42 request tests pass; waiting for permission to commit the change.", at(-6)),
+        response: waitingTurn(at),
+    }),
+    "response-tools": (at) => ({
+        task: {
+            text: "Export the retry log as CSV and file an issue for its burst limit.",
+            at: at(-236),
+            from: "hook",
+        },
+        ...waitsOn(`Bash: ${INSTALL}`, "Wrote the CSV export and its test; waiting to install the CSV writer.", at(-6)),
+        response: toolsTurn(at),
+    }),
+    "response-no-text": (at) => ({
+        task: { text: INVOICES_TASK, at: at(-75), from: "hook" },
+        ...waitsOn(
+            INVOICE_TESTS,
+            "Wrote the CSV export and its route. Waiting for permission to run the invoice tests.",
+            at(-15),
+        ),
+        response: noTextTurn(at),
+    }),
+    "response-nothing-yet": (at) => ({
+        task: { text: "Add a --retries flag to the CLI that sets the client's retry limit.", at: at(-3), from: "hook" },
+        status: "busy",
+        explanation: { text: "Starting on a --retries flag for the CLI.", at: at(-2) },
+        latestActivity: { text: "prompt submitted", at: at(-3) },
+        lastObserved: { at: at(-3), from: "hook" },
+        response: nothingYetTurn(at),
+    }),
+    "response-interrupted": (at) => ({
+        ...idleOn({
+            task: "Find out why fresh access tokens count as expired, and fix it.",
+            asked: at(-120),
+            explanation: "Found the unit mismatch in isExpired(); its fix was interrupted.",
+            latest: "interrupted by the user: Edit: src/auth/token.ts",
+            ended: at(-58),
+        }),
+        response: interruptedTurn(at),
+    }),
+    "response-rejected": (at) => ({
+        ...idleOn({
+            task: "Rebuild the project from a clean build folder.",
+            asked: at(-60),
+            explanation: "Asked to remove build/ before rebuilding; the request was rejected.",
+            latest: "rejected by the user: Bash: rm -rf build/",
+            ended: at(-38),
+        }),
+        response: rejectedTurn(at),
+    }),
+    "response-failed": (at) => ({
+        ...idleOn({
+            task: "Add a retry budget to the sync client and run its tests.",
+            asked: at(-100),
+            explanation: "Added the retry budget and the sync tests pass; then the reply failed.",
+            latest: "Reply failed",
+            ended: at(-55),
+        }),
+        response: failedTurn(at),
+    }),
+    "response-no-transcript": (at) => ({
+        ...idleOn({
+            task: "Explain how the sync client backs off between retries.",
+            asked: at(-160),
+            explanation: "Explained how the sync client backs off between retries.",
+            latest: "Reply finished",
+            ended: at(-120),
+        }),
+        response: lastMessageTurn(at),
+    }),
+    "response-cut": (at) => ({
+        ...idleOn({
+            task: "List every client's retry limit and say which ones set none.",
+            asked: at(-280),
+            explanation: "Listed every client's retry limit; 20 of the 302 clients set their own.",
+            latest: "Reply finished",
+            ended: at(-180),
+        }),
+        response: cutTurn(at),
+    }),
+    "response-after-task": (at) => ({
+        ...idleOn({
+            task: "Run the whole test suite in the background and tell me when it is done.",
+            asked: at(-352),
+            explanation: "The suite ran in the background and passed: 312 tests, none failed.",
+            latest: "Reply finished",
+            ended: at(-180),
+        }),
+        response: afterTaskTurn(at),
+    }),
+};
+
 type SampleWorld = {
     readonly list: SessionList;
     add(checkout: string, what: "hooks" | "acting"): boolean;
@@ -309,6 +503,7 @@ export function createSampleWorld(initialScenario: SampleScenario = "overview"):
     let timer: ReturnType<typeof setInterval> | undefined;
     let rearmTimer: ReturnType<typeof setTimeout> | undefined;
     let step = 0;
+    let written = 0;
 
     function row(id: string): Observation {
         return (
@@ -365,15 +560,29 @@ export function createSampleWorld(initialScenario: SampleScenario = "overview"):
                 return { ...sample, gap: { from: at(-60), to: at(-20) } };
             case "fresh-wait":
                 return asking(sample, at(0), true);
+            case "response-writing":
+            case "response-finished":
+            case "response-waiting":
+            case "response-tools":
+            case "response-no-text":
+            case "response-nothing-yet":
+            case "response-interrupted":
+            case "response-rejected":
+            case "response-failed":
+            case "response-no-transcript":
+            case "response-cut":
+            case "response-after-task":
+                return { ...sample, brief: { ...brief, ...RESPONSE_CASES[next](at) } };
             default:
                 return FIELD_CASES[next](sample, at);
         }
     }
 
     function tick() {
+        const at = new Date().toISOString();
+        writeOn(at);
         const current = rows.get(SAMPLE_IDS[0])!;
         if (current.connection.state !== "live" || !current.brief) return;
-        const at = new Date().toISOString();
         step += 1;
         const brief: TerminalBrief = {
             ...current.brief,
@@ -386,6 +595,23 @@ export function createSampleWorld(initialScenario: SampleScenario = "overview"):
                 at,
             },
             lastObserved: { at, from: "hook" },
+        };
+        rows.set(current.id, { ...current, brief });
+        animation?.brief(current.id, brief);
+    }
+
+    // In the response-writing case the third session writes on: its turn gains one more item each tick, and its
+    // explanation swaps between a long and a short one, so the Brief above its full response changes height.
+    function writeOn(at: string) {
+        const current = rows.get(SAMPLE_IDS[2])!;
+        const response = current.brief?.response;
+        if (scenario !== "response-writing" || current.connection.state !== "live" || !response) return;
+        written += 1;
+        const brief: TerminalBrief = {
+            ...current.brief!,
+            explanation: { text: written % 2 ? WRITING_LONG : WRITING_SHORT, at },
+            lastObserved: { at, from: "hook" },
+            response: writtenOn(response, written, at),
         };
         rows.set(current.id, { ...current, brief });
         animation?.brief(current.id, brief);
@@ -414,6 +640,7 @@ export function createSampleWorld(initialScenario: SampleScenario = "overview"):
     function setScenario(next: SampleScenario): Observation | undefined {
         if (next === scenario) return undefined;
         scenario = next;
+        written = 0;
         const changed = scenarioRow(next);
         rows.set(changed.id, changed);
         scheduleRearm();

@@ -8,7 +8,7 @@ import { startIzborServer } from "./helpers/izborServer.js";
 import { standIn, startPlugin } from "./helpers/plugin.js";
 import { SKIP_WITHOUT_PTY } from "./helpers/pty.js";
 import { type AgentsListEntry, SESSION, until } from "./support.js";
-import { KEYS } from "./helpers/keys.js";
+import { CI_LOG, KEYS, paste } from "./helpers/keys.js";
 
 const REPLY_LABEL = /┌─ Reply to this session ─+┐/;
 const PLAIN = /│ › your next prompt +Send → │/;
@@ -72,6 +72,42 @@ test(
             [],
             "a prompt never went as an answer",
         );
+        assert.equal(await window.quit(), 0);
+    },
+);
+
+test(
+    "in a real terminal, Ctrl-J starts a new line in the field, a long paste after it stands as one block, and Enter sends it all: the plugin collects the text with its new lines and the paste's tabs",
+    { skip: SKIP_WITHOUT_PTY, timeout: 60_000 },
+    async (t) => {
+        const { window, submits } = await fieldOnIdleSession(t, async (text) => ({ text }));
+
+        window.input("run the tests again");
+        await window.until("the first line is in the field", () =>
+            /│ › run the tests again +Send → │/.test(window.screen()),
+        );
+        window.input(KEYS["ctrl-j"]);
+        await window.until("Ctrl-J starts a second row, Send → on it", () =>
+            /│ › run the tests again +│ *\n +│ +Send → │/.test(window.screen()),
+        );
+        window.input("then open a pull request");
+        await window.until("the second line is in the field", () =>
+            /│ › run the tests again +│ *\n +│ {3}then open a pull request +Send → │/.test(window.screen()),
+        );
+        window.input(KEYS["ctrl-j"] + paste(CI_LOG));
+        await window.until("the pasted log stands as one block on a third row", () =>
+            /│ {3}then open a pull request +│ *\n +│ {3}.Pasted 42 lines · 1\.9 KB. +Send → │/.test(window.screen()),
+        );
+        assert.equal(submits.length, 0, "Ctrl-J and the paste send nothing");
+        window.input(KEYS.enter);
+        await until(() => submits.length === 1);
+        assert.deepEqual(
+            submits,
+            [{ text: `run the tests again\nthen open a pull request\n${CI_LOG}`, asUser: true }],
+            "the plugin collected every line, the new lines between them and the pasted log whole, its tabs included",
+        );
+        await window.until("the Sent line shows", () => window.screen().includes("Sent to this session."));
+        assert.match(window.screen(), PLAIN, "the field is one empty row again");
         assert.equal(await window.quit(), 0);
     },
 );

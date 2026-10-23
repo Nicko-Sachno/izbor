@@ -5,6 +5,7 @@ import { shortId } from "../domain/text.js";
 import type { IzborState, Observation, RunningSession } from "./model.js";
 
 const NEEDS_YOU = "#E7BC70";
+const NOTICE = "#A9C6E1";
 
 export const palette = {
     text: "#E6E6DB",
@@ -13,12 +14,16 @@ export const palette = {
     needsYou: NEEDS_YOU,
     needsYouFill: NEEDS_YOU,
     needsYouOnFill: "#1F1600",
-    notice: "#A9C6E1",
+    notice: NOTICE,
     error: "#F58C9A",
     done: "#7FCBA4",
     brand: "#D97757",
     border: "#7A837A",
     reply: "#AEB8C4",
+    code: "#B1B9F9",
+    link: NOTICE,
+    pasteFill: "#2E352D",
+    taskFill: "#373737",
 };
 export type Tone = keyof typeof palette;
 
@@ -37,11 +42,30 @@ export const palette16: Record<Tone, ForegroundColorName | undefined> = {
     brand: undefined,
     border: undefined,
     reply: "blueBright",
+    code: "blueBright",
+    link: "blue",
+    pasteFill: undefined,
+    taskFill: "blackBright",
 };
 
-export const GLYPHS = { needsYou: "!", working: "*", idle: "✓", unknown: "?", notice: "▲" } as const;
+/** A colour drawn by its name at every colour level, so the terminal's palette decides it; `plain`, the terminal's
+ *  own text colour. */
+export type Hue = "blue" | "cyan" | "green" | "red" | "yellow" | "plain";
 
-export const refusalWords = (text: string): string => `× ${text}`;
+/** Syntax colours (ui-reference §2, Claude Code's map): the highlight.js scopes each hue draws, and the muted tone. */
+export const syntax: Readonly<Record<Hue | "muted", readonly string[]>> = {
+    blue: ["keyword", "literal", "class", "title.class"],
+    cyan: ["built_in"],
+    green: ["number", "addition"],
+    red: ["string", "deletion"],
+    yellow: ["function", "title.function"],
+    muted: ["comment"],
+    plain: ["params", "subst", "variable"],
+};
+
+export const GLYPHS = { needsYou: "!", working: "*", idle: "✓", unknown: "?", notice: "▲", refused: "×" } as const;
+
+export const refusalWords = (text: string): string => `${GLYPHS.refused} ${text}`;
 
 export const STATUS = {
     busy: "Working",
@@ -73,15 +97,42 @@ export function topLine(izbor: IzborState, oldBuild: boolean, available: number)
     return { corner: words(notice), state: words(right) };
 }
 
-export function clean(text: string): string {
+function withoutEscapes(text: string): string {
     return text
         .replace(/\x1b\][^\x07\x1b]*(?:\x07|\x1b\\|$)/g, "")
         .replace(/\x1b[P^_][\s\S]*?(?:\x1b\\|$)/g, "")
         .replace(/(?:\x1b\[|\x9b)[0-?]*[ -/]*[@-~]/g, "")
-        .replace(/\x1b[ -/]*[@-~]/g, "")
+        .replace(/\x1b[ -/]*[@-~]/g, "");
+}
+
+const INVISIBLE = /[\u200b\u200e\u200f\u202a-\u202e\u2060-\u206f]/g;
+
+export function clean(text: string): string {
+    return withoutEscapes(text)
         .replace(/\t/g, "    ")
         .replace(/[\x00-\x09\x0b-\x1f\x7f-\x9f]/g, "")
-        .replace(/[\u200b\u200e\u200f\u202a-\u202e\u2060-\u206f]/g, "");
+        .replace(INVISIBLE, "");
+}
+
+/** Text whose lines stay: CR LF and a lone CR become LF, and an OSC or DCS sequence left open ends with its line, so
+ *  it takes none of the lines after it. */
+function lineBounded(text: string): string {
+    return text
+        .replace(/\r\n?/g, "\n")
+        .replace(/\x1b\][^\x07\x1b\n]*(?:\x07|\x1b\\)?/g, "")
+        .replace(/\x1b[P^_][^\n]*?(?:\x1b\\|(?=\n)|$)/g, "");
+}
+
+/** `clean()` for the field, whose text is sent as typed: its lines stay (`lineBounded`), and so do its tabs. */
+export function cleanField(text: string): string {
+    return withoutEscapes(lineBounded(text))
+        .replace(/[\x00-\x08\x0b-\x1f\x7f-\x9f]/g, "")
+        .replace(INVISIBLE, "");
+}
+
+/** `clean()` for text that keeps its lines (`lineBounded`), its tabs 4 spaces each. */
+export function cleanLines(text: string): string {
+    return clean(lineBounded(text));
 }
 
 export function singleLine(text: string): string {
@@ -152,50 +203,6 @@ export function openTitle(
     return side ? headingTitle(side, detailWidth - 10, 3) : "";
 }
 
-export function commandWindow(
-    command: string,
-    cursor: number,
-    columns: number,
-): {
-    text: string;
-    cursor: number;
-    indices: number[];
-} {
-    const available = Math.max(1, columns);
-    const before = Array.from(graphemes.segment(command.slice(0, cursor)));
-    let hiddenUntil = 0;
-    while (
-        before.length &&
-        stringWidth(before.map(({ segment }) => segment).join("")) + (hiddenUntil ? 1 : 0) >= available
-    ) {
-        const first = before.shift()!;
-        hiddenUntil = first.index + first.segment.length;
-    }
-    let text = hiddenUntil && available > 1 ? "…" : "";
-    const indices: number[] = [hiddenUntil];
-    if (text) indices.push(hiddenUntil);
-    let end = hiddenUntil;
-    for (const part of graphemes.segment(command.slice(hiddenUntil))) {
-        const width = stringWidth(part.segment);
-        const column = stringWidth(text);
-        if (column + width > available) break;
-        const start = hiddenUntil + part.index;
-        end = start + part.segment.length;
-        for (let cell = 0; cell < width; cell++) indices[column + cell] = cell < width / 2 ? start : end;
-        indices[column + width] = end;
-        text += part.segment;
-    }
-    for (let column = stringWidth(text); column <= available; column++) indices[column] = end;
-    return {
-        text,
-        cursor: Math.min(
-            available - 1,
-            (hiddenUntil && available > 1 ? 1 : 0) + stringWidth(command.slice(hiddenUntil, cursor)),
-        ),
-        indices,
-    };
-}
-
 export function relativeTime(at: string, now: Date): string {
     const delta = now.getTime() - Date.parse(at);
     let age = "time unknown";
@@ -213,6 +220,26 @@ export function relativeTime(at: string, now: Date): string {
                       : `${Math.floor(seconds / 86400)}d ago`;
     }
     return age;
+}
+
+/** A time on the local clock: `14:32:05`, or `14:32` to the minute. */
+export function clockTime(at: string, to: "second" | "minute" = "second"): string {
+    const time = new Date(at);
+    return [time.getHours(), time.getMinutes(), ...(to === "second" ? [time.getSeconds()] : [])]
+        .map((part) => String(part).padStart(2, "0"))
+        .join(":");
+}
+
+/** A count with a space between its thousands: `4 210`, `12 345`. */
+export const spacedThousands = (n: number): string => String(n).replace(/\B(?=(\d{3})+$)/g, " ");
+
+/** A time taken, as the agent's own rows give a subagent's: `42s`, `1m 2s`, `1h 3m 0s`. */
+export function duration(ms: number): string {
+    const seconds = Math.max(0, Math.floor(ms / 1000));
+    const minutes = Math.floor(seconds / 60);
+    if (minutes === 0) return `${seconds}s`;
+    if (minutes < 60) return `${minutes}m ${seconds % 60}s`;
+    return `${Math.floor(minutes / 60)}h ${minutes % 60}m ${seconds % 60}s`;
 }
 
 export const BLINK_MS = 5000;

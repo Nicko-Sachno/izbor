@@ -7,7 +7,9 @@ import {
     answerHookUrl,
     mergeAnswerHook,
 } from "../src/adapters/agents/claude/setup/answerHook.js";
+import { readHook } from "../src/adapters/agents/claude/hook.js";
 import { createIzborClient } from "../src/adapters/izbor/client.js";
+import { createAnswerHolds } from "../src/core/answerHolds.js";
 import { HOLD_LIMIT_MS } from "../src/domain/answer.js";
 import type { ErrorAnswer } from "../src/domain/wire.js";
 import {
@@ -128,8 +130,8 @@ test("without the send key, or with a wrong one: 401 `unauthorized`, and the hoo
     assert.equal(held.stdout(), ALLOW);
 });
 
-test("the Izbor log has one line per answer sent: the session, the Request, the answer and the time", async (t) => {
-    const { izbor, held, at, client, key } = await heldRequest(t);
+test("the Izbor log has one line per answer sent: the session, the Request, the answer and the time; a `no` over several lines shows \\n where they break", async (t) => {
+    const { izbor, acting, stream, held, at, client, key } = await heldRequest(t);
 
     assert.deepEqual(await client.sendAnswer(SESSION, { at, answer: " Yes " }, key), { sent: "yes" });
     await held.exited;
@@ -138,10 +140,24 @@ test("the Izbor log has one line per answer sent: the session, the Request, the 
         error: "already_answered",
         message: "That request has an answer already.",
     });
+    const next = { tool_name: "Bash", tool_input: { command: "echo hi > hi.txt" }, cwd: acting };
+    await postHook(izbor.base, "PermissionRequest", next);
+    const nextHeld = runHookEntry(t, answerEntry(izbor.port), hook("PermissionRequest", next));
+    await until(() => {
+        const { answerable, needsYou } = stream.latest();
+        return answerable === true && isDeepStrictEqual((needsYou as { input?: unknown }).input, next.tool_input);
+    });
+    const nextAt = stream.latest().needsYou.at!;
+    const answer = "no, run only the export tests\nand keep the old ones\n";
+    assert.deepEqual(await client.sendAnswer(SESSION, { at: nextAt, answer }, key), {
+        sent: "no run only the export tests\nand keep the old ones",
+    });
+    await nextHeld.exited;
 
     const sent = izbor.izbor.printed().filter((line) => line.includes(" sent "));
     assert.deepEqual(sent, [
         `${SESSION} sent yes at ${RECEIVED_AT.toISOString()}: Bash: echo held > held.txt (Needs you at ${at})`,
+        `${SESSION} sent no run only the export tests\\nand keep the old ones at ${RECEIVED_AT.toISOString()}: Bash: echo hi > hi.txt (Needs you at ${nextAt})`,
     ]);
 });
 
@@ -859,4 +875,14 @@ test("at the hold limit an unwatched session's hold is let go with no decision, 
     assert.equal(held.stdout(), "");
     const stream = await tuneInOverHttp(t, izbor.port, SESSION);
     await until(() => stream.latest().answerable === "expired");
+});
+
+test("an unwatched session's kept request keeps the folder its hook named, which the watch start gives the full response", () => {
+    const holds = createAnswerHolds({ wait: fakeClock().wait, onChange: () => {}, acting: () => true });
+    const { evidence, cwd } = readHook(
+        JSON.stringify(hook("PermissionRequest", { ...BASH, cwd: "/repo" })),
+        RECEIVED_AT,
+    )!;
+    holds.hook(evidence, cwd);
+    assert.deepEqual(holds.kept(), { evidence, cwd: "/repo" });
 });

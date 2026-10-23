@@ -1,0 +1,255 @@
+field-paste
+The paste block, live: a click opens the idle session's Brief and Enter puts the cursor in its field; a typed line and Ctrl-J, then a 42-line log with tabs pasted after it stands as one block, [Pasted 42 lines · 1.9 KB], counted as one line, · 2 lines, the cursor after it and the bottom edge Backspace removes the paste · Enter sends; Backspace removes the whole block and leaves the empty second line; the log pasted again is a block again; Enter sends, and the sample store says it sends nothing, the block kept
+izbor --no-color · sample overview · 80x24 · now 2026-10-09T12:00:00.000Z · 200 ms a step
+
+> start · t=0.0s
+screen
+                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+   * Selected · Fix the token refresh bug and add a regression test for Open ›
+     expired access tokens.
+     Working
+     Running authentication tests.
+
+   ! Add CSV export for invoices, including invoice number, date, customer,
+     and total.
+     Waiting
+     The CSV export is implemented. Waiting for permission to run the invoice
+     tests.
+      ! Needs you
+      Bash: npm test invoices
+
+   ✓ Explain how request retries work and where the retry limit is configured.
+     Idle
+     Traced the retry logic in request.ts and explained where its limit is
+     configured, which errors trigger another attempt, and when failed
+     requests stop retrying automatically.
+
+
+                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> click "Explain how request retries" · t=0.2s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Explain how request retries work and where the retry limit is configured.
+
+  Now
+  Traced the retry logic in request.ts and explained where its limit is
+  configured, which errors trigger another attempt, and when failed requests
+  stop retrying automatically.
+  Last change 30s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+  ┌─ Reply to this session ──────────────────────────────────────────────────┐
+  │ › your next prompt                                                Send → │
+  └──────────────────────────────────────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key enter · t=0.4s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Explain how request retries work and where the retry limit is configured.
+
+  Now
+  Traced the retry logic in request.ts and explained where its limit is
+  configured, which errors trigger another attempt, and when failed requests
+  stop retrying automatically.
+  Last change 30s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+  ┌─ Reply to this session ──────────────────────────────────────────────────┐
+  │ › your next prompt                                                Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 6,21 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> type "CI fails on the same branch too; here is its log:" · t=0.6s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Explain how request retries work and where the retry limit is configured.
+
+  Now
+  Traced the retry logic in request.ts and explained where its limit is
+  configured, which errors trigger another attempt, and when failed requests
+  stop retrying automatically.
+  Last change 30s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+  ┌─ Reply to this session ──────────────────────────────────────────────────┐
+  │ › CI fails on the same branch too; here is its log:               Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 55,21 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key ctrl-j · t=0.8s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Explain how request retries work and where the retry limit is configured.
+
+  Now
+  Traced the retry logic in request.ts and explained where its limit is
+  configured, which errors trigger another attempt, and when failed requests
+  stop retrying automatically.
+  Last change 30s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+  ┌─ Reply to this session · 2 lines ────────────────────────────────────────┐
+  │ › CI fails on the same branch too; here is its log:                      │
+  │                                                                   Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 6,21 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> paste "retry 1 of 42\tGET /invoices/export\ttimed out\nretry 2 of 42\tGET /invoices/export\ttimed out\nretry 3 of 42\tGET /invoices/export\ttimed out\nretry 4 of 42\tGET /invoices/export\ttimed out\nretry 5 of 42\tGET /invoices/export\ttimed out\nretry 6 of 42\tGET /invoices/export\ttimed out\nretry 7 of 42\tGET /invoices/export\ttimed out\nretry 8 of 42\tGET /invoices/export\ttimed out\nretry 9 of 42\tGET /invoices/export\ttimed out\nretry 10 of 42\tGET /invoices/export\ttimed out\nretry 11 of 42\tGET /invoices/export\ttimed out\nretry 12 of 42\tGET /invoices/export\ttimed out\nretry 13 of 42\tGET /invoices/export\ttimed out\nretry 14 of 42\tGET /invoices/export\ttimed out\nretry 15 of 42\tGET /invoices/export\ttimed out\nretry 16 of 42\tGET /invoices/export\ttimed out\nretry 17 of 42\tGET /invoices/export\ttimed out\nretry 18 of 42\tGET /invoices/export\ttimed out\nretry 19 of 42\tGET /invoices/export\ttimed out\nretry 20 of 42\tGET /invoices/export\ttimed out\nretry 21 of 42\tGET /invoices/export\ttimed out\nretry 22 of 42\tGET /invoices/export\ttimed out\nretry 23 of 42\tGET /invoices/export\ttimed out\nretry 24 of 42\tGET /invoices/export\ttimed out\nretry 25 of 42\tGET /invoices/export\ttimed out\nretry 26 of 42\tGET /invoices/export\ttimed out\nretry 27 of 42\tGET /invoices/export\ttimed out\nretry 28 of 42\tGET /invoices/export\ttimed out\nretry 29 of 42\tGET /invoices/export\ttimed out\nretry 30 of 42\tGET /invoices/export\ttimed out\nretry 31 of 42\tGET /invoices/export\ttimed out\nretry 32 of 42\tGET /invoices/export\ttimed out\nretry 33 of 42\tGET /invoices/export\ttimed out\nretry 34 of 42\tGET /invoices/export\ttimed out\nretry 35 of 42\tGET /invoices/export\ttimed out\nretry 36 of 42\tGET /invoices/export\ttimed out\nretry 37 of 42\tGET /invoices/export\ttimed out\nretry 38 of 42\tGET /invoices/export\ttimed out\nretry 39 of 42\tGET /invoices/export\ttimed out\nretry 40 of 42\tGET /invoices/export\ttimed out\nretry 41 of 42\tGET /invoices/export\ttimed out\nretry 42 of 42\tGET /invoices/export\ttimed out" · t=1.0s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Explain how request retries work and where the retry limit is configured.
+
+  Now
+  Traced the retry logic in request.ts and explained where its limit is
+  configured, which errors trigger another attempt, and when failed requests
+  stop retrying automatically.
+  Last change 31s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+  ┌─ Reply to this session · 2 lines ────────────────────────────────────────┐
+  │ › CI fails on the same branch too; here is its log:                      │
+  │   [Pasted 42 lines · 1.9 KB]                                      Send → │
+  └─ Backspace removes the paste · Enter sends ──────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 32,21 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key backspace · t=1.2s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Explain how request retries work and where the retry limit is configured.
+
+  Now
+  Traced the retry logic in request.ts and explained where its limit is
+  configured, which errors trigger another attempt, and when failed requests
+  stop retrying automatically.
+  Last change 31s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+  ┌─ Reply to this session · 2 lines ────────────────────────────────────────┐
+  │ › CI fails on the same branch too; here is its log:                      │
+  │                                                                   Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 6,21 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> paste "retry 1 of 42\tGET /invoices/export\ttimed out\nretry 2 of 42\tGET /invoices/export\ttimed out\nretry 3 of 42\tGET /invoices/export\ttimed out\nretry 4 of 42\tGET /invoices/export\ttimed out\nretry 5 of 42\tGET /invoices/export\ttimed out\nretry 6 of 42\tGET /invoices/export\ttimed out\nretry 7 of 42\tGET /invoices/export\ttimed out\nretry 8 of 42\tGET /invoices/export\ttimed out\nretry 9 of 42\tGET /invoices/export\ttimed out\nretry 10 of 42\tGET /invoices/export\ttimed out\nretry 11 of 42\tGET /invoices/export\ttimed out\nretry 12 of 42\tGET /invoices/export\ttimed out\nretry 13 of 42\tGET /invoices/export\ttimed out\nretry 14 of 42\tGET /invoices/export\ttimed out\nretry 15 of 42\tGET /invoices/export\ttimed out\nretry 16 of 42\tGET /invoices/export\ttimed out\nretry 17 of 42\tGET /invoices/export\ttimed out\nretry 18 of 42\tGET /invoices/export\ttimed out\nretry 19 of 42\tGET /invoices/export\ttimed out\nretry 20 of 42\tGET /invoices/export\ttimed out\nretry 21 of 42\tGET /invoices/export\ttimed out\nretry 22 of 42\tGET /invoices/export\ttimed out\nretry 23 of 42\tGET /invoices/export\ttimed out\nretry 24 of 42\tGET /invoices/export\ttimed out\nretry 25 of 42\tGET /invoices/export\ttimed out\nretry 26 of 42\tGET /invoices/export\ttimed out\nretry 27 of 42\tGET /invoices/export\ttimed out\nretry 28 of 42\tGET /invoices/export\ttimed out\nretry 29 of 42\tGET /invoices/export\ttimed out\nretry 30 of 42\tGET /invoices/export\ttimed out\nretry 31 of 42\tGET /invoices/export\ttimed out\nretry 32 of 42\tGET /invoices/export\ttimed out\nretry 33 of 42\tGET /invoices/export\ttimed out\nretry 34 of 42\tGET /invoices/export\ttimed out\nretry 35 of 42\tGET /invoices/export\ttimed out\nretry 36 of 42\tGET /invoices/export\ttimed out\nretry 37 of 42\tGET /invoices/export\ttimed out\nretry 38 of 42\tGET /invoices/export\ttimed out\nretry 39 of 42\tGET /invoices/export\ttimed out\nretry 40 of 42\tGET /invoices/export\ttimed out\nretry 41 of 42\tGET /invoices/export\ttimed out\nretry 42 of 42\tGET /invoices/export\ttimed out" · t=1.4s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Explain how request retries work and where the retry limit is configured.
+
+  Now
+  Traced the retry logic in request.ts and explained where its limit is
+  configured, which errors trigger another attempt, and when failed requests
+  stop retrying automatically.
+  Last change 31s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+  ┌─ Reply to this session · 2 lines ────────────────────────────────────────┐
+  │ › CI fails on the same branch too; here is its log:                      │
+  │   [Pasted 42 lines · 1.9 KB]                                      Send → │
+  └─ Backspace removes the paste · Enter sends ──────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 32,21 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key enter · t=1.6s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Explain how request retries work and where the retry limit is configured.
+
+  Now
+  Traced the retry logic in request.ts and explained where its limit is
+  configured, which errors trigger another attempt, and when failed requests
+  stop retrying automatically.
+  Last change 31s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+  The sample sends nothing.
+  ┌─ Reply to this session · 2 lines ────────────────────────────────────────┐
+  │ › CI fails on the same branch too; here is its log:                      │
+  │   [Pasted 42 lines · 1.9 KB]                                      Send → │
+  └─ Backspace removes the paste · Enter sends ──────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 32,21 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0

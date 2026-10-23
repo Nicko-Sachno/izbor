@@ -138,11 +138,13 @@ function optionProblem(option: string, command: Command): string {
 }
 
 function screenOptions(options: Map<string, string>, env: Record<string, string | undefined>): ScreenFlags {
+    const dumb = env.TERM === "dumb";
     return {
-        color: !options.has("--no-color") && env.NO_COLOR === undefined && env.TERM !== "dumb",
+        color: !options.has("--no-color") && env.NO_COLOR === undefined && !dumb,
         mouse: !options.has("--no-mouse"),
         bell: !options.has("--no-bell"),
         oldBuild: env.IZBOR_OLD_BUILD === "1",
+        ...(dumb && { dumb: true }),
     };
 }
 

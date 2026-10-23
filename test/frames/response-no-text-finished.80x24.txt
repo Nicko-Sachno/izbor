@@ -1,0 +1,76 @@
+response-no-text-finished.80x24
+a reply that finished with no text: the divider's count alone, no `· no text yet`, above Reply finished
+80x24 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Explain how request retries work and where the retry limit is configured.
+
+  Now
+  Explained where the retry limit is set.
+  Last change 30s ago
+
+  s · Stop observing
+
+  ─────────────────────────────────────────────────────────── rows 1-5 of 5 ──
+  ● Searched for 1 pattern, read 2 files
+  ● Bash(git log --oneline -1 -- src/request/send.ts)
+    ⎿  9b1e0d2 Retry timeouts and 5xx responses
+
+  Reply finished · 30s ago
+
+
+
+
+  ┌─ Reply to this session ──────────────────────────────────────────────────┐
+  │ › your next prompt                                                Send → │
+  └──────────────────────────────────────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+
+styles
+                                                                    mmmmmmmmmm
+  gggggggggg
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+
+  mmm
+  ccccccccccccccccccccccccccccccccccccccc
+  mmmmmmmmmmmmmmmmmmm
+
+  gggggggggggggggggg
+
+  ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo mmmmmmmmmmmmm oo
+  d tttttttttttttTtttttttttttttttTtttttt
+  d TTTTttttttttttttttttttttttttttttttttttttttttttttt
+    m  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+  dddddddddddddddddddddddd
+
+
+
+
+  oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+  ooffmmmmmmmmmmmmmmmm                                                ggggggoo
+  oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+                                                                 ggggggggggggg
+
+legend
+  T  text bold
+  c  reply
+  d  done
+  f  focus
+  g  focus underline
+  m  muted
+  o  border
+  t  text
+  ©  taskFill
+
+layout  scroll 0 · maxScroll 0 · pageSize 16 · viewport 2,3 76x16
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     65,23 13x1
+  send     70,21 6x1
+  field    2,20 76x3  origin 6  indices 0*64
+  stop     2,8 18x1  c8219b07-e082-4ac4-9bdf-4abfe6fcfc8e

@@ -4,7 +4,7 @@ import type { TerminalSize, TerminalView, ViewportLayout } from "./model.js";
 import { TerminalScreen } from "./screen.js";
 
 export function renderTerminal(view: Readonly<TerminalView>, size: TerminalSize, color = false, now = new Date()) {
-    let layout: ViewportLayout = { maxScroll: 0, pageSize: 0, scroll: 0 };
+    let layout: ViewportLayout = { maxScroll: 0, pageSize: 0, step: 0, scroll: 0 };
     const snapshot = { ...view };
     const output = renderToString(
         createElement(TerminalScreen, {

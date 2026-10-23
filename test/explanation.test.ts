@@ -512,7 +512,7 @@ const wrote = (text: string, timestamp: string) => dated(msg("assistant", [{ typ
 
 test("what Claude wrote between its tool calls is among the recent actions, in the order it happened and only once", async () => {
     const transcript = [msg("user", "fix the login redirect")];
-    const { handle, started, timer, clock, summarizer } = await explaining(transcript);
+    const { handle, brief, started, timer, clock, summarizer } = await explaining(transcript);
     await started;
 
     clock.at("12:00:01");
@@ -524,9 +524,23 @@ test("what Claude wrote between its tool calls is among the recent actions, in t
     await handled;
     await timer.advance(4000);
 
-    assert.match(
+    assert.ok(brief().response?.items.some((item) => item.type === "text" && item.text.includes("redirect\nis built")));
+    assert.equal(
         summarizer.requests[0]!.request.input,
-        /- prompt submitted\n- Claude wrote: I'll look at how the redirect is built first\.\n- started Read: src\/auth\.ts$/,
+        [
+            "Task:",
+            "fix the login redirect",
+            "",
+            "Brief:",
+            "Status: unknown",
+            "Latest activity: started Read: src/auth.ts",
+            "Needs you: unknown",
+            "",
+            "Recent actions, oldest first:",
+            "- prompt submitted",
+            "- Claude wrote: I'll look at how the redirect is built first.",
+            "- started Read: src/auth.ts",
+        ].join("\n"),
     );
 
     transcript.shift();

@@ -1,0 +1,67 @@
+words-code.80x24.no-color
+the agent's code blocks without colour, scrolled to the full response: the fence lines back as written, 2 columns in, with no language row, and the count of the lines cut over the closing fence
+80x24 · no color · now 2026-10-09T12:00:00.000Z
+
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Make the retry limit configurable per client and cover it with tests.
+  Agent's last message · 30s ago
+    ```hcl
+    client "billing" {
+      max_retries = 5
+      backoff {
+        first  = "200ms"
+        factor = 2
+    … 12 more lines
+    ```
+
+    ```
+    npm run bench -- retries --config bench.hcl --clients billing,sync
+    --report bench.ndjson
+    ```
+
+  Reply finished · 30s ago
+
+  ┌─ Reply to this session ──────────────────────────────────────────────────┐
+  │ › your next prompt                                                Send → │
+  └──────────────────────────────────────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+
+styles
+
+  __________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                      ______
+
+                                                                 _____________
+
+legend
+  _  underline
+
+layout  scroll 8 · maxScroll 8 · pageSize 16 · viewport 2,3 76x16
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     65,23 13x1
+  send     70,21 6x1
+  field    2,20 76x3  origin 6  indices 0*64

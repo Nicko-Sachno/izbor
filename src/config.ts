@@ -87,6 +87,14 @@ export type ScreenFlags = {
     mouse: boolean;
     bell: boolean;
     oldBuild: boolean;
+    /** TERM=dumb: such a terminal draws no attribute either, so colour off draws plain text there. */
+    dumb?: true;
+    /** The terminal opens OSC 8 links, so the agent's links are drawn as links. */
+    links?: boolean;
+    /** The terminal shows strikethrough, so the agent's `~~struck~~` text is struck through. */
+    strike?: boolean;
+    /** The terminal reports keys under the kitty keyboard protocol, so Shift-Enter in the field starts a new line. */
+    keys?: "kitty";
 };
 
 export function readConfig(

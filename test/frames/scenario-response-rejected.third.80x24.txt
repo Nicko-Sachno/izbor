@@ -1,0 +1,76 @@
+scenario-response-rejected.third.80x24
+the sample case response-rejected: the third session opened
+80x24 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Rebuild the project from a clean build folder.
+
+  Now
+  Asked to remove build/ before rebuilding; the request was rejected.
+  Last change 38s ago
+
+  s · Stop observing
+
+  Agent's last message · 40s ago
+  I'll clear the old output first, then rebuild.
+
+  ● Bash(rm -rf build/)
+    ⎿  Rejected by the user
+
+  Reply ended: rejected by the user: Bash: rm -rf build/
+
+
+
+  ┌─ Reply to this session ──────────────────────────────────────────────────┐
+  │ › your next prompt                                                Send → │
+  └──────────────────────────────────────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+
+styles
+                                                                    mmmmmmmmmm
+  gggggggggg
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+
+  mmm
+  ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+  mmmmmmmmmmmmmmmmmmm
+
+  gggggggggggggggggg
+
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+  tttttttttttttttttttttttttttttttttttttttttttttt
+
+  r TTTTttttttttttttttt
+    r  rrrrrrrrrrrrrrrrrrrr
+
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+
+
+  oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+  ooffmmmmmmmmmmmmmmmm                                                ggggggoo
+  oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+                                                                 ggggggggggggg
+
+legend
+  T  text bold
+  c  reply
+  f  focus
+  g  focus underline
+  m  muted
+  o  border
+  r  error
+  t  text
+  ©  taskFill
+
+layout  scroll 0 · maxScroll 0 · pageSize 16 · viewport 2,3 76x16
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     65,23 13x1
+  send     70,21 6x1
+  field    2,20 76x3  origin 6  indices 0*64
+  stop     2,8 18x1  c8219b07-e082-4ac4-9bdf-4abfe6fcfc8e

@@ -17,8 +17,6 @@ export function notAnswering(port: number, outcome = ""): string {
     return `Izbor on ${port} does not answer (hung, or paused?).${outcomeSuffix}`;
 }
 
-export const counted = (count: number, word: string) => `${count} ${word}${count === 1 ? "" : "s"}`;
-
 export function settingsReport<Done extends string>(
     command: string,
     result: SettingsChange<Done>,

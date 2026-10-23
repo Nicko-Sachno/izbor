@@ -1,13 +1,8 @@
 import type { ReactNode } from "react";
-import chalk from "chalk";
 import { Box, Text } from "ink";
-import { GLYPHS, palette, palette16, refusalWords, wrapLines, type Tone } from "./presentation.js";
-
-type CopyStyle = { color: boolean; tone?: Tone; bold?: boolean; underline?: boolean };
-
-export function toneColor(tone: Tone): string | undefined {
-    return chalk.level >= 2 ? palette[tone] : palette16[tone];
-}
+import stringWidth from "string-width";
+import { toneColor, type CopyStyle } from "./paint.js";
+import { GLYPHS, refusalWords, wrapLines } from "./presentation.js";
 
 export function Copy({
     children,
@@ -39,6 +34,25 @@ export function Badge({ color }: { color: boolean }) {
     );
 }
 
+/**
+ * Your Task's rows on the Task fill, as Claude Code draws your prompt, so they read apart from the agent's words: each
+ * row filled from one column before its first character to one column past `width`, so the words keep their column and
+ * a wrapped Task is one solid block. Drawn only with colour on; the fill is a background, so a copy gets only the words.
+ */
+export function TaskFill({ title, width, underline }: { title: string; width: number; underline: boolean }) {
+    return (
+        <Box width={width + 2} marginX={-1} flexDirection="column" flexShrink={0}>
+            {title.split("\n").map((row, index) => (
+                <Text key={index} color={toneColor("text")} backgroundColor={toneColor("taskFill")}>
+                    {" "}
+                    <Text underline={underline}>{row}</Text>
+                    {" ".repeat(Math.max(0, width - stringWidth(row)) + 1)}
+                </Text>
+            ))}
+        </Box>
+    );
+}
+
 export type Glyph = keyof typeof GLYPHS;
 
 const MARK_STYLES: Record<Glyph, Omit<CopyStyle, "color">> = {
@@ -47,6 +61,7 @@ const MARK_STYLES: Record<Glyph, Omit<CopyStyle, "color">> = {
     idle: { tone: "done" },
     unknown: { tone: "muted" },
     notice: { tone: "muted" },
+    refused: { tone: "error", bold: true },
 };
 
 export function Mark({ glyph, color }: { glyph: Glyph | undefined; color: boolean }) {

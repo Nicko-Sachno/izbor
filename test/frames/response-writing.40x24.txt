@@ -1,0 +1,76 @@
+response-writing.40x24
+W3 at 40 columns: the third session's Brief page, its label in the medium form under Stop observing
+40x24 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                            Izbor ● up
+  Back · Esc
+  Make the retry limit configurable
+  per client and cover it with tests.
+
+  Now
+  Running the request tests after
+  making the limit per client.
+  Last change 4s ago
+
+  s · Stop observing
+
+  Latest message so far · 40s ago
+  sendWithRetry() now reads the limit
+  from the client's options:
+
+    const limit =
+    client.options.maxRetries ?? 3;
+  ↓ 5 more · PgDn
+
+  ┌─ Reply to this session ──────────┐
+  │ › your next prompt; it runs whe… │
+  └──────────────────────────────────┘
+                         Help · Ctrl-G
+
+styles
+                            mmmmmmmmmm
+  gggggggggg
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+
+  mmm
+  ccccccccccccccccccccccccccccccc
+  cccccccccccccccccccccccccccc
+  mmmmmmmmmmmmmmmmmm
+
+  gggggggggggggggggg
+
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+  qqqqqqqqqqqqqqqtttttttttttttttttttt
+  tttttttttttttttttttttttttt
+
+    [[[[[
+                                 !
+  mmmmmmmmmmmmmmm
+
+  oooooooooooooooooooooooooooooooooooo
+  ooffmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmoo
+  oooooooooooooooooooooooooooooooooooo
+                         ggggggggggggg
+
+legend
+  !  green
+  [  blue
+  c  reply
+  f  focus
+  g  focus underline
+  m  muted
+  o  border
+  q  code
+  t  text
+  ©  taskFill
+
+layout  scroll 0 · maxScroll 28 · pageSize 15 · viewport 2,4 36x15
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     25,23 13x1
+  field    2,20 36x3  origin 6  indices 0*31
+  stop     2,10 18x1  c8219b07-e082-4ac4-9bdf-4abfe6fcfc8e

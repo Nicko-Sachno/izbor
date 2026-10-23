@@ -1,5 +1,5 @@
 import { DETAIL_FOCUS, FIELD_FOCUS, HELP_FOCUS } from "./focus.js";
-import type { NavigationView, Screen, ViewportLayout } from "./model.js";
+import { METADATA_TARGET, type NavigationView, type Screen, type ViewportLayout } from "./model.js";
 
 type ContentPage = { kind: "overview"; screen: Screen } | { kind: "brief"; session: string; overviewScroll: number };
 type TerminalPage = ContentPage | { kind: "help"; returnTo: ContentPage; focused: string | null; scroll: number };
@@ -263,7 +263,7 @@ export function createNavigation(size: { wide: boolean; small: boolean }) {
             view.metadataExpanded = !view.metadataExpanded;
             if (view.metadataExpanded) {
                 view.metadataScroll = view[scroll];
-                view[scroll] = Number.MAX_SAFE_INTEGER;
+                view[scroll] = METADATA_TARGET;
             } else view[scroll] = view.metadataScroll;
         },
         hideBrief() {

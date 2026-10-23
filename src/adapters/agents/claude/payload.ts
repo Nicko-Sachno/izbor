@@ -17,6 +17,12 @@ export type HookPayload = {
     tool_response?: unknown;
     background_tasks?: { description?: string }[];
     error?: string;
+    /** StopFailure's: more about its `error` category. Unchecked by the reader, so read with `typeof`. */
+    error_details?: unknown;
+    /** PostToolUseFailure's: true when the tool stopped by an abort, as on Esc. A Bash command stopped by Esc fails with
+     *  a shell error instead: it carries false, and its `error` holds the interrupt line after `Exit code N`.
+     *  Unchecked by the reader, so read as `=== true`. */
+    is_interrupt?: unknown;
     source?: string;
     reason?: string;
     notification_type?: string;

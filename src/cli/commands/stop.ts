@@ -3,7 +3,8 @@ import type { CliArgs } from "../args.js";
 import { izborAddress, STOP_TIMEOUT_MS } from "../../config.js";
 import type { Platform, Wait } from "../../core/ports.js";
 import { PROBE_EVERY_MS } from "./open.js";
-import { counted, notAnswering, notIzbor, type CommandReport } from "./report.js";
+import { counted } from "../../domain/text.js";
+import { notAnswering, notIzbor, type CommandReport } from "./report.js";
 
 export type StopArgs = Extract<CliArgs, { command: "stop" }>;
 

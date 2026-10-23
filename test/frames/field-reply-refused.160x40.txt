@@ -41,13 +41,13 @@ screen
                                                                                               │  from here.
                                                                                               │  ┌─ Reply to this session ───────────────────────────────────┐
                                                                                               │  │ › run the tests again                              Send → │
-                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                              │  └─ Ctrl-J new line · Enter sends ───────────────────────────┘
                                                                                                                                                  Help · Ctrl-G
 
 styles
                                                                                                                                                     mmmmmmmmmm
-  nnnnnnnn  TTTTTTTTTTTT  mmmmmm                                                              o  tttttttttttttttttttttttttttttttttttttttttttttt       gggggggg
-                                                                                              o  tttttttttttttttttttttttttt
+  nnnnnnnn  TTTTTTTTTTTT  mmmmmm                                                              o ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©© gggggggg
+                                                                                              o ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
    k tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt           o
      mmmmmmm                                                                                  o  mmm
      ccccccccccccccccccccccccccccc                                                            o  cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
@@ -83,7 +83,7 @@ styles
                                                                                               o  RRRRRRRRRR
                                                                                               o  fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
                                                                                               o  ffffttttttttttttttttttt                              ggggggff
-                                                                                              o  fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+                                                                                              o  fffmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffffffffffffffffffffffffffff
                                                                                                                                                  ggggggggggggg
 
 legend
@@ -101,6 +101,7 @@ legend
   n  muted underline
   o  border
   t  text
+  ©  taskFill
 
 layout  scroll 0 · maxScroll 0 · pageSize 35 · viewport 2,3 90x35
 detail  scroll 0 · maxScroll 0 · pageSize 31 · viewport 97,3 61x31

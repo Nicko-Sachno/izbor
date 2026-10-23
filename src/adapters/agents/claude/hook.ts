@@ -17,7 +17,7 @@ export function readHook(body: string, receivedAt: Date): Hook | undefined {
         sessionId,
         sessionOver: name === "SessionEnd",
         cwd: payload.cwd,
-        ended: name === "Stop" || name === "SessionEnd",
+        ended: name === "Stop" || name === "StopFailure" || name === "SessionEnd",
         event: toEventRecord(payload, sessionId, receivedAt),
         evidence: toEvidence(payload, receivedAt),
         record: { kind: "hook", sessionId, timestamp: receivedAt.toISOString(), payload },

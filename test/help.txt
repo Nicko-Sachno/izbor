@@ -30,7 +30,7 @@ Ctrl-C / Ctrl-D  Quit Izbor and restore your terminal
 
 --port applies to the terminal app and to serve, stop, status, hooks and plugin.
 For a folder that starts with a dash, use: izbor hooks -- -folder (or izbor plugin -- -folder).
---no-color, --no-mouse and --no-bell work only in the terminal app. --no-color disables styling.
+--no-color, --no-mouse and --no-bell work only in the terminal app. --no-color turns colour off; bold, italic, underline and reverse stay.
 --no-mouse leaves mouse gestures to your terminal, including text selection.
 --no-bell turns off the bell, which rings when an observed session starts waiting or an answer is not taken.
 At 140 columns × 20 rows, Sessions and Brief split 60/40 after padding.

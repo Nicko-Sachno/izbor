@@ -6,7 +6,6 @@ import {
     unseenWait,
     waitStart,
     type Connection,
-    type HitTarget,
     type Observation,
     type IzborState,
     type Rectangle,
@@ -21,7 +20,7 @@ import { projectsOf } from "./projects.js";
 import {
     blinkShown,
     clip,
-    commandWindow,
+    clockTime,
     fullTime,
     headingTitle,
     openTitle,
@@ -35,12 +34,15 @@ import {
     type Tone,
     type Words,
 } from "./presentation.js";
-import { Badge, Copy, feedbackText, FeedbackLine, Mark, Spans, type Glyph, type Span } from "./copy.js";
+import { Badge, Copy, feedbackText, FeedbackLine, Mark, Spans, TaskFill, type Glyph, type Span } from "./copy.js";
+import { lookOf, paint } from "./paint.js";
 import { Help } from "./help-page.js";
 import { ProjectGroup } from "./home-list.js";
 import {
     acts,
     closingLines,
+    fieldEdge,
+    fieldHint,
     fieldTitle,
     hooked,
     placeholderOn,
@@ -49,17 +51,23 @@ import {
     type BriefLine,
 } from "./field.js";
 import { DETAIL_FOCUS, FIELD_FOCUS, focusedCheckout, HELP_FOCUS } from "./focus.js";
-import { inputLayout, terminalLayout } from "./layout.js";
-import { sameScrollLayout, viewportLayout, type MeasuredTarget, type ViewportHistory } from "./viewport.js";
+import { fieldText, fieldWindow } from "./field-window.js";
+import { bodyLayout, BRIEF_WIDTH, inputLayout, terminalLayout } from "./layout.js";
+import { ResponseFooter } from "./response/footer.js";
+import { drawnResponse, ResponseView } from "./response/view.js";
+import { measuredResponse, screenTargets, type ScreenElement } from "./targets.js";
+import { sameAnchors, sameScrollLayout, viewportLayout, type ViewportHistory } from "./viewport.js";
 
 export function contains(rect: Rectangle, x: number, y: number): boolean {
     return x >= rect.x && x < rect.x + rect.width && y >= rect.y && y < rect.y + rect.height;
 }
 
-const kept = (elements: RefObject<Map<string, DOMElement>>, key: string) => (element: DOMElement | null) => {
-    if (element) elements.current.set(key, element);
-    else elements.current.delete(key);
-};
+const kept =
+    <Key,>(elements: RefObject<Map<Key, DOMElement>>, key: Key) =>
+    (element: DOMElement | null) => {
+        if (element) elements.current.set(key, element);
+        else elements.current.delete(key);
+    };
 
 type ScreenProps = {
     view: Readonly<TerminalView>;
@@ -131,13 +139,6 @@ function rowGlyph(brief: TerminalBrief | null, notice: string, at: Date): Glyph 
     if (brief?.status === "waiting") return blinkShown(waitStart(brief), at) ? "needsYou" : undefined;
     if (!brief || notice) return "notice";
     return brief.status === "busy" ? "working" : brief.status === "idle" ? "idle" : "unknown";
-}
-
-function clockTime(at: string): string {
-    const time = new Date(at);
-    return [time.getHours(), time.getMinutes(), time.getSeconds()]
-        .map((part) => String(part).padStart(2, "0"))
-        .join(":");
 }
 
 function gapText({ gap }: Observation): string | undefined {
@@ -261,12 +262,9 @@ function SessionHeading({
     color: boolean;
 }) {
     const title = headingTitle({ id, brief }, width, rows);
-    return (
-        <Spans
-            color={color}
-            spans={[{ text: title, tone: brief && !brief.task ? "muted" : "text", underline: focused }]}
-        />
-    );
+    if (color && brief?.task) return <TaskFill title={title} width={width} underline={focused} />;
+    const tone = brief && !brief.task ? "muted" : "text";
+    return <Spans color={color} spans={[{ text: title, tone, underline: focused }]} />;
 }
 
 const rowsOf = (text: string) => text.split("\n").length;
@@ -280,6 +278,20 @@ function ClosingLines({ lines, color, width }: { lines: readonly BriefLine[]; co
 }
 
 const LATE_BRIEF = "Briefs update late: add hooks for live updates";
+
+// `Latest:` stands while Working with nothing asked, and goes while the full response shows, which says it too (T3).
+const latestText = (brief: TerminalBrief | null) =>
+    !brief?.response && brief?.status === "busy" && brief.needsYou.state === "nothing"
+        ? brief.latestActivity?.text
+        : undefined;
+
+// A Brief whose response says nothing of what `Latest:` says draws as a brief without one, `Latest:` included: one
+// with no row yet, as while the agent waits or writes with no item, or with only the No transcript line.
+function withoutResponse(session: Observation): Observation {
+    if (!session.brief?.response) return session;
+    const { response: _saysNoLatest, ...brief } = session.brief;
+    return { ...session, brief };
+}
 
 type FullBriefProps = {
     session: Observation;
@@ -313,7 +325,7 @@ function FullBrief({ session, color, now, width, late, metadataExpanded, closing
     const unknown = explanationUnknown(brief?.explanationUnknownReason);
     const task = brief?.task?.text ?? "Unknown";
     const nowTone = notice || brief?.explanation?.outdatedReason ? "muted" : "reply";
-    const latest = brief?.status === "busy" && brief.needsYou.state === "nothing" && brief.latestActivity?.text;
+    const latest = latestText(brief);
     const asked = brief?.needsYou.state === "request" ? brief.needsYou : undefined;
     const wait = brief?.needsYou.state === "unknown" && unseenWait(brief) ? brief.needsYou : undefined;
     const request = asked?.text ?? (wait ? unknownLine(wait) : rowRequest(brief));
@@ -459,7 +471,7 @@ function SideBrief({
                     overflow="hidden"
                     contentOffsetY={scroll}
                 >
-                    <Box ref={contentRef} width={Math.min(82, width)} flexDirection="column" flexShrink={0}>
+                    <Box ref={contentRef} width={width} flexDirection="column" flexShrink={0}>
                         {children}
                     </Box>
                 </Box>
@@ -474,7 +486,9 @@ type FieldBoxProps = {
     width: number;
     tone: Tone;
     title: string;
-    text: string;
+    hint: string;
+    /** The rows of text the box shows, top to bottom. */
+    rows: string[];
     empty: boolean;
     placeholder: string;
     submitLabel: string;
@@ -483,57 +497,50 @@ type FieldBoxProps = {
     submitRef: Ref<DOMElement>;
 };
 
-function FieldBox({
-    color,
-    width,
-    tone,
-    title,
-    text,
-    empty,
-    placeholder,
-    submitLabel,
-    boxRef,
-    contentRef,
-    submitRef,
-}: FieldBoxProps) {
+// The box grows upward a row for each row of its text: `›` stands on the first row, `Send →` on the last.
+function FieldBox(props: FieldBoxProps) {
+    const { color, width, tone, title, rows, empty, placeholder, submitLabel, boxRef, contentRef, submitRef } = props;
     const { submit, inputWidth } = inputLayout(width, submitLabel);
+    const sendRef = (index: number) => (index === rows.length - 1 ? submitRef : undefined);
+    const muted = (words: string) => paint(words, lookOf(color), { tone: "muted" });
     return (
-        <Box ref={boxRef} height={3} flexShrink={0} flexDirection="column">
-            <Copy color={color} tone={tone}>
-                {`┌${title}${"─".repeat(Math.max(0, width - 2 - title.length))}┐`}
-            </Copy>
-            <Box height={1} flexShrink={0}>
-                <Copy color={color} tone={tone}>
-                    │{" "}
-                </Copy>
-                <Copy color={color} tone="focus">
-                    ›{" "}
-                </Copy>
-                <Box ref={contentRef} width={inputWidth} flexShrink={0} overflow="hidden">
-                    <Copy color={color} tone={empty ? "muted" : "text"}>
-                        {empty ? clip(placeholder, inputWidth) : text}
+        <Box ref={boxRef} height={2 + rows.length} flexShrink={0} flexDirection="column">
+            <Copy color={color} tone={tone}>{`┌${fieldEdge(title, width)}┐`}</Copy>
+            {rows.map((row, index) => (
+                <Box key={index} height={1} flexShrink={0}>
+                    <Copy color={color} tone={tone}>
+                        │{" "}
                     </Copy>
-                </Box>
-                {submit && (
-                    <Box marginLeft={1} ref={submitRef} width={submitLabel.length} flexShrink={0}>
-                        <Copy color={color} tone="focus" underline>
-                            {submitLabel}
+                    <Copy color={color} tone="focus">
+                        {index ? "  " : "› "}
+                    </Copy>
+                    <Box ref={index ? undefined : contentRef} width={inputWidth} flexShrink={0} overflow="hidden">
+                        <Copy color={color} tone={empty ? "muted" : "text"}>
+                            {empty ? clip(placeholder, inputWidth) : row}
                         </Copy>
                     </Box>
-                )}
-                <Copy color={color} tone={tone}>
-                    {" "}
-                    │
-                </Copy>
-            </Box>
-            <Copy color={color} tone={tone}>{`└${"─".repeat(Math.max(0, width - 2))}┘`}</Copy>
+                    {submit ? (
+                        <Box marginLeft={1} ref={sendRef(index)} width={submitLabel.length} flexShrink={0}>
+                            <Copy color={color} tone="focus" underline>
+                                {index === rows.length - 1 ? submitLabel : null}
+                            </Copy>
+                        </Box>
+                    ) : null}
+                    <Copy color={color} tone={tone}>
+                        {" "}
+                        │
+                    </Copy>
+                </Box>
+            ))}
+            <Copy color={color} tone={tone}>{`└${fieldEdge(props.hint, width, muted)}┘`}</Copy>
         </Box>
     );
 }
 
-function SideField({ box, line }: { box: FieldBoxProps | undefined; line: ReactNode }) {
+function SideField({ box, line, footer }: { box: FieldBoxProps | undefined; line: ReactNode; footer: ReactNode }) {
     return (
         <Box flexDirection="column" flexShrink={0}>
+            {footer}
             <Box minHeight={box ? 1 : 0} flexShrink={0}>
                 {line}
             </Box>
@@ -596,117 +603,103 @@ export function TerminalScreen({ view, size, color, now = new Date(), onLayout }
     const closing = fieldSession && mode ? closingLines(fieldSession, acts(fieldSession.id, view.list), now) : [];
     const fieldFocused = view.focused === FIELD_FOCUS;
     const fieldWidth = showDetail ? detailWidth : width;
-    const fieldInput = commandWindow(view.field.text, view.field.cursor, inputLayout(fieldWidth, SEND).inputWidth);
-    const pageField = mode !== undefined && !showDetail;
-    const topGap = expanded || view.help ? 0 : 1;
+    const { inputWidth } = inputLayout(fieldWidth, SEND);
+    const typed = fieldText(view.field.text, view.field.cursor, inputWidth, view.field.pasted, lookOf(color));
     const shown = shownMessage(view, mode ? fieldSession : undefined);
     const shownWidth = showDetail ? detailWidth : width;
     const shownRows = shown ? feedbackText(shown, shownWidth).split("\n").length : 0;
-    const extraRows = showDetail ? 0 : Math.max(0, shownRows - 1);
-    const pageRows = (expanded && !view.help ? rowsOf(title) : 0) + (pageField ? 3 : 0);
-    const bodyRows = Math.max(0, geometry.bodyRows - topGap - pageRows - extraRows);
-    const paneRows = geometry.bodyRows + 2;
-    const detailRows = Math.max(0, paneRows - rowsOf(title) - (mode ? 3 + Math.max(1, shownRows) : shownRows));
-    const fullBrief = (session: Observation, paneWidth: number, stopRef: Ref<DOMElement>) => (
-        <FullBrief
-            session={session}
-            color={color}
-            now={now}
-            width={Math.min(82, paneWidth)}
-            late={!hooked(session.id, view.list)}
-            metadataExpanded={view.metadataExpanded}
-            closing={closing}
-            stopRef={stopRef}
-            taskCut={title.endsWith("…")}
-        />
-    );
+    const { topGap, extraRows, bodyRows, paneRows, detailRows, codeRows, inputRows } = bodyLayout(geometry.bodyRows, {
+        titleRows: rowsOf(title),
+        brief: expanded !== undefined,
+        help: view.help,
+        field: mode ? typed.rows.length : 0,
+        side: showDetail,
+        shownRows,
+        response: Boolean(fieldSession?.brief?.response),
+    });
+    const [fieldAbove, setFieldAbove] = useState(0);
+    const fieldInput = fieldWindow(typed, inputRows, fieldAbove);
+    // The Brief, then the full response under it at the pane's width, outside the Brief's text width, in either pane;
+    // with the footer that stands under the pane's view while rows of the page remain below it, the response's rows for
+    // the layout, and the scroll the view draws at, which keeps what you read in place until the layout measures again.
+    const fullBrief = (session: Observation, side: "main" | "detail") => {
+        const main = side === "main";
+        const paneWidth = main ? width : detailWidth;
+        const measured = main ? layout : layout.detail;
+        const responseRef = elementRef(main ? "response" : "detailResponse");
+        const response = session.brief?.response;
+        const late = !hooked(session.id, view.list);
+        const noHooks = late && session.brief?.status === "idle";
+        const drawing = { width: paneWidth, look: lookOf(color, view.abilities), now, noHooks, codeRows };
+        const reading = { anchor: anchors?.[side], scroll: main ? view.scroll : view.detailScroll };
+        const { rows, pane, footer, saysLatest } = drawnResponse(response, drawing, measured, reading);
+        const content = (
+            <>
+                <FullBrief
+                    session={saysLatest ? session : withoutResponse(session)}
+                    color={color}
+                    now={now}
+                    width={Math.min(BRIEF_WIDTH, paneWidth)}
+                    late={late}
+                    metadataExpanded={view.metadataExpanded}
+                    closing={closing}
+                    stopRef={elementRef(main ? "stop" : "detailStop")}
+                    taskCut={title.endsWith("…")}
+                />
+                {rows.length ? <ResponseView rows={rows} width={paneWidth} pane={pane} ref={responseRef} /> : null}
+            </>
+        );
+        return { content, footer: footer ? <ResponseFooter line={footer} /> : null, rows, scroll: pane?.scroll };
+    };
     const shownLine = <FeedbackLine line={shown} width={shownWidth} color={color} />;
-    const content = useRef<DOMElement>(null);
-    const viewport = useRef<DOMElement>(null);
-    const detailPane = useRef<DOMElement>(null);
-    const detailContent = useRef<DOMElement>(null);
-    const detailViewport = useRef<DOMElement>(null);
+    const elements = useRef(new Map<ScreenElement, DOMElement>());
+    const elementRef = (key: ScreenElement) => kept(elements, key);
     const sessionElements = useRef(new Map<string, DOMElement>());
     const lineElements = useRef(new Map<string, DOMElement>());
     const lineRef = (focus: string) =>
         kept(focusedCheckout(focus) !== undefined ? lineElements : sessionElements, focus);
-    const backControl = useRef<DOMElement>(null);
-    const helpControl = useRef<DOMElement>(null);
-    const stopControl = useRef<DOMElement>(null);
-    const detailStopControl = useRef<DOMElement>(null);
-    const hideControl = useRef<DOMElement>(null);
-    const homeTab = useRef<DOMElement>(null);
-    const sessionsTab = useRef<DOMElement>(null);
-    const fieldFrame = useRef<DOMElement>(null);
-    const fieldContent = useRef<DOMElement>(null);
-    const sendControl = useRef<DOMElement>(null);
     const [fieldOrigin, setFieldOrigin] = useState<CursorPosition>();
+    // The last layout's history, which the next layout starts from, and the same in state for the view to draw from.
     const viewportHistory = useRef<ViewportHistory>(undefined);
+    const [anchors, setAnchors] = useState<ViewportHistory>();
     const [layout, setLayout] = useState<ViewportLayout>({
         maxScroll: 0,
         pageSize: bodyRows,
+        step: bodyRows,
         scroll: 0,
     });
+    const page = small || view.help ? undefined : expanded && fullBrief(expanded, "main");
+    const side = showDetail && selectedSession ? fullBrief(selectedSession, "detail") : undefined;
     useLayoutEffect(() => {
         if (small) {
-            onLayout?.({ maxScroll: 0, pageSize: 0, scroll: view.scroll, targets: [] });
+            onLayout?.({ maxScroll: 0, pageSize: 0, step: 0, scroll: view.scroll, targets: [] });
             return;
         }
-        if (fieldContent.current) {
-            const { x, y } = measureElement(fieldContent.current);
+        const fieldContent = elements.current.get("fieldContent");
+        if (fieldContent) {
+            const { x, y } = measureElement(fieldContent);
             if (fieldOrigin?.x !== x || fieldOrigin.y !== y) setFieldOrigin({ x, y });
         }
-        if (!content.current) return;
+        if (fieldInput.above !== fieldAbove) setFieldAbove(fieldInput.above);
+        const content = elements.current.get("content");
+        if (!content) return;
+        const contentBox = measureElement(content);
         const selected =
             view.focused !== null
                 ? (lineElements.current.get(view.focused) ?? sessionElements.current.get(view.focused))
                 : undefined;
-        const targets: MeasuredTarget[] = [];
-        const target = (target: HitTarget, pane?: "main" | "detail") =>
-            targets.push(pane ? { target, pane } : { target });
-        const viewportRect = viewport.current ? measureElement(viewport.current) : undefined;
-        if (!expanded && !view.help && viewportRect) {
-            for (const [id, element] of sessionElements.current) {
-                target({ type: "session", id, rect: measureElement(element) }, "main");
-            }
-            for (const [focus, element] of lineElements.current) {
-                const checkout = focusedCheckout(focus);
-                if (checkout !== undefined)
-                    target({ type: "project", checkout, rect: measureElement(element) }, "main");
-            }
-        }
-        if (backControl.current) target({ type: "back", rect: measureElement(backControl.current) });
-        if (homeTab.current) target({ type: "tab", screen: "home", rect: measureElement(homeTab.current) });
-        if (sessionsTab.current) target({ type: "tab", screen: "sessions", rect: measureElement(sessionsTab.current) });
-        if (helpControl.current) target({ type: "help", rect: measureElement(helpControl.current) });
-        if (sendControl.current) target({ type: "send", rect: measureElement(sendControl.current) });
-        if (fieldFrame.current && fieldContent.current) {
-            target({
-                type: "field",
-                rect: measureElement(fieldFrame.current),
-                origin: measureElement(fieldContent.current).x,
-                indices: fieldInput.indices,
-            });
-        }
-        if (expanded && !view.help && stopControl.current) {
-            target({ type: "stop", id: expanded.id, rect: measureElement(stopControl.current) }, "main");
-        }
-        if (hideControl.current) target({ type: "hide", rect: measureElement(hideControl.current) });
-        let detail;
-        if (showDetail && detailContent.current && detailViewport.current) {
-            detail = {
-                content: measureElement(detailContent.current),
-                pageSize: detailRows,
-                scroll: view.detailScroll,
-                viewport: measureElement(detailViewport.current),
-            };
-            if (detailStopControl.current && selectedSession)
-                target(
-                    { type: "stop", id: selectedSession.id, rect: measureElement(detailStopControl.current) },
-                    "detail",
-                );
-            if (detailPane.current) target({ type: "detail", rect: measureElement(detailPane.current) });
-        }
+        const { viewport, targets, detail } = screenTargets(
+            { own: elements.current, sessions: sessionElements.current, lines: lineElements.current },
+            {
+                expanded: expanded?.id,
+                help: view.help,
+                fieldIndices: fieldInput.rows.map(({ indices }) => indices),
+                side:
+                    showDetail && selectedSession
+                        ? { id: selectedSession.id, pageSize: detailRows, scroll: view.detailScroll }
+                        : undefined,
+            },
+        );
         const result = viewportLayout(
             {
                 page: view.help
@@ -718,40 +711,46 @@ export function TerminalScreen({ view, size, color, now = new Date(), onLayout }
                 focused: view.focused,
                 focus: selected && measureElement(selected),
                 main: {
-                    content: measureElement(content.current),
-                    viewport: viewportRect,
+                    content: contentBox,
+                    viewport,
                     pageSize: bodyRows,
                     scroll: view.scroll,
+                    response: measuredResponse(elements.current.get("response"), page?.rows, contentBox),
                 },
-                detail,
+                detail: detail && {
+                    ...detail,
+                    response: measuredResponse(elements.current.get("detailResponse"), side?.rows, detail.content),
+                },
                 targets,
             },
             viewportHistory.current,
         );
-        const next = result.layout;
+        const next = { ...result.layout, fieldColumns: inputWidth };
         viewportHistory.current = result.history;
+        if (!sameAnchors(anchors, result.history)) setAnchors(result.history);
         if (!sameScrollLayout(layout, next)) setLayout(next);
         onLayout?.(next);
     });
 
     const { setCursorPosition } = useCursor();
+    const { row, column } = fieldInput.cursor;
     setCursorPosition(
-        !small && fieldFocused && fieldOrigin ? { x: fieldOrigin.x + fieldInput.cursor, y: fieldOrigin.y } : undefined,
+        !small && fieldFocused && fieldOrigin ? { x: fieldOrigin.x + column, y: fieldOrigin.y + row } : undefined,
     );
     const fieldBox = mode && {
         color,
         width: fieldWidth,
         tone: (fieldFocused ? "focus" : "border") as Tone,
-        title: `─ ${fieldTitle(mode)} `,
-        text: fieldInput.text,
+        title: fieldTitle(mode, { lines: typed.lines, above: fieldInput.above }),
+        hint: fieldHint(view.field, fieldFocused, typed.lines),
+        rows: fieldInput.rows.map(({ text }) => text),
         empty: !view.field.text,
         placeholder: placeholderOn(mode, fieldSession, view.list, closing.length > 0),
         submitLabel: SEND,
-        boxRef: fieldFrame,
-        contentRef: fieldContent,
-        submitRef: sendControl,
+        boxRef: elementRef("fieldFrame"),
+        contentRef: elementRef("fieldContent"),
+        submitRef: elementRef("send"),
     };
-    const sideField = showDetail ? <SideField box={fieldBox} line={shownLine} /> : undefined;
     if (small) {
         return (
             <Box width={columns} height={rows} flexDirection="column" overflow="hidden">
@@ -765,6 +764,7 @@ export function TerminalScreen({ view, size, color, now = new Date(), onLayout }
             </Box>
         );
     }
+    const sideField = showDetail ? <SideField box={fieldBox} line={shownLine} footer={side?.footer} /> : undefined;
     return (
         <Box width={columns} height={rows} flexDirection="column" overflow="hidden">
             <Box marginLeft={inset} width={available} height={rows} flexDirection="column" flexShrink={0}>
@@ -785,7 +785,7 @@ export function TerminalScreen({ view, size, color, now = new Date(), onLayout }
                                 </Copy>
                             ) : expanded ? (
                                 <Box flexDirection="column">
-                                    <Box ref={backControl} width={10} height={1} flexShrink={0}>
+                                    <Box ref={elementRef("back")} width={10} height={1} flexShrink={0}>
                                         <Copy color={color} tone="focus" underline>
                                             Back · Esc
                                         </Copy>
@@ -797,7 +797,7 @@ export function TerminalScreen({ view, size, color, now = new Date(), onLayout }
                                     {(["home", "sessions"] as const).map((screen) => (
                                         <Box
                                             key={screen}
-                                            ref={screen === "home" ? homeTab : sessionsTab}
+                                            ref={elementRef(screen === "home" ? "homeTab" : "sessionsTab")}
                                             marginRight={2}
                                             flexShrink={0}
                                         >
@@ -821,17 +821,17 @@ export function TerminalScreen({ view, size, color, now = new Date(), onLayout }
                             )}
                         </Box>
                         <Box
-                            ref={viewport}
+                            ref={elementRef("viewport")}
                             width={width}
-                            height={bodyRows}
+                            height={bodyRows - (page?.footer ? 1 : 0)}
                             marginTop={topGap}
                             flexDirection="column"
                             flexShrink={0}
                             overflow="hidden"
-                            contentOffsetY={layout.scroll}
+                            contentOffsetY={page?.scroll ?? layout.scroll}
                         >
                             <Box
-                                ref={content}
+                                ref={elementRef("content")}
                                 width={width}
                                 flexDirection="column"
                                 flexShrink={0}
@@ -839,8 +839,8 @@ export function TerminalScreen({ view, size, color, now = new Date(), onLayout }
                             >
                                 {view.help ? (
                                     <Help color={color} width={width} />
-                                ) : expanded ? (
-                                    fullBrief(expanded, width, stopControl)
+                                ) : page ? (
+                                    page.content
                                 ) : !home ? (
                                     view.sessions.length ? (
                                         view.sessions.map((session) => (
@@ -885,10 +885,11 @@ export function TerminalScreen({ view, size, color, now = new Date(), onLayout }
                                 )}
                             </Box>
                         </Box>
+                        {page?.footer}
                         <Box height={1 + extraRows} flexShrink={0}>
                             {showDetail ? null : shownLine}
                         </Box>
-                        {pageField && fieldBox ? <FieldBox {...fieldBox} /> : null}
+                        {!showDetail && fieldBox ? <FieldBox {...fieldBox} /> : null}
                     </Box>
                     {showDetail && selectedSession && (
                         <SideBrief
@@ -896,16 +897,16 @@ export function TerminalScreen({ view, size, color, now = new Date(), onLayout }
                             color={color}
                             width={detailWidth}
                             paneRows={paneRows}
-                            rows={detailRows}
+                            rows={detailRows - (side?.footer ? 1 : 0)}
                             focused={view.focused === DETAIL_FOCUS}
-                            scroll={layout.detail?.scroll ?? 0}
-                            paneRef={detailPane}
-                            viewportRef={detailViewport}
-                            contentRef={detailContent}
-                            hideRef={hideControl}
+                            scroll={side?.scroll ?? layout.detail?.scroll ?? 0}
+                            paneRef={elementRef("detailPane")}
+                            viewportRef={elementRef("detailViewport")}
+                            contentRef={elementRef("detailContent")}
+                            hideRef={elementRef("hide")}
                             field={sideField}
                         >
-                            {fullBrief(selectedSession, detailWidth, detailStopControl)}
+                            {side?.content}
                         </SideBrief>
                     )}
                 </Box>
@@ -914,7 +915,7 @@ export function TerminalScreen({ view, size, color, now = new Date(), onLayout }
                     width={available}
                     label={view.help ? CLOSE_LABEL : HELP_LABEL}
                     helpFocused={view.focused === HELP_FOCUS}
-                    helpRef={helpControl}
+                    helpRef={elementRef("help")}
                 />
             </Box>
         </Box>

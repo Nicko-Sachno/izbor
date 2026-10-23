@@ -27,18 +27,18 @@ export function createStatusWatch(deps: StatusWatchDeps): StatusWatch {
     let saving: Promise<void> = Promise.resolve();
     let stopped = false;
 
-    function statusIn(answer: StatusAnswer): Status {
-        if ("error" in answer) return { status: "unknown", error: answer.error };
+    function readingIn(answer: StatusAnswer): Pick<StatusEvidence, "status" | "folder"> {
+        if ("error" in answer) return { status: { status: "unknown", error: answer.error } };
         const listed = answer.sessions.find((session) => session.sessionId === sessionId);
-        if (!listed) return { status: "not_listed" };
-        const { sessionId: _watched, ...status } = listed;
-        return status;
+        if (!listed) return { status: { status: "not_listed" } };
+        const { sessionId: _watched, cwd: folder, ...status } = listed;
+        return { status, folder };
     }
 
     function onAnswer(answer: StatusAnswer): void {
         try {
-            const status = statusIn(answer);
-            onReading({ status, askedAt: answer.askedAt, at: answer.at });
+            const { status, folder } = readingIn(answer);
+            onReading({ status, askedAt: answer.askedAt, at: answer.at, folder });
             if (saved && !isChange(saved, status)) return;
             saved = status;
             const record = { kind: "status" as const, sessionId, timestamp: answer.at, ...status };

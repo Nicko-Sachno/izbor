@@ -6,14 +6,15 @@ process.env.FORCE_COLOR = "1";
 const { default: chalk } = await import("chalk");
 const { renderToString } = await import("ink");
 const { createElement: h } = await import("react");
-const { Badge, Copy, toneColor } = await import("../src/terminal/copy.js");
+const { Badge, Copy } = await import("../src/terminal/copy.js");
+const { lookOf, paint, toneColor } = await import("../src/terminal/paint.js");
 const { palette } = await import("../src/terminal/presentation.js");
 
 test("chalk is at level 1 here", () => {
     assert.equal(chalk.level, 1);
 });
 
-test("at level 1 Copy draws needsYou, notice, error, done and reply by name, and the other tones in the terminal's own colour", () => {
+test("at level 1 Copy and paint() draw needsYou, notice, error, done, reply, code, link and the Task fill by name, and the other tones in the terminal's own colour", () => {
     const BYTES: Record<Tone, string> = {
         text: "x",
         muted: "x",
@@ -27,6 +28,10 @@ test("at level 1 Copy draws needsYou, notice, error, done and reply by name, and
         brand: "x",
         border: "x",
         reply: "\x1b[94mx\x1b[39m",
+        code: "\x1b[94mx\x1b[39m",
+        link: "\x1b[34mx\x1b[39m",
+        pasteFill: "x",
+        taskFill: "\x1b[90mx\x1b[39m",
     };
     for (const tone of Object.keys(BYTES) as Tone[]) {
         assert.equal(
@@ -34,6 +39,7 @@ test("at level 1 Copy draws needsYou, notice, error, done and reply by name, and
             BYTES[tone],
             `the ${tone} tone`,
         );
+        assert.equal(paint("x", lookOf(true), { tone }), BYTES[tone], `the ${tone} tone, painted`);
     }
 });
 

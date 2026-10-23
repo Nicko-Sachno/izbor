@@ -50,7 +50,7 @@ export function createSessionHolds({ wait, isActing, onChange }: SessionHoldsDep
         if (!entries.has(sessionId) && !mainThreadRequest(evidence)) return;
         folder(sessionId, cwd);
         const holds = of(sessionId);
-        holds.hook(evidence);
+        holds.hook(evidence, cwd);
         if (holds.keepsNothing()) entries.delete(sessionId);
     }
 

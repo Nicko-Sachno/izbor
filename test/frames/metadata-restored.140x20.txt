@@ -26,8 +26,8 @@ screen
 
 styles
                                                                                                                                 mmmmmmmmmm
-  nnnnnnnn  TTTTTTTTTTTT  mmmmmm                                                  o  uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu   gggggggg
-                                                                                  o  uuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+  nnnnnnnn  TTTTTTTTTTTT  mmmmmm                                                  o ©®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®©© gggggggg
+                                                                                  o ©®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®©©©©©©©©©©©©©©
    k tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt       o  mmm
      ttttttt                                                                      o  cccccccccccccccccccccccccccccccccccccccccccccccccccc
      mmmmmmm                                                                      o  cccccccccccccccccccccccccccccccccccccccccccccccccccc
@@ -59,7 +59,8 @@ legend
   n  muted underline
   o  border
   t  text
-  u  text underline
+  ©  taskFill
+  ®  taskFill underline
 
 layout  scroll 0 · maxScroll 4 · pageSize 15 · viewport 2,3 78x15
 detail  scroll 1 · maxScroll 2 · pageSize 12 · viewport 85,3 53x12
