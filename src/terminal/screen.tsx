@@ -34,6 +34,7 @@ import {
     type Tone,
     type Words,
 } from "./presentation.js";
+import { NOW_NAME, taskSpans } from "./parts.js";
 import { Badge, Copy, feedbackText, FeedbackLine, Mark, Spans, TaskFill, type Glyph, type Span } from "./copy.js";
 import { lookOf, paint } from "./paint.js";
 import { Help } from "./help-page.js";
@@ -264,7 +265,7 @@ function SessionHeading({
     const title = headingTitle({ id, brief }, width, rows);
     if (color && brief?.task) return <TaskFill title={title} width={width} underline={focused} />;
     const tone = brief && !brief.task ? "muted" : "text";
-    return <Spans color={color} spans={[{ text: title, tone, underline: focused }]} />;
+    return <Spans color={color} spans={taskSpans(title, { tone, underline: focused }, Boolean(brief))} />;
 }
 
 const rowsOf = (text: string) => text.split("\n").length;
@@ -312,11 +313,9 @@ function FullBrief({ session, color, now, width, late, metadataExpanded, closing
             {wrapLines(text, width)}
         </Copy>
     );
-    const field = (name: string, children: ReactNode) => (
+    const field = (name: string | readonly Span[], children: ReactNode) => (
         <Box flexDirection="column" marginTop={1} flexShrink={0}>
-            <Copy color={color} tone="muted">
-                {name}
-            </Copy>
+            <Spans color={color} spans={typeof name === "string" ? [{ text: name, tone: "muted" }] : name} />
             {children}
         </Box>
     );
@@ -338,14 +337,14 @@ function FullBrief({ session, color, now, width, late, metadataExpanded, closing
                 <>
                     {brief.explanation
                         ? field(
-                              "Now",
+                              NOW_NAME,
                               <>
                                   {brief.explanation.outdatedReason &&
                                       line(`Outdated: ${brief.explanation.outdatedReason}`, "muted")}
                                   {line(brief.explanation.text, nowTone)}
                               </>,
                           )
-                        : unknown && field("Now", line(unknown.text, unknown.tone))}
+                        : unknown && field(NOW_NAME, line(unknown.text, unknown.tone))}
                     {latest ? line(`Latest: ${latest}`, "muted") : null}
                     {request && (
                         <Box flexDirection="column" marginTop={1} flexShrink={0}>

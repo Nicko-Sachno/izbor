@@ -3,6 +3,7 @@ import stringWidth from "string-width";
 import wrapAnsi from "wrap-ansi";
 import { shortId } from "../domain/text.js";
 import type { IzborState, Observation, RunningSession } from "./model.js";
+import { MARK_COLUMNS } from "./parts.js";
 
 const NEEDS_YOU = "#E7BC70";
 const NOTICE = "#A9C6E1";
@@ -189,7 +190,7 @@ export const pageHeadingRows = (bodyRows: number) => Math.max(1, Math.min(10, Ma
 
 export function headingTitle({ id, brief }: Pick<Observation, "id" | "brief">, width: number, rows: number): string {
     if (!brief) return shortId(id);
-    return wrapCut(brief.task?.text ?? "Task unknown", width, rows).replace(/ …$/, "…");
+    return wrapCut(brief.task?.text ?? "Task unknown", width - MARK_COLUMNS, rows).replace(/ …$/, "…");
 }
 
 export function openTitle(
