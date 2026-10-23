@@ -1,0 +1,72 @@
+field-reply-busy.40x24
+N5: the busy session's Brief page at 40 columns: the busy placeholder cut with …
+40x24 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                            Izbor ● up
+  Back · Esc
+  Fix the token refresh bug and add a
+  regression test for expired access
+  tokens.
+
+  Now
+  Running authentication tests.
+  Latest: Bash: npm test auth
+  Last change 8s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+  ┌─ Reply to this session ──────────┐
+  │ › your next prompt; it runs whe… │
+  └──────────────────────────────────┘
+                         Help · Ctrl-G
+
+styles
+                            mmmmmmmmmm
+  gggggggggg
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+
+  mmm
+  ccccccccccccccccccccccccccccc
+  mmmmmmmmmmmmmmmmmmmmmmmmmmm
+  mmmmmmmmmmmmmmmmmm
+
+  gggggggggggggggggg
+
+
+
+
+
+
+
+
+  oooooooooooooooooooooooooooooooooooo
+  ooffmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmoo
+  oooooooooooooooooooooooooooooooooooo
+                         ggggggggggggg
+
+legend
+  c  reply
+  f  focus
+  g  focus underline
+  m  muted
+  o  border
+  ©  taskFill
+
+layout  scroll 0 · maxScroll 0 · pageSize 14 · viewport 2,5 36x14
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     25,23 13x1
+  field    2,20 36x3  origin 6  indices 0*31
+  stop     2,11 18x1  0926995f-4c57-4733-89cf-d0c7226a5cbc

@@ -1,0 +1,383 @@
+sessions-wide-keys
+In a split, Tab reaches the right Brief, m shows Metadata and Up, Down and Page Down scroll it, h hides the Brief, which stays hidden across a resize until Enter on its row brings it back, Esc focuses Sessions, s in the focused Brief stops observing, s with nothing focused does nothing, and Ctrl-O switches Home and Sessions
+izbor --no-color · 160x24 · now 2026-10-09T12:00:00.000Z · 200 ms a step
+
+> start · t=0.0s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O                                                              │  Fix the token refresh bug and add a regression test  Hide · h
+                                                                                              │  for expired access tokens.
+   * Selected · Fix the token refresh bug and add a regression test for expired access        │
+     tokens.                                                                                  │  Now
+     Working                                                                                  │  Running authentication tests.
+     Running authentication tests.                                                            │  Latest: Bash: npm test auth
+                                                                                              │  Last change 8s ago
+   ! Add CSV export for invoices, including invoice number, date, customer, and total.        │
+     Waiting                                                                                  │  s · Stop observing
+     The CSV export is implemented. Waiting for permission to run the invoice tests.          │
+      ! Needs you                                                                             │
+      Bash: npm test invoices                                                                 │
+                                                                                              │
+   ✓ Explain how request retries work and where the retry limit is configured.                │
+     Idle                                                                                     │
+     Traced the retry logic in request.ts and explained where its limit is configured, which  │
+     errors trigger another attempt, and when failed requests stop retrying automatically.    │
+                                                                                              │
+                                                                                              │
+                                                                                              │  ┌─ Reply to this session ───────────────────────────────────┐
+                                                                                              │  │ › your next prompt; it runs when this turn ends    Send → │
+                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key tab · t=0.2s
+= same as step 0
+
+> key tab · t=0.4s
+= same as step 0
+
+> key tab · t=0.6s
+= same as step 0
+
+> key tab · t=0.8s
+= same as step 0
+
+> type "m" · t=1.0s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O                                                              │  Fix the token refresh bug and add a regression test  Hide · h
+                                                                                              │  for expired access tokens.
+   * Selected · Fix the token refresh bug and add a regression test for expired access        │  s · Stop observing
+     tokens.                                                                                  │
+     Working                                                                                  │  Session ID
+     Running authentication tests.                                                            │  0926995f-4c57-4733-89cf-d0c7226a5cbc
+                                                                                              │
+   ! Add CSV export for invoices, including invoice number, date, customer, and total.        │  Task source
+     Waiting                                                                                  │  From hook · 2026-10-09T11:56:00.000Z · 4m ago
+     The CSV export is implemented. Waiting for permission to run the invoice tests.          │
+      ! Needs you                                                                             │  Explanation requested
+      Bash: npm test invoices                                                                 │  2026-10-09T11:59:42.000Z · 19s ago
+                                                                                              │
+   ✓ Explain how request retries work and where the retry limit is configured.                │  Latest activity at
+     Idle                                                                                     │  2026-10-09T11:59:52.000Z · 9s ago
+     Traced the retry logic in request.ts and explained where its limit is configured, which  │
+     errors trigger another attempt, and when failed requests stop retrying automatically.    │  Last observed
+                                                                                              │  2026-10-09T11:59:52.000Z · 9s ago · From hook
+                                                                                              │
+                                                                                              │  ┌─ Reply to this session ───────────────────────────────────┐
+                                                                                              │  │ › your next prompt; it runs when this turn ends    Send → │
+                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key down · t=1.2s
+= same as step 5
+
+> key up · t=1.4s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O                                                              │  Fix the token refresh bug and add a regression test  Hide · h
+                                                                                              │  for expired access tokens.
+   * Selected · Fix the token refresh bug and add a regression test for expired access        │
+     tokens.                                                                                  │  s · Stop observing
+     Working                                                                                  │
+     Running authentication tests.                                                            │  Session ID
+                                                                                              │  0926995f-4c57-4733-89cf-d0c7226a5cbc
+   ! Add CSV export for invoices, including invoice number, date, customer, and total.        │
+     Waiting                                                                                  │  Task source
+     The CSV export is implemented. Waiting for permission to run the invoice tests.          │  From hook · 2026-10-09T11:56:00.000Z · 4m ago
+      ! Needs you                                                                             │
+      Bash: npm test invoices                                                                 │  Explanation requested
+                                                                                              │  2026-10-09T11:59:42.000Z · 19s ago
+   ✓ Explain how request retries work and where the retry limit is configured.                │
+     Idle                                                                                     │  Latest activity at
+     Traced the retry logic in request.ts and explained where its limit is configured, which  │  2026-10-09T11:59:52.000Z · 9s ago
+     errors trigger another attempt, and when failed requests stop retrying automatically.    │
+                                                                                              │  Last observed
+                                                                                              │
+                                                                                              │  ┌─ Reply to this session ───────────────────────────────────┐
+                                                                                              │  │ › your next prompt; it runs when this turn ends    Send → │
+                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key pagedown · t=1.6s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O                                                              │  Fix the token refresh bug and add a regression test  Hide · h
+                                                                                              │  for expired access tokens.
+   * Selected · Fix the token refresh bug and add a regression test for expired access        │  s · Stop observing
+     tokens.                                                                                  │
+     Working                                                                                  │  Session ID
+     Running authentication tests.                                                            │  0926995f-4c57-4733-89cf-d0c7226a5cbc
+                                                                                              │
+   ! Add CSV export for invoices, including invoice number, date, customer, and total.        │  Task source
+     Waiting                                                                                  │  From hook · 2026-10-09T11:56:00.000Z · 4m ago
+     The CSV export is implemented. Waiting for permission to run the invoice tests.          │
+      ! Needs you                                                                             │  Explanation requested
+      Bash: npm test invoices                                                                 │  2026-10-09T11:59:42.000Z · 19s ago
+                                                                                              │
+   ✓ Explain how request retries work and where the retry limit is configured.                │  Latest activity at
+     Idle                                                                                     │  2026-10-09T11:59:52.000Z · 9s ago
+     Traced the retry logic in request.ts and explained where its limit is configured, which  │
+     errors trigger another attempt, and when failed requests stop retrying automatically.    │  Last observed
+                                                                                              │  2026-10-09T11:59:52.000Z · 9s ago · From hook
+                                                                                              │
+                                                                                              │  ┌─ Reply to this session ───────────────────────────────────┐
+                                                                                              │  │ › your next prompt; it runs when this turn ends    Send → │
+                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> type "h" · t=1.8s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+   * Selected · Fix the token refresh bug and add a regression test for expired access tokens.                                                          Open ›
+     Working
+     Running authentication tests.
+
+   ! Add CSV export for invoices, including invoice number, date, customer, and total.
+     Waiting
+     The CSV export is implemented. Waiting for permission to run the invoice tests.
+      ! Needs you
+      Bash: npm test invoices
+
+   ✓ Explain how request retries work and where the retry limit is configured.
+     Idle
+     Traced the retry logic in request.ts and explained where its limit is configured, which errors trigger another attempt, and when failed requests stop
+     retrying automatically.
+
+
+
+
+
+
+                                                                                                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> resize 139 32 · t=2.0s
+screen
+                                                                                                                               Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+   * Selected · Fix the token refresh bug and add a regression test for expired access tokens.                                     Open ›
+     Working
+     Running authentication tests.
+
+   ! Add CSV export for invoices, including invoice number, date, customer, and total.
+     Waiting
+     The CSV export is implemented. Waiting for permission to run the invoice tests.
+      ! Needs you
+      Bash: npm test invoices
+
+   ✓ Explain how request retries work and where the retry limit is configured.
+     Idle
+     Traced the retry logic in request.ts and explained where its limit is configured, which errors trigger another attempt, and when
+     failed requests stop retrying automatically.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                                                            Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> resize 160 32 · t=2.2s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+   * Selected · Fix the token refresh bug and add a regression test for expired access tokens.                                                          Open ›
+     Working
+     Running authentication tests.
+
+   ! Add CSV export for invoices, including invoice number, date, customer, and total.
+     Waiting
+     The CSV export is implemented. Waiting for permission to run the invoice tests.
+      ! Needs you
+      Bash: npm test invoices
+
+   ✓ Explain how request retries work and where the retry limit is configured.
+     Idle
+     Traced the retry logic in request.ts and explained where its limit is configured, which errors trigger another attempt, and when failed requests stop
+     retrying automatically.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key enter · t=2.4s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O                                                              │  Fix the token refresh bug and add a regression test  Hide · h
+                                                                                              │  for expired access tokens.
+   * Selected · Fix the token refresh bug and add a regression test for expired access        │
+     tokens.                                                                                  │  Now
+     Working                                                                                  │  Running authentication tests.
+     Running authentication tests.                                                            │  Latest: Bash: npm test auth
+                                                                                              │  Last change 10s ago
+   ! Add CSV export for invoices, including invoice number, date, customer, and total.        │
+     Waiting                                                                                  │  s · Stop observing
+     The CSV export is implemented. Waiting for permission to run the invoice tests.          │
+      ! Needs you                                                                             │  Session ID
+      Bash: npm test invoices                                                                 │  0926995f-4c57-4733-89cf-d0c7226a5cbc
+                                                                                              │
+   ✓ Explain how request retries work and where the retry limit is configured.                │  Task source
+     Idle                                                                                     │  From hook · 2026-10-09T11:56:00.000Z · 4m ago
+     Traced the retry logic in request.ts and explained where its limit is configured, which  │
+     errors trigger another attempt, and when failed requests stop retrying automatically.    │  Explanation requested
+                                                                                              │  2026-10-09T11:59:42.000Z · 20s ago
+                                                                                              │
+                                                                                              │  Latest activity at
+                                                                                              │  2026-10-09T11:59:52.000Z · 10s ago
+                                                                                              │
+                                                                                              │  Last observed
+                                                                                              │  2026-10-09T11:59:52.000Z · 10s ago · From hook
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │  ┌─ Reply to this session ───────────────────────────────────┐
+                                                                                              │  │ › your next prompt; it runs when this turn ends    Send → │
+                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key esc · t=2.6s
+= same as step 12
+
+> key enter · t=2.8s
+= same as step 12
+
+> type "s" · t=3.0s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 2  Ctrl-O                                                              │  Add CSV export for invoices, including invoice       Hide · h
+                                                                                              │  number, date, customer, and total.
+   ! Selected · Add CSV export for invoices, including invoice number, date, customer, and    │
+     total.                                                                                   │  Now
+     Waiting                                                                                  │  The CSV export is implemented. Waiting for permission to run
+     The CSV export is implemented. Waiting for permission to run the invoice tests.          │  the invoice tests.
+      ! Needs you                                                                             │
+      Bash: npm test invoices                                                                 │   ! Needs you
+                                                                                              │  Bash: npm test invoices
+   ✓ Explain how request retries work and where the retry limit is configured.                │  Last change 18s ago
+     Idle                                                                                     │
+     Traced the retry logic in request.ts and explained where its limit is configured, which  │  s · Stop observing
+     errors trigger another attempt, and when failed requests stop retrying automatically.    │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │  Stopped observing “Fix the token refresh bug a…”. The session
+                                                                                              │  keeps running. Observe › on Home brings it back.
+                                                                                              │  ┌─ Answer ──────────────────────────────────────────────────┐
+                                                                                              │  │ › yes, no, or no and your words                    Send → │
+                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> type "s" · t=3.2s
+= same as step 15
+
+> key ctrl-o · t=3.4s
+screen
+                                                                                                                                                    Izbor ● up
+  Home  [ Sessions · 2 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working
+   !   izbor-e8 ·  ! Needs you  permission prompt · worktree invoices · Open ›
+       izbor-6f · Idle · Open ›
+
+     example-api · Briefs update late                                                                                                              Add hooks ›
+       Orders API review · Idle
+       example-api-3a · Working
+
+     invoice-api                                                                                                              Add plugin · answer from Izbor ›
+       invoice-api-2b · Idle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Stopped observing “Fix the token refresh bug a…”. The session keeps running. Observe › on Home brings it back.
+                                                                                                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key ctrl-o · t=3.6s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 2  Ctrl-O                                                              │  Add CSV export for invoices, including invoice       Hide · h
+                                                                                              │  number, date, customer, and total.
+   ! Selected · Add CSV export for invoices, including invoice number, date, customer, and    │
+     total.                                                                                   │  Now
+     Waiting                                                                                  │  The CSV export is implemented. Waiting for permission to run
+     The CSV export is implemented. Waiting for permission to run the invoice tests.          │  the invoice tests.
+      ! Needs you                                                                             │
+      Bash: npm test invoices                                                                 │   ! Needs you
+                                                                                              │  Bash: npm test invoices
+   ✓ Explain how request retries work and where the retry limit is configured.                │  Last change 18s ago
+     Idle                                                                                     │
+     Traced the retry logic in request.ts and explained where its limit is configured, which  │  s · Stop observing
+     errors trigger another attempt, and when failed requests stop retrying automatically.    │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │  Stopped observing “Fix the token refresh bug a…”. The session
+                                                                                              │  keeps running. Observe › on Home brings it back.
+                                                                                              │  ┌─ Answer ──────────────────────────────────────────────────┐
+                                                                                              │  │ › yes, no, or no and your words                    Send → │
+                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0

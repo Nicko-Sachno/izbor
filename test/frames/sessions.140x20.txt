@@ -1,0 +1,79 @@
+sessions.140x20
+the three sample sessions observed: Sessions, the first row selected
+140x20 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                                                                                                                                Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O                                                  │  Fix the token refresh bug and add a          Hide · h
+                                                                                  │  regression test for expired access tokens.
+   * Fix the token refresh bug and add a regression test for expired access       │
+     tokens.                                                                      │  Now
+     Working                                                                      │  Running authentication tests.
+     Running authentication tests.                                                │  Latest: Bash: npm test auth
+                                                                                  │  Last change 8s ago
+   ! Add CSV export for invoices, including invoice number, date, customer, and   │
+     total.                                                                       │  s · Stop observing
+     Waiting                                                                      │
+     The CSV export is implemented. Waiting for permission to run the invoice     │
+     tests.                                                                       │
+      ! Needs you                                                                 │
+      Bash: npm test invoices                                                     │
+                                                                                  │
+   ✓ Explain how request retries work and where the retry limit is configured.    │  ┌─ Reply to this session ───────────────────────────┐
+     Idle                                                                         │  │ › your next prompt; it runs when this tur… Send → │
+                                                                                  │  └───────────────────────────────────────────────────┘
+                                                                                                                             Help · Ctrl-G
+
+styles
+                                                                                                                                mmmmmmmmmm
+  nnnnnnnn  TTTTTTTTTTTT  mmmmmm                                                  o ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©© gggggggg
+                                                                                  o ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+   k FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF       o
+     FFFFFFF                                                                      o  mmm
+     mmmmmmm                                                                      o  ccccccccccccccccccccccccccccc
+     ccccccccccccccccccccccccccccc                                                o  mmmmmmmmmmmmmmmmmmmmmmmmmmm
+                                                                                  o  mmmmmmmmmmmmmmmmmm
+   A tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt   o
+     tttttt                                                                       o  gggggggggggggggggg
+     mmmmmmm                                                                      o
+     cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc     o
+     cccccc                                                                       o
+     YYYYYYYYYYYYY                                                                o
+      AAAAAAAAAAAAAAAAAAAAAAA                                                     o
+                                                                                  o
+   d ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt    o  ooooooooooooooooooooooooooooooooooooooooooooooooooooo
+     mmmm                                                                         o  ooffmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm ggggggoo
+                                                                                  o  ooooooooooooooooooooooooooooooooooooooooooooooooooooo
+                                                                                                                             ggggggggggggg
+
+legend
+  A  needsYou bold
+  F  focus bold
+  T  text bold
+  Y  fill bold
+  c  reply
+  d  done
+  f  focus
+  g  focus underline
+  k  brand
+  m  muted
+  n  muted underline
+  o  border
+  t  text
+  ©  taskFill
+
+layout  scroll 0 · maxScroll 3 · pageSize 15 · viewport 2,3 78x15
+detail  scroll 0 · maxScroll 0 · pageSize 12 · viewport 85,3 53x12
+
+targets, in hit-test order
+  session  2,3 78x4  0926995f-4c57-4733-89cf-d0c7226a5cbc
+  session  2,8 78x7  a7312ce4-782a-45a0-a84c-e834c934b2a7
+  session  2,16 78x2  c8219b07-e082-4ac4-9bdf-4abfe6fcfc8e
+  tab      2,1 8x1  home
+  tab      12,1 12x1  sessions
+  help     125,19 13x1
+  send     130,17 6x1
+  field    85,16 53x3  origin 89  indices 0*41
+  hide     130,1 8x1
+  stop     85,9 18x1  0926995f-4c57-4733-89cf-d0c7226a5cbc
+  detail   85,1 53x18

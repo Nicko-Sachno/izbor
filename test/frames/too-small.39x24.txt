@@ -1,0 +1,66 @@
+too-small.39x24
+the sample sessions in a window under 40x12: the resize notice
+39x24 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+izbor · window too small
+Resize terminal to at least 40 × 12
+Your view is preserved. Ctrl-C quits.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+styles
+ffffffffffffffffffffffff
+ttttttttttttttttttttttttttttttttttt
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+legend
+  f  focus
+  m  muted
+  t  text
+
+layout  scroll 0 · maxScroll 0 · pageSize 0 · viewport none
+detail  none
+
+targets, in hit-test order
+  none

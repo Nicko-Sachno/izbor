@@ -1,0 +1,48 @@
+field-scrolled-yes.40x12
+N4: the same, then Enter and yes: the field has the cursor
+40x12 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                            Izbor ● up
+  Back · Esc
+  Add CSV export for invoices,
+  including invoice number, date,
+  customer, and total.
+   ! Needs you
+  Bash: npm test invoices
+
+  ┌─ Answer ─────────────────────────┐
+  │ › yes                            │
+  └─ Ctrl-J new line · Enter sends ──┘
+                         Help · Ctrl-G
+
+styles
+                            mmmmmmmmmm
+  gggggggggg
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+  YYYYYYYYYYYYY
+  AAAAAAAAAAAAAAAAAAAAAAA
+
+  ffffffffffffffffffffffffffffffffffff
+  ffffttt                           ff
+  fffmmmmmmmmmmmmmmmmmmmmmmmmmmmmmffff
+                         ggggggggggggg
+
+legend
+  A  needsYou bold
+  Y  fill bold
+  f  focus
+  g  focus underline
+  m  muted
+  t  text
+  ©  taskFill
+
+layout  scroll 6 · maxScroll 9 · pageSize 2 · viewport 2,5 36x2
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     25,11 13x1
+  field    2,8 36x3  origin 6  indices 0,1,2,3*28

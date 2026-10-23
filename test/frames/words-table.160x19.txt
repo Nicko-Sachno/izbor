@@ -1,0 +1,65 @@
+words-table.160x19
+a table 104 columns wide, scrolled to the full response: a grid in the pane's width, not the prose's 82 columns, with no borders, its header bold over one rule row, Limit right-aligned, First wait centred and the paths in the code tone
+160x19 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                                                                                                                                                    Izbor ● up
+  Back · Esc
+  Make the retry limit configurable per client and cover it with tests.
+
+  Agent's last message · 30s ago
+  The retry settings per client, after this change:
+
+  Client    Limit  First wait  Source                  Why
+  ────────  ─────  ──────────  ──────────────────────  ───────────────────────────────────────────────────
+  billing       5    200 ms    src/billing/client.ts   Its provider rate-limits in bursts
+  sync          3    200 ms    src/sync/client.ts      The old default: the sync service never rate-limits
+  payments      0      —       src/payments/client.ts  A retried charge could bill a customer twice
+
+  Reply finished · 30s ago
+
+  ┌─ Reply to this session ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ › your next prompt                                                                                                                                Send → │
+  └──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+
+styles
+                                                                                                                                                    mmmmmmmmmm
+  gggggggggg
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+  ttttttttttttttttttttttttttttttttttttttttttttttttt
+
+  TTTTTT    TTTTT  TTTTTTTTTT  TTTTTT                  TTT
+  oooooooo  ooooo  oooooooooo  oooooooooooooooooooooo  ooooooooooooooooooooooooooooooooooooooooooooooooooo
+  ttttttt       t    tttttt    qqqqqqqqqqqqqqqqqqqqq   tttttttttttttttttttttttttttttttttt
+  tttt          t    tttttt    qqqqqqqqqqqqqqqqqq      ttttttttttttttttttttttttttttttttttttttttttttttttttt
+  tttttttt      t      t       qqqqqqqqqqqqqqqqqqqqqq  tttttttttttttttttttttttttttttttttttttttttttt
+
+  dddddddddddddddddddddddd
+
+  oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+  ooffmmmmmmmmmmmmmmmm                                                                                                                                ggggggoo
+  oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+                                                                                                                                                 ggggggggggggg
+
+legend
+  T  text bold
+  d  done
+  f  focus
+  g  focus underline
+  m  muted
+  o  border
+  q  code
+  t  text
+  ©  taskFill
+
+layout  scroll 7 · maxScroll 7 · pageSize 11 · viewport 2,3 156x11
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     145,18 13x1
+  send     150,16 6x1
+  field    2,15 156x3  origin 6  indices 0*144

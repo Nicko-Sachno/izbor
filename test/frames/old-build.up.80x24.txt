@@ -1,0 +1,77 @@
+old-build.up.80x24
+izbor on an old build with Izbor up: the notice whole at the top line's left end, ▲ old build at 40 columns
+80x24 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+  ▲ old build · run npm run build                                   Izbor ● up
+  Home  [ Sessions · 0 ]  Ctrl-O
+
+     app                                      Add plugin · answer from Izbor ›
+       Unnamed session · Unknown
+       release · compacting
+   !   docs ·  ! Needs you  your answer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                 Help · Ctrl-G
+
+styles
+  iiiiiiiiiiiiiiiiiiiiiiiiiiiiiii                                   mmmmmmmmmm
+  TTTT  nnnnnnnnnnnnnnnn  mmmmmm
+
+     TTT                                      gggggggggggggggggggggggggggggggg
+    ttttttttttttttttttmmmmmmmmmm
+    ttttttttttmmmmmmmmmmmmm
+   AtttttttmmmYYYYYYYYYYYYYtttttttttttt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                 ggggggggggggg
+
+legend
+  A  needsYou bold
+  T  text bold
+  Y  fill bold
+  g  focus underline
+  i  notice
+  m  muted
+  n  muted underline
+  t  text
+
+layout  scroll 0 · maxScroll 0 · pageSize 19 · viewport 2,3 76x19
+detail  none
+
+targets, in hit-test order
+  session  2,4 76x1  0f1e2d3c-4b5a-4987-8a6b-5c4d3e2f1a0b
+  session  2,5 76x1  1a2b3c4d-5e6f-4a1b-8c2d-3e4f5a6b7c8d
+  session  2,6 76x1  2b3c4d5e-6f7a-4b2c-9d3e-4f5a6b7c8d9e
+  project  46,3 32x1  ~/code/app
+  tab      2,1 4x1  home
+  tab      8,1 16x1  sessions
+  help     65,23 13x1

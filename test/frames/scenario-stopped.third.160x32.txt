@@ -1,0 +1,104 @@
+scenario-stopped.third.160x32
+the sample case stopped: the third session opened
+160x32 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O                                                              │  Explain how request retries work and where the       Hide · h
+                                                                                              │  retry limit is configured.
+   * Fix the token refresh bug and add a regression test for expired access tokens.           │  ▲ Stopped · a client stopped Izbor's watch of this session ·
+     Working                                                                                  │  last known Brief
+     Running authentication tests.                                                            │
+                                                                                              │  Now
+   ! Add CSV export for invoices, including invoice number, date, customer, and total.        │  Traced the retry logic in request.ts and explained where its
+     Waiting                                                                                  │  limit is configured, which errors trigger another attempt,
+     The CSV export is implemented. Waiting for permission to run the invoice tests.          │  and when failed requests stop retrying automatically.
+      ! Needs you                                                                             │  Last change 30s ago
+      Bash: npm test invoices                                                                 │
+                                                                                              │  s · Stop observing
+   ▲ Explain how request retries work and where the retry limit is configured.                │
+     Idle · ▲ Stopped · last known Brief                                                      │
+     Traced the retry logic in request.ts and explained where its limit is configured, which  │
+     errors trigger another attempt, and when failed requests stop retrying automatically.    │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │  ┌─ Reply to this session ───────────────────────────────────┐
+                                                                                              │  │ › your next prompt                                 Send → │
+                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+
+styles
+                                                                                                                                                    mmmmmmmmmm
+  nnnnnnnn  TTTTTTTTTTTT  mmmmmm                                                              o ©®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®©©©©©© gggggggg
+                                                                                              o ©®®®®®®®®®®®®®®®®®®®®®®®®®®©©©©©©©©©©©©©©©©©©©©©©©©©©
+   k tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt           o  iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+     mmmmmmm                                                                                  o  iiiiiiiiiiiiiiii
+     ccccccccccccccccccccccccccccc                                                            o
+                                                                                              o  mmm
+   A ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt        o  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+     mmmmmmm                                                                                  o  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+     ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc          o  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+     YYYYYYYYYYYYY                                                                            o  mmmmmmmmmmmmmmmmmmm
+      AAAAAAAAAAAAAAAAAAAAAAA                                                                 o
+                                                                                              o  gggggggggggggggggg
+   m FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF                o
+     mmmmmmmiiiiiiiiiiiiiiiiiiiiiiiiiiii                                                      o
+     mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm  o
+     mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm    o
+                                                                                              o
+                                                                                              o
+                                                                                              o
+                                                                                              o
+                                                                                              o
+                                                                                              o
+                                                                                              o
+                                                                                              o
+                                                                                              o
+                                                                                              o
+                                                                                              o
+                                                                                              o  ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+                                                                                              o  ooffmmmmmmmmmmmmmmmm                                 ggggggoo
+                                                                                              o  ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+                                                                                                                                                 ggggggggggggg
+
+legend
+  A  needsYou bold
+  F  focus bold
+  T  text bold
+  Y  fill bold
+  c  reply
+  f  focus
+  g  focus underline
+  i  notice
+  k  brand
+  m  muted
+  n  muted underline
+  o  border
+  t  text
+  ©  taskFill
+  ®  taskFill underline
+
+layout  scroll 0 · maxScroll 0 · pageSize 27 · viewport 2,3 90x27
+detail  scroll 0 · maxScroll 0 · pageSize 24 · viewport 97,3 61x24
+
+targets, in hit-test order
+  session  2,3 90x3  0926995f-4c57-4733-89cf-d0c7226a5cbc
+  session  2,7 90x5  a7312ce4-782a-45a0-a84c-e834c934b2a7
+  session  2,13 90x4  c8219b07-e082-4ac4-9bdf-4abfe6fcfc8e
+  tab      2,1 8x1  home
+  tab      12,1 12x1  sessions
+  help     145,31 13x1
+  send     150,29 6x1
+  field    97,28 61x3  origin 101  indices 0*49
+  hide     150,1 8x1
+  stop     97,12 18x1  c8219b07-e082-4ac4-9bdf-4abfe6fcfc8e
+  detail   97,1 61x30

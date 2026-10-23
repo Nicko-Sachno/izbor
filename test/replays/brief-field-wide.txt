@@ -1,0 +1,399 @@
+brief-field-wide
+Beside a side Brief, a click on a row opens its Brief, a click on the field's box focuses the field, Enter sends and the sample store says it sends nothing, a click on the field's text places the caret, a click on Send → sends, and m then types
+izbor --no-color · 160x40 · now 2026-10-09T12:00:00.000Z · 200 ms a step
+
+> start · t=0.0s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O                                                              │  Fix the token refresh bug and add a regression test  Hide · h
+                                                                                              │  for expired access tokens.
+   * Selected · Fix the token refresh bug and add a regression test for expired access        │
+     tokens.                                                                                  │  Now
+     Working                                                                                  │  Running authentication tests.
+     Running authentication tests.                                                            │  Latest: Bash: npm test auth
+                                                                                              │  Last change 8s ago
+   ! Add CSV export for invoices, including invoice number, date, customer, and total.        │
+     Waiting                                                                                  │  s · Stop observing
+     The CSV export is implemented. Waiting for permission to run the invoice tests.          │
+      ! Needs you                                                                             │
+      Bash: npm test invoices                                                                 │
+                                                                                              │
+   ✓ Explain how request retries work and where the retry limit is configured.                │
+     Idle                                                                                     │
+     Traced the retry logic in request.ts and explained where its limit is configured, which  │
+     errors trigger another attempt, and when failed requests stop retrying automatically.    │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │  ┌─ Reply to this session ───────────────────────────────────┐
+                                                                                              │  │ › your next prompt; it runs when this turn ends    Send → │
+                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> click "Add CSV export" · t=0.2s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O                                                              │  Add CSV export for invoices, including invoice       Hide · h
+                                                                                              │  number, date, customer, and total.
+   * Fix the token refresh bug and add a regression test for expired access tokens.           │
+     Working                                                                                  │  Now
+     Running authentication tests.                                                            │  The CSV export is implemented. Waiting for permission to run
+                                                                                              │  the invoice tests.
+   ! Selected · Add CSV export for invoices, including invoice number, date, customer, and    │
+     total.                                                                                   │   ! Needs you
+     Waiting                                                                                  │  Bash: npm test invoices
+     The CSV export is implemented. Waiting for permission to run the invoice tests.          │  Last change 15s ago
+      ! Needs you                                                                             │
+      Bash: npm test invoices                                                                 │  s · Stop observing
+                                                                                              │
+   ✓ Explain how request retries work and where the retry limit is configured.                │
+     Idle                                                                                     │
+     Traced the retry logic in request.ts and explained where its limit is configured, which  │
+     errors trigger another attempt, and when failed requests stop retrying automatically.    │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │  ┌─ Answer ──────────────────────────────────────────────────┐
+                                                                                              │  │ › yes, no, or no and your words                    Send → │
+                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> click "┐" · t=0.4s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O                                                              │  Add CSV export for invoices, including invoice       Hide · h
+                                                                                              │  number, date, customer, and total.
+   * Fix the token refresh bug and add a regression test for expired access tokens.           │
+     Working                                                                                  │  Now
+     Running authentication tests.                                                            │  The CSV export is implemented. Waiting for permission to run
+                                                                                              │  the invoice tests.
+   ! Selected · Add CSV export for invoices, including invoice number, date, customer, and    │
+     total.                                                                                   │   ! Needs you
+     Waiting                                                                                  │  Bash: npm test invoices
+     The CSV export is implemented. Waiting for permission to run the invoice tests.          │  Last change 15s ago
+      ! Needs you                                                                             │
+      Bash: npm test invoices                                                                 │  s · Stop observing
+                                                                                              │
+   ✓ Explain how request retries work and where the retry limit is configured.                │
+     Idle                                                                                     │
+     Traced the retry logic in request.ts and explained where its limit is configured, which  │
+     errors trigger another attempt, and when failed requests stop retrying automatically.    │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │  ┌─ Answer ──────────────────────────────────────────────────┐
+                                                                                              │  │ › yes, no, or no and your words                    Send → │
+                                                                                              │  └─ Ctrl-J new line · Enter sends ───────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+cursor 101,37 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> type "yes" · t=0.6s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O                                                              │  Add CSV export for invoices, including invoice       Hide · h
+                                                                                              │  number, date, customer, and total.
+   * Fix the token refresh bug and add a regression test for expired access tokens.           │
+     Working                                                                                  │  Now
+     Running authentication tests.                                                            │  The CSV export is implemented. Waiting for permission to run
+                                                                                              │  the invoice tests.
+   ! Selected · Add CSV export for invoices, including invoice number, date, customer, and    │
+     total.                                                                                   │   ! Needs you
+     Waiting                                                                                  │  Bash: npm test invoices
+     The CSV export is implemented. Waiting for permission to run the invoice tests.          │  Last change 15s ago
+      ! Needs you                                                                             │
+      Bash: npm test invoices                                                                 │  s · Stop observing
+                                                                                              │
+   ✓ Explain how request retries work and where the retry limit is configured.                │
+     Idle                                                                                     │
+     Traced the retry logic in request.ts and explained where its limit is configured, which  │
+     errors trigger another attempt, and when failed requests stop retrying automatically.    │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │  ┌─ Answer ──────────────────────────────────────────────────┐
+                                                                                              │  │ › yes                                              Send → │
+                                                                                              │  └─ Ctrl-J new line · Enter sends ───────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+cursor 104,37 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key enter · t=0.8s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O                                                              │  Add CSV export for invoices, including invoice       Hide · h
+                                                                                              │  number, date, customer, and total.
+   * Fix the token refresh bug and add a regression test for expired access tokens.           │
+     Working                                                                                  │  Now
+     Running authentication tests.                                                            │  The CSV export is implemented. Waiting for permission to run
+                                                                                              │  the invoice tests.
+   ! Selected · Add CSV export for invoices, including invoice number, date, customer, and    │
+     total.                                                                                   │   ! Needs you
+     Waiting                                                                                  │  Bash: npm test invoices
+     The CSV export is implemented. Waiting for permission to run the invoice tests.          │  Last change 15s ago
+      ! Needs you                                                                             │
+      Bash: npm test invoices                                                                 │  s · Stop observing
+                                                                                              │
+   ✓ Explain how request retries work and where the retry limit is configured.                │
+     Idle                                                                                     │
+     Traced the retry logic in request.ts and explained where its limit is configured, which  │
+     errors trigger another attempt, and when failed requests stop retrying automatically.    │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │  The sample sends nothing.
+                                                                                              │  ┌─ Answer ──────────────────────────────────────────────────┐
+                                                                                              │  │ › yes                                              Send → │
+                                                                                              │  └─ Ctrl-J new line · Enter sends ───────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+cursor 104,37 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> click "› yes" · t=1.0s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O                                                              │  Add CSV export for invoices, including invoice       Hide · h
+                                                                                              │  number, date, customer, and total.
+   * Fix the token refresh bug and add a regression test for expired access tokens.           │
+     Working                                                                                  │  Now
+     Running authentication tests.                                                            │  The CSV export is implemented. Waiting for permission to run
+                                                                                              │  the invoice tests.
+   ! Selected · Add CSV export for invoices, including invoice number, date, customer, and    │
+     total.                                                                                   │   ! Needs you
+     Waiting                                                                                  │  Bash: npm test invoices
+     The CSV export is implemented. Waiting for permission to run the invoice tests.          │  Last change 16s ago
+      ! Needs you                                                                             │
+      Bash: npm test invoices                                                                 │  s · Stop observing
+                                                                                              │
+   ✓ Explain how request retries work and where the retry limit is configured.                │
+     Idle                                                                                     │
+     Traced the retry logic in request.ts and explained where its limit is configured, which  │
+     errors trigger another attempt, and when failed requests stop retrying automatically.    │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │  The sample sends nothing.
+                                                                                              │  ┌─ Answer ──────────────────────────────────────────────────┐
+                                                                                              │  │ › yes                                              Send → │
+                                                                                              │  └─ Ctrl-J new line · Enter sends ───────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+cursor 101,37 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> type "!" · t=1.2s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O                                                              │  Add CSV export for invoices, including invoice       Hide · h
+                                                                                              │  number, date, customer, and total.
+   * Fix the token refresh bug and add a regression test for expired access tokens.           │
+     Working                                                                                  │  Now
+     Running authentication tests.                                                            │  The CSV export is implemented. Waiting for permission to run
+                                                                                              │  the invoice tests.
+   ! Selected · Add CSV export for invoices, including invoice number, date, customer, and    │
+     total.                                                                                   │   ! Needs you
+     Waiting                                                                                  │  Bash: npm test invoices
+     The CSV export is implemented. Waiting for permission to run the invoice tests.          │  Last change 16s ago
+      ! Needs you                                                                             │
+      Bash: npm test invoices                                                                 │  s · Stop observing
+                                                                                              │
+   ✓ Explain how request retries work and where the retry limit is configured.                │
+     Idle                                                                                     │
+     Traced the retry logic in request.ts and explained where its limit is configured, which  │
+     errors trigger another attempt, and when failed requests stop retrying automatically.    │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │  ┌─ Answer ──────────────────────────────────────────────────┐
+                                                                                              │  │ › !yes                                             Send → │
+                                                                                              │  └─ Ctrl-J new line · Enter sends ───────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+cursor 102,37 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> click "Send →" · t=1.4s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O                                                              │  Add CSV export for invoices, including invoice       Hide · h
+                                                                                              │  number, date, customer, and total.
+   * Fix the token refresh bug and add a regression test for expired access tokens.           │
+     Working                                                                                  │  Now
+     Running authentication tests.                                                            │  The CSV export is implemented. Waiting for permission to run
+                                                                                              │  the invoice tests.
+   ! Selected · Add CSV export for invoices, including invoice number, date, customer, and    │
+     total.                                                                                   │   ! Needs you
+     Waiting                                                                                  │  Bash: npm test invoices
+     The CSV export is implemented. Waiting for permission to run the invoice tests.          │  Last change 16s ago
+      ! Needs you                                                                             │
+      Bash: npm test invoices                                                                 │  s · Stop observing
+                                                                                              │
+   ✓ Explain how request retries work and where the retry limit is configured.                │
+     Idle                                                                                     │
+     Traced the retry logic in request.ts and explained where its limit is configured, which  │
+     errors trigger another attempt, and when failed requests stop retrying automatically.    │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │  The sample sends nothing.
+                                                                                              │  ┌─ Answer ──────────────────────────────────────────────────┐
+                                                                                              │  │ › !yes                                             Send → │
+                                                                                              │  └─ Ctrl-J new line · Enter sends ───────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+cursor 105,37 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> type "m" · t=1.6s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O                                                              │  Add CSV export for invoices, including invoice       Hide · h
+                                                                                              │  number, date, customer, and total.
+   * Fix the token refresh bug and add a regression test for expired access tokens.           │
+     Working                                                                                  │  Now
+     Running authentication tests.                                                            │  The CSV export is implemented. Waiting for permission to run
+                                                                                              │  the invoice tests.
+   ! Selected · Add CSV export for invoices, including invoice number, date, customer, and    │
+     total.                                                                                   │   ! Needs you
+     Waiting                                                                                  │  Bash: npm test invoices
+     The CSV export is implemented. Waiting for permission to run the invoice tests.          │  Last change 16s ago
+      ! Needs you                                                                             │
+      Bash: npm test invoices                                                                 │  s · Stop observing
+                                                                                              │
+   ✓ Explain how request retries work and where the retry limit is configured.                │
+     Idle                                                                                     │
+     Traced the retry logic in request.ts and explained where its limit is configured, which  │
+     errors trigger another attempt, and when failed requests stop retrying automatically.    │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │
+                                                                                              │  ┌─ Answer ──────────────────────────────────────────────────┐
+                                                                                              │  │ › !yesm                                            Send → │
+                                                                                              │  └─ Ctrl-J new line · Enter sends ───────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+cursor 106,37 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0

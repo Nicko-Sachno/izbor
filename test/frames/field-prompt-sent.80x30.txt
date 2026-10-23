@@ -1,0 +1,84 @@
+field-prompt-sent.80x30
+X1: a prompt sent to the idle session: the field empty with its placeholder back, Sent to this session. on its line, the heading still Idle
+80x30 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Explain how request retries work and where the retry limit is configured.
+
+  Now
+  Traced the retry logic in request.ts and explained where its limit is
+  configured, which errors trigger another attempt, and when failed requests
+  stop retrying automatically.
+  Last change 30s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Sent to this session.
+  ┌─ Reply to this session ──────────────────────────────────────────────────┐
+  │ › your next prompt                                                Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+
+styles
+                                                                    mmmmmmmmmm
+  gggggggggg
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+
+  mmm
+  ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+  cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+  cccccccccccccccccccccccccccc
+  mmmmmmmmmmmmmmmmmmm
+
+  gggggggggggggggggg
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  mmmmmmmmmmmmmmmmmmmmm
+  ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+  ffffmmmmmmmmmmmmmmmm                                                ggggggff
+  fffmmmmmmmmmmmmmmmmmmmmmmmmmmmmmffffffffffffffffffffffffffffffffffffffffffff
+                                                                 ggggggggggggg
+
+legend
+  c  reply
+  f  focus
+  g  focus underline
+  m  muted
+  ©  taskFill
+
+layout  scroll 0 · maxScroll 0 · pageSize 22 · viewport 2,3 76x22
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     65,29 13x1
+  send     70,27 6x1
+  field    2,26 76x3  origin 6  indices 0*64
+  stop     2,10 18x1  c8219b07-e082-4ac4-9bdf-4abfe6fcfc8e

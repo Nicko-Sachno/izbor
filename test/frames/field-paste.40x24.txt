@@ -1,0 +1,73 @@
+field-paste.40x24
+F3: a typed line, Ctrl-J, then a 42-line log pasted into the idle session's field, the cursor after it: the paste stands as one block, Pasted 42 lines · 1.9 KB in sage on its dark sage fill, the title counts it as one line, · 2 lines, and the bottom edge reads Backspace removes the paste · Enter sends; at 40 columns the typed line wraps and · Enter sends drops
+40x24 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                            Izbor ● up
+  Back · Esc
+  Explain how request retries work and
+  where the retry limit is configured.
+
+  Now
+  Traced the retry logic in request.ts
+  and explained where its limit is
+  configured, which errors trigger
+  another attempt, and when failed
+  requests stop retrying
+  automatically.
+  Last change 30s ago
+
+  s · Stop observing
+
+
+
+  ┌─ Reply to this session · 2 lines ┐
+  │ › CI fails on the same branch    │
+  │   too; here is its log:          │
+  │    Pasted 42 lines · 1.9 KB      │
+  └─ Backspace removes the paste ────┘
+                         Help · Ctrl-G
+
+styles
+                            mmmmmmmmmm
+  gggggggggg
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+
+  mmm
+  cccccccccccccccccccccccccccccccccccc
+  cccccccccccccccccccccccccccccccc
+  cccccccccccccccccccccccccccccccc
+  cccccccccccccccccccccccccccccccc
+  cccccccccccccccccccccc
+  cccccccccccccc
+  mmmmmmmmmmmmmmmmmmm
+
+  gggggggggggggggggg
+
+
+
+  ffffffffffffffffffffffffffffffffffff
+  fffftttttttttttttttttttttttttttt  ff
+  ffffttttttttttttttttttttt         ff
+  ffff§§§§§§§§§§§§§§§§§§§§§§§§§§    ff
+  fffmmmmmmmmmmmmmmmmmmmmmmmmmmmffffff
+                         ggggggggggggg
+
+legend
+  c  reply
+  f  focus
+  g  focus underline
+  m  muted
+  t  text
+  §  pasteFill
+  ©  taskFill
+
+layout  scroll 0 · maxScroll 0 · pageSize 13 · viewport 2,4 36x13
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     25,23 13x1
+  field    2,18 36x5  origin 6  indices 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27*4 / 28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49*10 / 50*13,1972*18
+  stop     2,14 18x1  c8219b07-e082-4ac4-9bdf-4abfe6fcfc8e

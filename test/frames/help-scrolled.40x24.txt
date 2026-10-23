@@ -1,0 +1,66 @@
+help-scrolled.40x24
+Help at 40 columns, Page Down: its last rows
+40x24 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                            Izbor ● up
+  Help
+  Up / Down   move the focus; in an
+  open Brief, scroll it
+  Enter on a Brief   puts the cursor
+  in its field
+  Ctrl-O   switch Home and Sessions
+  Esc   step back: field, Brief,
+  Sessions, Home
+  Page Up / Page Down   scroll the
+  list or the Brief
+  h   hide the side Brief
+  m   show or hide Metadata: the full
+  ID, the Task, the sources, the exact
+  times
+  s   stop observing the open Brief's
+  session; it keeps running
+  Ctrl-G   open or close Help
+  Ctrl-C   quit Izbor
+  izbor hooks --remove <folder> and
+  izbor plugin --remove <folder> undo
+  setup.
+
+                        Close · Ctrl-G
+
+styles
+                            mmmmmmmmmm
+  mmmm
+  ttttttttttttttttttttttttttttttttt
+  ttttttttttttttttttttt
+  tttttttttttttttttttttttttttttttttt
+  tttttttttttt
+  ttttttttttttttttttttttttttttttttt
+  tttttttttttttttttttttttttttttt
+  tttttttttttttt
+  tttttttttttttttttttttttttttttttt
+  ttttttttttttttttt
+  ttttttttttttttttttttttt
+  ttttttttttttttttttttttttttttttttttt
+  tttttttttttttttttttttttttttttttttttt
+  ttttt
+  ttttttttttttttttttttttttttttttttttt
+  ttttttttttttttttttttttttt
+  ttttttttttttttttttttttttttt
+  ttttttttttttttttttt
+  ttttttttttttttttttttttttttttttttt
+  ttttttttttttttttttttttttttttttttttt
+  tttttt
+
+                        GGGGGGGGGGGGGG
+
+legend
+  G  focus bold underline
+  m  muted
+  t  text
+
+layout  scroll 7 · maxScroll 7 · pageSize 20 · viewport 2,2 36x20
+detail  none
+
+targets, in hit-test order
+  help     24,23 14x1

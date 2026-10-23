@@ -1,0 +1,73 @@
+response-finished-paged.40x24
+L4, then Page Down: the old page's last row stands first, and the footer counts the rows below, from inside the turn at 80 columns and the answer's rest at 40
+40x24 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                            Izbor ● up
+  Back · Esc
+  Make the retry limit configurable
+  per client and cover it with tests.
+
+  Client: billing
+  Limit: 5
+  Source: src/billing/client.ts
+  ────────────────────────────────────
+  Client: sync
+  Limit: 3
+  Source: src/sync/client.ts
+  ────────────────────────────────────
+  Client: payments
+  Limit: 0
+  Source: src/payments/client.ts
+
+  A client that sets no limit keeps
+  ↓ 15 more · PgDn
+
+  ┌─ Reply to this session ──────────┐
+  │ › your next prompt               │
+  └──────────────────────────────────┘
+                         Help · Ctrl-G
+
+styles
+                            mmmmmmmmmm
+  gggggggggg
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+
+  TTTTTTT ttttttt
+  TTTTTT t
+  TTTTTTT qqqqqqqqqqqqqqqqqqqqq
+  oooooooooooooooooooooooooooooooooooo
+  TTTTTTT tttt
+  TTTTTT t
+  TTTTTTT qqqqqqqqqqqqqqqqqq
+  oooooooooooooooooooooooooooooooooooo
+  TTTTTTT tttttttt
+  TTTTTT t
+  TTTTTTT qqqqqqqqqqqqqqqqqqqqqq
+
+  ttttttttttttttttttttttttttttttttt
+  mmmmmmmmmmmmmmmm
+
+  oooooooooooooooooooooooooooooooooooo
+  ooffmmmmmmmmmmmmmmmm              oo
+  oooooooooooooooooooooooooooooooooooo
+                         ggggggggggggg
+
+legend
+  T  text bold
+  f  focus
+  g  focus underline
+  m  muted
+  o  border
+  q  code
+  t  text
+  ©  taskFill
+
+layout  scroll 13 · maxScroll 78 · pageSize 15 · viewport 2,4 36x15
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     25,23 13x1
+  field    2,20 36x3  origin 6  indices 0*31

@@ -1,0 +1,73 @@
+scenario-izbor-stopped.third.80x24
+the sample case izbor-stopped: the third session opened
+80x24 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Explain how request retries work and where the retry limit is configured.
+  ▲ Stopped · Izbor stopped · last known Brief
+
+  Now
+  Traced the retry logic in request.ts and explained where its limit is
+  configured, which errors trigger another attempt, and when failed requests
+  stop retrying automatically.
+  Last change 30s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+  ┌─ Reply to this session ──────────────────────────────────────────────────┐
+  │ › your next prompt                                                Send → │
+  └──────────────────────────────────────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+
+styles
+                                                                    mmmmmmmmmm
+  gggggggggg
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+  iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+
+  mmm
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmm
+  mmmmmmmmmmmmmmmmmmm
+
+  gggggggggggggggggg
+
+
+
+
+
+
+
+
+  oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+  ooffmmmmmmmmmmmmmmmm                                                ggggggoo
+  oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+                                                                 ggggggggggggg
+
+legend
+  f  focus
+  g  focus underline
+  i  notice
+  m  muted
+  o  border
+  ©  taskFill
+
+layout  scroll 0 · maxScroll 0 · pageSize 16 · viewport 2,3 76x16
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     65,23 13x1
+  send     70,21 6x1
+  field    2,20 76x3  origin 6  indices 0*64
+  stop     2,11 18x1  c8219b07-e082-4ac4-9bdf-4abfe6fcfc8e

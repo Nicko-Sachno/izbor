@@ -1,0 +1,65 @@
+brief-second.160x19
+the second session opened: its Brief page, or the side Brief from 140x20 up
+160x19 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                                                                                                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 15s ago
+
+  s · Stop observing
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ › yes, no, or no and your words                                                                                                                   Send → │
+  └──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+
+styles
+                                                                                                                                                    mmmmmmmmmm
+  gggggggggg
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+
+  mmm
+  ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+  YYYYYYYYYYYYY
+  AAAAAAAAAAAAAAAAAAAAAAA
+  mmmmmmmmmmmmmmmmmmm
+
+  gggggggggggggggggg
+
+
+
+  oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+  ooffmmmmmmmmmmmmmmmmmmmmmmmmmmmmm                                                                                                                   ggggggoo
+  oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+                                                                                                                                                 ggggggggggggg
+
+legend
+  A  needsYou bold
+  Y  fill bold
+  c  reply
+  f  focus
+  g  focus underline
+  m  muted
+  o  border
+  ©  taskFill
+
+layout  scroll 0 · maxScroll 0 · pageSize 11 · viewport 2,3 156x11
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     145,18 13x1
+  send     150,16 6x1
+  field    2,15 156x3  origin 6  indices 0*144
+  stop     2,11 18x1  a7312ce4-782a-45a0-a84c-e834c934b2a7

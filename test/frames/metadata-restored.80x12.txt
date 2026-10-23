@@ -1,0 +1,48 @@
+metadata-restored.80x12
+the sample case question, the third session's Brief one row down, m, then m again: no Metadata, and one row down as before
+80x12 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Explain how request retries work and where the retry limit is configured.
+  Now
+  Traced the retry logic in request.ts and added a CSV export of the retry
+  log. Waiting for you to pick the export's date format.
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › an option's number, or no                                       Send → │
+  └──────────────────────────────────────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+
+styles
+                                                                    mmmmmmmmmm
+  gggggggggg
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+  mmm
+  cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+  cccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+
+  oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+  ooffmmmmmmmmmmmmmmmmmmmmmmmmm                                       ggggggoo
+  oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+                                                                 ggggggggggggg
+
+legend
+  c  reply
+  f  focus
+  g  focus underline
+  m  muted
+  o  border
+  ©  taskFill
+
+layout  scroll 1 · maxScroll 9 · pageSize 4 · viewport 2,3 76x4
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     65,11 13x1
+  send     70,9 6x1
+  field    2,8 76x3  origin 6  indices 0*64

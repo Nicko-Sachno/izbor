@@ -1,0 +1,74 @@
+response-tools.40x24
+the tool rows at 40 columns, from the subagent's call down to the footer over the failed call's row: a path's end, paths out of Wrote, the lint's colour codes gone
+40x24 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                            Izbor ● up
+  Back · Esc
+  Export the retry log as CSV and file
+  an issue for its burst limit.
+  ● Task(Find every reader of the ret…
+    ⎿  Done (12 tool uses · 1m 2s)
+  ● Bash(npm run lint)
+    ⎿  Lint passed: 0 problems in 6 f…
+  ● Update(src/cli/commands/export.ts)
+    ⎿  Rejected by the user
+  ● Bash(npm run bench -- retries)
+    ⎿  Interrupted by the user
+  ● Read(…-burst-429-retry-log.ndjson)
+    ⎿  Read 412 lines
+  ● Write(src/request/retryLogCsv.ts)
+    ⎿  Wrote 58 lines
+  ● Create(test/retryLogCsv.test.ts)
+    ⎿  Wrote 41 lines
+  ↓ 11 more · PgDn
+
+  ┌─ Answer ─────────────────────────┐
+  │ › yes, no, or no and your words  │
+  └──────────────────────────────────┘
+                         Help · Ctrl-G
+
+styles
+                            mmmmmmmmmm
+  gggggggggg
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+  d TTTTtttttttttttttttttttttttttttttt
+    m  mmmmmmTTmmmmmmmmmmmmmmmmmmm
+  d TTTTtttttttttttttt
+    m  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+  r TTTTTTtttttttttttttttttttttttttttt
+    r  rrrrrrrrrrrrrrrrrrrr
+  r TTTTtttttttttttttttttttttttttt
+    r  rrrrrrrrrrrrrrrrrrrrrrr
+  d TTTTtttttttttttttttttttttttttttttt
+    m  mmmmmTTTmmmmmm
+  d TTTTTtttttttttttttttttttttttttttt
+    m  mmmmmmTTmmmmmm
+  d TTTTTTtttttttttttttttttttttttttt
+    m  mmmmmmTTmmmmmm
+  mmmmmmmmmmmmmmmm
+
+  oooooooooooooooooooooooooooooooooooo
+  ooffmmmmmmmmmmmmmmmmmmmmmmmmmmmmm oo
+  oooooooooooooooooooooooooooooooooooo
+                         ggggggggggggg
+
+legend
+  T  text bold
+  d  done
+  f  focus
+  g  focus underline
+  m  muted
+  o  border
+  r  error
+  t  text
+  ©  taskFill
+
+layout  scroll 16 · maxScroll 35 · pageSize 15 · viewport 2,4 36x15
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     25,23 13x1
+  field    2,20 36x3  origin 6  indices 0*31

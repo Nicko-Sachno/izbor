@@ -1,0 +1,74 @@
+brief-question.40x24
+R3, N6: a Question: the question under the badge, its options numbered, the field titled Answer and the placeholder an option's number, or no
+40x24 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                            Izbor ● up
+  Back · Esc
+  Add CSV export for invoices,
+  including invoice number, date,
+  customer, and total.
+
+  Now
+  The CSV export is implemented.
+  Waiting for you to pick the export's
+  date format.
+
+   ! Needs you
+  Which date format should the export
+  use?
+  1. ISO 8601 (2026-10-09)
+  2. Day first (09/10/2026)
+  3. Month first (10/09/2026)
+  Last change 15s ago
+
+
+  ┌─ Answer ─────────────────────────┐
+  │ › an option's number, or no      │
+  └──────────────────────────────────┘
+                         Help · Ctrl-G
+
+styles
+                            mmmmmmmmmm
+  gggggggggg
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+
+  mmm
+  cccccccccccccccccccccccccccccc
+  cccccccccccccccccccccccccccccccccccc
+  cccccccccccc
+
+  YYYYYYYYYYYYY
+  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  AAAA
+  tttttttttttttttttttttttt
+  ttttttttttttttttttttttttt
+  ttttttttttttttttttttttttttt
+  mmmmmmmmmmmmmmmmmmm
+
+
+  oooooooooooooooooooooooooooooooooooo
+  ooffmmmmmmmmmmmmmmmmmmmmmmmmm     oo
+  oooooooooooooooooooooooooooooooooooo
+                         ggggggggggggg
+
+legend
+  A  needsYou bold
+  Y  fill bold
+  c  reply
+  f  focus
+  g  focus underline
+  m  muted
+  o  border
+  t  text
+  ©  taskFill
+
+layout  scroll 0 · maxScroll 1 · pageSize 14 · viewport 2,5 36x14
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     25,23 13x1
+  field    2,20 36x3  origin 6  indices 0*31

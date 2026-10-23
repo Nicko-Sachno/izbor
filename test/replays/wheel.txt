@@ -1,0 +1,428 @@
+wheel
+The wheel scrolls only the pane beneath the pointer, 3 rows a step, clamped at its end, and keeps the focus; Page Up / Down scroll the overview while nothing has focus; Home and Sessions each keep their scroll; m shows Metadata with its last line in view, the wheel scrolls back over it, and m again gives the Brief the scroll it had
+izbor --no-color · sample question · 100x12 · now 2026-10-09T12:00:00.000Z · 200 ms a step
+
+> start · t=0.0s
+screen
+                                                                                        Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+   * Selected · Fix the token refresh bug and add a regression test for expired access      Open ›
+     tokens.
+     Working
+     Running authentication tests.
+   ! Add CSV export for invoices, including invoice number, date, customer, and total.
+     Waiting
+     The CSV export is implemented. Waiting for permission to run the invoice tests.
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> wheel-down 10 4 · t=0.2s
+screen
+                                                                                        Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+     Running authentication tests.
+   ! Add CSV export for invoices, including invoice number, date, customer, and total.
+     Waiting
+     The CSV export is implemented. Waiting for permission to run the invoice tests.
+      ! Needs you
+      Bash: npm test invoices
+   ! Explain how request retries work and where the retry limit is configured.
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> wheel-down 10 4 · t=0.4s
+screen
+                                                                                        Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+     The CSV export is implemented. Waiting for permission to run the invoice tests.
+      ! Needs you
+      Bash: npm test invoices
+   ! Explain how request retries work and where the retry limit is configured.
+     Waiting
+     Traced the retry logic in request.ts and added a CSV export of the retry log. Waiting for you
+     to pick the export's date format.
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> wheel-down 10 4 · t=0.6s
+screen
+                                                                                        Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+      Bash: npm test invoices
+   ! Explain how request retries work and where the retry limit is configured.
+     Waiting
+     Traced the retry logic in request.ts and added a CSV export of the retry log. Waiting for you
+     to pick the export's date format.
+      ! Needs you
+      Which date format should the export use?
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> wheel-down 10 4 · t=0.8s
+= same as step 3
+
+> wheel-up 10 4 · t=1.0s
+screen
+                                                                                        Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+     Waiting
+     The CSV export is implemented. Waiting for permission to run the invoice tests.
+      ! Needs you
+      Bash: npm test invoices
+   ! Explain how request retries work and where the retry limit is configured.
+     Waiting
+     Traced the retry logic in request.ts and added a CSV export of the retry log. Waiting for you
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> wheel-down 10 0 · t=1.2s
+= same as step 5
+
+> key pageup · t=1.4s
+screen
+                                                                                        Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+   * Selected · Fix the token refresh bug and add a regression test for expired access      Open ›
+     tokens.
+     Working
+     Running authentication tests.
+   ! Add CSV export for invoices, including invoice number, date, customer, and total.
+     Waiting
+     The CSV export is implemented. Waiting for permission to run the invoice tests.
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key pagedown · t=1.6s
+screen
+                                                                                        Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+      ! Needs you
+      Bash: npm test invoices
+   ! Explain how request retries work and where the retry limit is configured.
+     Waiting
+     Traced the retry logic in request.ts and added a CSV export of the retry log. Waiting for you
+     to pick the export's date format.
+      ! Needs you
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key pagedown · t=1.8s
+screen
+                                                                                        Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+      Bash: npm test invoices
+   ! Explain how request retries work and where the retry limit is configured.
+     Waiting
+     Traced the retry logic in request.ts and added a CSV export of the retry log. Waiting for you
+     to pick the export's date format.
+      ! Needs you
+      Which date format should the export use?
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key pagedown · t=2.0s
+= same as step 9
+
+> key pageup · t=2.2s
+screen
+                                                                                        Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+     tokens.
+     Working
+     Running authentication tests.
+   ! Add CSV export for invoices, including invoice number, date, customer, and total.
+     Waiting
+     The CSV export is implemented. Waiting for permission to run the invoice tests.
+      ! Needs you
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key pagedown · t=2.4s
+screen
+                                                                                        Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+      Bash: npm test invoices
+   ! Explain how request retries work and where the retry limit is configured.
+     Waiting
+     Traced the retry logic in request.ts and added a CSV export of the retry log. Waiting for you
+     to pick the export's date format.
+      ! Needs you
+      Which date format should the export use?
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key ctrl-o · t=2.6s
+screen
+                                                                                        Izbor ● up
+  Home  [ Sessions · 3 ]  Ctrl-O
+
+     izbor
+       izbor-4c · Working · Open ›
+   !   izbor-e8 ·  ! Needs you  permission prompt · worktree invoices · Open ›
+       izbor-6f · Idle · Open ›
+     example-api · Briefs update late                                                  Add hooks ›
+       Orders API review · Idle
+       example-api-3a · Working
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> wheel-down 10 4 · t=2.8s
+screen
+                                                                                        Izbor ● up
+  Home  [ Sessions · 3 ]  Ctrl-O
+
+   !   izbor-e8 ·  ! Needs you  permission prompt · worktree invoices · Open ›
+       izbor-6f · Idle · Open ›
+     example-api · Briefs update late                                                  Add hooks ›
+       Orders API review · Idle
+       example-api-3a · Working
+     invoice-api                                                  Add plugin · answer from Izbor ›
+       invoice-api-2b · Idle
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key ctrl-o · t=3.0s
+screen
+                                                                                        Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+      Bash: npm test invoices
+   ! Explain how request retries work and where the retry limit is configured.
+     Waiting
+     Traced the retry logic in request.ts and added a CSV export of the retry log. Waiting for you
+     to pick the export's date format.
+      ! Needs you
+      Which date format should the export use?
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key ctrl-o · t=3.2s
+screen
+                                                                                        Izbor ● up
+  Home  [ Sessions · 3 ]  Ctrl-O
+
+   !   izbor-e8 ·  ! Needs you  permission prompt · worktree invoices · Open ›
+       izbor-6f · Idle · Open ›
+     example-api · Briefs update late                                                  Add hooks ›
+       Orders API review · Idle
+       example-api-3a · Working
+     invoice-api                                                  Add plugin · answer from Izbor ›
+       invoice-api-2b · Idle
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key ctrl-o · t=3.4s
+screen
+                                                                                        Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+      Bash: npm test invoices
+   ! Explain how request retries work and where the retry limit is configured.
+     Waiting
+     Traced the retry logic in request.ts and added a CSV export of the retry log. Waiting for you
+     to pick the export's date format.
+      ! Needs you
+      Which date format should the export use?
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> wheel-up 10 4 · t=3.6s
+screen
+                                                                                        Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+     Waiting
+     The CSV export is implemented. Waiting for permission to run the invoice tests.
+      ! Needs you
+      Bash: npm test invoices
+   ! Explain how request retries work and where the retry limit is configured.
+     Waiting
+     Traced the retry logic in request.ts and added a CSV export of the retry log. Waiting for you
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> wheel-down 10 4 · t=3.8s
+screen
+                                                                                        Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+      Bash: npm test invoices
+   ! Explain how request retries work and where the retry limit is configured.
+     Waiting
+     Traced the retry logic in request.ts and added a CSV export of the retry log. Waiting for you
+     to pick the export's date format.
+      ! Needs you
+      Which date format should the export use?
+
+                                                                                     Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> resize 160 20 · t=4.0s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O                                                              │  Fix the token refresh bug and add a regression test  Hide · h
+                                                                                              │  for expired access tokens.
+     Working                                                                                  │
+     Running authentication tests.                                                            │  Now
+                                                                                              │  Running authentication tests.
+   ! Add CSV export for invoices, including invoice number, date, customer, and total.        │  Latest: Bash: npm test auth
+     Waiting                                                                                  │  Last change 12s ago
+     The CSV export is implemented. Waiting for permission to run the invoice tests.          │
+      ! Needs you                                                                             │  s · Stop observing
+      Bash: npm test invoices                                                                 │
+                                                                                              │
+   ! Explain how request retries work and where the retry limit is configured.                │
+     Waiting                                                                                  │
+     Traced the retry logic in request.ts and added a CSV export of the retry log. Waiting    │
+     for you to pick the export's date format.                                                │
+      ! Needs you                                                                             │  ┌─ Reply to this session ───────────────────────────────────┐
+      Which date format should the export use?                                                │  │ › your next prompt; it runs when this turn ends    Send → │
+                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> click "Explain how request" · t=4.2s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O                                                              │  Explain how request retries work and where the       Hide · h
+                                                                                              │  retry limit is configured.
+     Working                                                                                  │
+     Running authentication tests.                                                            │  Now
+                                                                                              │  Traced the retry logic in request.ts and added a CSV export
+   ! Add CSV export for invoices, including invoice number, date, customer, and total.        │  of the retry log. Waiting for you to pick the export's date
+     Waiting                                                                                  │  format.
+     The CSV export is implemented. Waiting for permission to run the invoice tests.          │
+      ! Needs you                                                                             │   ! Needs you
+      Bash: npm test invoices                                                                 │  Which date format should the export use?
+                                                                                              │  1. ISO 8601 (2026-10-09)
+   ! Selected · Explain how request retries work and where the retry limit is configured.     │  2. Day first (09/10/2026)
+     Waiting                                                                                  │  3. Month first (10/09/2026)
+     Traced the retry logic in request.ts and added a CSV export of the retry log. Waiting    │  Last change 19s ago
+     for you to pick the export's date format.                                                │
+      ! Needs you                                                                             │  ┌─ Answer ──────────────────────────────────────────────────┐
+      Which date format should the export use?                                                │  │ › an option's number, or no                        Send → │
+                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key down · t=4.4s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O                                                              │  Explain how request retries work and where the       Hide · h
+                                                                                              │  retry limit is configured.
+     Working                                                                                  │  Now
+     Running authentication tests.                                                            │  Traced the retry logic in request.ts and added a CSV export
+                                                                                              │  of the retry log. Waiting for you to pick the export's date
+   ! Add CSV export for invoices, including invoice number, date, customer, and total.        │  format.
+     Waiting                                                                                  │
+     The CSV export is implemented. Waiting for permission to run the invoice tests.          │   ! Needs you
+      ! Needs you                                                                             │  Which date format should the export use?
+      Bash: npm test invoices                                                                 │  1. ISO 8601 (2026-10-09)
+                                                                                              │  2. Day first (09/10/2026)
+   ! Selected · Explain how request retries work and where the retry limit is configured.     │  3. Month first (10/09/2026)
+     Waiting                                                                                  │  Last change 19s ago
+     Traced the retry logic in request.ts and added a CSV export of the retry log. Waiting    │
+     for you to pick the export's date format.                                                │
+      ! Needs you                                                                             │  ┌─ Answer ──────────────────────────────────────────────────┐
+      Which date format should the export use?                                                │  │ › an option's number, or no                        Send → │
+                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> type "m" · t=4.6s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O                                                              │  Explain how request retries work and where the       Hide · h
+                                                                                              │  retry limit is configured.
+     Working                                                                                  │
+     Running authentication tests.                                                            │  Task source
+                                                                                              │  From hook · 2026-10-09T11:55:00.000Z · 5m ago
+   ! Add CSV export for invoices, including invoice number, date, customer, and total.        │
+     Waiting                                                                                  │  Explanation requested
+     The CSV export is implemented. Waiting for permission to run the invoice tests.          │  2026-10-09T11:59:45.000Z · 19s ago
+      ! Needs you                                                                             │
+      Bash: npm test invoices                                                                 │  Latest activity at
+                                                                                              │  2026-10-09T11:59:45.000Z · 19s ago
+   ! Selected · Explain how request retries work and where the retry limit is configured.     │
+     Waiting                                                                                  │  Last observed
+     Traced the retry logic in request.ts and added a CSV export of the retry log. Waiting    │  2026-10-09T11:59:45.000Z · 19s ago · From hook
+     for you to pick the export's date format.                                                │
+      ! Needs you                                                                             │  ┌─ Answer ──────────────────────────────────────────────────┐
+      Which date format should the export use?                                                │  │ › an option's number, or no                        Send → │
+                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> wheel-up 120 8 · t=4.8s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O                                                              │  Explain how request retries work and where the       Hide · h
+                                                                                              │  retry limit is configured.
+     Working                                                                                  │
+     Running authentication tests.                                                            │  Session ID
+                                                                                              │  c8219b07-e082-4ac4-9bdf-4abfe6fcfc8e
+   ! Add CSV export for invoices, including invoice number, date, customer, and total.        │
+     Waiting                                                                                  │  Task source
+     The CSV export is implemented. Waiting for permission to run the invoice tests.          │  From hook · 2026-10-09T11:55:00.000Z · 5m ago
+      ! Needs you                                                                             │
+      Bash: npm test invoices                                                                 │  Explanation requested
+                                                                                              │  2026-10-09T11:59:45.000Z · 19s ago
+   ! Selected · Explain how request retries work and where the retry limit is configured.     │
+     Waiting                                                                                  │  Latest activity at
+     Traced the retry logic in request.ts and added a CSV export of the retry log. Waiting    │  2026-10-09T11:59:45.000Z · 19s ago
+     for you to pick the export's date format.                                                │
+      ! Needs you                                                                             │  ┌─ Answer ──────────────────────────────────────────────────┐
+      Which date format should the export use?                                                │  │ › an option's number, or no                        Send → │
+                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> type "m" · t=5.0s
+screen
+                                                                                                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O                                                              │  Explain how request retries work and where the       Hide · h
+                                                                                              │  retry limit is configured.
+     Working                                                                                  │  Now
+     Running authentication tests.                                                            │  Traced the retry logic in request.ts and added a CSV export
+                                                                                              │  of the retry log. Waiting for you to pick the export's date
+   ! Add CSV export for invoices, including invoice number, date, customer, and total.        │  format.
+     Waiting                                                                                  │
+     The CSV export is implemented. Waiting for permission to run the invoice tests.          │   ! Needs you
+      ! Needs you                                                                             │  Which date format should the export use?
+      Bash: npm test invoices                                                                 │  1. ISO 8601 (2026-10-09)
+                                                                                              │  2. Day first (09/10/2026)
+   ! Selected · Explain how request retries work and where the retry limit is configured.     │  3. Month first (10/09/2026)
+     Waiting                                                                                  │  Last change 20s ago
+     Traced the retry logic in request.ts and added a CSV export of the retry log. Waiting    │
+     for you to pick the export's date format.                                                │
+      ! Needs you                                                                             │  ┌─ Answer ──────────────────────────────────────────────────┐
+      Which date format should the export use?                                                │  │ › an option's number, or no                        Send → │
+                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0

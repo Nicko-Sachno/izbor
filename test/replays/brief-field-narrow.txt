@@ -1,0 +1,998 @@
+brief-field-narrow
+Enter on a Brief page puts the cursor in the Brief's field, every key there types, m, h and s included, Esc steps back to the Brief with the text kept, Tab goes Brief, field, Help and round, Enter sends and the sample store says it sends nothing until the next key, a click on the field's box focuses the field, a click on its text places the caret, a paste lands in it, and a click on Send → sends
+izbor --no-color · 80x30 · now 2026-10-09T12:00:00.000Z · 200 ms a step
+
+> start · t=0.0s
+screen
+                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+   * Selected · Fix the token refresh bug and add a regression test for Open ›
+     expired access tokens.
+     Working
+     Running authentication tests.
+
+   ! Add CSV export for invoices, including invoice number, date, customer,
+     and total.
+     Waiting
+     The CSV export is implemented. Waiting for permission to run the invoice
+     tests.
+      ! Needs you
+      Bash: npm test invoices
+
+   ✓ Explain how request retries work and where the retry limit is configured.
+     Idle
+     Traced the retry logic in request.ts and explained where its limit is
+     configured, which errors trigger another attempt, and when failed
+     requests stop retrying automatically.
+
+
+
+
+
+
+
+
+                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key tab · t=0.2s
+= same as step 0
+
+> key tab · t=0.4s
+screen
+                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+   * Selected · Fix the token refresh bug and add a regression test for
+     expired access tokens.
+     Working
+     Running authentication tests.
+
+   ! Add CSV export for invoices, including invoice number, date,       Open ›
+     customer, and total.
+     Waiting
+     The CSV export is implemented. Waiting for permission to run the invoice
+     tests.
+      ! Needs you
+      Bash: npm test invoices
+
+   ✓ Explain how request retries work and where the retry limit is configured.
+     Idle
+     Traced the retry logic in request.ts and explained where its limit is
+     configured, which errors trigger another attempt, and when failed
+     requests stop retrying automatically.
+
+
+
+
+
+
+
+
+                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key enter · t=0.6s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 15s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › yes, no, or no and your words                                   Send → │
+  └──────────────────────────────────────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key enter · t=0.8s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 15s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › yes, no, or no and your words                                   Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 6,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> type "m" · t=1.0s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 16s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › m                                                               Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 7,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> type "h" · t=1.2s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 16s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › mh                                                              Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 8,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> type "s" · t=1.4s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 16s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › mhs                                                             Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 9,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key backspace · t=1.6s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 16s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › mh                                                              Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 8,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key backspace · t=1.8s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 16s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › m                                                               Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 7,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key backspace · t=2.0s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 17s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › yes, no, or no and your words                                   Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 6,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> type "yes" · t=2.2s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 17s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › yes                                                             Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 9,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key esc · t=2.4s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 17s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › yes                                                             Send → │
+  └──────────────────────────────────────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key tab · t=2.6s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 17s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › yes                                                             Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 9,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key tab · t=2.8s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 17s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › yes                                                             Send → │
+  └──────────────────────────────────────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key tab · t=3.0s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 18s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › yes                                                             Send → │
+  └──────────────────────────────────────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key shift-tab · t=3.2s
+= same as step 15
+
+> key shift-tab · t=3.4s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 18s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › yes                                                             Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 9,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key enter · t=3.6s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 18s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+  The sample sends nothing.
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › yes                                                             Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 9,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> type "!" · t=3.8s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 18s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › yes!                                                            Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 10,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key esc · t=4.0s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 19s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › yes!                                                            Send → │
+  └──────────────────────────────────────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> click "┐" · t=4.2s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 19s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › yes!                                                            Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 10,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key ctrl-u · t=4.4s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 19s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › yes, no, or no and your words                                   Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 6,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> type "no, run only the export tests" · t=4.6s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 19s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › no, run only the export tests                                   Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 35,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> click "run only" · t=4.8s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 19s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › no, run only the export tests                                   Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 10,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> type "X" · t=5.0s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 20s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › no, Xrun only the export tests                                  Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 11,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key end · t=5.2s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 20s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer ─────────────────────────────────────────────────────────────────┐
+  │ › no, Xrun only the export tests                                  Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 36,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> paste " now\n" · t=5.4s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 20s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+
+  ┌─ Answer · 2 lines ───────────────────────────────────────────────────────┐
+  │ › no, Xrun only the export tests now                                     │
+  │                                                                   Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 6,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key enter · t=5.6s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 20s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+  The sample sends nothing.
+  ┌─ Answer · 2 lines ───────────────────────────────────────────────────────┐
+  │ › no, Xrun only the export tests now                                     │
+  │                                                                   Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor 6,27 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> click "Send →" · t=5.8s
+= same as step 28
+
+> key esc · t=6.0s
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Add CSV export for invoices, including invoice number, date, customer, and
+  total.
+
+  Now
+  The CSV export is implemented. Waiting for permission to run the invoice
+  tests.
+
+   ! Needs you
+  Bash: npm test invoices
+  Last change 21s ago
+
+  s · Stop observing
+
+
+
+
+
+
+
+
+
+
+  The sample sends nothing.
+  ┌─ Answer · 2 lines ───────────────────────────────────────────────────────┐
+  │ › no, Xrun only the export tests now                                     │
+  │                                                                   Send → │
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
+
+> key esc · t=6.2s
+screen
+                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+   * Fix the token refresh bug and add a regression test for expired access
+     tokens.
+     Working
+     Running authentication tests.
+
+   ! Selected · Add CSV export for invoices, including invoice number,  Open ›
+     date, customer, and total.
+     Waiting
+     The CSV export is implemented. Waiting for permission to run the invoice
+     tests.
+      ! Needs you
+      Bash: npm test invoices
+
+   ✓ Explain how request retries work and where the retry limit is configured.
+     Idle
+     Traced the retry logic in request.ts and explained where its limit is
+     configured, which errors trigger another attempt, and when failed
+     requests stop retrying automatically.
+
+
+
+
+
+
+
+
+                                                                 Help · Ctrl-G
+cursor hidden · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0

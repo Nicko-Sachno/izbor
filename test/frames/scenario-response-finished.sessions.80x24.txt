@@ -1,0 +1,79 @@
+scenario-response-finished.sessions.80x24
+the sample case response-finished: Sessions
+80x24 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                                                                    Izbor ● up
+  [ Home ]  Sessions · 3  Ctrl-O
+
+   * Fix the token refresh bug and add a regression test for expired    Open ›
+     access tokens.
+     Working
+     Running authentication tests.
+
+   ! Add CSV export for invoices, including invoice number, date, customer,
+     and total.
+     Waiting
+     The CSV export is implemented. Waiting for permission to run the invoice
+     tests.
+      ! Needs you
+      Bash: npm test invoices
+
+   ✓ Make the retry limit configurable per client and cover it with tests.
+     Idle
+     Made the retry limit configurable per client, updated the three callers
+     and added tests; all 42 request tests pass.
+
+
+
+                                                                 Help · Ctrl-G
+
+styles
+                                                                    mmmmmmmmmm
+  nnnnnnnn  TTTTTTTTTTTT  mmmmmm
+
+   k FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF    gggggg
+     FFFFFFFFFFFFFF
+     mmmmmmm
+     ccccccccccccccccccccccccccccc
+
+   A tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+     tttttttttt
+     mmmmmmm
+     cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+     cccccc
+     YYYYYYYYYYYYY
+      AAAAAAAAAAAAAAAAAAAAAAA
+
+   d ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+     mmmm
+     ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+     ccccccccccccccccccccccccccccccccccccccccccc
+
+
+
+                                                                 ggggggggggggg
+
+legend
+  A  needsYou bold
+  F  focus bold
+  T  text bold
+  Y  fill bold
+  c  reply
+  d  done
+  g  focus underline
+  k  brand
+  m  muted
+  n  muted underline
+  t  text
+
+layout  scroll 0 · maxScroll 0 · pageSize 19 · viewport 2,3 76x19
+detail  none
+
+targets, in hit-test order
+  session  2,3 76x4  0926995f-4c57-4733-89cf-d0c7226a5cbc
+  session  2,8 76x7  a7312ce4-782a-45a0-a84c-e834c934b2a7
+  session  2,16 76x4  c8219b07-e082-4ac4-9bdf-4abfe6fcfc8e
+  tab      2,1 8x1  home
+  tab      12,1 12x1  sessions
+  help     65,23 13x1
