@@ -1,6 +1,6 @@
 // The parts of a Brief, each with a mark of its own: your Task, Izbor's explanation under Now, and the agent's full
 // response.
-import type { Tone, Words } from "./presentation.js";
+import type { Words } from "./presentation.js";
 
 /** The mark before each part of a Brief, in its tone: `›` before your Task, `◆` before Now, Izbor's explanation, and
  *  `●` before the agent's full response. The three hues stand apart, so no two parts read as one. */
@@ -20,19 +20,8 @@ export const markWords = (part: keyof typeof PART_MARKS) => ({
     bold: true,
 });
 
+/** The name of the field that holds your Task, after its mark. */
+export const PROMPT_NAME = [markWords("task"), { text: "User's last prompt", tone: "muted" }] as const;
+
 /** The Now field's name after its mark. */
 export const NOW_NAME = [markWords("now"), { text: "Now", tone: "muted" }] as const;
-
-/**
- * A heading's rows as spans where the Task has no fill: the Task's mark before its first row and the rows after it
- * hung under its words. The short ID before the first brief (`marked` false) stands alone.
- */
-export function taskSpans(title: string, style: { tone: Tone; underline: boolean }, marked: boolean) {
-    const [first = "", ...rest] = title.split("\n");
-    const hang = { text: `\n${" ".repeat(MARK_COLUMNS)}`, tone: style.tone };
-    return [
-        ...(marked ? [markWords("task")] : []),
-        { text: first, ...style },
-        ...rest.flatMap((row) => [hang, { text: row, ...style }]),
-    ];
-}

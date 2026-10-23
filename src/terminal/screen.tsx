@@ -22,9 +22,6 @@ import {
     clip,
     clockTime,
     fullTime,
-    headingTitle,
-    openTitle,
-    pageHeadingRows,
     relativeTime,
     STATUS,
     topLine,
@@ -34,8 +31,8 @@ import {
     type Tone,
     type Words,
 } from "./presentation.js";
-import { NOW_NAME, taskSpans } from "./parts.js";
-import { Badge, Copy, feedbackText, FeedbackLine, Mark, Spans, TaskFill, type Glyph, type Span } from "./copy.js";
+import { NOW_NAME, PROMPT_NAME } from "./parts.js";
+import { Badge, Copy, feedbackText, FeedbackLine, Mark, Spans, type Glyph, type Span } from "./copy.js";
 import { lookOf, paint } from "./paint.js";
 import { Help } from "./help-page.js";
 import { ProjectGroup } from "./home-list.js";
@@ -249,27 +246,6 @@ function SessionRow({ session, marked, selected, cueShown, width, color, at, dow
     );
 }
 
-function SessionHeading({
-    session: { id, brief },
-    focused = false,
-    width,
-    rows = 3,
-    color,
-}: {
-    session: Observation;
-    focused?: boolean;
-    width: number;
-    rows?: number;
-    color: boolean;
-}) {
-    const title = headingTitle({ id, brief }, width, rows);
-    if (color && brief?.task) return <TaskFill title={title} width={width} underline={focused} />;
-    const tone = brief && !brief.task ? "muted" : "text";
-    return <Spans color={color} spans={taskSpans(title, { tone, underline: focused }, Boolean(brief))} />;
-}
-
-const rowsOf = (text: string) => text.split("\n").length;
-
 function ClosingLines({ lines, color, width }: { lines: readonly BriefLine[]; color: boolean; width: number }) {
     return lines.map(({ text, tone }) => (
         <Copy key={text} color={color} tone={tone} bold={tone === "error"}>
@@ -303,18 +279,17 @@ type FullBriefProps = {
     metadataExpanded: boolean;
     closing: readonly BriefLine[];
     stopRef: Ref<DOMElement>;
-    taskCut: boolean;
 };
 
-function FullBrief({ session, color, now, width, late, metadataExpanded, closing, stopRef, taskCut }: FullBriefProps) {
+function FullBrief({ session, color, now, width, late, metadataExpanded, closing, stopRef }: FullBriefProps) {
     const { brief } = session;
     const line = (text: string, tone: Tone = "text", bold = false) => (
         <Copy color={color} tone={tone} bold={bold}>
             {wrapLines(text, width)}
         </Copy>
     );
-    const field = (name: string | readonly Span[], children: ReactNode) => (
-        <Box flexDirection="column" marginTop={1} flexShrink={0}>
+    const field = (name: string | readonly Span[], children: ReactNode, gap = 1) => (
+        <Box flexDirection="column" marginTop={gap} flexShrink={0}>
             <Spans color={color} spans={typeof name === "string" ? [{ text: name, tone: "muted" }] : name} />
             {children}
         </Box>
@@ -330,6 +305,7 @@ function FullBrief({ session, color, now, width, late, metadataExpanded, closing
     const request = asked?.text ?? (wait ? unknownLine(wait) : rowRequest(brief));
     return (
         <Box width={width} flexDirection="column" flexShrink={0}>
+            {brief ? field(PROMPT_NAME, line(task, brief.task ? "text" : "muted"), 0) : line(shortId(session.id))}
             {notice && line(notice, "notice")}
             {brief?.statusDetail ? line(brief.statusDetail, "muted") : null}
             {late ? line(LATE_BRIEF, "notice") : null}
@@ -371,7 +347,6 @@ function FullBrief({ session, color, now, width, late, metadataExpanded, closing
                     {field("Session ID", line(session.id, "muted"))}
                     {brief && (
                         <>
-                            {taskCut && field("Task", line(task, "muted"))}
                             {field(
                                 "Task source",
                                 line(
@@ -422,7 +397,6 @@ function Divider({ color, rows }: { color: boolean; rows: number }) {
 }
 
 function SideBrief({
-    session,
     color,
     width,
     paneRows,
@@ -436,7 +410,6 @@ function SideBrief({
     field,
     children,
 }: {
-    session: Observation;
     color: boolean;
     width: number;
     paneRows: number;
@@ -454,10 +427,9 @@ function SideBrief({
         <>
             <Divider color={color} rows={paneRows} />
             <Box ref={paneRef} marginLeft={2} width={width} height={paneRows} flexDirection="column" flexShrink={0}>
-                <Box flexShrink={0} justifyContent="space-between">
-                    <SessionHeading session={session} focused={focused} width={width - 10} color={color} />
-                    <Box ref={hideRef} marginLeft={2} width={8} height={1} flexShrink={0}>
-                        <Copy color={color} tone="focus" underline>
+                <Box flexShrink={0} justifyContent="flex-end">
+                    <Box ref={hideRef} width={8} height={1} flexShrink={0}>
+                        <Copy color={color} tone="focus" underline bold={focused}>
                             Hide · h
                         </Copy>
                     </Box>
@@ -594,8 +566,6 @@ export function TerminalScreen({ view, size, color, now = new Date(), onLayout }
     const expanded = view.wide ? undefined : view.sessions.find(({ id }) => id === view.expanded);
     const showDetail = !home && wide && !view.help && Boolean(selectedSession);
     const markedId = !showDetail && view.sessions.some(({ id }) => id === view.focused) ? view.focused : view.selected;
-    const headingRows = pageHeadingRows(geometry.bodyRows);
-    const title = openTitle(expanded, showDetail ? selectedSession : undefined, width, detailWidth, headingRows);
     const fieldSession = view.help ? undefined : showDetail ? selectedSession : expanded;
     const mode =
         fieldSession && hooked(fieldSession.id, view.list) ? shownMode(view.field, fieldSession.brief) : undefined;
@@ -608,7 +578,7 @@ export function TerminalScreen({ view, size, color, now = new Date(), onLayout }
     const shownWidth = showDetail ? detailWidth : width;
     const shownRows = shown ? feedbackText(shown, shownWidth).split("\n").length : 0;
     const { topGap, extraRows, bodyRows, paneRows, detailRows, codeRows, inputRows } = bodyLayout(geometry.bodyRows, {
-        titleRows: rowsOf(title),
+        titleRows: expanded ? 0 : 1,
         brief: expanded !== undefined,
         help: view.help,
         field: mode ? typed.rows.length : 0,
@@ -643,7 +613,6 @@ export function TerminalScreen({ view, size, color, now = new Date(), onLayout }
                     metadataExpanded={view.metadataExpanded}
                     closing={closing}
                     stopRef={elementRef(main ? "stop" : "detailStop")}
-                    taskCut={title.endsWith("…")}
                 />
                 {rows.length ? <ResponseView rows={rows} width={paneWidth} pane={pane} ref={responseRef} /> : null}
             </>
@@ -783,13 +752,10 @@ export function TerminalScreen({ view, size, color, now = new Date(), onLayout }
                                     Help
                                 </Copy>
                             ) : expanded ? (
-                                <Box flexDirection="column">
-                                    <Box ref={elementRef("back")} width={10} height={1} flexShrink={0}>
-                                        <Copy color={color} tone="focus" underline>
-                                            Back · Esc
-                                        </Copy>
-                                    </Box>
-                                    <SessionHeading session={expanded} width={width} rows={headingRows} color={color} />
+                                <Box ref={elementRef("back")} width={10} height={1} flexShrink={0}>
+                                    <Copy color={color} tone="focus" underline>
+                                        Back · Esc
+                                    </Copy>
                                 </Box>
                             ) : (
                                 <Box>
@@ -892,7 +858,6 @@ export function TerminalScreen({ view, size, color, now = new Date(), onLayout }
                     </Box>
                     {showDetail && selectedSession && (
                         <SideBrief
-                            session={selectedSession}
                             color={color}
                             width={detailWidth}
                             paneRows={paneRows}

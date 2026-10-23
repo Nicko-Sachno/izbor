@@ -3,7 +3,6 @@ import stringWidth from "string-width";
 import wrapAnsi from "wrap-ansi";
 import { shortId } from "../domain/text.js";
 import type { IzborState, Observation, RunningSession } from "./model.js";
-import { MARK_COLUMNS } from "./parts.js";
 
 const NEEDS_YOU = "#E7BC70";
 const NOTICE = "#A9C6E1";
@@ -183,25 +182,6 @@ export function wrapCut(text: string, columns: number, rows: number, room = 0): 
     if (lines.length <= rows && fits(lines.at(-1)!)) return lines.join("\n");
     if (lines.length < rows) return [...lines, ""].join("\n");
     return [...lines.slice(0, rows - 1), clip(`${lines[rows - 1]}…`, columns - room)].join("\n");
-}
-
-// A Brief page's heading stands under Back · Esc: up to ten rows, and never more than half the body.
-export const pageHeadingRows = (bodyRows: number) => Math.max(1, Math.min(10, Math.floor(bodyRows / 2)));
-
-export function headingTitle({ id, brief }: Pick<Observation, "id" | "brief">, width: number, rows: number): string {
-    if (!brief) return shortId(id);
-    return wrapCut(brief.task?.text ?? "Task unknown", width - MARK_COLUMNS, rows).replace(/ …$/, "…");
-}
-
-export function openTitle(
-    page: Observation | undefined,
-    side: Observation | undefined,
-    width: number,
-    detailWidth: number,
-    pageRows: number,
-) {
-    if (page) return headingTitle(page, width, pageRows);
-    return side ? headingTitle(side, detailWidth - 10, 3) : "";
 }
 
 export function relativeTime(at: string, now: Date): string {

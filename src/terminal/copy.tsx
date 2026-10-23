@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import { Box, Text } from "ink";
 import stringWidth from "string-width";
 import { toneColor, type CopyStyle } from "./paint.js";
-import { MARK_COLUMNS, markWords } from "./parts.js";
 import { GLYPHS, refusalWords, wrapLines } from "./presentation.js";
 
 export function Copy({
@@ -32,28 +31,6 @@ export function Badge({ color }: { color: boolean }) {
         <Text bold backgroundColor={toneColor("needsYouFill")} color={toneColor("needsYouOnFill")}>
             {BADGE}
         </Text>
-    );
-}
-
-/**
- * Your Task's rows on the Task fill, as Claude Code draws your prompt, so they read apart from the agent's words: the
- * Task's mark on the first row and the rows after it hung under its words, each row filled from one column before the
- * mark to one column past `width`, so a wrapped Task is one solid block. `title` is wrapped `MARK_COLUMNS` short of
- * `width`. Drawn only with colour on; the fill is a background, so a copy gets only the mark and the words.
- */
-export function TaskFill({ title, width, underline }: { title: string; width: number; underline: boolean }) {
-    const textWidth = width - MARK_COLUMNS;
-    return (
-        <Box width={width + 2} marginX={-1} flexDirection="column" flexShrink={0}>
-            {title.split("\n").map((row, index) => (
-                <Text key={index} color={toneColor("text")} backgroundColor={toneColor("taskFill")}>
-                    {" "}
-                    {index ? " ".repeat(MARK_COLUMNS) : <Spans spans={[markWords("task")]} color />}
-                    <Text underline={underline}>{row}</Text>
-                    {" ".repeat(Math.max(0, textWidth - stringWidth(row)) + 1)}
-                </Text>
-            ))}
-        </Box>
     );
 }
 
