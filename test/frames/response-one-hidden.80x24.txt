@@ -1,0 +1,77 @@
+response-one-hidden.80x24
+a finished turn exactly one body tall: Reply finished shows on the last body row, no footer over it (T11)
+80x24 · color · now 2026-10-09T12:00:00.000Z
+
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Explain how request retries work and where the retry limit is configured.
+
+  Now
+  Explained where the retry limit is set.
+  Last change 30s ago
+
+  s · Stop observing
+
+  Agent's last message · 30s ago
+  Retries stop after three attempts, as MAX_RETRIES = 3 in send.ts says.
+  Each attempt waits twice as long as the one before it, from 200 ms.
+
+  Earlier in this turn · 1 tool call
+  ● Read(src/request/send.ts)
+    ⎿  Read 118 lines
+
+  Reply finished · 30s ago
+
+  ┌─ Reply to this session ──────────────────────────────────────────────────┐
+  │ › your next prompt                                                Send → │
+  └──────────────────────────────────────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+
+styles
+                                                                    mmmmmmmmmm
+  gggggggggg
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+
+  mmm
+  ccccccccccccccccccccccccccccccccccccccc
+  mmmmmmmmmmmmmmmmmmm
+
+  gggggggggggggggggg
+
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+  ttttttttttttttttttttttttttttttttttttttqqqqqqqqqqqqqqqttttqqqqqqqtttttt
+  ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+  d TTTTttttttttttttttttttttt
+    m  mmmmmTTTmmmmmm
+
+  dddddddddddddddddddddddd
+
+  oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+  ooffmmmmmmmmmmmmmmmm                                                ggggggoo
+  oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+                                                                 ggggggggggggg
+
+legend
+  T  text bold
+  c  reply
+  d  done
+  f  focus
+  g  focus underline
+  m  muted
+  o  border
+  q  code
+  t  text
+  ©  taskFill
+
+layout  scroll 0 · maxScroll 0 · pageSize 16 · viewport 2,3 76x16
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     65,23 13x1
+  send     70,21 6x1
+  field    2,20 76x3  origin 6  indices 0*64
+  stop     2,8 18x1  c8219b07-e082-4ac4-9bdf-4abfe6fcfc8e

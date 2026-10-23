@@ -19,7 +19,7 @@ screen
 styles
                                                                     mmmmmmmmmm
   gggggggggg
-  ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
   mmm
   cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
   cccccccccccccccccccccccccccccccccccccccccccccccccccccc
@@ -36,7 +36,7 @@ legend
   g  focus underline
   m  muted
   o  border
-  t  text
+  ©  taskFill
 
 layout  scroll 1 · maxScroll 9 · pageSize 4 · viewport 2,3 76x4
 detail  none

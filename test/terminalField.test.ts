@@ -219,7 +219,7 @@ test("on a Brief page the line above the field shows the field's message, else t
     await sent();
     assert.equal(split().at(-5)!.split("│")[1], "  The sample sends nothing.", "the field's message has the same row");
     assert.equal(wide.view.feedback, "");
-    assert.match(split().at(-2)!, /│ {2}└─+┘$/);
+    assert.match(split().at(-2)!, /│ {2}└─ Ctrl-J new line · Enter sends ─+┘$/);
     assert.match(split().at(-1)!, /^ +Help · Ctrl-G$/, "the last row: Help alone, at the window's right end");
 });
 
@@ -239,7 +239,13 @@ test("Page Up and Page Down with the field focused scroll the Brief it belongs t
     const { app } = sampleWindow(t, WIDE);
     app.openSession(SAMPLE_IDS[1]);
     key(app, "return");
-    app.measured({ maxScroll: 9, pageSize: 5, scroll: 0, detail: { maxScroll: 20, pageSize: 6, scroll: 0 } });
+    app.measured({
+        maxScroll: 9,
+        pageSize: 5,
+        step: 5,
+        scroll: 0,
+        detail: { maxScroll: 20, pageSize: 6, step: 6, scroll: 0 },
+    });
     assert.equal(app.pane().pageSize, 6, "the side Brief's layout");
     app.keypress(undefined, { name: "pagedown" }, 20, 6);
     assert.equal(app.view.detailScroll, 6);
@@ -398,7 +404,7 @@ test("yes in the field goes to the store once, with the request's time; the fiel
     assert.match(page[needs + 2]!, /^ {2}Sent from Izbor: yes · \d+s ago$/);
     assert.match(page[needs + 3]!, /^ {2}Last change /, "nothing says Approved, and Needs you still holds the request");
     assert.match(page.at(-3)!, /^ {2}│ › +Send → │$/, "the field is empty, with no placeholder");
-    assert.equal(page.at(-5), "  Sent yes. Needs you clears when Claude goes on.");
+    assert.equal(page.at(-5), "  Sent yes. Needs you clears when the agent goes on.");
     assert.equal(page.at(-1)!.trim(), "Help · Ctrl-G");
     assert.doesNotMatch(page.join("\n"), /Approved|Allowed/);
 });
@@ -411,7 +417,7 @@ test("no and words go as typed, and the Sent sentence leaves the field's line at
     assert.deepEqual(store.sends, [{ id: SAMPLE_IDS[1], at, text: "no, run only the export tests" }]);
     const page = lines(app, NARROW).join("\n");
     assert.match(page, /Sent from Izbor: no, run only the export tests · \d+s ago/);
-    assert.match(page, /\n {2}Sent no, run only the export tests\. Needs you clears when Claude goes on\.\n/);
+    assert.match(page, /\n {2}Sent no, run only the export tests\. Needs you clears when the agent goes on\.\n/);
     type(app, "y");
     assert.equal(fieldRow(app, NARROW), "", "the next key in the field clears its line");
     assert.equal(lastLine(app, NARROW), "Help · Ctrl-G");

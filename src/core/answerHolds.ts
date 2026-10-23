@@ -39,12 +39,15 @@ type Hold = {
     shown: boolean;
 };
 
+/** The latest request hook of an unwatched session's main thread, with its folder, kept for the watch start. */
+type KeptHook = { evidence: HookEvidence; cwd?: string | undefined };
+
 export type AnswerHolds = {
     hold(request: Request, reply: (decision: HookDecision | null) => void, closed: AbortSignal): void;
     answerable(): Answerable;
-    keep(evidence: HookEvidence): void;
-    hook(evidence: HookEvidence): void;
-    kept(): HookEvidence | undefined;
+    keep(evidence: HookEvidence, cwd?: string): void;
+    hook(evidence: HookEvidence, cwd?: string): void;
+    kept(): KeptHook | undefined;
     keepsNothing(): boolean;
     needsYouChanged(next: NeedsYou): void;
     answer(at: string, typed: string): AnswerOutcome;
@@ -56,7 +59,7 @@ export function createAnswerHolds({ wait, onChange, acting }: AnswerHoldsDeps): 
     let letGo: Request | undefined;
     let answeredAt: string | undefined;
     let current: NeedsYou = { state: "unknown" };
-    let kept: HookEvidence | undefined;
+    let kept: KeptHook | undefined;
 
     function end(hold: Hold, decision: HookDecision | null): void {
         hold.done.abort();
@@ -85,8 +88,8 @@ export function createAnswerHolds({ wait, onChange, acting }: AnswerHoldsDeps): 
         return letGo && isFor(letGo, current) ? "expired" : "not running when it asked";
     }
 
-    function keep(evidence: HookEvidence): void {
-        if (mainThreadRequest(evidence) && acting()) kept = evidence;
+    function keep(evidence: HookEvidence, cwd?: string): void {
+        if (mainThreadRequest(evidence) && acting()) kept = { evidence, cwd };
     }
 
     function needsYouChanged(next: NeedsYou): void {
@@ -118,8 +121,8 @@ export function createAnswerHolds({ wait, onChange, acting }: AnswerHoldsDeps): 
         },
         answerable,
         keep,
-        hook(evidence: HookEvidence): void {
-            keep(evidence);
+        hook(evidence: HookEvidence, cwd?: string): void {
+            keep(evidence, cwd);
             needsYouChanged(needsYouAfterHook(current, evidence));
         },
         kept: () => kept,

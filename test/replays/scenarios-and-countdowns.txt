@@ -823,7 +823,7 @@ screen
                                                                                               │
                                                                                               │
                                                                                               │
-                                                                                              │  Sent yes. Needs you clears when Claude goes on.
+                                                                                              │  Sent yes. Needs you clears when the agent goes on.
                                                                                               │  ┌─ Answer ──────────────────────────────────────────────────┐
                                                                                               │  │ ›                                                  Send → │
                                                                                               │  └───────────────────────────────────────────────────────────┘

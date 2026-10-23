@@ -48,6 +48,24 @@ test("once the watch start resolves, the snapshot is the session event and the c
             answerable: null,
             lastObserved: { at: AT, from: "status", lastHookAt: null },
             explanation: { state: "unknown" },
+            response: {
+                items: [
+                    {
+                        type: "tool",
+                        id: "t0",
+                        at: "2026-10-01T11:58:03.000Z",
+                        name: "Read",
+                        kind: "read",
+                        title: "src/router.ts",
+                        display: "Read",
+                        argument: "src/router.ts",
+                        state: "running",
+                    },
+                ],
+                end: { state: "writing", at: "2026-10-01T11:58:03.000Z" },
+                source: "transcript",
+                cut: 0,
+            },
         },
     ]);
 });
@@ -143,6 +161,12 @@ test("the brief event is the brief without what its explanation covers, with its
             outdated: "reply finished",
             covers: { taskAt: "2026-10-01T12:00:01.000Z", requestAt: null, from: null, to: null },
         },
+        response: {
+            items: [{ type: "text", id: "m1:0", at: "2026-10-01T12:00:08.000Z", text: "done" }],
+            end: { state: "writing", at: "2026-10-01T12:00:08.000Z" },
+            source: "transcript",
+            cut: 0,
+        },
     };
 
     assert.deepEqual(toBriefEvent(SESSION, brief, null), {
@@ -159,6 +183,12 @@ test("the brief event is the brief without what its explanation covers, with its
             text: "Claude is tracing the login redirect.",
             at: "2026-10-01T12:00:06.000Z",
             outdated: "reply finished",
+        },
+        response: {
+            items: [{ type: "text", id: "m1:0", at: "2026-10-01T12:00:08.000Z", text: "done" }],
+            end: { state: "writing", at: "2026-10-01T12:00:08.000Z" },
+            source: "transcript",
+            cut: 0,
         },
     });
     const statusOf = (status: Status) => toBriefEvent(SESSION, { ...UNKNOWN_BRIEF, status }, null).status;

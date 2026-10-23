@@ -50,7 +50,7 @@ test("Stop shows the finished reply in the brief at once, and leaves the session
     );
 });
 
-for (const hookName of ["Stop", "SessionEnd"]) {
+for (const hookName of ["Stop", "StopFailure", "SessionEnd"]) {
     test(`${hookName} triggers delayed syncs after ~1 s and ~3 s, so a late-written final reply still reaches the file`, async () => {
         const clock = fakeClock();
         const transcript = [msg("user", "first")];

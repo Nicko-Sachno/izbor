@@ -18,12 +18,13 @@ Supported platforms: macOS · Windows (experimental)
 
 For every session you observe, Izbor keeps a brief:
 
-| Part      | Example                                                                             |
-| --------- | ----------------------------------------------------------------------------------- |
-| Task      | `Add CSV export for invoices, including invoice number, date, customer, and total.` |
-| Status    | `! Waiting` (or `* Working`, `✓ Idle`)                                              |
-| Now       | `The CSV export is implemented. Waiting for permission to run the invoice tests.`   |
-| Needs you | `! Needs you` · `Bash: npm test invoices`                                           |
+| Part          | Example                                                                             |
+| ------------- | ----------------------------------------------------------------------------------- |
+| Task          | `Add CSV export for invoices, including invoice number, date, customer, and total.` |
+| Status        | `! Waiting` (or `* Working`, `✓ Idle`)                                              |
+| Now           | `The CSV export is implemented. Waiting for permission to run the invoice tests.`   |
+| Needs you     | `! Needs you` · `Bash: npm test invoices`                                           |
+| Full response | The agent's reply to the Task, word for word, under `Agent's last message · 2m ago` |
 
 Answer a request (`yes`, `no`, or `no` and a reason) or send the session its next prompt without leaving Izbor.
 
@@ -58,6 +59,7 @@ Quitting leaves the service running; `izbor stop` stops it. `izbor --help` lists
 - Session records stay on your machine, in `.izbor/` inside the checkout.
 - The service listens on `127.0.0.1` only.
 - Izbor sends no telemetry and checks for no updates.
+- The agent's full response stays on your machine and never goes to the summarizer.
 - Currently, the explanation under `Now` comes only from Claude Haiku: Izbor sends session-derived text through your own `claude` login, and these requests use your Claude subscription's usage.
 
 ## Docs

@@ -1224,7 +1224,7 @@ test("readHook reads a failed reply whose error is no text as one with no detail
 
         assert.deepEqual(
             claude().readHook(body, RECEIVED_AT)?.evidence,
-            { at: AT, agentId: null, action: "reply failed", ends: "all" },
+            { at: AT, agentId: null, action: "reply failed", replyFailed: "unknown", ends: "all" },
             body,
         );
     }

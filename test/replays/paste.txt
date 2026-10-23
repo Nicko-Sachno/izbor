@@ -127,7 +127,7 @@ screen
                                                                                               │
                                                                                               │  ┌─ Reply to this session ───────────────────────────────────┐
                                                                                               │  │ › your next prompt; it runs when this turn ends    Send → │
-                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                              │  └─ Ctrl-J new line · Enter sends ───────────────────────────┘
                                                                                                                                                  Help · Ctrl-G
 cursor 101,29 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
 
@@ -163,7 +163,7 @@ screen
                                                                                               │
                                                                                               │  ┌─ Reply to this session ───────────────────────────────────┐
                                                                                               │  │ › help                                             Send → │
-                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                              │  └─ Ctrl-J new line · Enter sends ───────────────────────────┘
                                                                                                                                                  Help · Ctrl-G
 cursor 105,29 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
 

@@ -22,7 +22,7 @@ screen
 
 
 
-  Sent yes. Needs you clears when Claude goes on.
+  Sent yes. Needs you clears when the agent goes on.
   ┌─ Answer ─────────────────────────────────────────────────────────────────┐
   │ ›                                                                 Send → │
   └──────────────────────────────────────────────────────────────────────────┘
@@ -31,7 +31,7 @@ screen
 styles
                                                                     mmmmmmmmmm
   gggggggggg
-  ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
 
   mmm
   ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
@@ -48,7 +48,7 @@ styles
 
 
 
-  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
   oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
   ooff                                                                ggggggoo
   oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
@@ -62,7 +62,7 @@ legend
   g  focus underline
   m  muted
   o  border
-  t  text
+  ©  taskFill
 
 layout  scroll 0 · maxScroll 0 · pageSize 16 · viewport 2,3 76x16
 detail  none

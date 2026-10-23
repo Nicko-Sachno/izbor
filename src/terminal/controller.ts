@@ -8,6 +8,7 @@ import { actingFeedback, hooksFeedback } from "./project-feedback.js";
 import {
     listedSession,
     listedSessions,
+    type Abilities,
     type NavigationView,
     type Observation,
     type ObservationSource,
@@ -19,11 +20,11 @@ import {
 } from "./model.js";
 import { projectAct, projectsOf } from "./projects.js";
 import { clip, sessionName, singleLine } from "./presentation.js";
-import { characterEdges } from "./line-editor.js";
+import { fieldEdges } from "./line-editor.js";
 import { terminalLayout } from "./layout.js";
 import { createNavigation } from "./navigation.js";
 
-type Key = { name?: string | undefined; ctrl?: boolean; meta?: boolean; shift?: boolean };
+type Key = { name?: string | undefined; ctrl?: boolean; meta?: boolean; shift?: boolean; paste?: boolean };
 function homeLines(list: SessionList, home: string): string[] {
     return projectsOf(listedSessions(list), home).flatMap(({ checkout, sessions }) => [
         projectFocus(checkout),
@@ -41,9 +42,8 @@ function briefLetter(text: string | undefined, key: Key): "m" | "h" | "s" | unde
 
 function initialView(
     source: ObservationSource,
-    home: string,
     navigation: NavigationView,
-    oldBuild: boolean,
+    { home = homedir(), oldBuild = false, abilities = {} }: Pick<ControllerOptions, "home" | "oldBuild" | "abilities">,
 ): TerminalView {
     return {
         get sessions() {
@@ -93,6 +93,7 @@ function initialView(
         field: emptyField(),
         home,
         oldBuild,
+        abilities,
     };
 }
 
@@ -109,9 +110,35 @@ function say(view: TerminalView, text: string, error: boolean): void {
     view.feedbackIsError = error;
 }
 
+/** What Enter can do, handed over by the controller. */
+type EnterActions = {
+    submission: Pick<ReturnType<typeof createSubmission>, "send" | "edit">;
+    fieldSession: () => Observation | undefined;
+    toggleHelp: () => void;
+    navigation: Pick<ReturnType<typeof createNavigation>, "focusField">;
+    actOnProjectLine: (checkout: string) => void;
+    observeAndOpen: (id: string) => void;
+};
+
+/**
+ * Enter, where the focus is: sends the field, or with Shift starts a new line in it as Ctrl-J does, opens or closes
+ * Help, goes from a Brief into its field when it has one, acts on a project line, or opens the focused session. Only a
+ * terminal that reports Shift-Enter sends it apart from Enter (SPEC § Keys and mouse); Option-Enter sends.
+ */
+function pressEnter(view: TerminalView, { shift }: Key, actions: EnterActions): void {
+    const checkout = focusedCheckout(view.focused);
+    if (view.focused === FIELD_FOCUS && shift) actions.submission.edit("\n", {}, actions.fieldSession());
+    else if (view.focused === FIELD_FOCUS) void actions.submission.send(actions.fieldSession());
+    else if (view.focused === HELP_FOCUS) actions.toggleHelp();
+    else if (view.focused === DETAIL_FOCUS || (view.expanded !== null && view.focused === view.expanded)) {
+        if (actions.fieldSession()) actions.navigation.focusField();
+    } else if (checkout !== undefined) actions.actOnProjectLine(checkout);
+    else if (view.focused !== null) actions.observeAndOpen(view.focused);
+}
+
 export interface TerminalController {
     readonly view: TerminalView;
-    keypress(text: string | undefined, key: Key, maxScroll?: number, pageSize?: number): void;
+    keypress(text: string | undefined, key: Key, maxScroll?: number, step?: number, fieldColumns?: number): void;
     resize(columns: number, rows?: number): void;
     size(): TerminalSize;
     measured(value: ViewportLayout): void;
@@ -146,6 +173,7 @@ type ControllerOptions = {
     plugin: { port: number; change: ActingWriter };
     home?: string;
     oldBuild?: boolean;
+    abilities?: Abilities;
     changed(): void;
 };
 
@@ -154,8 +182,8 @@ export function createTerminalController(source: ObservationSource, options: Con
     let columns = options.columns ?? 80;
     let rows = options.rows ?? 24;
     const navigation = createNavigation(terminalLayout(columns, rows));
-    const view = initialView(source, options.home ?? homedir(), navigation.state, !!options.oldBuild);
-    let measuredLayout: ViewportLayout = { maxScroll: 0, pageSize: 1, scroll: 0 };
+    const view = initialView(source, navigation.state, options);
+    let measuredLayout: ViewportLayout = { maxScroll: 0, pageSize: 1, step: 1, scroll: 0 };
     const addingPlugin = new Set<string>();
     const { sideBriefVisible, briefVisible, showScreen, back, toggleHelp, toggleMetadata, hideBrief, scrollBy } =
         navigation;
@@ -267,7 +295,9 @@ export function createTerminalController(source: ObservationSource, options: Con
         options.changed();
     }
 
-    function keypress(text: string | undefined, key: Key, maxScroll = 0, pageSize = 10) {
+    const enter: EnterActions = { submission, fieldSession, toggleHelp, navigation, actOnProjectLine, observeAndOpen };
+
+    function keypress(text: string | undefined, key: Key, maxScroll = 0, step = 10, fieldColumns?: number) {
         if (view.small) return;
         if (key.ctrl && key.name === "g") {
             toggleHelp();
@@ -279,17 +309,11 @@ export function createTerminalController(source: ObservationSource, options: Con
             if (view.focused === FIELD_FOCUS) navigation.leaveField();
             else back();
         } else if (key.name === "return") {
-            const checkout = focusedCheckout(view.focused);
-            if (view.focused === FIELD_FOCUS) void submission.send(fieldSession());
-            else if (view.focused === HELP_FOCUS) toggleHelp();
-            else if (view.focused === DETAIL_FOCUS || (view.expanded !== null && view.focused === view.expanded)) {
-                if (fieldSession()) navigation.focusField();
-            } else if (checkout !== undefined) actOnProjectLine(checkout);
-            else if (view.focused !== null) observeAndOpen(view.focused);
+            pressEnter(view, key, enter);
         } else if (key.name === "pageup" || key.name === "pagedown") {
-            scrollBy(key.name === "pageup" ? -pageSize : pageSize, maxScroll, scrollsDetail());
+            scrollBy(key.name === "pageup" ? -step : step, maxScroll, scrollsDetail());
         } else if (view.focused === FIELD_FOCUS) {
-            submission.edit(text, key, fieldSession());
+            submission.edit(text, key, fieldSession(), fieldColumns);
         } else if (view.focused !== HELP_FOCUS && briefLetter(text, key) === "h") {
             hideBrief();
         } else if (view.focused !== null) {
@@ -356,7 +380,7 @@ export function createTerminalController(source: ObservationSource, options: Con
         focusField(cursor = view.field.text.length) {
             if (!fieldSession()) return;
             navigation.focusField();
-            const edges = characterEdges(view.field.text);
+            const edges = fieldEdges(view.field);
             view.field = { ...view.field, cursor: edges.findLast((index) => index <= cursor) ?? 0 };
             options.changed();
         },

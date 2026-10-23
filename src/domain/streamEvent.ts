@@ -2,6 +2,7 @@ import type { Answerable } from "./answer.js";
 import type { Brief, Explained, Outdated } from "./brief.js";
 import type { PromptState } from "./prompt.js";
 import type { Status, StopWhy } from "./records.js";
+import type { FullResponse } from "./response.js";
 
 export type ListedState = "watching" | "not listed";
 
@@ -21,6 +22,8 @@ export type BriefEvent = {
     lastObserved: Brief["lastObserved"];
     explanation:
         { state: "unknown"; reason?: string } | { state: "explained"; text: string; at: string; outdated?: Outdated };
+    /** Absent from an Izbor older than the full response; `toBriefEvent` always writes it. */
+    response?: FullResponse | null;
 };
 
 export type StreamEvent = SessionEvent | BriefEvent | ActionEvent | PromptEvent;
@@ -60,7 +63,7 @@ function withoutCovers(explanation: Explained): BriefEvent["explanation"] {
 }
 
 export function toBriefEvent(sessionId: string, brief: Brief, answerable: Answerable): BriefEvent {
-    const { task, status, latestActivity, needsYou, lastObserved, explanation } = brief;
+    const { task, status, latestActivity, needsYou, lastObserved, explanation, response } = brief;
     return {
         type: "brief",
         sessionId,
@@ -71,6 +74,7 @@ export function toBriefEvent(sessionId: string, brief: Brief, answerable: Answer
         answerable,
         lastObserved,
         explanation: withoutCovers(explanation),
+        response,
     };
 }
 

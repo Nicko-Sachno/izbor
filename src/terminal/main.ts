@@ -1,7 +1,7 @@
 import { setTimeout as sleep } from "node:timers/promises";
 import { createElement } from "react";
 import chalk from "chalk";
-import { render, type Instance } from "ink";
+import { render, type Instance, type KittyKeyboardOptions } from "ink";
 import type { FileOwnership } from "../adapters/agents/claude/setup/projectFiles.js";
 import type { IzborClient } from "../adapters/izbor/client.js";
 import { izborAddress, type ScreenFlags } from "../config.js";
@@ -10,7 +10,7 @@ import { messageOf } from "../domain/text.js";
 import type { IzborInfo } from "../domain/wire.js";
 import { QUIET_TITLE, rings, windowTitle } from "./alerts.js";
 import { TerminalApp } from "./app.js";
-import { createTerminalController } from "./controller.js";
+import { createTerminalController, type TerminalController } from "./controller.js";
 import { createRunningSessions, windowWhere } from "./live/agents.js";
 import { answering } from "./live/answers.js";
 import type { Wait } from "./live/observation.js";
@@ -18,6 +18,7 @@ import { sentPrompts } from "./live/prompts.js";
 import { createLiveSource } from "./live/source.js";
 import type { ObservationSource, TerminalSize } from "./model.js";
 import { createMouseInput } from "./mouse-input.js";
+import { setHighlighters } from "./words/rows.js";
 
 export type LiveOptions = {
     client: IzborClient;
@@ -79,6 +80,84 @@ export function writeAlerts(
 
 const QUIT_SIGNALS = ["SIGINT", "SIGTERM", "SIGHUP", "SIGBREAK"] as const;
 
+/** What runTerminal does when the process or the window calls. */
+type ProcessCalls = {
+    /** A quit signal: unmount the app. */
+    stop: () => void;
+    /** An uncaught exception: keep it for the exit message, then stop. */
+    crash: (error: Error) => void;
+    /** The process exits: dispose of the controller. */
+    exit: () => void;
+    /** The window was resized and the controller holds the new size: draw the app at it now. */
+    redraw: () => void;
+};
+
+/**
+ * Listens for the quit signals, an uncaught exception, an unhandled rejection (shown in the app), the process exit
+ * and a resize, then starts `alerts`, the window's title and bell. Returns one undo: it takes the listeners off in
+ * the same order and ends the alerts last.
+ */
+function listenToProcess(
+    io: TerminalIo,
+    controller: TerminalController,
+    alerts: () => () => void,
+    on: ProcessCalls,
+): () => void {
+    const rejected = (reason: unknown) => controller.showError(`Unexpected error: ${messageOf(reason)}`);
+    const resize = () => {
+        const { columns, rows } = windowSize(io.stdout);
+        controller.resize(columns, rows);
+        on.redraw();
+    };
+    for (const signal of QUIT_SIGNALS) process.on(signal, on.stop);
+    process.once("uncaughtException", on.crash);
+    process.on("unhandledRejection", rejected);
+    process.once("exit", on.exit);
+    io.stdout.on("resize", resize);
+    const endAlerts = alerts();
+    return () => {
+        for (const signal of QUIT_SIGNALS) process.off(signal, on.stop);
+        process.off("uncaughtException", on.crash);
+        process.off("unhandledRejection", rejected);
+        process.off("exit", on.exit);
+        io.stdout.off("resize", resize);
+        endAlerts();
+    };
+}
+
+/**
+ * Fills the code blocks' syntax colours (`setHighlighters`) when the screen has colour, before the first frame, since
+ * the agent's rows are laid out once and kept. The grammars load only here, never for `izbor --help`; if they fail to
+ * load, the registry stays empty and every fence draws in the code tone (doc 01 R4).
+ */
+async function loadHighlighters(color: boolean): Promise<void> {
+    if (!color) return;
+    await import("./words/highlight.js")
+        .then(({ addHighlighters }) => setHighlighters(addHighlighters))
+        .catch(() => {});
+}
+
+/**
+ * Lets colour off keep bold, italic, underline and reverse (SPEC § Colours): chalk's level 0, from `--no-color` or CI,
+ * would drop them too, so Ink draws at level 1 while Copy passes no colour. A dumb terminal draws none, so its level
+ * stays. Returns the undo, which puts the old level back.
+ */
+function keepAttributes(color: boolean, { dumb }: ScreenFlags): () => void {
+    const level = chalk.level;
+    if (!color && !dumb) chalk.level = 1;
+    return () => {
+        chalk.level = level;
+    };
+}
+
+/**
+ * The kitty keyboard protocol's first level, for a terminal whose screen flags say it reports keys (`keys`): Shift-Enter
+ * then comes as a key of its own, and starts a new line in the field. Never `mode: "auto"`, which writes the query
+ * `ESC [?u` to every terminal, and Terminal.app prints the tail of a query it does not know. Ink pops the mode when the
+ * app unmounts, so a quit, a signal or a crash gives the shell its keys back.
+ */
+const KITTY_KEYS: KittyKeyboardOptions = { mode: "enabled", flags: ["disambiguateEscapeCodes"] };
+
 export async function runTerminal(
     {
         screen,
@@ -124,6 +203,7 @@ export async function runTerminal(
     const controller = createTerminalController(source, {
         initialIds,
         oldBuild: screen.oldBuild,
+        abilities: { links: screen.links, strike: screen.strike },
         ...windowSize(io.stdout),
         note: feedback,
         hooks: { port: setup.port, write: setup.hooks },
@@ -138,6 +218,8 @@ export async function runTerminal(
     }
 
     const color = screen.color && chalk.level > 0;
+    await loadHighlighters(color);
+    const restoreLevel = keepAttributes(color, screen);
 
     function tree() {
         return createElement(TerminalApp, { controller, color, mouseEnabled: screen.mouse });
@@ -146,22 +228,17 @@ export async function runTerminal(
     const input = screen.mouse ? createMouseInput(io.stdin) : undefined;
     let failure: Error | undefined;
     const stop = () => instance?.unmount();
-    const abort = (error: Error) => {
-        failure = error;
-        stop();
-    };
-    const rejected = (reason: unknown) => controller.showError(`Unexpected error: ${messageOf(reason)}`);
-    for (const signal of QUIT_SIGNALS) process.on(signal, stop);
-    process.once("uncaughtException", abort);
-    process.on("unhandledRejection", rejected);
-    process.once("exit", dispose);
-    const onResize = () => {
-        const { columns, rows } = windowSize(io.stdout);
-        controller.resize(columns, rows);
-        if (!disposed) instance?.rerender(tree());
-    };
-    io.stdout.on("resize", onResize);
-    const endAlerts = writeAlerts(source, io.stdout, screen.bell);
+    const unlisten = listenToProcess(io, controller, () => writeAlerts(source, io.stdout, screen.bell), {
+        stop,
+        crash: (error) => {
+            failure = error;
+            stop();
+        },
+        exit: dispose,
+        redraw: () => {
+            if (!disposed) instance?.rerender(tree());
+        },
+    });
 
     try {
         instance = render(tree(), {
@@ -171,6 +248,7 @@ export async function runTerminal(
             alternateScreen: true,
             interactive: true,
             exitOnCtrlC: false,
+            kittyKeyboard: screen.keys === "kitty" ? KITTY_KEYS : undefined,
         });
         await instance.waitUntilExit();
     } catch (error) {
@@ -179,12 +257,8 @@ export async function runTerminal(
         instance?.unmount();
         input?.dispose();
         dispose();
-        for (const signal of QUIT_SIGNALS) process.off(signal, stop);
-        process.off("uncaughtException", abort);
-        process.off("unhandledRejection", rejected);
-        process.off("exit", dispose);
-        io.stdout.off("resize", onResize);
-        endAlerts();
+        unlisten();
+        restoreLevel();
     }
     printNotes();
     return failure ? fail(`The terminal app stopped: ${failure.message}`) : 0;

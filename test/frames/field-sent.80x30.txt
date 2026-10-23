@@ -31,14 +31,14 @@ screen
   The sample sends nothing.
   ┌─ Answer ─────────────────────────────────────────────────────────────────┐
   │ › yes                                                             Send → │
-  └──────────────────────────────────────────────────────────────────────────┘
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
                                                                  Help · Ctrl-G
 
 styles
                                                                     mmmmmmmmmm
   gggggggggg
-  tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-  tttttt
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
 
   mmm
   cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
@@ -63,7 +63,7 @@ styles
   mmmmmmmmmmmmmmmmmmmmmmmmm
   ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
   ffffttt                                                             ggggggff
-  ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+  fffmmmmmmmmmmmmmmmmmmmmmmmmmmmmmffffffffffffffffffffffffffffffffffffffffffff
                                                                  ggggggggggggg
 
 legend
@@ -74,6 +74,7 @@ legend
   g  focus underline
   m  muted
   t  text
+  ©  taskFill
 
 layout  scroll 0 · maxScroll 0 · pageSize 21 · viewport 2,4 76x21
 detail  none

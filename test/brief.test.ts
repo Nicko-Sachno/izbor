@@ -52,6 +52,7 @@ test("after a watch start with no evidence every field of the brief is unknown, 
         answerable: null,
         lastObserved: null,
         explanation: { state: "unknown" },
+        response: null,
     });
 });
 
@@ -921,6 +922,22 @@ test("the first watch of a session takes the Task from the transcript: the lates
 
     assert.deepEqual(brief().task, { text: "fix the login redirect", at: at("11:50:00"), from: "transcript" });
     assert.deepEqual(brief().latestActivity, { what: "reply interrupted by the user", at: at("11:50:46") });
+    const bash = { name: "Bash", kind: "execute", title: "npm test", display: "Bash", argument: "npm test" };
+    assert.deepEqual(
+        brief().response?.items.map(({ id, ...item }) => item),
+        [
+            {
+                type: "tool",
+                at: at("11:50:05"),
+                ...bash,
+                state: "done",
+                result: { kind: "first line", text: "ok" },
+                summary: "ok",
+            },
+            { type: "notice", at: at("11:50:30"), text: "background task finished" },
+            { type: "text", at: at("11:50:45"), text: "The tests pass." },
+        ],
+    );
 });
 
 test("a prompt submitted while the session was not watched is the Task after the watch start, not the older prompt Izbor received", async () => {

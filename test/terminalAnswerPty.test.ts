@@ -89,7 +89,7 @@ test(
         assert.equal(await held.exited, 0);
         assert.equal(held.stdout(), ALLOW);
         await window.until("the Sent lines show", () =>
-            /Sent yes\. Needs you clears when Claude goes on\./.test(window.screen()),
+            /Sent yes\. Needs you clears when the agent goes on\./.test(window.screen()),
         );
         const screen = window.screen();
         assert.match(screen, /Sent from Izbor: yes · \d+s ago/);
@@ -145,7 +145,7 @@ test(
             },
         });
         await window.until("the Sent lines show", () =>
-            /Sent 2\. Needs you clears when Claude goes on\./.test(window.screen()),
+            /Sent 2\. Needs you clears when the agent goes on\./.test(window.screen()),
         );
         assert.match(window.screen(), /Sent from Izbor: 2 · \d+s ago/);
         assert.match(window.screen(), /│ › +Send → │/, "the field is empty, with no placeholder");

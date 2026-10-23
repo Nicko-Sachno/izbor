@@ -1,5 +1,7 @@
 export const KEYS = {
     enter: "\r",
+    /** As a terminal that reports keys sends it: CSI u, Enter with Shift. */
+    "shift-enter": "\x1b[13;2u",
     esc: "\x1b",
     tab: "\t",
     "shift-tab": "\x1b[Z",
@@ -18,6 +20,7 @@ export const KEYS = {
     "ctrl-d": "\x04",
     "ctrl-e": "\x05",
     "ctrl-g": "\x07",
+    "ctrl-j": "\n",
     "ctrl-o": "\x0f",
     "ctrl-u": "\x15",
 } as const;
@@ -33,3 +36,9 @@ export function wheel(direction: "up" | "down", x: number, y: number): string {
 export function paste(text: string): string {
     return `\x1b[200~${text}\x1b[201~`;
 }
+
+/** A CI log of 42 lines, with tabs, 1,922 bytes: what the paste block's frames and pty test paste. */
+export const CI_LOG = Array.from(
+    { length: 42 },
+    (_, n) => `retry ${n + 1} of 42\tGET /invoices/export\ttimed out`,
+).join("\n");

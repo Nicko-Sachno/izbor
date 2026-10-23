@@ -5,16 +5,18 @@ import { dismissedInWords, endedInWords, QUESTION_TOOL, questionsOf } from "./qu
 import type { Block, MessageRecord } from "./records.js";
 import { toolLabel } from "./toolCalls.js";
 
-function waitedAt(log: NeedsYou[], at: string): boolean | null {
+export function waitedAt(log: NeedsYou[], at: string): boolean | null {
     const then = log.findLast((needsYou) => needsYou.at === undefined || Date.parse(needsYou.at) <= Date.parse(at));
     return then?.at === undefined ? null : then.state !== "nothing";
 }
 
 const ENDED_BY_USER = "The user doesn't want to proceed with this tool use.";
 
-const isEndedByUser = (rawOutput: unknown) => typeof rawOutput === "string" && rawOutput.startsWith(ENDED_BY_USER);
+export const isEndedByUser = (rawOutput: unknown) =>
+    typeof rawOutput === "string" && rawOutput.startsWith(ENDED_BY_USER);
 
-const isNoInIzbor = (rawOutput: unknown) => typeof rawOutput === "string" && rawOutput.startsWith(SAID_NO_WITH_WORDS);
+export const isNoInIzbor = (rawOutput: unknown) =>
+    typeof rawOutput === "string" && rawOutput.startsWith(SAID_NO_WITH_WORDS);
 
 function endedByUserInWords(label: string, waited: boolean | null): string {
     const how = waited === null ? "rejected or interrupted" : waited ? "rejected" : "interrupted";
@@ -67,7 +69,7 @@ const HUMAN = "human";
 
 const PLUGIN = "plugin";
 
-const isUsersPrompt = (origin: MessageRecord["origin"]): boolean =>
+export const isUsersPrompt = (origin: MessageRecord["origin"]): boolean =>
     origin?.kind === HUMAN || (origin?.kind === PLUGIN && origin.name === IZBOR_PLUGIN && origin.asUser === true);
 
 export function actionsOf(

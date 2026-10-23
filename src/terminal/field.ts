@@ -1,3 +1,4 @@
+import stringWidth from "string-width";
 import { NOT_ANSWERABLE, REQUEST_CHANGED, type NotAnswerable } from "../domain/answer.js";
 import { editLine, type EditKey } from "./line-editor.js";
 import {
@@ -15,10 +16,12 @@ import {
     type TerminalBrief,
     type TerminalView,
 } from "./model.js";
-import { refusalWords, relativeTime, type Tone } from "./presentation.js";
+import { refusalWords, relativeTime, singleLine, type Tone } from "./presentation.js";
 import { droppedLine, NO_PLUGIN_HERE, pluginless, promptLine, replyRefusal, saidOn, saying, toldOf } from "./reply.js";
 
 export const NO_REPLY = "Izbor gave no reply: check the Brief before you answer again.";
+
+const FIELD_FULL = "The field holds 64 KB: the rest was not added.";
 
 export const NOTHING_SENT = {
     stopping: "Izbor is stopping: nothing was sent.",
@@ -43,7 +46,40 @@ export const modeOn = (row: Observation | undefined): FixedMode => ({
 
 export const shownMode = (field: FieldState, brief: TerminalBrief | null): FieldMode => field.fixed ?? fieldMode(brief);
 
-export const fieldTitle = (mode: FieldMode): string => (mode.mode === "answer" ? "Answer" : "Reply to this session");
+const SEPARATOR = " · ";
+
+/** The field's title: its name, then from 2 lines up how many lines its text has, split at its new lines so a wrapped
+ *  line is one, then while rows of its text are scrolled out above the box how many; `·` between them. */
+export function fieldTitle(mode: FieldMode, { lines, above } = { lines: 1, above: 0 }): string {
+    const counts = [...(lines > 1 ? [`${lines} lines`] : []), ...(above > 0 ? [`${above} above`] : [])];
+    return [mode.mode === "answer" ? "Answer" : "Reply to this session", ...counts].join(SEPARATOR);
+}
+
+/** What the field's bottom edge says from its text's first new line, or while the field has the cursor: its keys. */
+const FIELD_HINT = `Ctrl-J new line${SEPARATOR}Enter sends`;
+
+/** What it says instead while the cursor stands right after a paste block. */
+const PASTE_HINT = `Backspace removes the paste${SEPARATOR}Enter sends`;
+
+/** The field's bottom edge for its text of `lines` lines (a paste block in none of them): the paste's keys while the
+ *  field has the cursor right after a block, its own from the first new line or while it has the cursor, else none. */
+export function fieldHint({ cursor, pasted }: FieldState, focused: boolean, lines: number): string {
+    if (focused && pasted?.some(({ end }) => end === cursor)) return PASTE_HINT;
+    return focused || lines > 1 ? FIELD_HINT : "";
+}
+
+/**
+ * One edge of the field's box, `width` wide, between its two corners: `─ `, the words and a space, then the rule. Where
+ * the words do not fit, their trailing `· …` parts drop, last first, and what is left may meet the corner, as the
+ * title always could; no words, all rule. `draw` paints the words, which are measured as they are.
+ */
+export function fieldEdge(words: string, width: number, draw = (shown: string) => shown): string {
+    const room = width - 5;
+    let shown = words;
+    while (stringWidth(shown) > room && shown.includes(SEPARATOR)) shown = shown.slice(0, shown.lastIndexOf(SEPARATOR));
+    const rule = "─".repeat(Math.max(0, shown ? room - stringWidth(shown) : width - 2));
+    return shown ? `─ ${draw(shown)} ${rule}` : rule;
+}
 
 export function fieldPlaceholder(mode: FieldMode, status: TerminalBrief["status"] | undefined, closed = false): string {
     if (mode.mode === "answer") {
@@ -154,7 +190,7 @@ export function fieldLine(field: FieldState, row: Observation): FieldMessage | n
     if (sent)
         return sent.stillWaits
             ? null
-            : { text: `Sent ${sent.text}. Needs you clears when Claude goes on.`, error: false };
+            : { text: `Sent ${singleLine(sent.text)}. Needs you clears when the agent goes on.`, error: false };
     return promptLine(row);
 }
 
@@ -177,16 +213,19 @@ export function editField(
     text: string | undefined,
     key: EditKey,
     shown?: Observation,
+    columns?: number,
 ): FieldState {
-    const edit = editLine(field, text, key);
+    const edit = editLine(field, text, key, columns);
     const seen = edit.edited && shown && showsDropped(field, shown) ? shown : undefined;
+    const full = edit.capped ? { text: FIELD_FULL, error: false, session: mode.session } : null;
     return {
         text: edit.text,
         cursor: edit.cursor,
         fixed: edit.text ? (field.fixed ?? mode) : null,
-        message: edit.edited ? null : field.message,
+        message: edit.edited ? full : field.message,
         ...(!edit.edited && field.behind && { behind: field.behind }),
         ...toldOf(field, seen),
+        ...(edit.pasted && { pasted: edit.pasted }),
     };
 }
 

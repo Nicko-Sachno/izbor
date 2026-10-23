@@ -62,22 +62,38 @@ test("typed text goes in at the caret and the caret follows it", () => {
     assert.deepEqual(press({}, "xy"), { text: `${WIDE}${FACE}${ACUTE_E}xyabc`, cursor: 7, edited: true });
 });
 
-test("typed text is cleaned first: a run of CR, LF and tab becomes one space, and an escape sequence, an OSC title sequence, a bidi override and a control character go", () => {
-    assert.deepEqual(press({}, "a\r\n\tb\u{1B}[31mc\u{1B}]0;injected-title\u{07}\u{202E}\u{07}"), {
-        text: `${WIDE}${FACE}${ACUTE_E}a bcabc`,
-        cursor: 9,
+test("typed text keeps its lines: Ctrl-J's LF stays, CR LF and a lone CR become LF, a tab stays, and an escape sequence, an OSC title sequence, a bidi override and a control character go", () => {
+    assert.deepEqual(press({}, "\n"), { text: `${WIDE}${FACE}${ACUTE_E}\nabc`, cursor: 6, edited: true });
+    assert.deepEqual(press({}, "a\r\nb\rc\td\u{1B}[31me\u{1B}]0;injected-title\u{07}\u{202E}\u{07}"), {
+        text: `${WIDE}${FACE}${ACUTE_E}a\nb\nc\tdeabc`,
+        cursor: 13,
         edited: true,
     });
     assert.deepEqual(press({}, "\u{07}"), { ...LINE, edited: true });
 });
 
-test("the line holds 2,048 characters: a paste past the cap keeps what fits, counted after cleaning, and a full line takes nothing", () => {
-    const nearlyFull: Line = { text: "x".repeat(2040), cursor: 2040 };
-    const capped = { text: `${"x".repeat(2040)}${"y".repeat(8)}`, cursor: 2048, edited: true };
-    assert.deepEqual(press({}, "y".repeat(20), nearlyFull), capped);
-    assert.deepEqual(press({}, `\u{1B}[31m${"y".repeat(20)}`, nearlyFull), capped);
-    const full: Line = { text: "x".repeat(2048), cursor: 2048 };
-    assert.deepEqual(press({}, "y", full), { ...full, edited: true });
+test("an OSC or DCS sequence a paste leaves open ends with its line: the lines after it stay", () => {
+    const empty: Line = { text: "", cursor: 0 };
+    const log = "step 1\u{1B}]0;half a title\nstep 2\u{1B}P1$r0m\nstep 3";
+    assert.deepEqual(editLine(empty, log, { paste: true }), {
+        text: "step 1\nstep 2\nstep 3",
+        cursor: 20,
+        edited: true,
+    });
+});
+
+test("the field holds 64 KB, 65,536 UTF-8 bytes of the whole text: a paste past the cap keeps what fits, counted after cleaning and cut between graphemes, and says so; a full field takes nothing", () => {
+    const nearlyFull: Line = { text: "x".repeat(65_530), cursor: 65_530 };
+    const capped = { text: `${"x".repeat(65_530)}${FACE}`, cursor: 65_532, edited: true, capped: true };
+    assert.deepEqual(press({}, `${FACE}${ACUTE_E}`, nearlyFull), capped, "🙂 is 4 bytes; é is 3, one too many");
+    assert.deepEqual(press({}, `\u{1B}[31m${FACE}${ACUTE_E}`, nearlyFull), capped);
+    assert.deepEqual(
+        press({}, `${FACE}ab`, nearlyFull),
+        { text: `${"x".repeat(65_530)}${FACE}ab`, cursor: 65_534, edited: true },
+        "text that fits exactly is no cut",
+    );
+    const full: Line = { text: "x".repeat(65_536), cursor: 65_536 };
+    assert.deepEqual(press({}, "y", full), { ...full, edited: true, capped: true });
 });
 
 test("Backspace on an empty line changes nothing and is still an edit: the feedback line clears", () => {

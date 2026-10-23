@@ -1,7 +1,9 @@
 import { bySubagent, type HookEvidence, PROMPT_SUBMITTED } from "../../../domain/brief.js";
 import { finishedInWords, QUESTION_TOOL, questionsOf } from "../../../domain/question.js";
+import type { CallResult } from "../../../domain/response.js";
 import { describeTool, PLAN_TOOL, shorten, toolLabel } from "../../../domain/toolCalls.js";
 import type { HookEventName, HookPayload } from "./payload.js";
+import { readFailure, readToolResponse } from "./toolResult.js";
 
 const TASK_NOTIFICATION = "<task-notification>";
 
@@ -52,9 +54,16 @@ export function toEvidence(payload: HookPayload, receivedAt: Date): HookEvidence
     }
     if (name === "Stop") {
         evidence.replyFinished = true;
+        if (payload.last_assistant_message?.trim()) evidence.lastMessage = payload.last_assistant_message;
+    }
+    if (name === "StopFailure") {
+        evidence.replyFailed = failureOf(payload);
     }
     if (CALL_END_EVENTS.includes(name) && payload.tool_use_id) {
         evidence.endedCall = payload.tool_use_id;
+        if (name === "PostToolUse") evidence.callDone = true;
+        const result = endedCallResult(name, payload);
+        if (result) evidence.result = result;
     }
     if (name === "PermissionRequest") {
         evidence.request = { agentId, tool: payload.tool_name ?? "", input: payload.tool_input };
@@ -64,6 +73,23 @@ export function toEvidence(payload: HookPayload, receivedAt: Date): HookEvidence
     }
 
     return evidence;
+}
+
+/** PostToolUse tells the result in its `tool_response`, PostToolUseFailure in its `error`, or by `is_interrupt` that
+ *  the call stopped by an abort, which reads `interrupted`. */
+function endedCallResult(
+    name: HookEventName,
+    { tool_name = "", tool_input, tool_response, error, is_interrupt }: HookPayload,
+): CallResult | undefined {
+    if (is_interrupt === true) return { kind: "interrupted" };
+    return name === "PostToolUse" ? readToolResponse(tool_name, tool_input, tool_response) : readFailure(error);
+}
+
+/** A failed reply's error as Claude Code shows it: its last message, else the error's details, else its category,
+ *  which is `unknown` when the hook gives none. */
+function failureOf({ last_assistant_message: shown, error_details: details, error }: HookPayload): string {
+    const hasWords = (value: unknown): value is string => typeof value === "string" && value.trim() !== "";
+    return [shown, details, error].find(hasWords) ?? "unknown";
 }
 
 function userPrompt(payload: HookPayload): string | undefined {

@@ -1,0 +1,68 @@
+words-links.80x24.no-color
+the same links and `~~old~~` without colour, in a terminal that shows both, scrolled to the full response: no OSC 8 link, `label (url)` with the label underlined, a URL the label already says shown once, and `~~old~~` as written
+80x24 · no color · now 2026-10-09T12:00:00.000Z
+
+screen
+                                                                    Izbor ● up
+  Back · Esc
+  Make the retry limit configurable per client and cover it with tests.
+  added tests; all 42 request tests pass.
+  Last change 2m ago
+
+  s · Stop observing
+
+  Agent's last message · 30s ago
+  Each limit follows the retry options in the marked docs
+  (https://marked.js.org/using_advanced#options), and the provider's status
+  page is https://status.example.com/retries.
+
+  https://ci.example.com/runs/4821 has the whole run. The package is at
+  www.npmjs.com/package/marked, and questions go to retries@example.com.
+
+  The ~~old~~ constant is gone, and ~old~ with one tilde stays as written.
+
+  Reply finished · 30s ago
+
+  ┌─ Reply to this session ──────────────────────────────────────────────────┐
+  │ › your next prompt                                                Send → │
+  └──────────────────────────────────────────────────────────────────────────┘
+                                                                 Help · Ctrl-G
+
+styles
+
+  __________
+
+
+
+
+  __________________
+
+
+                     ____________________________________
+
+          __________________________________
+
+  ________________________________
+  ____________________________                      ___________________
+
+
+
+
+
+
+                                                                      ______
+
+                                                                 _____________
+
+legend
+  _  underline
+
+layout  scroll 3 · maxScroll 3 · pageSize 16 · viewport 2,3 76x16
+detail  none
+
+targets, in hit-test order
+  back     2,1 10x1
+  help     65,23 13x1
+  send     70,21 6x1
+  field    2,20 76x3  origin 6  indices 0*64
+  stop     2,6 18x1  c8219b07-e082-4ac4-9bdf-4abfe6fcfc8e

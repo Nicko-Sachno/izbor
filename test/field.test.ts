@@ -204,11 +204,11 @@ test("what this window sent counts only for the request it answered: another req
 });
 
 test("the field's line says what was sent while the field is empty, until the request is over or the warning shows; a message of the field's own wins", () => {
-    const SENTENCE = { text: "Sent yes. Needs you clears when Claude goes on.", error: false };
+    const SENTENCE = { text: "Sent yes. Needs you clears when the agent goes on.", error: false };
     assert.deepEqual(fieldLine(emptyField(), waiting("answered", SENT)), SENTENCE);
     const words = { ...SENT, text: "no, run only the export tests" };
     assert.deepEqual(fieldLine(emptyField(), waiting("answered", words)), {
-        text: "Sent no, run only the export tests. Needs you clears when Claude goes on.",
+        text: "Sent no, run only the export tests. Needs you clears when the agent goes on.",
         error: false,
     });
     assert.equal(fieldLine(emptyField(), waiting("answered", { ...SENT, stillWaits: true })), null, "the warning");

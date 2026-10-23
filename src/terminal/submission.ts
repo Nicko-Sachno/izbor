@@ -69,10 +69,10 @@ export function createSubmission(
 
     return {
         send,
-        edit(text: string | undefined, key: EditKey, shown: Observation | undefined) {
+        edit(text: string | undefined, key: EditKey, shown: Observation | undefined, columns?: number) {
             if (disposed) return;
             feedback("", false);
-            const next = editField(view.field, modeOn(shown), text, key, shown);
+            const next = editField(view.field, modeOn(shown), text, key, shown, columns);
             if (next.text !== view.field.text) revision++;
             view.field = next;
         },

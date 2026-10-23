@@ -1,4 +1,5 @@
 import type { EventRecord, MessageRecord } from "../domain/records.js";
+import type { TranscriptRead } from "../domain/transcriptMemory.js";
 import type { Report } from "./report.js";
 
 export type Thread = { agentId: string | null; messages: MessageRecord[] };
@@ -15,6 +16,9 @@ type SessionSyncDeps = {
     files: SessionFiles;
     report: Pick<Report, "shrunk" | "error">;
     onMessages: (records: MessageRecord[]) => void;
+    /** Told of each read as it ends, before its records go to `onMessages`; a read that fails, or whose records
+     *  cannot be written, is `failed`. */
+    onRead: (read: TranscriptRead) => void;
     onSyncError: (err: unknown) => Promise<void>;
 };
 
@@ -23,13 +27,34 @@ export type SessionSync = {
     appendEvent(record: EventRecord, cwd?: string): Promise<void>;
 };
 
-export function createSessionSync(deps: SessionSyncDeps): SessionSync {
-    const { sessionId, readThreads, files, report, onMessages, onSyncError } = deps;
+/** How many messages of each thread the session file holds, by the thread's agent id: null for the main thread. */
+type Cursors = {
+    /** Whether `advance` has met the thread. */
+    has(agentId: string | null): boolean;
+    /** 0 for a thread `advance` has not met. */
+    of(agentId: string | null): number;
+    /** Marks every message of `threads` as written. */
+    advance(threads: Thread[]): void;
+};
+
+/** What a read found in the threads it gave: the transcript, when its main thread holds a record. */
+const foundIn = (threads: Thread[]): TranscriptRead =>
+    threads.some(({ agentId, messages }) => agentId === null && messages.length > 0) ? "found" : "empty";
+
+function threadCursors(): Cursors {
     const cursors = new Map<string | null, number>();
-    const cursorOf = (agentId: string | null) => cursors.get(agentId) ?? 0;
-    const advanceCursors = (threads: Thread[]) => {
-        for (const { agentId, messages } of threads) cursors.set(agentId, messages.length);
+    return {
+        has: (agentId) => cursors.has(agentId),
+        of: (agentId) => cursors.get(agentId) ?? 0,
+        advance(threads) {
+            for (const { agentId, messages } of threads) cursors.set(agentId, messages.length);
+        },
     };
+}
+
+export function createSessionSync(deps: SessionSyncDeps): SessionSync {
+    const { sessionId, readThreads, files, report, onMessages, onRead, onSyncError } = deps;
+    const cursors = threadCursors();
 
     const needsRebuild = async () => !cursors.has(null) || !(await files.exists(sessionId));
 
@@ -37,15 +62,15 @@ export function createSessionSync(deps: SessionSyncDeps): SessionSync {
         const records = threads.flatMap(({ messages }) => messages);
         if (records.length === 0) return;
         await files.replaceMessages(sessionId, records);
-        advanceCursors(threads);
+        cursors.advance(threads);
         onMessages(records);
     }
 
     async function append(threads: Thread[]) {
-        const records = threads.flatMap(({ agentId, messages }) => messages.slice(cursorOf(agentId)));
+        const records = threads.flatMap(({ agentId, messages }) => messages.slice(cursors.of(agentId)));
         if (records.length === 0) return;
         await files.append(sessionId, records);
-        advanceCursors(threads);
+        cursors.advance(threads);
         onMessages(records);
     }
 
@@ -53,6 +78,7 @@ export function createSessionSync(deps: SessionSyncDeps): SessionSync {
         try {
             await syncThreads(cwd);
         } catch (err) {
+            onRead("failed");
             await onSyncError(err);
             throw err;
         }
@@ -60,12 +86,13 @@ export function createSessionSync(deps: SessionSyncDeps): SessionSync {
 
     async function syncThreads(cwd?: string) {
         const threads = await readThreads(sessionId, cwd);
+        onRead(foundIn(threads));
         if (await needsRebuild()) return rebuild(threads);
-        const shrunk = threads.find(({ agentId, messages }) => messages.length < cursorOf(agentId));
+        const shrunk = threads.find(({ agentId, messages }) => messages.length < cursors.of(agentId));
         if (!shrunk) return append(threads);
         const keepFile = threads.every(({ messages }) => messages.length === 0);
         const { agentId, messages } = shrunk;
-        report.shrunk(agentId, messages.length, cursorOf(agentId), keepFile);
+        report.shrunk(agentId, messages.length, cursors.of(agentId), keepFile);
         if (!keepFile) await rebuild(threads);
     }
 

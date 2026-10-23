@@ -13,21 +13,21 @@ screen
 
   ┌─ Answer ─────────────────────────┐
   │ › yes                            │
-  └──────────────────────────────────┘
+  └─ Ctrl-J new line · Enter sends ──┘
                          Help · Ctrl-G
 
 styles
                             mmmmmmmmmm
   gggggggggg
-  tttttttttttttttttttttttttttt
-  ttttttttttttttttttttttttttttttt
-  tttttttttttttttttttt
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
   YYYYYYYYYYYYY
   AAAAAAAAAAAAAAAAAAAAAAA
 
   ffffffffffffffffffffffffffffffffffff
   ffffttt                           ff
-  ffffffffffffffffffffffffffffffffffff
+  fffmmmmmmmmmmmmmmmmmmmmmmmmmmmmmffff
                          ggggggggggggg
 
 legend
@@ -37,6 +37,7 @@ legend
   g  focus underline
   m  muted
   t  text
+  ©  taskFill
 
 layout  scroll 6 · maxScroll 9 · pageSize 2 · viewport 2,5 36x2
 detail  none

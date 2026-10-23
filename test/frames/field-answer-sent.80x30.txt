@@ -28,17 +28,17 @@ screen
 
 
 
-  Sent yes. Needs you clears when Claude goes on.
+  Sent yes. Needs you clears when the agent goes on.
   ┌─ Answer ─────────────────────────────────────────────────────────────────┐
   │ ›                                                                 Send → │
-  └──────────────────────────────────────────────────────────────────────────┘
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
                                                                  Help · Ctrl-G
 
 styles
                                                                     mmmmmmmmmm
   gggggggggg
-  tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-  tttttt
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
 
   mmm
   cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
@@ -60,10 +60,10 @@ styles
 
 
 
-  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
   ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
   ffff                                                                ggggggff
-  ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+  fffmmmmmmmmmmmmmmmmmmmmmmmmmmmmmffffffffffffffffffffffffffffffffffffffffffff
                                                                  ggggggggggggg
 
 legend
@@ -73,7 +73,7 @@ legend
   f  focus
   g  focus underline
   m  muted
-  t  text
+  ©  taskFill
 
 layout  scroll 0 · maxScroll 0 · pageSize 21 · viewport 2,4 76x21
 detail  none

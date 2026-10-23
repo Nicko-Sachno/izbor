@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { join, resolve, sep } from "node:path";
 import { izborChildEnv, izborUserDir, pluginOffer, readConfig, readIzborEnv } from "../src/config.js";
+import { type TerminalAbilities, terminalAbilities } from "../src/cli/abilities.js";
 import { type CliArgs, readCliArgs } from "../src/cli/args.js";
 
 const SESSION_ID = "123e4567-e89b-12d3-a456-426614174000";
@@ -326,6 +327,57 @@ test("IZBOR_OLD_BUILD=1, which bin/izbor.js sets on an old build, is the screen'
         [oldBuild([], "1"), oldBuild(["--no-color"], "1"), oldBuild([]), oldBuild([], "0"), oldBuild([], "")],
         [true, true, false, false, false],
     );
+});
+
+test("links where supports-hyperlinks or the list says the terminal opens them, strikethrough but on Terminal.app and the Linux console, neither with colour off; key reporting in kitty, Ghostty, WezTerm, foot and iTerm2 alone, never inside tmux", () => {
+    const shown = ({ links, strike }: TerminalAbilities) =>
+        [links && "links", strike && "strike"].filter(Boolean).join(" and ") || "neither";
+    const ghostty = { TERM_PROGRAM: "ghostty" };
+    const tmux = (version: string) => ({
+        TERM_PROGRAM: "tmux",
+        TERM_PROGRAM_VERSION: version,
+        TMUX: "/tmp/tmux-501/default,1,0",
+    });
+    const rows: [terminal: string, env: Record<string, string>, hyperlinks: boolean, shown: string, keys: boolean][] = [
+        [
+            "Terminal.app, even where supports-hyperlinks says yes",
+            { TERM_PROGRAM: "Apple_Terminal" },
+            true,
+            "neither",
+            false,
+        ],
+        ["CI, even in Ghostty", { ...ghostty, CI: "true" }, true, "strike", true],
+        ["tmux 3.4", tmux("3.4"), false, "links and strike", false],
+        [
+            "tmux 3.3a, even in Ghostty",
+            { ...tmux("3.3a"), GHOSTTY_RESOURCES_DIR: "/Applications/Ghostty.app" },
+            true,
+            "strike",
+            false,
+        ],
+        [
+            "tmux 3.4 inside kitty",
+            { ...tmux("3.4"), TERM: "tmux-256color", KITTY_WINDOW_ID: "1" },
+            false,
+            "links and strike",
+            false,
+        ],
+        ["Windows Terminal", { WT_SESSION: "a3b2c1d0-0000-4000-8000-000000000000" }, false, "links and strike", false],
+        ["kitty", { TERM: "xterm-kitty" }, false, "links and strike", true],
+        ["Ghostty", ghostty, false, "links and strike", true],
+        ["WezTerm", { TERM_PROGRAM: "WezTerm" }, false, "links and strike", true],
+        ["foot", { TERM: "foot" }, false, "strike", true],
+        ["Warp", { TERM_PROGRAM: "WarpTerminal" }, false, "links and strike", false],
+        ["the Linux console", { TERM: "linux" }, false, "neither", false],
+        ["iTerm2, where supports-hyperlinks says yes", { TERM_PROGRAM: "iTerm.app" }, true, "links and strike", true],
+        ["a terminal neither knows", { TERM: "xterm-256color" }, false, "strike", false],
+    ];
+    for (const [terminal, env, hyperlinks, expected, keys] of rows) {
+        assert.equal(shown(terminalAbilities(env, { color: true, hyperlinks })), expected, terminal);
+        assert.equal(shown(terminalAbilities(env, { color: false, hyperlinks })), "neither", `${terminal}, colour off`);
+        for (const color of [true, false])
+            assert.equal(terminalAbilities(env, { color, hyperlinks }).keys, keys ? "kitty" : undefined, terminal);
+    }
 });
 
 test("an unknown flag is refused", () => {

@@ -286,14 +286,14 @@ const exited = (code: number, output: { stdout?: string; stderr?: string }): Ran
     ...output,
 });
 
-test("queryStatus runs `claude agents --json` once, with a limit of 5 s and its signal, and gives every listed session with its Status", async () => {
+test("queryStatus runs `claude agents --json` once, with a limit of 5 s and its signal, and gives every listed session with its Status and folder", async () => {
     const stdout = agentsOutput({ status: "waiting", waitingFor: "permission prompt" });
     const { platform, provider } = providerOn(exited(0, { stdout }));
     const { signal } = new AbortController();
 
     assert.deepEqual(await provider.queryStatus(signal), [
-        { sessionId: OTHER_SESSION, status: "idle" },
-        { sessionId: SESSION, status: "waiting", waitingFor: "permission prompt" },
+        { sessionId: OTHER_SESSION, status: "idle", cwd: "/other" },
+        { sessionId: SESSION, status: "waiting", waitingFor: "permission prompt", cwd: "/repo" },
     ]);
     assert.deepEqual(platform.ran, [
         { command: "claude", args: ["agents", "--json"], options: { timeoutMs: 5000, signal } },
@@ -347,20 +347,23 @@ test("queryStatus rejects for output that is no list, with the start of the outp
     });
 });
 
-test("readStatuses gives each session of the list its Status: busy, idle, and waiting with what it waits for", () => {
+test("readStatuses gives each session of the list its Status: busy, idle, and waiting with what it waits for; and its folder", () => {
     const recorded = `[{"pid":71494,"cwd":"/Users/me/project","kind":"interactive","startedAt":1791107060252,
   "sessionId":"4a979d7e-eb38-41d3-a0f0-6d75b8c8d6ff","name":"izbor-b8","status":"idle"}]`;
 
     assert.deepEqual(readListedSessions(recorded), [
-        { sessionId: "4a979d7e-eb38-41d3-a0f0-6d75b8c8d6ff", status: "idle" },
+        { sessionId: "4a979d7e-eb38-41d3-a0f0-6d75b8c8d6ff", status: "idle", cwd: "/Users/me/project" },
     ]);
     assert.deepEqual(readListedSessions(agentsOutput({ status: "busy" })), [
-        { sessionId: OTHER_SESSION, status: "idle" },
-        { sessionId: SESSION, status: "busy" },
+        { sessionId: OTHER_SESSION, status: "idle", cwd: "/other" },
+        { sessionId: SESSION, status: "busy", cwd: "/repo" },
     ]);
     assert.deepEqual(readListedSessions(agentsOutput({ status: "waiting", waitingFor: "permission prompt" })), [
-        { sessionId: OTHER_SESSION, status: "idle" },
-        { sessionId: SESSION, status: "waiting", waitingFor: "permission prompt" },
+        { sessionId: OTHER_SESSION, status: "idle", cwd: "/other" },
+        { sessionId: SESSION, status: "waiting", waitingFor: "permission prompt", cwd: "/repo" },
+    ]);
+    assert.deepEqual(readListedSessions(JSON.stringify([{ sessionId: SESSION, status: "idle" }])), [
+        { sessionId: SESSION, status: "idle" },
     ]);
     assert.deepEqual(readListedSessions("[]"), []);
 });
@@ -373,16 +376,18 @@ test("readStatuses reads a session with no status, or one Izbor does not know, a
     ]);
 
     assert.deepEqual(readListedSessions(output), [
-        { sessionId: OTHER_SESSION, status: "idle" },
+        { sessionId: OTHER_SESSION, status: "idle", cwd: "/other" },
         {
             sessionId: SESSION,
             status: "unknown",
             error: "Error: claude agents --json lists the session without a status",
+            cwd: "/repo",
         },
         {
             sessionId: "starting",
             status: "unknown",
             error: 'Error: claude agents --json reports a status Izbor does not know: "compacting"',
+            cwd: "/third",
         },
     ]);
 });

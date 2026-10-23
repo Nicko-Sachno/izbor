@@ -31,14 +31,14 @@ screen
 
   ┌─ Reply to this session ──────────────────────────────────────────────────┐
   │ › also add a test for refresh races                               Send → │
-  └──────────────────────────────────────────────────────────────────────────┘
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
                                                                  Help · Ctrl-G
 
 styles
                                                                     mmmmmmmmmm
   gggggggggg
-  tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-  ttttttt
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
 
   mmm
   ccccccccccccccccccccccccccccc
@@ -63,7 +63,7 @@ styles
 
   ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
   ffffttttttttttttttttttttttttttttttttt                               ggggggff
-  ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+  fffmmmmmmmmmmmmmmmmmmmmmmmmmmmmmffffffffffffffffffffffffffffffffffffffffffff
                                                                  ggggggggggggg
 
 legend
@@ -72,6 +72,7 @@ legend
   g  focus underline
   m  muted
   t  text
+  ©  taskFill
 
 layout  scroll 0 · maxScroll 0 · pageSize 21 · viewport 2,4 76x21
 detail  none

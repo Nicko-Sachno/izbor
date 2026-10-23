@@ -23,12 +23,22 @@ type Point = { x: number; y: number };
 type BridgeMessage = { type: "ready" } | { type: "output"; data: string } | ({ type: "exit" } & PtyExit);
 
 // A CI runner's own variables: chalk turns colour on under CI when GITHUB_ACTIONS, GITEA_ACTIONS or CIRCLECI is set.
+// Then the terminal's own: in Ghostty, iTerm2 or tmux they would turn OSC 8 links on in the app the test runs.
 const RUNNER_ENV = {
     FORCE_COLOR: undefined,
     NODE_TEST_CONTEXT: undefined,
     GITHUB_ACTIONS: undefined,
     GITEA_ACTIONS: undefined,
     CIRCLECI: undefined,
+    TERM_PROGRAM: undefined,
+    TERM_PROGRAM_VERSION: undefined,
+    KITTY_WINDOW_ID: undefined,
+    WT_SESSION: undefined,
+    WEZTERM_EXECUTABLE: undefined,
+    GHOSTTY_RESOURCES_DIR: undefined,
+    TMUX: undefined,
+    VTE_VERSION: undefined,
+    FORCE_HYPERLINK: undefined,
 };
 
 const LAST_ROW_LABEL = /\s(Help|Close)( · Ctrl-G)?\s*$/;
@@ -58,6 +68,8 @@ export async function startPty(
     );
     let writes = Promise.resolve();
     let stderr = "";
+    // Everything the app wrote, kept for the escape codes that leave no mark on the screen, such as a key mode.
+    let raw = "";
     let failure: Error | undefined;
     let exit: PtyExit | undefined;
     const lines = createInterface({ input: bridge.stdout });
@@ -66,6 +78,7 @@ export async function startPty(
         const message = JSON.parse(line) as BridgeMessage;
         if (message.type === "output") {
             const text = utf8.write(Buffer.from(message.data, "base64"));
+            raw += text;
             writes = writes.then(() => new Promise<void>((resolve) => terminal.write(text, resolve)));
         } else if (message.type === "exit") {
             writes = writes.then(() => void (exit = { code: message.code, modesRestored: message.modesRestored }));
@@ -132,23 +145,24 @@ export async function startPty(
         assert.fail(`${description}\n${frame().join("\n")}\n${stderr}`);
     }
 
-    function fieldRow(): { y: number; origin: number; end: number } {
+    // The field's row `row` of its box, counted from the first, which holds its `›`.
+    function fieldRow(row = 0): { y: number; origin: number; end: number } {
         const cells = frame();
-        const y = cells.findIndex((line) => line.includes("│ › "));
-        assert.ok(y >= 0, `the Brief's field is visible\n${cells.join("\n")}`);
-        const prompt = cells[y]!.indexOf("│ › ");
-        return { y, origin: prompt + 4, end: cells[y]!.indexOf("│", prompt + 1) };
+        const first = cells.findIndex((line) => line.includes("│ › "));
+        assert.ok(first >= 0, `the Brief's field is visible\n${cells.join("\n")}`);
+        const prompt = cells[first]!.indexOf("│ › ");
+        return { y: first + row, origin: prompt + 4, end: cells[first]!.indexOf("│", prompt + 1) };
     }
 
-    function assertFieldCursor(text?: string, offset = text?.length) {
-        const { y, origin, end } = fieldRow();
+    function assertFieldCursor(text?: string, offset = text?.length, row = 0) {
+        const { y, origin, end } = fieldRow(row);
         const buffer = terminal.buffer.active;
         assert.equal(buffer.cursorY, y, "the actual terminal cursor stays on the field's row");
         assert.ok(buffer.cursorX >= origin, "the cursor stays after the field's prompt");
         assert.ok(buffer.cursorX < end, "the cursor stays inside the field's border");
         if (text !== undefined && offset !== undefined) {
             assert.ok(frame()[y]!.includes(text));
-            assert.equal(buffer.cursorX, fieldPoint(offset).x);
+            assert.equal(buffer.cursorX, fieldPoint(offset, row).x);
         }
     }
 
@@ -194,8 +208,8 @@ export async function startPty(
         input(clickKeys(target.x, target.y));
     }
 
-    function fieldPoint(offset = 0): Point {
-        const { y, origin } = fieldRow();
+    function fieldPoint(offset = 0, row = 0): Point {
+        const { y, origin } = fieldRow(row);
         return { x: origin + offset, y };
     }
 
@@ -229,6 +243,7 @@ export async function startPty(
         fieldHasCursor,
         openFirstBrief,
         exited: () => exit,
+        output: () => raw,
         close,
     };
 }

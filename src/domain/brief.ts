@@ -1,4 +1,6 @@
+import { isDeepStrictEqual } from "node:util";
 import type { Status } from "./records.js";
+import type { CallResult, FullResponse } from "./response.js";
 
 export type Brief = {
     task: Task | null;
@@ -7,6 +9,8 @@ export type Brief = {
     needsYou: NeedsYou;
     lastObserved: { at: string; from: "hook" | "status"; lastHookAt: string | null } | null;
     explanation: Explained;
+    /** The agent's reply to the Task; null while the Task is unknown. */
+    response: FullResponse | null;
 };
 
 type Task = { text: string; at: string; from: "hook" | "transcript" };
@@ -60,6 +64,7 @@ export const UNKNOWN_BRIEF: Brief = {
     needsYou: { state: "unknown" },
     lastObserved: null,
     explanation: { state: "unknown" },
+    response: null,
 };
 
 export type HookEvidence = {
@@ -67,19 +72,35 @@ export type HookEvidence = {
     action: string | null;
     prompt?: string;
     replyFinished?: true;
+    /** The agent's whole last message, from the hook that finished the reply. */
+    lastMessage?: string;
+    /** The hook says the reply failed, with the error the user sees. */
+    replyFailed?: string;
     agentId: string | null;
     request?: Request;
     endedCall?: string;
-    ends?: "all" | "agent" | { tool: string; input: unknown };
+    /** The hook says the ended call finished: it is `done` though its transcript row is not read yet, and whether or
+     *  not the hook tells its result. A failure, which may be an interrupt, sets nothing. */
+    callDone?: true;
+    /** What the hook tells of the ended call, when it tells anything: its result, or that the user interrupted it. */
+    result?: CallResult;
+    ends?: "all" | "agent" | RequestedCall;
 };
+
+/** A call as a request names it: its tool and its input. */
+export type RequestedCall = Pick<Request, "tool" | "input">;
+
+/** Whether two calls are the same: the same tool, with the same input, whatever the order of its keys. A hook gives
+ *  the input in Claude Code's order and the transcript in the model's, so the two differ for a question or a Bash call
+ *  with a timeout. */
+export const isSameCall = (one: RequestedCall, other: RequestedCall): boolean =>
+    one.tool === other.tool && isDeepStrictEqual(one.input, other.input);
 
 function isOver(request: Request, { agentId, ends }: HookEvidence): boolean {
     if (ends === undefined) return false;
     if (ends === "all") return true;
     if (request.agentId !== agentId) return false;
-    return (
-        ends === "agent" || (ends.tool === request.tool && JSON.stringify(ends.input) === JSON.stringify(request.input))
-    );
+    return ends === "agent" || isSameCall(ends, request);
 }
 
 export const mainThreadRequest = ({ request, agentId }: HookEvidence): Request | undefined =>
@@ -120,6 +141,8 @@ export type StatusEvidence = {
     status: Status;
     askedAt: string;
     at: string;
+    /** The session's folder, as the agent's session list names it. */
+    folder?: string | undefined;
 };
 
 export function afterStatus(brief: Brief, reading: StatusEvidence): Brief {

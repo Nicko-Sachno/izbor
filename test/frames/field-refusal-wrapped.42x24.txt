@@ -25,15 +25,15 @@ screen
   × Type yes, no, or no and your words.
   ┌─ Answer ───────────────────────────┐
   │ › yes                              │
-  └────────────────────────────────────┘
+  └─ Ctrl-J new line · Enter sends ────┘
                            Help · Ctrl-G
 
 styles
                               mmmmmmmmmm
   gggggggggg
-  tttttttttttttttttttttttttttttttttttttt
-  ttttttttttttttttttttttttttttttttttt
-  tttttt
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
 
   mmm
   cccccccccccccccccccccccccccccccccccccc
@@ -51,7 +51,7 @@ styles
   RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
   ffffffffffffffffffffffffffffffffffffff
   ffffttt                             ff
-  ffffffffffffffffffffffffffffffffffffff
+  fffmmmmmmmmmmmmmmmmmmmmmmmmmmmmmffffff
                            ggggggggggggg
 
 legend
@@ -63,6 +63,7 @@ legend
   g  focus underline
   m  muted
   t  text
+  ©  taskFill
 
 layout  scroll 0 · maxScroll 0 · pageSize 14 · viewport 2,5 38x14
 detail  none

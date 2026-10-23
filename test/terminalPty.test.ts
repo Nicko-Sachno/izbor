@@ -108,24 +108,27 @@ test(
         await until("Ctrl+U clears the field before the cursor", fieldIsEmpty);
 
         await resize(40, 12);
-        const pasted = "yes, no and more";
+        const pasted = ["yes,", "no and", "more"];
+        const fieldRows = (lines: readonly string[]) => () =>
+            lines.every((line, row) => frame()[fieldPoint(0, row).y]!.includes(`│ ${row ? " " : "›"} ${line} `));
+        const cursorAt = (offset: number, row: number) => () => {
+            const { x, y } = fieldPoint(offset, row);
+            return terminal.buffer.active.cursorX === x && terminal.buffer.active.cursorY === y;
+        };
         input("\x1b[200~yes,\nno and\nmore\x1b[201~");
-        await until("a bracketed paste lands in the field, its newlines as spaces", () => fieldShows(pasted));
-        assertFieldCursor();
+        await until(
+            "a bracketed paste keeps its lines: at 40×12 the box keeps the body's last row and shows the last two, the cursor after them once the grown box is measured",
+            () => fieldRows(pasted.slice(1))() && cursorAt(4, 1)(),
+        );
+        assertFieldCursor("more", 4, 1);
         assert.match(frame().join("\n"), /Back · Esc\s+Fix the/, "pasted newlines send nothing");
         await resize(80, 30);
-        await until("the pasted text remains editable after growth", () => fieldShows(pasted));
-        assertFieldCursor(pasted);
+        await until("the box grows to all three lines, still editable", fieldRows(pasted));
+        assertFieldCursor("more", 4, 2);
         input("\x01");
-        await until(
-            "the pasted text's cursor can return to the start",
-            () => terminal.buffer.active.cursorX === fieldPoint().x,
-        );
+        await until("the pasted text's cursor can return to its first row's start", cursorAt(0, 0));
         input("\x05");
-        await until(
-            "Ctrl+E reaches the pasted text's end",
-            () => terminal.buffer.active.cursorX === fieldPoint(pasted.length).x,
-        );
+        await until("Ctrl+E reaches the pasted text's end, on its last row", cursorAt(4, 2));
         input("\x05\x15");
         await until("coalesced Ctrl+E / Ctrl+U clears the pasted text", fieldIsEmpty);
         input("\x1b");
@@ -173,16 +176,22 @@ test(
         click(fieldPoint());
         await resize(40, 12);
         const longText = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const secondRow = (text: string) => () => frame()[fieldPoint(0, 1).y]!.includes(`│   ${text}`);
         input(longText);
-        await until("long input scrolls horizontally", () =>
-            frame().some((line) => line.includes("…") && line.includes("XYZ")),
+        await until(
+            "long input wraps onto a second row of the box, the cursor after it once the grown box is measured",
+            () => secondRow("UVWXYZ")() && cursorAt(6, 1)(),
         );
-        click(point("STUVWXYZ"));
+        assert.ok(fieldShows("0123456789ABCDEFGHIJKLMNOPQRST"), "the first row holds the text's start");
+        assertFieldCursor("UVWXYZ", 6, 1);
+        click(point("UVWXYZ"));
         await settle();
         input("z");
+        await until("a click on the second row puts the cursor on that row and column", secondRow("zUVWXYZ"));
+        assertFieldCursor("zUVWXYZ", 1, 1);
         await resize(80, 30);
-        await until("click positions map through the hidden beginning of a long text", () =>
-            fieldShows(longText.replace("S", "zS")),
+        await until("click positions map through the rows of a long text", () =>
+            fieldShows(longText.replace("U", "zU")),
         );
         input("\x05\x15");
         await until("the long clicked text clears", answerIsEmpty);
@@ -212,20 +221,28 @@ test(
 
 const SELECTED_TASK = "Fix the token refresh bug";
 
-for (const { terminal: name, env, color, sixteen } of [
-    { terminal: "with CI set", env: { CI: "1" }, color: false, sixteen: false },
-    { terminal: "with TERM=dumb", env: { TERM: "dumb" }, color: false, sixteen: false },
-    { terminal: "with NO_COLOR=1", env: { NO_COLOR: "1" }, color: false, sixteen: false },
-    { terminal: "with CI set and FORCE_COLOR=1", env: { CI: "1", FORCE_COLOR: "1" }, color: true, sixteen: true },
-    { terminal: "that shows color", env: {}, color: true, sixteen: false },
+for (const { terminal: name, argv, env, color, sixteen, bold } of [
+    { terminal: "running izbor --no-color", argv: ["--no-color"], env: {}, color: false, sixteen: false, bold: true },
+    { terminal: "with CI set", argv: [], env: { CI: "1" }, color: false, sixteen: false, bold: true },
+    { terminal: "with TERM=dumb", argv: [], env: { TERM: "dumb" }, color: false, sixteen: false, bold: false },
+    { terminal: "with NO_COLOR=1", argv: [], env: { NO_COLOR: "1" }, color: false, sixteen: false, bold: true },
+    {
+        terminal: "with CI set and FORCE_COLOR=1",
+        argv: [],
+        env: { CI: "1", FORCE_COLOR: "1" },
+        color: true,
+        sixteen: true,
+        bold: true,
+    },
+    { terminal: "that shows color", argv: [], env: {}, color: true, sixteen: false, bold: true },
 ]) {
     test(
         color
             ? `in a terminal ${name}, the selected session is ${sixteen ? "in the terminal's own colour (16 colours)" : "colored"}, bold, not underlined, and has no label`
-            : `in a terminal ${name}, the selected session says Selected · and has no color`,
+            : `in a terminal ${name}, the selected session says Selected ·, has no color and is ${bold ? "bold" : "not bold"}`,
         { skip: SKIP_WITHOUT_PTY, timeout: 30000 },
         async (t) => {
-            const pty = await startPty(SAMPLE_TERMINAL, { env: { ...COLOR_TERMINAL, ...env } });
+            const pty = await startPty([...SAMPLE_TERMINAL, ...argv], { env: { ...COLOR_TERMINAL, ...env } });
             t.after(pty.close);
             const { terminal, frame, input, until, exited } = pty;
 
@@ -238,11 +255,12 @@ for (const { terminal: name, env, color, sixteen } of [
                 assert.match(line, /^ {3}\* Fix the token refresh bug .* Open ›\s*$/);
                 assert.deepEqual(
                     { colored: !cell.isFgDefault(), bold: cell.isBold() !== 0, underline: cell.isUnderline() !== 0 },
-                    { colored: !sixteen, bold: true, underline: false },
+                    { colored: !sixteen, bold, underline: false },
                 );
             } else {
                 assert.match(line, /^ {3}\* Selected · Fix the token refresh bug .* Open ›\s*$/);
                 assert.equal(cell.isFgDefault(), true, "the Task has the terminal's own color");
+                assert.equal(cell.isBold() !== 0, bold, "colour off keeps bold, but a dumb terminal draws none");
             }
 
             input(KEYS["ctrl-c"]);
@@ -251,3 +269,46 @@ for (const { terminal: name, env, color, sixteen } of [
         },
     );
 }
+
+/** Ink's codes for the kitty keyboard protocol: the query `auto` would send, the push of its first level, the pop. */
+const KITTY_QUERY = "\x1b[?u";
+const KITTY_PUSH = "\x1b[>1u";
+const KITTY_POP = "\x1b[<u";
+
+test(
+    "in kitty, the app turns key reporting on once it starts and off on Ctrl+C, so the shell gets its keys back",
+    { skip: SKIP_WITHOUT_PTY, timeout: 30000 },
+    async (t) => {
+        const pty = await startPty([...SAMPLE_TERMINAL, "--no-color"], { env: { KITTY_WINDOW_ID: "1" } });
+        t.after(pty.close);
+        const { frame, input, until, exited, output } = pty;
+
+        await until("the sample Sessions show", () => frame().some((line) => line.includes(SELECTED_TASK)));
+        assert.ok(output().includes(KITTY_PUSH), "the mode is pushed when the app starts");
+        assert.ok(!output().includes(KITTY_POP), "and not popped while it runs");
+        // Under the mode, kitty sends Ctrl+C as a CSI u key, not as ETX.
+        input("\x1b[99;5u");
+        await until("Ctrl+C exits", () => exited() !== undefined);
+        assert.equal(exited()!.code, 0);
+        assert.equal(exited()!.modesRestored, true);
+        assert.ok(output().lastIndexOf(KITTY_POP) > output().indexOf(KITTY_PUSH), "the mode is popped on the way out");
+        assert.ok(!output().includes(KITTY_QUERY), "the terminal is never asked whether it reports keys");
+    },
+);
+
+test(
+    "in Terminal.app, the app writes no key-reporting query and pushes no mode, so no stray characters show",
+    { skip: SKIP_WITHOUT_PTY, timeout: 30000 },
+    async (t) => {
+        const pty = await startPty([...SAMPLE_TERMINAL, "--no-color"], { env: { TERM_PROGRAM: "Apple_Terminal" } });
+        t.after(pty.close);
+        const { frame, input, until, exited, output } = pty;
+
+        await until("the sample Sessions show", () => frame().some((line) => line.includes(SELECTED_TASK)));
+        input(KEYS["ctrl-c"]);
+        await until("Ctrl+C exits", () => exited() !== undefined);
+        assert.equal(exited()!.code, 0);
+        assert.ok(!output().includes(KITTY_QUERY), "no query");
+        assert.ok(!output().includes(KITTY_PUSH), "no push");
+    },
+);

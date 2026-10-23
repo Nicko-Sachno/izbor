@@ -31,14 +31,14 @@ screen
   Sent. It runs when this turn ends.
   ┌─ Reply to this session ──────────────────────────────────────────────────┐
   │ › your next prompt                                                Send → │
-  └──────────────────────────────────────────────────────────────────────────┘
+  └─ Ctrl-J new line · Enter sends ──────────────────────────────────────────┘
                                                                  Help · Ctrl-G
 
 styles
                                                                     mmmmmmmmmm
   gggggggggg
-  tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-  ttttttt
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
 
   mmm
   ccccccccccccccccccccccccccccc
@@ -63,7 +63,7 @@ styles
   mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
   ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
   ffffmmmmmmmmmmmmmmmm                                                ggggggff
-  ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+  fffmmmmmmmmmmmmmmmmmmmmmmmmmmmmmffffffffffffffffffffffffffffffffffffffffffff
                                                                  ggggggggggggg
 
 legend
@@ -71,7 +71,7 @@ legend
   f  focus
   g  focus underline
   m  muted
-  t  text
+  ©  taskFill
 
 layout  scroll 0 · maxScroll 0 · pageSize 21 · viewport 2,4 76x21
 detail  none

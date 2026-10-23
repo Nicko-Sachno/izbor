@@ -31,7 +31,7 @@ screen
 styles
                                                                     mmmmmmmmmm
   gggggggggg
-  ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©
 
   mmm
   mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
@@ -61,7 +61,7 @@ legend
   g  focus underline
   m  muted
   o  border
-  t  text
+  ©  taskFill
 
 layout  scroll 0 · maxScroll 0 · pageSize 16 · viewport 2,3 76x16
 detail  none

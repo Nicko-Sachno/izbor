@@ -39,7 +39,8 @@ export type IzborRoutes = {
     };
 };
 
-export type ListedSession = { sessionId: string } & Extract<
+/** A session the agent lists, with its status and, when the list names it, its folder (`cwd`). */
+export type ListedSession = { sessionId: string; cwd?: string } & Extract<
     Status,
     { status: "busy" | "idle" | "waiting" | "unknown" }
 >;

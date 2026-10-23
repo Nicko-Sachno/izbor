@@ -614,7 +614,13 @@ test("Metadata focuses the Brief so its keyboard scrolling scrolls it", (t) => {
     app.toggleMetadata();
     assert.equal(app.view.metadataExpanded, true);
     assert.equal(app.view.focused, DETAIL_FOCUS);
-    app.measured({ maxScroll: 0, pageSize: 1, scroll: 0, detail: { maxScroll: 20, pageSize: 5, scroll: 20 } });
+    app.measured({
+        maxScroll: 0,
+        pageSize: 1,
+        step: 1,
+        scroll: 0,
+        detail: { maxScroll: 20, pageSize: 5, step: 5, scroll: 20 },
+    });
     app.keypress(undefined, { name: "pageup" }, 20, 5);
     assert.equal(app.view.detailScroll, 15);
     assert.equal(app.view.scroll, 0);
@@ -879,7 +885,7 @@ test("Enter on a project line acts at once: Add hooks › adds the hooks, Add pl
 test("a click on a project line's cue is that project's target and acts as Enter does; its name and the blank before the cue are no target; a bare line is its own target and acts nothing", (t) => {
     const { app } = sampleApp([], 80, 30);
     t.after(() => app.dispose());
-    let layout: ViewportLayout = { maxScroll: 0, pageSize: 0, scroll: 0 };
+    let layout: ViewportLayout = { maxScroll: 0, pageSize: 0, step: 0, scroll: 0 };
     renderToString(
         createElement(TerminalScreen, {
             view: app.view,
@@ -1094,7 +1100,7 @@ test("Tab past its project's line then Enter, or a click anywhere on a session l
     assert.equal(app.view.focused, LONG.id);
 
     const first = frame().findIndex((line) => line.includes("Fix the invoices"));
-    let layout: ViewportLayout = { maxScroll: 0, pageSize: 0, scroll: 0 };
+    let layout: ViewportLayout = { maxScroll: 0, pageSize: 0, step: 0, scroll: 0 };
     renderToString(
         createElement(TerminalScreen, {
             view: app.view,
@@ -1291,7 +1297,7 @@ test("Ctrl-O and the tabs switch screens, each with its scroll; Esc steps back B
     app.showScreen("home");
     assert.deepEqual([app.view.screen, app.view.scroll], ["home", 2], "and so does Home");
 
-    let layout: ViewportLayout = { maxScroll: 0, pageSize: 0, scroll: 0 };
+    let layout: ViewportLayout = { maxScroll: 0, pageSize: 0, step: 0, scroll: 0 };
     renderToString(
         createElement(TerminalScreen, {
             view: app.view,

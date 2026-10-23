@@ -1,4 +1,6 @@
+import type { ScreenFlags } from "../config.js";
 import type { NotAnswerable } from "../domain/answer.js";
+import type { FullResponse } from "../domain/response.js";
 
 export type TerminalBrief = {
     task: { text: string; at: string; from: "hook" | "transcript" } | null;
@@ -13,6 +15,8 @@ export type TerminalBrief = {
         | { state: "request"; text: string; detail: string; at?: string; takes?: "number" };
     answerable?: true | NotAnswerable;
     lastObserved: { at: string; from: "hook" | "status" } | null;
+    /** The agent's reply to the Task, its strings cleaned. Absent while the Task is unknown, or from an older Izbor. */
+    response?: FullResponse;
 };
 
 export function unseenWait(brief: TerminalBrief | null | undefined) {
@@ -90,6 +94,9 @@ export type FixedMode = FieldMode & { session: string };
 
 export type FieldMessage = { text: string; error: boolean; session?: string };
 
+/** A long paste the field shows as one block: the part of its text from `start` up to `end`. */
+export type PasteBlock = { start: number; end: number };
+
 export type FieldState = {
     text: string;
     cursor: number;
@@ -97,6 +104,8 @@ export type FieldState = {
     message: FieldMessage | null;
     told?: readonly string[];
     behind?: readonly FieldMessage[];
+    /** The text's paste blocks, in order; absent while it has none. The cursor never stands inside one. */
+    pasted?: readonly PasteBlock[];
 };
 
 /** Pending async operations reject with AbortError when the source is disposed. */
@@ -142,6 +151,10 @@ export type NavigationView = {
     readonly detailScroll: number;
 };
 
+/** What the terminal shows besides colour, the screen flags' OSC 8 links and strikethrough (`TerminalAbilities` reads
+ *  them). Each is off unless set, and the look turns both off with colour off. */
+export type Abilities = Readonly<Pick<ScreenFlags, "links" | "strike">>;
+
 export type TerminalView = NavigationView & {
     readonly sessions: readonly Observation[];
     readonly list: SessionList;
@@ -151,6 +164,7 @@ export type TerminalView = NavigationView & {
     field: FieldState;
     readonly home: string;
     readonly oldBuild: boolean;
+    readonly abilities: Abilities;
 };
 
 export type TerminalSize = { columns: number; rows: number };
@@ -162,20 +176,36 @@ export type HitTarget = { rect: Rectangle } & (
     | { type: "back" | "help" | "detail" | "hide" | "send" }
     | { type: "stop"; id: string }
     | { type: "tab"; screen: Screen }
-    | { type: "field"; origin: number; indices: number[] }
+    | { type: "field"; origin: { x: number; y: number }; indices: number[][] }
 );
 export type ViewportLayout = {
     maxScroll: number;
+    /** The pane's body rows: the viewport's height, the footer's row included. */
     pageSize: number;
+    /** How far PgDn and PgUp move: a page, or on a Brief with a full response one row less than the rows above its
+     *  footer, so one row of the old page stays in view. */
+    step: number;
     scroll: number;
+    /** Where the pane's full response starts, in rows from the top of its content, while one draws. */
+    responseTop?: number | undefined;
+    /** The pane's body rows on the screen, where the wheel scrolls it: the footer's row included. */
     viewport?: Rectangle | undefined;
     targets?: HitTarget[];
+    /** The input width of the field the screen shows, in either pane: where Up and Down in it find the row above or
+     *  below. */
+    fieldColumns?: number | undefined;
     detail?:
         | {
               maxScroll: number;
               pageSize: number;
+              step: number;
               scroll: number;
+              responseTop?: number | undefined;
               viewport?: Rectangle;
           }
         | undefined;
 };
+
+/** The scroll `m` asks for: Metadata's last row one row above the footer, which stands on the pane's last body row
+ *  while the full response is below, or the page's end with no full response under it. The layout turns it into rows. */
+export const METADATA_TARGET = Number.MAX_SAFE_INTEGER;

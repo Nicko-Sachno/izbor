@@ -130,7 +130,7 @@ screen
                                                                                               │
                                                                                               │  ┌─ Answer ──────────────────────────────────────────────────┐
                                                                                               │  │ › yes, no, or no and your words                    Send → │
-                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                              │  └─ Ctrl-J new line · Enter sends ───────────────────────────┘
                                                                                                                                                  Help · Ctrl-G
 cursor 101,37 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
 
@@ -174,7 +174,7 @@ screen
                                                                                               │
                                                                                               │  ┌─ Answer ──────────────────────────────────────────────────┐
                                                                                               │  │ › yes                                              Send → │
-                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                              │  └─ Ctrl-J new line · Enter sends ───────────────────────────┘
                                                                                                                                                  Help · Ctrl-G
 cursor 104,37 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
 
@@ -218,7 +218,7 @@ screen
                                                                                               │  The sample sends nothing.
                                                                                               │  ┌─ Answer ──────────────────────────────────────────────────┐
                                                                                               │  │ › yes                                              Send → │
-                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                              │  └─ Ctrl-J new line · Enter sends ───────────────────────────┘
                                                                                                                                                  Help · Ctrl-G
 cursor 104,37 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
 
@@ -262,7 +262,7 @@ screen
                                                                                               │  The sample sends nothing.
                                                                                               │  ┌─ Answer ──────────────────────────────────────────────────┐
                                                                                               │  │ › yes                                              Send → │
-                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                              │  └─ Ctrl-J new line · Enter sends ───────────────────────────┘
                                                                                                                                                  Help · Ctrl-G
 cursor 101,37 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
 
@@ -306,7 +306,7 @@ screen
                                                                                               │
                                                                                               │  ┌─ Answer ──────────────────────────────────────────────────┐
                                                                                               │  │ › !yes                                             Send → │
-                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                              │  └─ Ctrl-J new line · Enter sends ───────────────────────────┘
                                                                                                                                                  Help · Ctrl-G
 cursor 102,37 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
 
@@ -350,7 +350,7 @@ screen
                                                                                               │  The sample sends nothing.
                                                                                               │  ┌─ Answer ──────────────────────────────────────────────────┐
                                                                                               │  │ › !yes                                             Send → │
-                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                              │  └─ Ctrl-J new line · Enter sends ───────────────────────────┘
                                                                                                                                                  Help · Ctrl-G
 cursor 105,37 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
 
@@ -394,6 +394,6 @@ screen
                                                                                               │
                                                                                               │  ┌─ Answer ──────────────────────────────────────────────────┐
                                                                                               │  │ › !yesm                                            Send → │
-                                                                                              │  └───────────────────────────────────────────────────────────┘
+                                                                                              │  └─ Ctrl-J new line · Enter sends ───────────────────────────┘
                                                                                                                                                  Help · Ctrl-G
 cursor 106,37 · mouse vt200 sgr · paste on · title "Izbor · needs you" · bell 0
