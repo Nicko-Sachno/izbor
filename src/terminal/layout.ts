@@ -44,8 +44,8 @@ export const FIELD_TEXT_ROWS = 6;
 export function bodyLayout(
     rows: number,
     page: {
-        /** The rows over the Brief's view: none on the Brief page, where Back · Esc takes the tabs line's place, and
-         *  the side Brief's Hide · h row. */
+        /** The rows over the Brief's view: 0 on the Brief page, where Back · Esc takes the tabs line's place, and 1 in
+         *  the side Brief, for its Hide · h row. */
         titleRows: number;
         /** A Brief page is open. */
         brief: boolean;

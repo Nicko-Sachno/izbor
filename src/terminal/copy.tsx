@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import { Box, Text } from "ink";
-import stringWidth from "string-width";
 import { toneColor, type CopyStyle } from "./paint.js";
 import { GLYPHS, refusalWords, wrapLines } from "./presentation.js";
 
