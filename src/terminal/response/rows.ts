@@ -3,6 +3,7 @@ import type { FullResponse, ResponseItem } from "../../domain/response.js";
 import { counted } from "../../domain/text.js";
 import { BRIEF_WIDTH } from "../layout.js";
 import { paint, type Look } from "../paint.js";
+import { MARK_COLUMNS, markWords } from "../parts.js";
 import { clip, clockTime, spacedThousands, wrapText, type Tone } from "../presentation.js";
 import { viewRows, type ResponsePane } from "../viewport.js";
 import { wordsRows, type Room } from "../words/rows.js";
@@ -79,6 +80,12 @@ export function earlierOf(items: readonly ResponseItem[]): readonly ResponseItem
 const toned = (item: string, line: number, text: string, look: Look, tone: Tone = "muted") =>
     row(item, line, paint(text, look, { tone }));
 
+/** The label's words in muted after the full response's mark. */
+function markedLabel(label: string, look: Look) {
+    const { text, tone, bold } = markWords("reply");
+    return paint(text, look, { tone, bold }) + paint(label, look, { tone: "muted" });
+}
+
 /** The blank row before `item`, or `line` rows before its first. */
 const blank = (item: string, line = -1): Row => row(item, line, "");
 
@@ -90,11 +97,11 @@ function tonedLines(item: string, text: string, width: number, look: Look, tone?
 }
 
 /**
- * While a text item stands: its label and the live edge, the newest text item and every item after it; then a blank
- * row, `Earlier in this turn` with the count of its tool calls, and the items before it, when there are any. When
- * text was cut (S4), a line says how much, first under `Earlier in this turn`, a blank row parting it from a text item
- * under it as from any text. Once the turn is over, a notice before the newest text item names the background task in
- * the label; while `live`, the label names the live edge.
+ * While a text item stands: its label behind the full response's mark and the live edge, the newest text item and
+ * every item after it; then a blank row, `Earlier in this turn` with the count of its tool calls, and the items before
+ * it, when there are any. When text was cut (S4), a line says how much, first under `Earlier in this turn`, a blank
+ * row parting it from a text item under it as from any text. Once the turn is over, a notice before the newest text
+ * item names the background task in the label; while `live`, the label names the live edge.
  */
 function textTurn({ items, cut }: FullResponse, room: Room, look: Look, how: { now: Date; live: boolean }): Row[] {
     const width = room.text;
@@ -103,11 +110,10 @@ function textTurn({ items, cut }: FullResponse, room: Room, look: Look, how: { n
     const afterTask = before.some(({ type }) => type === "notice");
     // The label stands as the row before the text it labels, so a view that reads it keeps that text in place once a
     // newer text pushes it into Earlier (T6).
-    const label = toned(
+    const label = row(
         items[at]!.id,
         -1,
-        replyLabel(items[at]!.at, how.now, width, { live: how.live, afterTask }),
-        look,
+        markedLabel(replyLabel(items[at]!.at, how.now, width - MARK_COLUMNS, { live: how.live, afterTask }), look),
     );
     const top = onTop([label, ...partRows(items.slice(at), room, look)]);
     const them = cut === 1 ? "it" : "them";
