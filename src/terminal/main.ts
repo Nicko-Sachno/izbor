@@ -203,7 +203,7 @@ export async function runTerminal(
     const controller = createTerminalController(source, {
         initialIds,
         oldBuild: screen.oldBuild,
-        abilities: { links: screen.links, strike: screen.strike },
+        abilities: { links: screen.links, strike: screen.strike, shiftEnter: screen.shiftEnter },
         ...windowSize(io.stdout),
         note: feedback,
         hooks: { port: setup.port, write: setup.hooks },

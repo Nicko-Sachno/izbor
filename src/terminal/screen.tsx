@@ -710,7 +710,7 @@ export function TerminalScreen({ view, size, color, now = new Date(), onLayout }
         width: fieldWidth,
         tone: (fieldFocused ? "focus" : "border") as Tone,
         title: fieldTitle(mode, { lines: typed.lines, above: fieldInput.above }),
-        hint: fieldHint(view.field, fieldFocused, typed.lines),
+        hint: fieldHint(view.field, fieldFocused, typed.lines, view.abilities.shiftEnter),
         rows: fieldInput.rows.map(({ text }) => text),
         empty: !view.field.text,
         placeholder: placeholderOn(mode, fieldSession, view.list, closing.length > 0),
