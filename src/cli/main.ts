@@ -96,6 +96,7 @@ async function openTerminal(args: OpenArgs): Promise<number> {
     const {
         project: { changeHooks: hooks, changeActing: plugin },
         run,
+        readTitle,
     } = await loadCliProvider(platform);
     const screen = { ...args.screen, ...(await readAbilities(args.screen.color)) };
     return runTerminal({
@@ -105,6 +106,7 @@ async function openTerminal(args: OpenArgs): Promise<number> {
             izbor: izbor.info,
             port: args.port,
             run,
+            readTitle,
             platform,
             readKey,
             env: process.env,
@@ -142,6 +144,7 @@ async function loadCliProvider(platform: Platform) {
     return {
         project: CLI_PROVIDER.project(providerContextOf({ platform, home: homedir() })),
         run: CLI_PROVIDER.agentsList({ run: platform.run }),
+        readTitle: CLI_PROVIDER.readTitle,
     };
 }
 

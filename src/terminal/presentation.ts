@@ -139,7 +139,9 @@ export function singleLine(text: string): string {
     return clean(text).replace(/\s+/g, " ").trim();
 }
 
-export const sessionName = (session: Pick<RunningSession, "name">) => singleLine(session.name) || "Unnamed session";
+/** A running session's name, else `New session` and the minute it started. */
+export const sessionName = ({ name, startedAt }: Pick<RunningSession, "name" | "startedAt">) =>
+    singleLine(name) || (startedAt ? `New session · started ${clockTime(startedAt, "minute")}` : "Unnamed session");
 
 export const graphemes = new Intl.Segmenter(undefined, { granularity: "grapheme" });
 function parts(text: string): string[] {

@@ -11,7 +11,7 @@ import type { IzborInfo } from "../domain/wire.js";
 import { QUIET_TITLE, rings, windowTitle } from "./alerts.js";
 import { TerminalApp } from "./app.js";
 import { createTerminalController, type TerminalController } from "./controller.js";
-import { createRunningSessions, windowWhere } from "./live/agents.js";
+import { createRunningSessions, windowWhere, type ReadTitle } from "./live/agents.js";
 import { answering } from "./live/answers.js";
 import type { Wait } from "./live/observation.js";
 import { sentPrompts } from "./live/prompts.js";
@@ -25,6 +25,7 @@ export type LiveOptions = {
     izbor: IzborInfo | "older";
     port: number;
     run: (signal: AbortSignal) => Promise<string>;
+    readTitle: ReadTitle;
     platform: FileOwnership;
     readKey: (path: string, signal: AbortSignal) => Promise<string>;
     env: Record<string, string | undefined>;
@@ -38,11 +39,20 @@ function windowSize(stdout: NodeJS.WriteStream): TerminalSize {
     return { columns: stdout.columns || 80, rows: stdout.rows || 24 };
 }
 
-export function createLiveStore({ client, izbor, port, run, platform, env, readKey }: LiveOptions): ObservationSource {
+export function createLiveStore({
+    client,
+    izbor,
+    port,
+    run,
+    readTitle,
+    platform,
+    env,
+    readKey,
+}: LiveOptions): ObservationSource {
     const now = () => new Date();
     const where = () => windowWhere({ izbor, port, env, platform });
     const wait: Wait = (ms, signal) => sleep(ms, undefined, { signal }).catch(() => {});
-    const running = createRunningSessions({ run, where, now });
+    const running = createRunningSessions({ run, readTitle, where, now });
     const prompts = sentPrompts();
     const heard = { getIzbor: client.getIzbor, readStream: prompts.hearing(client.readStream) };
     const source = createLiveSource({ client: heard, address: izborAddress(port), running, wait, now });

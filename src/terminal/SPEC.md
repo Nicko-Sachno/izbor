@@ -40,6 +40,7 @@ Home lists every running Claude Code session, grouped by project. The live app l
 
 - Before the first list, Home reads `Looking for running Claude Code sessions…`.
 - When a reading fails, `▲ No list: <why>` stands over the last list.
+- A session line starts with the session's name. That is the name Claude Code lists, unless Claude Code derived it from the folder, such as `izbor-6a`. Then Home shows Claude's title for the session, else its first prompt, else `New session · started 20:47`. A first prompt that is a slash command, such as `/clear`, does not count. If Izbor cannot read the title, the derived name stays.
 - A session line you observe in this window ends with `Open ›`, muted until its line has focus. Enter or a click on it opens its Brief.
 - A focused line you do not observe ends with `Observe ›`. Enter or a click on it observes the session and opens its Brief.
 - A session in a worktree adds `· worktree <name>`.
