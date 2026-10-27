@@ -1,4 +1,4 @@
-import { join, resolve, sep } from "node:path";
+import { basename, join, resolve, sep } from "node:path";
 import { answerHookAt } from "../../adapters/agents/claude/setup/answerHook.js";
 import { izborHooksAt } from "../../adapters/agents/claude/setup/izborHooks.js";
 import { checkoutOf, type FileOwnership } from "../../adapters/agents/claude/setup/projectFiles.js";
@@ -34,9 +34,56 @@ export function windowWhere({
     };
 }
 
-type ListEntry = { sessionId?: unknown; name?: unknown; cwd?: unknown; status?: unknown; waitingFor?: unknown };
+/** The adapter's SessionTitle and TitleReader, copied: the terminal app may not import sessionTitle.ts. */
+export type SessionTitle = { title?: string; firstPrompt?: string };
+export type ReadTitle = (sessionId: string) => Promise<SessionTitle>;
+
+type ListEntry = {
+    sessionId?: unknown;
+    name?: unknown;
+    cwd?: unknown;
+    startedAt?: unknown;
+    status?: unknown;
+    waitingFor?: unknown;
+};
+
+type Listed = { entry: ListEntry; id: string; cwd: string; checkout: string };
 
 const textOf = (value: unknown) => (typeof value === "string" ? value : undefined);
+
+function startedAtOf(value: unknown): string | undefined {
+    const time = typeof value === "number" ? new Date(value) : undefined;
+    return time && !Number.isNaN(time.getTime()) ? time.toISOString() : undefined;
+}
+
+/** A folder's name as Claude Code slugs it for a session's name, or `claude` when nothing of it is left. */
+function folderSlug(folder: string): string {
+    const slug = basename(folder)
+        .split(/\s+/)
+        .filter(Boolean)
+        .slice(0, 4)
+        .join(" ")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .slice(0, 40)
+        .replace(/^-+|-+$/g, "");
+    return slug || "claude";
+}
+
+/** Whether Claude Code made the name from the start folder, as in `izbor-6a`, or gave none. The start folder is the
+ *  listed one or, in a worktree, its checkout. Copied from Claude Code; if its rule changes, names show as listed. */
+function derivedName({ entry, cwd, checkout }: Listed): boolean {
+    const name = textOf(entry.name) ?? "";
+    return (
+        name === "" || [cwd, checkout].some((folder) => new RegExp(`^${folderSlug(folder)}-[0-9a-f]{2}$`).test(name))
+    );
+}
+
+function chosenName(listed: Listed, found: SessionTitle | undefined): string {
+    const name = textOf(listed.entry.name) ?? "";
+    if (!found || !derivedName(listed)) return name;
+    return found.title || found.firstPrompt || "";
+}
 
 function worktreeName(cwd: string): string | undefined {
     const folders = resolve(cwd).split(sep);
@@ -56,22 +103,43 @@ function entriesIn(output: string): ListEntry[] {
     return entries.filter((entry): entry is ListEntry => typeof entry === "object" && entry !== null);
 }
 
-export function parseRunningSessions(output: string, where: Where): RunningSession[] {
-    const settings = new Map<string, { hooks: boolean; acting: boolean }>();
+/** The sessions the window lists, the summarizer's left out. */
+function listedIn(output: string, where: Where): Listed[] {
     return entriesIn(output).flatMap((entry) => {
         const id = textOf(entry.sessionId)?.toLowerCase();
         const reported = textOf(entry.cwd);
         const cwd = reported && upperDrive(reported);
         if (!id || !cwd || isInside(cwd, where.summarizerDir)) return [];
+        return [{ entry, id, cwd, checkout: where.checkoutOf(cwd) }];
+    });
+}
+
+export function parseRunningSessions(
+    output: string,
+    where: Where,
+    titles: ReadonlyMap<string, SessionTitle> = new Map(),
+): RunningSession[] {
+    return runningSessionsOf(listedIn(output, where), where, titles);
+}
+
+function runningSessionsOf(
+    listed: readonly Listed[],
+    where: Where,
+    titles: ReadonlyMap<string, SessionTitle>,
+): RunningSession[] {
+    const settings = new Map<string, { hooks: boolean; acting: boolean }>();
+    return listed.map((session) => {
+        const { entry, id, cwd, checkout } = session;
         const status = textOf(entry.status);
         const waitingFor = textOf(entry.waitingFor);
-        const checkout = where.checkoutOf(cwd);
+        const startedAt = startedAtOf(entry.startedAt);
         const worktree = worktreeName(cwd);
         if (!settings.has(checkout))
             settings.set(checkout, { hooks: where.hasHooks(checkout), acting: where.acts(checkout) });
         return {
             id,
-            name: textOf(entry.name) ?? "",
+            name: chosenName(session, titles.get(id)),
+            ...(startedAt !== undefined && { startedAt }),
             ...(status !== undefined && { status }),
             ...(waitingFor !== undefined && { waitingFor }),
             checkout,
@@ -103,10 +171,12 @@ export interface RunningSessions {
 
 export function createRunningSessions({
     run,
+    readTitle,
     where,
     now,
 }: {
     run: (signal: AbortSignal) => Promise<string>;
+    readTitle: ReadTitle;
     where: () => Where;
     now: () => Date;
 }): RunningSessions {
@@ -114,9 +184,19 @@ export function createRunningSessions({
     let last: readonly RunningSession[] | undefined;
     let inFlight: Promise<SessionList> | undefined;
 
+    /** A read that fails is left out, so its session keeps Claude Code's name. */
+    async function readTitles(ids: readonly string[]): Promise<Map<string, SessionTitle>> {
+        const read = await Promise.allSettled(ids.map((id) => readTitle(id)));
+        return new Map(read.flatMap((result, i) => (result.status === "fulfilled" ? [[ids[i]!, result.value]] : [])));
+    }
+
     async function runOnce(): Promise<SessionList> {
         try {
-            const parsed = parseRunningSessions(await run(disposed.signal), where());
+            const output = await run(disposed.signal);
+            const listedWhere = where();
+            const listed = listedIn(output, listedWhere);
+            const titles = await readTitles(listed.filter(derivedName).map(({ id }) => id));
+            const parsed = runningSessionsOf(listed, listedWhere, titles);
             const at = now().toISOString();
             const sessions = datedWaits(parsed, last, at);
             last = sessions;

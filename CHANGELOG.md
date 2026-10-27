@@ -31,6 +31,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions: [Sem
 - A paste of more than 5 lines or 800 characters shows in the Brief's field as one block, such as `[Pasted 42 lines · 1.9 KB]`, on a dark sage fill in the palette, in brackets on a 16-colour terminal or with colour off; Backspace removes it whole, and Enter sends its full text, tabs as pasted.
 - With `--no-color` or `CI` set, the terminal app keeps bold, italic, underline and reverse video, as it already did with `NO_COLOR`; only `TERM=dumb` draws plain text.
 - Your Task in a Brief's heading, on the Brief page and in the side Brief, stands on a dark grey fill, as Claude Code draws your prompt, so it reads apart from the agent's words; on a 16-colour terminal the fill is bright black, and with colour off there is none.
+- Home no longer shows the name Claude Code makes from a session's folder, such as `izbor-6a`. Instead it shows Claude's title for the session, such as `Meaningful session names on Home screen`, else its first prompt, else `New session · started 20:47`. A name you gave with `/rename` stays.
 
 ## [0.1.0] - 2026-10-19
 

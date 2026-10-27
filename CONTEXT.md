@@ -226,6 +226,10 @@ _Avoid_: Terminal (Izbor log goes to a terminal too), client (curl is a client t
 One session a terminal app shows in a row, through one listener of its own. Leaving it closes only that stream, never the watch: the watch goes on for its other listeners, or 30 seconds if none is left. A delete is what stops the watch for every listener. A stopped or disconnected observation keeps its last brief until it is left or observed again.
 _Avoid_: Watch (the watch is Izbor's, shared by every listener), subscription, observed session
 
+**Session name**:
+What the terminal app calls a running session in its lists. It is the name Claude Code lists for it, unless Claude Code derived that name from the folder, such as `izbor-6a`. Then it is Claude's title for the session, read from the transcript, else its first prompt, else `New session` and the minute it started. A session whose title cannot be read keeps the derived name.
+_Avoid_: Title (Claude's title is one source of the name), label, Task (the Task is the latest prompt, and it changes every turn)
+
 **Last change**:
 How the terminal app labels Last observed. A listener gets Last observed only with a brief, so it tells when something last changed, not that Izbor is still there: on a quiet session it grows old while Izbor still watches.
 _Avoid_: Updated, last seen, heartbeat

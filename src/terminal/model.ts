@@ -64,6 +64,7 @@ export type Observation = {
 export type RunningSession = {
     id: string;
     name: string;
+    startedAt?: string;
     status?: string;
     waitingFor?: string;
     waitingSince?: string;
