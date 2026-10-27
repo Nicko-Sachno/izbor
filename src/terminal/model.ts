@@ -152,9 +152,10 @@ export type NavigationView = {
     readonly detailScroll: number;
 };
 
-/** What the terminal shows besides colour, the screen flags' OSC 8 links and strikethrough (`TerminalAbilities` reads
- *  them). Each is off unless set, and the look turns both off with colour off. */
-export type Abilities = Readonly<Pick<ScreenFlags, "links" | "strike">>;
+/** What the terminal shows besides colour, the screen flags' OSC 8 links and strikethrough, and whether it reports
+ *  Shift-Enter with no setting (`TerminalAbilities` reads them). Each is off unless set, and the look turns links and
+ *  strikethrough off with colour off. */
+export type Abilities = Readonly<Pick<ScreenFlags, "links" | "strike" | "shiftEnter">>;
 
 export type TerminalView = NavigationView & {
     readonly sessions: readonly Observation[];

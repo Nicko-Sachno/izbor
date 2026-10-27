@@ -55,17 +55,19 @@ export function fieldTitle(mode: FieldMode, { lines, above } = { lines: 1, above
     return [mode.mode === "answer" ? "Answer" : "Reply to this session", ...counts].join(SEPARATOR);
 }
 
-/** What the field's bottom edge says from its text's first new line, or while the field has the cursor: its keys. */
-const FIELD_HINT = `Ctrl-J new line${SEPARATOR}Enter sends`;
+/** What the field's bottom edge says from its text's first new line, or while the field has the cursor: its keys,
+ *  Shift-Enter for a new line where the terminal reports it with no setting (`shiftEnter`), else Ctrl-J, which works
+ *  in every terminal. */
+const fieldKeys = (shiftEnter: boolean) => `${shiftEnter ? "Shift-Enter" : "Ctrl-J"} new line${SEPARATOR}Enter sends`;
 
 /** What it says instead while the cursor stands right after a paste block. */
 const PASTE_HINT = `Backspace removes the paste${SEPARATOR}Enter sends`;
 
 /** The field's bottom edge for its text of `lines` lines (a paste block in none of them): the paste's keys while the
  *  field has the cursor right after a block, its own from the first new line or while it has the cursor, else none. */
-export function fieldHint({ cursor, pasted }: FieldState, focused: boolean, lines: number): string {
+export function fieldHint({ cursor, pasted }: FieldState, focused: boolean, lines: number, shiftEnter = false): string {
     if (focused && pasted?.some(({ end }) => end === cursor)) return PASTE_HINT;
-    return focused || lines > 1 ? FIELD_HINT : "";
+    return focused || lines > 1 ? fieldKeys(shiftEnter) : "";
 }
 
 /**

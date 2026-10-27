@@ -69,7 +69,7 @@ In a window of 140 × 20 or more, the selected session's Brief sits next to the 
 
 ### Help
 
-**Ctrl-G** or a click on `Help` at the bottom right lists the keys outside a Brief's field; the field's bottom edge shows Ctrl-J and Enter, and the Keys table below lists the rest. Close it the same way.
+**Ctrl-G** or a click on `Help` at the bottom right lists the keys outside a Brief's field; the field's bottom edge shows its new-line key and Enter, and the Keys table below lists the rest. Close it the same way.
 
 ## The top line
 
@@ -93,7 +93,7 @@ In a window of 140 × 20 or more, the selected session's Brief sits next to the 
 | -------------------------- | --------------------------------------------------------------------------- |
 | Up / Down                  | Move between lines; in a Brief's field, between its rows                    |
 | Enter / click              | Open, observe, or send                                                      |
-| Ctrl-J / Shift-Enter       | In a Brief's field, start a new line                                        |
+| Ctrl-J / Shift-Enter       | In a Brief's field, start a new line; so does Option-Enter                  |
 | Esc                        | Step back                                                                   |
 | Ctrl-O                     | Switch Home and Sessions                                                    |
 | Tab                        | Move focus between list, Brief and its box                                  |
@@ -106,7 +106,7 @@ In a window of 140 × 20 or more, the selected session's Brief sits next to the 
 
 In a Brief's full response the row you read stays put while the response grows, the Brief above it changes or the window resizes. Only these keys and the wheel move the view.
 
-Shift-Enter starts a new line in kitty, Ghostty, foot and iTerm2, and in WezTerm with `enable_kitty_keyboard = true` in its config: Izbor asks these terminals to report it. In Terminal.app, inside tmux and in other terminals it sends, as Enter does; Ctrl-J works everywhere. Option-Enter sends.
+Shift-Enter starts a new line in kitty, Ghostty, foot and iTerm2, and in WezTerm with `enable_kitty_keyboard = true` in its config: Izbor asks these terminals to report it, and the field's bottom edge names it in all of them but WezTerm. In Terminal.app, inside tmux and in other terminals it sends, as Enter does; Ctrl-J works everywhere. Option-Enter starts a new line where the terminal sends Option as Meta: in Terminal.app, tick Use Option as Meta Key under Settings › Profiles › Keyboard. In VS Code, Claude Code's `/terminal-setup` makes Shift-Enter send what Option-Enter sends, so there Shift-Enter starts a new line too.
 
 ## Options
 

@@ -95,6 +95,8 @@ export type ScreenFlags = {
     strike?: boolean;
     /** The terminal reports keys under the kitty keyboard protocol, so Shift-Enter in the field starts a new line. */
     keys?: "kitty";
+    /** It reports Shift-Enter with no setting of the user's, so the field's bottom edge names Shift-Enter, not Ctrl-J. */
+    shiftEnter?: true;
 };
 
 export function readConfig(

@@ -1,7 +1,8 @@
 import type { ScreenFlags } from "../config.js";
 
 /** What the terminal shows besides colour, and the keys it reports, as the terminal app's screen flags carry them. */
-export type TerminalAbilities = Pick<Required<ScreenFlags>, "links" | "strike"> & Pick<ScreenFlags, "keys">;
+export type TerminalAbilities = Pick<Required<ScreenFlags>, "links" | "strike"> &
+    Pick<ScreenFlags, "keys" | "shiftEnter">;
 
 /**
  * Whether the terminal `env` describes opens OSC 8 links, shows strikethrough and reports keys (SPEC § Outside the
@@ -17,6 +18,7 @@ export type TerminalAbilities = Pick<Required<ScreenFlags>, "links" | "strike"> 
  *   and iTerm2 alone; WezTerm honours it only with `enable_kitty_keyboard = true` in its config. Never in
  *   Terminal.app, which prints the tail of a query it does not know, and never inside tmux, which hides the outer
  *   terminal while `KITTY_WINDOW_ID` may be left over there.
+ * - Shift-Enter: named on the field's bottom edge where keys are reported and no setting is needed, so not in WezTerm.
  */
 export function terminalAbilities(
     env: Record<string, string | undefined>,
@@ -31,6 +33,7 @@ export function terminalAbilities(
         links: shows && env.CI === undefined && opens,
         strike: shows && env.TERM !== "linux",
         ...(keys && { keys: "kitty" as const }),
+        ...(keys && env.TERM_PROGRAM !== "WezTerm" && { shiftEnter: true as const }),
     };
 }
 
