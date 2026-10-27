@@ -18,7 +18,7 @@ export type TerminalAbilities = Pick<Required<ScreenFlags>, "links" | "strike"> 
  *   and iTerm2 alone; WezTerm honours it only with `enable_kitty_keyboard = true` in its config. Never in
  *   Terminal.app, which prints the tail of a query it does not know, and never inside tmux, which hides the outer
  *   terminal while `KITTY_WINDOW_ID` may be left over there.
- * - Shift-Enter: named on the field's bottom edge where keys are reported and no setting is needed, so not in WezTerm.
+ * - Shift-Enter: named on the field's bottom edge where it comes with no setting: not in WezTerm or iTerm2 before 3.5.
  */
 export function terminalAbilities(
     env: Record<string, string | undefined>,
@@ -33,7 +33,7 @@ export function terminalAbilities(
         links: shows && env.CI === undefined && opens,
         strike: shows && env.TERM !== "linux",
         ...(keys && { keys: "kitty" as const }),
-        ...(keys && env.TERM_PROGRAM !== "WezTerm" && { shiftEnter: true as const }),
+        ...(keys && reportsShiftEnter(env) && { shiftEnter: true as const }),
     };
 }
 
@@ -56,6 +56,14 @@ function reportsKeys(env: Record<string, string | undefined>): boolean {
         ["ghostty", "WezTerm", "iTerm.app"].includes(env.TERM_PROGRAM ?? "") ||
         env.KITTY_WINDOW_ID !== undefined
     );
+}
+
+/** Of those, the ones that report Shift-Enter with no setting of the user's: not WezTerm, which needs
+ *  `enable_kitty_keyboard`, nor iTerm2 before 3.5, its first release with the kitty keyboard protocol. */
+function reportsShiftEnter({ TERM_PROGRAM, TERM_PROGRAM_VERSION = "" }: Record<string, string | undefined>): boolean {
+    if (TERM_PROGRAM !== "iTerm.app") return TERM_PROGRAM !== "WezTerm";
+    const [, major = "0", minor = "0"] = /(\d+)\.(\d+)/.exec(TERM_PROGRAM_VERSION) ?? [];
+    return Number(major) > 3 || (Number(major) === 3 && Number(minor) >= 5);
 }
 
 /** tmux 3.4 or later, from the version it sets, such as `3.4`, `3.3a` or `next-3.6`. */
