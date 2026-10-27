@@ -139,7 +139,6 @@ export function singleLine(text: string): string {
     return clean(text).replace(/\s+/g, " ").trim();
 }
 
-/** A running session's name, else `New session` and the minute it started. */
 export const sessionName = ({ name, startedAt }: Pick<RunningSession, "name" | "startedAt">) =>
     singleLine(name) || (startedAt ? `New session · started ${clockTime(startedAt, "minute")}` : "Unnamed session");
 

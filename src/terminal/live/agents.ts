@@ -34,10 +34,8 @@ export function windowWhere({
     };
 }
 
-/** What a session's transcript says it is about: Claude's title for it and its first prompt, each when it has one. */
+/** The adapter's SessionTitle and TitleReader, copied: the terminal app may not import sessionTitle.ts. */
 export type SessionTitle = { title?: string; firstPrompt?: string };
-
-/** Reads one session's title from its transcript, an empty one while it has none. Rejects when it cannot be read. */
 export type ReadTitle = (sessionId: string) => Promise<SessionTitle>;
 
 type ListEntry = {
@@ -49,7 +47,6 @@ type ListEntry = {
     waitingFor?: unknown;
 };
 
-/** A session the window lists: its entry, with its id, its folder and that folder's checkout. */
 type Listed = { entry: ListEntry; id: string; cwd: string; checkout: string };
 
 const textOf = (value: unknown) => (typeof value === "string" ? value : undefined);
@@ -73,12 +70,8 @@ function folderSlug(folder: string): string {
     return slug || "claude";
 }
 
-/**
- * Whether Claude Code derived the session's name because nobody named it: the slug of the folder it started in, then
- * a dash and two hex digits, as in `izbor-6a`. That folder is the listed one, or its checkout once the session entered
- * a worktree. The rule is Claude Code's own, copied; should it change, the name shows as Claude Code lists it. No name
- * at all counts as derived too.
- */
+/** Whether Claude Code made the name from the start folder, as in `izbor-6a`, or gave none. The start folder is the
+ *  listed one or, in a worktree, its checkout. Copied from Claude Code; if its rule changes, names show as listed. */
 function derivedName({ entry, cwd, checkout }: Listed): boolean {
     const name = textOf(entry.name) ?? "";
     return (
@@ -86,8 +79,6 @@ function derivedName({ entry, cwd, checkout }: Listed): boolean {
     );
 }
 
-/** The name a session is listed by: Claude Code's, unless Claude Code derived it; then Claude's title, else the first
- *  prompt, else none. A session whose title was not read keeps Claude Code's name. */
 function chosenName(listed: Listed, found: SessionTitle | undefined): string {
     const name = textOf(listed.entry.name) ?? "";
     if (!found || !derivedName(listed)) return name;
@@ -193,7 +184,7 @@ export function createRunningSessions({
     let last: readonly RunningSession[] | undefined;
     let inFlight: Promise<SessionList> | undefined;
 
-    /** Reads the titles together. One that fails is left out, so its session keeps Claude Code's name. */
+    /** A read that fails is left out, so its session keeps Claude Code's name. */
     async function readTitles(ids: readonly string[]): Promise<Map<string, SessionTitle>> {
         const read = await Promise.allSettled(ids.map((id) => readTitle(id)));
         return new Map(read.flatMap((result, i) => (result.status === "fulfilled" ? [[ids[i]!, result.value]] : [])));
