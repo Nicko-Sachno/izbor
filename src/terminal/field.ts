@@ -55,9 +55,7 @@ export function fieldTitle(mode: FieldMode, { lines, above } = { lines: 1, above
     return [mode.mode === "answer" ? "Answer" : "Reply to this session", ...counts].join(SEPARATOR);
 }
 
-/** What the field's bottom edge says from its text's first new line, or while the field has the cursor: its keys,
- *  Shift-Enter for a new line where the terminal reports it with no setting (`shiftEnter`), else Ctrl-J, which works
- *  in every terminal. */
+/** The field's own keys: Shift-Enter for a new line where it needs no setting (`shiftEnter`), else Ctrl-J. */
 const fieldKeys = (shiftEnter: boolean) => `${shiftEnter ? "Shift-Enter" : "Ctrl-J"} new line${SEPARATOR}Enter sends`;
 
 /** What it says instead while the cursor stands right after a paste block. */

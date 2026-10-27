@@ -120,12 +120,8 @@ type EnterActions = {
     observeAndOpen: (id: string) => void;
 };
 
-/**
- * Enter, where the focus is: sends the field, or with Shift or Option starts a new line in it as Ctrl-J does, opens or
- * closes Help, goes from a Brief into its field when it has one, acts on a project line, or opens the focused session.
- * Only a terminal that reports Shift-Enter sends it apart from Enter (SPEC § Keys and mouse); Option-Enter comes as Esc
- * and Enter, which Claude Code's `/terminal-setup` also has Shift-Enter send in VS Code.
- */
+/** Enter, where the focus is. In the field, Shift or Option starts a new line (SPEC § Keys and mouse): Option-Enter
+ *  comes as Esc and Enter, which Claude Code's `/terminal-setup` also has Shift-Enter send in VS Code. */
 function pressEnter(view: TerminalView, { shift, meta }: Key, actions: EnterActions): void {
     const checkout = focusedCheckout(view.focused);
     if (view.focused === FIELD_FOCUS && (shift || meta)) actions.submission.edit("\n", {}, actions.fieldSession());
